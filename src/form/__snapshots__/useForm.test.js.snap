@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`no submit if form validation fails 1`] = `
+Array [
+  Object {
+    "name": "current value of name",
+    "phone": "current value of phone",
+  },
+]
+`;
+
+exports[`options passed to createReducer 1`] = `
+Array [
+  Object {
+    "fields": Array [
+      Object {
+        "label": "The name",
+        "name": "name",
+        "type": "text",
+      },
+      Object {
+        "label": "The phone",
+        "name": "phone",
+        "type": "text",
+      },
+    ],
+    "initialValues": Immutable.Map {},
+    "options": Object {
+      "optional": "yes",
+    },
+  },
+]
+`;
+
+exports[`returns array of form props 1`] = `
+Object {
+  "Form": [Function],
+  "addField": [Function],
+  "name": Object {
+    "label": "The name",
+    "value": "current value of name",
+  },
+  "phone": Object {
+    "label": "The phone",
+    "value": "current value of phone",
+  },
+  "removeField": [Function],
+  "setValue": [Function],
+  "submit": [Function],
+}
+`;
+
+exports[`submit calls worker, merges with initialValues 1`] = `
+Array [
+  Immutable.Map {
+    "name": "new name",
+    "id": "id",
+    "phone": "new phone",
+  },
+]
+`;

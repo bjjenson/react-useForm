@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`returns all props needed 1`] = `
+Object {
+  "prop1": "prop1",
+  "prop2": "prop2",
+}
+`;
+
+exports[`returns all props needed 2`] = `
+Array [
+  "state",
+  "dispatch",
+  Object {},
+]
+`;

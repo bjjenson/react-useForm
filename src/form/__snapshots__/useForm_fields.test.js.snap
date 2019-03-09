@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`boolean uses boolean 1`] = `
+Array [
+  Immutable.Map {
+    "initial": Immutable.Map {
+      "type": "boolean",
+    },
+    "current": Immutable.Map {
+      "value": "value of fieldName",
+    },
+    "getAllValues": [Function],
+  },
+  "dispatch",
+  undefined,
+]
+`;
+
+exports[`number uses text 1`] = `
+Array [
+  Immutable.Map {
+    "initial": Immutable.Map {
+      "type": "number",
+    },
+    "current": Immutable.Map {
+      "value": "value of fieldName",
+    },
+    "getAllValues": [Function],
+  },
+  "dispatch",
+  undefined,
+]
+`;
+
+exports[`select uses select 1`] = `
+Array [
+  Immutable.Map {
+    "initial": Immutable.Map {
+      "type": "select",
+    },
+    "current": Immutable.Map {
+      "value": "value of fieldName",
+    },
+    "getAllValues": [Function],
+  },
+  "dispatch",
+  undefined,
+]
+`;
+
+exports[`text defaults to text 1`] = `
+Array [
+  Immutable.Map {
+    "initial": Immutable.Map {
+      "type": "text",
+    },
+    "current": Immutable.Map {
+      "value": "value of fieldName",
+    },
+    "getAllValues": [Function],
+  },
+  "dispatch",
+  undefined,
+]
+`;
+
+exports[`text setValue updates field value 1`] = `
+Array [
+  "new value",
+]
+`;
+
+exports[`text uses text 1`] = `
+Array [
+  Immutable.Map {
+    "initial": Immutable.Map {
+      "type": "text",
+    },
+    "current": Immutable.Map {
+      "value": "value of fieldName",
+    },
+    "getAllValues": [Function],
+  },
+  "dispatch",
+  undefined,
+]
+`;
