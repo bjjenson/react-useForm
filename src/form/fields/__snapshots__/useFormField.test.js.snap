@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`onChange coerces value using normalize 1`] = `
+Array [
+  Object {
+    "fieldName": "fieldName",
+    "payload": "normalized value",
+    "type": "updateValue",
+  },
+]
+`;
+
+exports[`onChange dispatches change action 1`] = `
+Array [
+  Object {
+    "fieldName": "fieldName",
+    "payload": "updated",
+    "type": "updateValue",
+  },
+]
+`;
+
+exports[`onChange uses valueFromTarget to coerce value if provided 1`] = `
+Array [
+  Object {
+    "fieldName": "fieldName",
+    "payload": "updatedFromTarget",
+    "type": "updateValue",
+  },
+]
+`;
+
+exports[`returns all props needed 1`] = `
+Object {
+  "props": Object {
+    "error": false,
+    "helperText": "the help",
+    "label": "the label",
+    "onBlur": [Function],
+    "onChange": [Function],
+    "value": "the value",
+  },
+  "setValidationResult": [Function],
+  "setValue": [Function],
+  "validate": [Function],
+}
+`;
+
+exports[`validate calls validate on change 1`] = `
+Array [
+  "1",
+  "fieldName",
+  "getAllValuesFunc",
+]
+`;
+
+exports[`validate validates onBlur 1`] = `
+Array [
+  "the value",
+  "fieldName",
+  "getAllValuesFunc",
+]
+`;

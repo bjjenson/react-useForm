@@ -1,0 +1,120 @@
+{
+  "parser": "babel-eslint",
+  "plugins": [
+    "react"
+  ],
+  "env": {
+    "es6": true,
+    "browser": true,
+    "jest": true,
+    "node": true
+  },
+  "globals": {
+    "expect": true
+  },
+  "extends": [
+    "airbnb",
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "arrowFunctions": true
+    }
+  },
+  "rules": {
+    "import/prefer-default-export": "off",
+    "jsx-quotes": [
+      "warn",
+      "prefer-single"
+    ],
+    "jsx-a11y/anchor-is-valid": [
+      "warn",
+      {
+        "components": [
+          "Link"
+        ],
+        "specialLink": [
+          "to"
+        ]
+      }
+    ],
+    "jsx-a11y/label-has-for": [
+      "warn",
+      {
+        "components": [
+          "Label"
+        ],
+        "required": {
+          "every": [
+            "id"
+          ]
+        },
+        "allowChildren": false
+      }
+    ],
+    "comma-dangle": [
+      "warn",
+      "always-multiline"
+    ],
+    "linebreak-style": "off",
+    "no-unused-vars": "warn",
+    "no-undef": "warn",
+    "no-extra-boolean-cast": "off",
+    "no-console": "off",
+    "no-constant-condition": "off",
+    "no-redeclare": "off",
+    "react/forbid-prop-types": [
+      "off"
+    ],
+    "react/destructuring-assignment": "off",
+    "react/no-unused-prop-types": "warn",
+    "react/no-unused-state": "warn",
+    "react/prop-types": [
+      "warn",
+      {
+        "ignore": [
+          "classes",
+          "children",
+          "className"
+        ]
+      }
+    ],
+    "react/jsx-closing-tag-location": "off",
+    "react/jsx-indent": "warn",
+    "react/jsx-tag-spacing": "off",
+    "react/jsx-filename-extension": [
+      "warn",
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ],
+    "react/sort-comp": [
+      "warn",
+      {
+        "order": [
+          "constructor",
+          "static-methods",
+          "render",
+          "lifecycle",
+          "everything-else"
+        ]
+      }
+    ],
+    "react/no-array-index-key": "warn",
+    "semi": [
+      "warn",
+      "never"
+    ],
+    "quotes": [
+      "warn",
+      "single"
+    ]
+  }
+}

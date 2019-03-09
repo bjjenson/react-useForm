@@ -1,0 +1,21 @@
+{
+  "eslint.enable": true,
+  "eslint.autoFixOnSave": true,
+  "eslint.options": {
+    "configFile": ".eslintrc",
+    "ignorePattern": [
+      "dist",
+    ]
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "dist": true,
+    "build": true,
+  },
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+}

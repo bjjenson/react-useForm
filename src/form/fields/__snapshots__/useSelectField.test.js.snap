@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`returns all props needed 1`] = `
+Object {
+  "props": Object {
+    "options": Array [
+      Object {
+        "label": "label1",
+        "value": "value1",
+      },
+    ],
+    "prop1": "prop1",
+    "prop2": "prop2",
+  },
+  "validate": "validateFunction",
+}
+`;
+
+exports[`returns all props needed 2`] = `
+Array [
+  "state",
+  "dispatch",
+  Object {
+    "options": Array [
+      Object {
+        "label": "label1",
+        "value": "value1",
+      },
+    ],
+  },
+]
+`;
