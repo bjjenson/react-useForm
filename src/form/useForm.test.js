@@ -77,6 +77,21 @@ test('no submit if form validation fails', () => {
   expect(submitWorker).not.toHaveBeenCalled()
 })
 
+test('validate can be an array of validators', () => {
+  const validate1 = jest.fn()
+  const validate2 = jest.fn()
+  validate1.mockReturnValue({ name: 'i am name error' })
+  validate2.mockReturnValue({ phone: 'i am phone error' })
+  const values = { 'name': 'current value of name', 'phone': 'current value of phone' }
+
+  const { submit } = useForm({ fields, worker: submitWorker, validate: [validate1, validate2] })
+
+  submit()
+  expect(validate1).toHaveBeenCalledWith(values)
+  expect(validate2).toHaveBeenCalledWith(values)
+  expect(submitWorker).not.toHaveBeenCalled()
+})
+
 test('submit calls worker, merges with initialValues', () => {
   useFormField.mockReturnValueOnce({ ...fieldProps, props: { value: 'new name' } })
   useFormField.mockReturnValueOnce({ ...fieldProps, props: { value: 'new phone' } })
