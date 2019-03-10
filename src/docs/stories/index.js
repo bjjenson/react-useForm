@@ -11,13 +11,25 @@ import { CustomRequiredMessage } from './material/CustomRequiredMessage'
 import { BooleanToggle } from './material/BooleanToggle'
 import { NumberField } from './material/NumberField'
 import { SelectField } from './material/SelectField'
+import { RadioField } from './material/RadioField'
 import { InitialValuesSet } from './material/InitialValuesSet'
+import { InitialValuesAsync } from './material/InitialValuesAsync'
+import { CustomizeOptionalPrompt } from './material/CustomizeOptionalPrompt'
 
 storiesOf('Material-UI', module)
   .addDecorator(withInfo)
-  .addParameters({ options: { showPanel: false }, info: { inline: true, header: false } })
+  .addParameters({
+    options: {
+      showPanel: false,
+    },
+    info: {
+      inline: true,
+      header: false,
+    },
+  })
   .add('Simple Form', () => <SimpleForm />)
   .add('Optional Fields', () => <SimpleFormOptionalFields />)
+  .add('Customize optional field prompt', () => <CustomizeOptionalPrompt />)
   .add('Field level validation', () => <FieldValidation />)
   .add('Field input normalize', () => <FieldNormalize />)
   .add('Custom Helper Text', () => <HelperText />)
@@ -25,4 +37,6 @@ storiesOf('Material-UI', module)
   .add('Boolean field', () => <BooleanToggle />)
   .add('Number field', () => <NumberField />)
   .add('Select field', () => <SelectField />)
+  .add('Radio field', () => <RadioField />)
   .add('Initial values passed into form', () => <InitialValuesSet initialValues={fromJS({ fullName: 'Samuel Tarley', nickname: 'Sam' })} />)
+  .add('Initial values retrieved from api', () => <InitialValuesAsync />)
