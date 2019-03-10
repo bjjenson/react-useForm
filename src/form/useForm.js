@@ -51,7 +51,17 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
   const tryValidateForm = () => {
     if (validate) {
       const values = getFieldValues(fieldData)
-      return validate(values)
+      let results = {}
+      let validators = validate
+      if (!Array.isArray(validate)) { validators = [validate] }
+
+      for (let v of validators) {
+        results = {
+          ...results,
+          ...v(values),
+        }
+      }
+      return results
     }
 
     return {}

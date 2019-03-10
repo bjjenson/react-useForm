@@ -18,11 +18,13 @@ export interface IForm {
   removeField: (fieldName: String) => void
 }
 
+declare function validator
+
 export interface IFormProps {
   fields: Array<IFormFieldArgs>
   setValue: (fieldName: String, value: any) => void
   submit: (values: IValues) => Promise
-  validate?: (values: IValues) => IValidationErrors
+  validate?: (values: IValues) => IValidationErrors | Array<(values: IValues) => IValidationErrors>
   initialValues?: Map<String, any>
   options?: IFormOptions
 }
