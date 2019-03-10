@@ -7,6 +7,7 @@ import { FieldValidation } from './material/FieldValidation'
 import { FieldNormalize } from './material/FieldNormalize'
 import { HelperText } from './material/HelperText'
 import { CustomRequiredMessage } from './material/CustomRequiredMessage'
+import { BooleanToggle } from './material/BooleanToggle'
 
 storiesOf('Material-UI', module)
   .addDecorator(withInfo)
@@ -17,3 +18,4 @@ storiesOf('Material-UI', module)
   .add('Field input normalize', () => <FieldNormalize />)
   .add('Custom Helper Text', () => <HelperText />)
   .add('Custom Required Field Message', () => <CustomRequiredMessage />)
+  .add('Boolean field', () => <BooleanToggle />)

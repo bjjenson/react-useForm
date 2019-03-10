@@ -2,8 +2,6 @@ import React from 'react'
 import { TextField, Button } from '@material-ui/core'
 import Flexbox from 'flexbox-react'
 import { useForm } from '../../../form'
-import { validatePhone } from '../helpers/validatePhone'
-import { normalizePhone } from '../helpers/normalizePhone'
 
 const CustomRequiredMessage = () => {
   const form = useForm({
