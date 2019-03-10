@@ -74,6 +74,14 @@ describe('onChange', () => {
     expect(dispatch.mock.calls[0]).toMatchSnapshot()
     expect(normalize).toHaveBeenCalledWith(event.target.value)
   })
+
+  test('validates on change', () => {
+    initialArgs.validate = jest.fn()
+    const { props: { onChange } } = useFormField(state, dispatch, initialArgs)
+    onChange(event)
+
+    expect(initialArgs.validate.mock.calls[0]).toMatchSnapshot()
+  })
 })
 
 describe('validate', () => {

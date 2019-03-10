@@ -1,5 +1,5 @@
 import { Map } from 'immutable'
-import { IFormTextFieldProps, IFormFieldArgs } from './fields/useFormFieldrmField'
+import { IFormTextFieldProps, IFormFieldArgs } from './fields/useFormField'
 import { IValues } from './common'
 
 export interface IValidationErrors {
@@ -17,8 +17,6 @@ export interface IForm {
   addField: (field: IFormFieldArgs) => void
   removeField: (fieldName: String) => void
 }
-
-declare function validator
 
 export interface IFormProps {
   fields: Array<IFormFieldArgs>

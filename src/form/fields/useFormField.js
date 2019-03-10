@@ -31,6 +31,7 @@ export const useFormField = (state, dispatch, fieldArgs = {}) => {
     const value = fieldArgs.valueFromTarget ? fieldArgs.valueFromTarget(target) : target.value
     const coercedValue = fieldArgs.normalize ? fieldArgs.normalize(value) : value
     setValue(coercedValue)
+    tryValidate(coercedValue, true)
   }
 
   const onBlur = () => {

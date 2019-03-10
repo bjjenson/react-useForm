@@ -1,0 +1,43 @@
+{
+  "React Function": {
+    "prefix": "reactfunc",
+    "description": "React Function",
+    "body": [
+      "import React from 'react'",
+      "",
+      "const ${1:name} = () => {",
+      "  return (",
+      "    $0<div>${1:name} content</div>",
+      "  )",
+      "}",
+      "",
+      "export { ${1:name} }"
+    ]
+  },
+  "React Function Styled": {
+    "prefix": "reactfuncstyled",
+    "description": "React Function Styled",
+    "body": [
+      "import React from 'react'",
+      "import { withStyles } from '@material-ui/core'",
+      "import ClassNames from 'classnames'",
+      "",
+      "const ${1:name} = withStyles(styles)(",
+      "  ({ classes, className }) => {",
+      "    return (",
+      "      <${2:div} className={ClassNames(className)}>",
+      "        $0${1:name} content",
+      "      </${2:div}>",
+      "    )",
+      "  })",
+      "",
+      "export { ${1:name} }",
+      "",
+      "function styles() {",
+      "  return {",
+      "",
+      "  }",
+      "}"
+    ]
+  }
+}

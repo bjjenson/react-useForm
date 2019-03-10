@@ -30,6 +30,14 @@ Array [
 ]
 `;
 
+exports[`onChange validates on change 1`] = `
+Array [
+  "updated",
+  "fieldName",
+  "getAllValuesFunc",
+]
+`;
+
 exports[`returns all props needed 1`] = `
 Object {
   "props": Object {
