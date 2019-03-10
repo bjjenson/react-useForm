@@ -1,28 +1,15 @@
 import React from 'react'
-import { TextField, Button, FormControlLabel, Switch } from '@material-ui/core'
+import { TextField, Button } from '@material-ui/core'
 import Flexbox from 'flexbox-react'
 import { useForm } from '../../../form'
+import { normalizeNumber } from '../helpers/normalizeNumber'
 
-
-const BooleanToggle = () => {
-  const SwitchField = ({ label, error, helperText, ...rest }) => {
-    return (
-      <FormControlLabel
-        control={(
-          <Switch
-            {...rest}
-          />
-        )}
-        label={label}
-      />
-    )
-  }
-
+const NumberField = () => {
   const form = useForm({
     fields: [
       { name: 'fullName', label: 'Full Name' },
       { name: 'nickname', label: 'Nickname' },
-      { name: 'isAdmin', label: 'Administrator', type: 'boolean' },
+      { name: 'age', label: 'Age', type: 'number', normalize: normalizeNumber },
     ],
   })
 
@@ -31,11 +18,11 @@ const BooleanToggle = () => {
       <Flexbox flexDirection='column'>
         <TextField {...form.fullName} />
         <TextField {...form.nickname} />
-        <SwitchField {...form.isAdmin} />
+        <TextField {...form.age} />
       </Flexbox>
       <Button type='sumit' onClick={form.submit}>Submit</Button>
     </form.Form>
   )
 }
 
-export { BooleanToggle }
+export { NumberField }
