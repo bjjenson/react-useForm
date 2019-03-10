@@ -6,7 +6,7 @@ import { validatePhone } from '../helpers/validatePhone'
 import { normalizePhone } from '../helpers/normalizePhone'
 
 const FieldNormalize = () => {
-  const form = useForm({
+  const [fields, form] = useForm({
     fields: [
       { name: 'fullName', label: 'Full Name' },
       { name: 'nickname', label: 'Nickname', optional: true },
@@ -17,9 +17,9 @@ const FieldNormalize = () => {
   return (
     <form.Form>
       <Flexbox flexDirection='column'>
-        <TextField {...form.fullName} />
-        <TextField {...form.nickname} />
-        <TextField {...form.phone} />
+        <TextField {...fields.fullName} />
+        <TextField {...fields.nickname} />
+        <TextField {...fields.phone} />
       </Flexbox>
       <Button type='sumit' onClick={form.submit}>Submit</Button>
     </form.Form>

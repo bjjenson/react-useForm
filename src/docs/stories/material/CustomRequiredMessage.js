@@ -4,7 +4,7 @@ import Flexbox from 'flexbox-react'
 import { useForm } from '../../../form'
 
 const CustomRequiredMessage = () => {
-  const form = useForm({
+  const [fields, form] = useForm({
     fields: [
       { name: 'fullName', label: 'Full Name', requiredMessage: 'Name is Required' },
       { name: 'nickname', label: 'Nickname', optional: true },
@@ -15,9 +15,9 @@ const CustomRequiredMessage = () => {
   return (
     <form.Form>
       <Flexbox flexDirection='column'>
-        <TextField {...form.fullName} />
-        <TextField {...form.nickname} />
-        <TextField {...form.phone} />
+        <TextField {...fields.fullName} />
+        <TextField {...fields.nickname} />
+        <TextField {...fields.phone} />
       </Flexbox>
       <Button type='sumit' onClick={form.submit}>Submit</Button>
     </form.Form>

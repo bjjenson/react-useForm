@@ -5,7 +5,7 @@ import { useForm } from '../../../form'
 import { normalizeNumber } from '../helpers/normalizeNumber'
 
 const NumberField = () => {
-  const form = useForm({
+  const [fields, form] = useForm({
     fields: [
       { name: 'fullName', label: 'Full Name' },
       { name: 'nickname', label: 'Nickname' },
@@ -16,9 +16,9 @@ const NumberField = () => {
   return (
     <form.Form>
       <Flexbox flexDirection='column'>
-        <TextField {...form.fullName} />
-        <TextField {...form.nickname} />
-        <TextField {...form.age} />
+        <TextField {...fields.fullName} />
+        <TextField {...fields.nickname} />
+        <TextField {...fields.age} />
       </Flexbox>
       <Button type='sumit' onClick={form.submit}>Submit</Button>
     </form.Form>

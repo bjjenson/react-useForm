@@ -63,7 +63,7 @@ describe('text', () => {
   })
 
   test('setValue updates field value', () => {
-    const form = useForm({
+    const [, form] = useForm({
       fields: [
         { name: 'fieldName', type: 'text', label: 'the label' },
       ],

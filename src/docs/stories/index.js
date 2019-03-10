@@ -16,6 +16,7 @@ import { RadioField } from './material/RadioField'
 import { InitialValuesSet } from './material/InitialValuesSet'
 import { InitialValuesAsync } from './material/InitialValuesAsync'
 import { CustomizeOptionalPrompt } from './material/CustomizeOptionalPrompt'
+import { DynamicFields } from './material/DynamicFields'
 
 storiesOf('Material-UI', module)
   .addDecorator(withInfo)
@@ -45,3 +46,4 @@ storiesOf('Material-UI', module)
       <InitialValuesAsync />
     </BrixProvider>
   ))
+  .add('Dynamic fields', () => <DynamicFields />)

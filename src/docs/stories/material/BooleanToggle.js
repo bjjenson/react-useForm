@@ -18,7 +18,7 @@ const BooleanToggle = () => {
     )
   }
 
-  const form = useForm({
+  const [fields, form] = useForm({
     fields: [
       { name: 'fullName', label: 'Full Name' },
       { name: 'nickname', label: 'Nickname' },
@@ -29,9 +29,9 @@ const BooleanToggle = () => {
   return (
     <form.Form>
       <Flexbox flexDirection='column'>
-        <TextField {...form.fullName} />
-        <TextField {...form.nickname} />
-        <SwitchField {...form.isAdmin} />
+        <TextField {...fields.fullName} />
+        <TextField {...fields.nickname} />
+        <SwitchField {...fields.isAdmin} />
       </Flexbox>
       <Button type='sumit' onClick={form.submit}>Submit</Button>
     </form.Form>

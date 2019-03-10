@@ -11,11 +11,14 @@ export interface IFormOptions {
 }
 
 export interface IForm {
-  [key: String]: IFormTextFieldProps
   Form: React.Component
   submit: Function
   addField: (field: IFormFieldArgs) => void
   removeField: (fieldName: String) => void
+}
+
+export interface IFields {
+  [key: String]: IFormTextFieldProps
 }
 
 export interface IFormProps {
@@ -27,4 +30,4 @@ export interface IFormProps {
   options?: IFormOptions
 }
 
-export function useForm(props: IFormProps): IForm
+export function useForm(props: IFormProps): [IFields, IForm]

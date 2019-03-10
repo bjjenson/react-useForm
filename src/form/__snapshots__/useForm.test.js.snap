@@ -33,21 +33,25 @@ Array [
 `;
 
 exports[`returns array of form props 1`] = `
-Object {
-  "Form": [Function],
-  "addField": [Function],
-  "name": Object {
-    "label": "The name",
-    "value": "current value of name",
+Array [
+  Object {
+    "name": Object {
+      "label": "The name",
+      "value": "current value of name",
+    },
+    "phone": Object {
+      "label": "The phone",
+      "value": "current value of phone",
+    },
   },
-  "phone": Object {
-    "label": "The phone",
-    "value": "current value of phone",
+  Object {
+    "Form": [Function],
+    "addField": [Function],
+    "removeField": [Function],
+    "setValue": [Function],
+    "submit": [Function],
   },
-  "removeField": [Function],
-  "setValue": [Function],
-  "submit": [Function],
-}
+]
 `;
 
 exports[`submit calls worker, merges with initialValues 1`] = `

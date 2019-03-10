@@ -33,7 +33,7 @@ const Address = ({ classes }) => {
   const [colorCount, setColorCount] = useState(0)
   const initialValues = useInitialValues()
 
-  const form = useForm({
+  const [fields, form] = useForm({
     fields: [
       { name: 'first', label: 'First' },
       { name: 'middle', label: 'Middle', optional: true },
@@ -54,7 +54,7 @@ const Address = ({ classes }) => {
       if (form[key]) {
         fields.push(
           <div key={key}>
-            <TextField {...form[key]} />
+            <TextField {...fields[key]} />
             <Button onClick={() => form.removeField(key)}>X</Button>
           </div>
         )
@@ -72,12 +72,12 @@ const Address = ({ classes }) => {
     <div>
       Form test (material-ui)
       <form.Form className={classes.root}>
-        <TextField {...form.first} />
-        <TextField {...form.middle} />
-        <TextField {...form.last} />
-        <TextField {...form.mobile} />
-        <RadioField {...form.gender} />
-        <SwitchField {...form.isAlive} />
+        <TextField {...fields.first} />
+        <TextField {...fields.middle} />
+        <TextField {...fields.last} />
+        <TextField {...fields.mobile} />
+        <RadioField {...fields.gender} />
+        <SwitchField {...fields.isAlive} />
         {colorFields()}
         <Button onClick={addColor}>more</Button>
         <Button type='submit' onClick={form.submit}>Submit</Button>

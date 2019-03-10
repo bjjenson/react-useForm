@@ -63,7 +63,7 @@ test('returns array of form props', () => {
 test('no submit if field validation fails', () => {
   fieldProps.validate.mockReturnValue(false)
 
-  const { submit } = useForm({ fields, submit: submitWorker })
+  const [, { submit }] = useForm({ fields, submit: submitWorker })
   submit()
   expect(submitWorker).not.toHaveBeenCalled()
 })
@@ -71,8 +71,8 @@ test('no submit if field validation fails', () => {
 test('no submit if form validation fails', () => {
   const validateForm = jest.fn()
   validateForm.mockReturnValue({ name: 'i am error' })
-  const actual = useForm({ fields, worker: submitWorker, validate: validateForm })
-  actual.submit()
+  const [, { submit }] = useForm({ fields, worker: submitWorker, validate: validateForm })
+  submit()
   expect(validateForm.mock.calls[0]).toMatchSnapshot()
   expect(submitWorker).not.toHaveBeenCalled()
 })
@@ -84,7 +84,7 @@ test('validate can be an array of validators', () => {
   validate2.mockReturnValue({ phone: 'i am phone error' })
   const values = { 'name': 'current value of name', 'phone': 'current value of phone' }
 
-  const { submit } = useForm({ fields, worker: submitWorker, validate: [validate1, validate2] })
+  const [, { submit }] = useForm({ fields, worker: submitWorker, validate: [validate1, validate2] })
 
   submit()
   expect(validate1).toHaveBeenCalledWith(values)
@@ -103,8 +103,8 @@ test('submit calls worker, merges with initialValues', () => {
     name: 'old name',
     id: 'id',
   })
-  const actual = useForm({ fields, submit: submitWorker, initialValues })
-  actual.submit()
+  const [, { submit }] = useForm({ fields, submit: submitWorker, initialValues })
+  submit()
   expect(submitWorker.mock.calls[0]).toMatchSnapshot()
 })
 
