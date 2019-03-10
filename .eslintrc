@@ -27,6 +27,7 @@
   },
   "rules": {
     "import/prefer-default-export": "off",
+    "import/no-extraneous-dependencies": "off",
     "jsx-quotes": [
       "warn",
       "prefer-single"
