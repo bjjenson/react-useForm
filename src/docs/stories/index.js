@@ -1,5 +1,6 @@
 import React from 'react'
-import { fromJS } from 'immutable'
+import { fromJS, Map } from 'immutable'
+import { BrixProvider } from 'react-brix'
 import { storiesOf } from '@storybook/react'
 import { withInfo } from '@storybook/addon-info'
 import { SimpleForm } from './material/SimpleForm'
@@ -39,4 +40,8 @@ storiesOf('Material-UI', module)
   .add('Select field', () => <SelectField />)
   .add('Radio field', () => <RadioField />)
   .add('Initial values passed into form', () => <InitialValuesSet initialValues={fromJS({ fullName: 'Samuel Tarley', nickname: 'Sam' })} />)
-  .add('Initial values retrieved from api', () => <InitialValuesAsync />)
+  .add('Initial values lazy loaded', () => (
+    <BrixProvider value={Map()}>
+      <InitialValuesAsync />
+    </BrixProvider>
+  ))

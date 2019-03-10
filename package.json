@@ -72,6 +72,7 @@
     "jest": "^23.6.0",
     "jest-transform-stub": "^1.0.0",
     "lint-staged": "^7.3.0",
+    "react-brix": "^0.3.8",
     "sass-loader": "^7.1.0",
     "source-map-support": "^0.5.9",
     "style-loader": "^0.23.1",
