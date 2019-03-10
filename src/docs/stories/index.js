@@ -1,4 +1,5 @@
 import React from 'react'
+import { fromJS } from 'immutable'
 import { storiesOf } from '@storybook/react'
 import { withInfo } from '@storybook/addon-info'
 import { SimpleForm } from './material/SimpleForm'
@@ -10,6 +11,7 @@ import { CustomRequiredMessage } from './material/CustomRequiredMessage'
 import { BooleanToggle } from './material/BooleanToggle'
 import { NumberField } from './material/NumberField'
 import { SelectField } from './material/SelectField'
+import { InitialValuesSet } from './material/InitialValuesSet'
 
 storiesOf('Material-UI', module)
   .addDecorator(withInfo)
@@ -23,3 +25,4 @@ storiesOf('Material-UI', module)
   .add('Boolean field', () => <BooleanToggle />)
   .add('Number field', () => <NumberField />)
   .add('Select field', () => <SelectField />)
+  .add('Initial values passed into form', () => <InitialValuesSet initialValues={fromJS({ fullName: 'Samuel Tarley', nickname: 'Sam' })} />)
