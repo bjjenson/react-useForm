@@ -1,9 +1,19 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { withInfo } from '@storybook/addon-info'
-import { BasicForm } from './basic/form'
+import { SimpleForm } from './material/SimpleForm'
+import { SimpleFormOptionalFields } from './material/OptionalField'
+import { FieldValidation } from './material/FieldValidation'
+import { FieldNormalize } from './material/FieldNormalize'
+import { HelperText } from './material/HelperText'
+import { CustomRequiredMessage } from './material/CustomRequiredMessage'
 
 storiesOf('Material-UI', module)
   .addDecorator(withInfo)
-  .addParameters({ info: { inline: true, header: false } })
-  .add('Basic', () => <BasicForm />)
+  .addParameters({ options: { showPanel: false }, info: { inline: true, header: false } })
+  .add('Simple Form', () => <SimpleForm />)
+  .add('Optional Fields', () => <SimpleFormOptionalFields />)
+  .add('Field level validation', () => <FieldValidation />)
+  .add('Field input normalize', () => <FieldNormalize />)
+  .add('Custom Helper Text', () => <HelperText />)
+  .add('Custom Required Field Message', () => <CustomRequiredMessage />)
