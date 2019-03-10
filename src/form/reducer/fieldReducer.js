@@ -17,7 +17,6 @@ export const actions = {
 }
 
 export const initState = state => {
-  console.log('initing')
   return state
 }
 

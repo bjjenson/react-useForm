@@ -9,6 +9,7 @@ import { HelperText } from './material/HelperText'
 import { CustomRequiredMessage } from './material/CustomRequiredMessage'
 import { BooleanToggle } from './material/BooleanToggle'
 import { NumberField } from './material/NumberField'
+import { SelectField } from './material/SelectField'
 
 storiesOf('Material-UI', module)
   .addDecorator(withInfo)
@@ -21,3 +22,4 @@ storiesOf('Material-UI', module)
   .add('Custom Required Field Message', () => <CustomRequiredMessage />)
   .add('Boolean field', () => <BooleanToggle />)
   .add('Number field', () => <NumberField />)
+  .add('Select field', () => <SelectField />)
