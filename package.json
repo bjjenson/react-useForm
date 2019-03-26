@@ -24,9 +24,9 @@
   "dependencies": {
     "immutable": "^4.0.0-rc.12",
     "prop-types": "^15.7.2",
-    "react": "^16.8.4",
+    "react": "^16.8.5",
     "react-app-polyfill": "^0.1.3",
-    "react-dom": "^16.8.4"
+    "react-dom": "^16.8.5"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
@@ -43,8 +43,8 @@
     "@babel/preset-stage-0": "^7.0.0",
     "@babel/runtime": "^7.1.5",
     "@material-ui/core": "^3.8.1",
-    "@storybook/addon-info": "^5.0.1",
-    "@storybook/react": "^5.0.1",
+    "@storybook/addon-info": "^5.0.5",
+    "@storybook/react": "^5.0.5",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
