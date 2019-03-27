@@ -1,7 +1,7 @@
 import { actions } from '../reducer/fieldReducer'
 /**
- * @param  fieldArgs { import("./useFormField").IFormFieldArgs}
- * @returns {import("./useFormField").IFormField}
+ * @param  fieldArgs { import("../useForm").IFormFieldArgs}
+ * @returns {import("../useForm").IFormField}
  */
 export const useFormField = (state, dispatch, fieldArgs = {}) => {
   const requiredMessage = fieldArgs.requiredMessage || 'Required'
