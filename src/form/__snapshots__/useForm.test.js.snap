@@ -57,7 +57,9 @@ Array [
 exports[`submit calls worker, merges with initialValues 1`] = `
 Array [
   Immutable.Map {
-    "name": "new name",
+    "nested": Immutable.Map {
+      "name": "new name",
+    },
     "id": "id",
     "phone": "new phone",
   },

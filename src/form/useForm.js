@@ -79,7 +79,7 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
       const isFieldValid = v.validate()
       isFormValid = isFormValid && isFieldValid
 
-      return acc.set(key, v.props.value)
+      return acc.setIn(key.split('.'), v.props.value)
     }, initialValues)
     if (isFormValid) {
       submit(values)

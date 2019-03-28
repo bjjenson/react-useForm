@@ -6,6 +6,7 @@ import { useForm } from '../../../form'
 
 const initialValues = fromJS({
   fullName: 'Sammy Boyle',
+  nickname: 'Sam',
   address: {
     street1: '124 N Main st',
   },
@@ -19,6 +20,7 @@ const DeepNestedFields = () => {
       { name: 'address.street1', label: 'Street1' },
     ],
     initialValues,
+    submit: values => console.log('saving', values.toJS()),
   })
   return (
     <form.Form>

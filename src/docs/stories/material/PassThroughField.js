@@ -1,4 +1,5 @@
 import React from 'react'
+import { fromJS } from 'immutable'
 import { TextField, Button } from '@material-ui/core'
 import Flexbox from 'flexbox-react'
 import { useForm } from '../../../form'
@@ -9,8 +10,9 @@ const PassThroughField = () => {
     fields: [
       { name: 'fullName', label: 'Full Name' },
       { name: 'nickname', label: 'Nickname' },
-      { name: 'colors', label: 'Favorite Colors', type: 'object', valueFromChange: v => v, value: ['Red'] },
+      { name: 'nested.colors', label: 'Favorite Colors', type: 'object', valueFromChange: v => v, value: fromJS(['Red']) },
     ],
+    submit: values => console.log('saving', values.toJS()),
   })
 
   return (
@@ -18,7 +20,7 @@ const PassThroughField = () => {
       <Flexbox flexDirection='column'>
         <TextField {...fields.fullName} />
         <TextField {...fields.nickname} />
-        <ChipField {...fields.colors} />
+        <ChipField {...fields['nested.colors']} />
       </Flexbox>
       <Button type='submit' onClick={form.submit}>Submit</Button>
     </form.Form>

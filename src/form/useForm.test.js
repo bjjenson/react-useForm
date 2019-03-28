@@ -10,26 +10,18 @@ jest.mock('./reducer/createReducer')
 const submitWorker = jest.fn()
 const dispatch = jest.fn()
 
-const createState = fields => fromJS({
-  name: {
+const createState = fields => fromJS(fields.reduce((acc, field) => {
+  acc[field.name] = {
     initial: {
-      type: fields[0].type,
-      label: fields[0].label,
+      type: field.type,
+      label: field.label,
     },
     current: {
-      value: 'current value of name',
+      value: `current value of ${field.name}`,
     },
-  },
-  phone: {
-    initial: {
-      type: fields[1].type,
-      label: fields[1].label,
-    },
-    current: {
-      value: 'current value of phone',
-    },
-  },
-})
+  }
+  return acc
+}, {}))
 
 let fields, fieldProps
 beforeEach(() => {
@@ -93,14 +85,17 @@ test('validate can be an array of validators', () => {
 })
 
 test('submit calls worker, merges with initialValues', () => {
+  createReducer.mockImplementation(({ fields }) => [createState(fields), dispatch])
   useFormField.mockReturnValueOnce({ ...fieldProps, props: { value: 'new name' } })
   useFormField.mockReturnValueOnce({ ...fieldProps, props: { value: 'new phone' } })
   fields = [
-    { name: 'name' },
+    { name: 'nested.name' },
     { name: 'phone' },
   ]
   const initialValues = fromJS({
-    name: 'old name',
+    nested: {
+      name: 'old name',
+    },
     id: 'id',
   })
   const [, { submit }] = useForm({ fields, submit: submitWorker, initialValues })
