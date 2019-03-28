@@ -1,7 +1,7 @@
-import { Map } from 'immutable'
+import { Map, List } from 'immutable'
 import { Form } from './Form'
 import { createReducer, generateDefaultFieldState } from './reducer/createReducer'
-import { actions } from './reducer/fieldReducer'
+import { actions, fieldsKey, removedFieldsKey } from './reducer/fieldReducer'
 import {
   useBooleanField,
   useNumberField,
@@ -15,12 +15,12 @@ import {
 export const useForm = ({ fields, submit, validate, options = {}, initialValues = Map() }) => {
   const [state, dispatch] = createReducer({ fields, initialValues, options })
 
-  const fieldData = state.keySeq().reduce((acc, fieldName) => {
-    const fieldState = state.get(fieldName)
+  const fieldData = state.get(fieldsKey, Map()).keySeq().reduce((acc, fieldName) => {
+    const fieldState = state.getIn([fieldsKey, fieldName])
       .set('getAllValues', () => getFieldValues(fieldData))
 
-    const fieldType = state.getIn([fieldName, 'initial', 'type'])
-    const field = state.getIn([fieldName, 'initial', 'field'])
+    const fieldType = state.getIn([fieldsKey, fieldName, 'initial', 'type'])
+    const field = state.getIn([fieldsKey, fieldName, 'initial', 'field'])
     switch (fieldType) {
       case 'select':
         acc[fieldName] = useSelectField(fieldState, dispatch, field)
@@ -70,7 +70,7 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
   const trySubmitForm = () => {
     let isFormValid = true
     const formResults = tryValidateForm()
-    const values = Object.entries(fieldData).reduce((acc, [key, v]) => {
+    let values = Object.entries(fieldData).reduce((acc, [key, v]) => {
       if (formResults[key]) {
         v.setValidationResult({ error: true, helperText: formResults[key] })
         isFormValid = false
@@ -81,6 +81,11 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
 
       return acc.setIn(key.split('.'), v.props.value)
     }, initialValues)
+    // Remove any fields that were specifically removed through actions
+    values = state.get(removedFieldsKey, List()).reduce((acc, fieldName) => {
+      return acc.deleteIn(fieldName.split('.'))
+    }, values)
+
     if (isFormValid) {
       submit(values)
     }

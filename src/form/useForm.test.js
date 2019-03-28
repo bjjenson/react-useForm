@@ -2,6 +2,7 @@ import { fromJS } from 'immutable'
 import { useForm } from './useForm'
 import { useFormField } from './fields/useFormField'
 import { createReducer } from './reducer/createReducer'
+import { removedFieldsKey } from './reducer/fieldReducer'
 
 jest.mock('react')
 jest.mock('./fields/useFormField')
@@ -11,7 +12,7 @@ const submitWorker = jest.fn()
 const dispatch = jest.fn()
 
 const createState = fields => fromJS(fields.reduce((acc, field) => {
-  acc[field.name] = {
+  acc.fields[field.name] = {
     initial: {
       type: field.type,
       label: field.label,
@@ -21,7 +22,7 @@ const createState = fields => fromJS(fields.reduce((acc, field) => {
     },
   }
   return acc
-}, {}))
+}, { fields: {} }))
 
 let fields, fieldProps
 beforeEach(() => {
@@ -85,7 +86,25 @@ test('validate can be an array of validators', () => {
 })
 
 test('submit calls worker, merges with initialValues', () => {
-  createReducer.mockImplementation(({ fields }) => [createState(fields), dispatch])
+  useFormField.mockReturnValueOnce({ ...fieldProps, props: { value: 'new name' } })
+  useFormField.mockReturnValueOnce({ ...fieldProps, props: { value: 'new phone' } })
+  fields = [
+    { name: 'nested.name' },
+    { name: 'phone' },
+  ]
+  const initialValues = fromJS({
+    nested: {
+      name: 'old name',
+    },
+    id: 'id',
+  })
+  const [, { submit }] = useForm({ fields, submit: submitWorker, initialValues })
+  submit()
+  expect(submitWorker.mock.calls[0]).toMatchSnapshot()
+})
+
+test('submit removes fields that were removed via action', () => {
+  createReducer.mockImplementation(({ fields }) => [createState(fields).set(removedFieldsKey, fromJS(['nested.name'])), dispatch])
   useFormField.mockReturnValueOnce({ ...fieldProps, props: { value: 'new name' } })
   useFormField.mockReturnValueOnce({ ...fieldProps, props: { value: 'new phone' } })
   fields = [

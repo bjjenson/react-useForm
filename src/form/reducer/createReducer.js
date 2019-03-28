@@ -1,6 +1,6 @@
 import { fromJS, Map } from 'immutable'
 import { useReducer, useMemo } from 'react'
-import { fieldReducer, initState, actions } from './fieldReducer'
+import { fieldReducer, initState, actions, fieldsKey } from './fieldReducer'
 import { defaultTextValue } from '../fields/useTextField'
 import { defaultSelectValue } from '../fields/useSelectField'
 import { defaultNumberValue } from '../fields/useNumberField'
@@ -30,7 +30,7 @@ const getInitialState = (fields, initialValues, options) => {
     return acc.set(field.name, generateDefaultFieldState(field, initialValues, options))
   }, Map())
 
-  return fieldMap
+  return fromJS({ [fieldsKey]: fieldMap })
 }
 
 /**

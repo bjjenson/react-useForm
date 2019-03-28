@@ -4,44 +4,46 @@ exports[`adds helperText from field config 1`] = `
 Array [
   [Function],
   Immutable.Map {
-    "first": Immutable.Map {
-      "initial": Immutable.Map {
-        "type": "text",
-        "value": "firstValue",
-        "optional": false,
-        "label": "First",
-        "field": Object {
-          "helperText": "i am helper",
+    "fields": Immutable.Map {
+      "first": Immutable.Map {
+        "initial": Immutable.Map {
+          "type": "text",
+          "value": "firstValue",
+          "optional": false,
           "label": "First",
-          "name": "first",
+          "field": Object {
+            "helperText": "i am helper",
+            "label": "First",
+            "name": "first",
+          },
+        },
+        "current": Immutable.Map {
+          "helperText": "i am helper",
+          "error": false,
+          "pristine": true,
+          "touched": false,
+          "value": "firstValue",
         },
       },
-      "current": Immutable.Map {
-        "helperText": "i am helper",
-        "error": false,
-        "pristine": true,
-        "touched": false,
-        "value": "firstValue",
-      },
-    },
-    "second": Immutable.Map {
-      "initial": Immutable.Map {
-        "type": "boolean",
-        "value": "secondValue",
-        "optional": false,
-        "label": "Second",
-        "field": Object {
-          "label": "Second",
-          "name": "second",
+      "second": Immutable.Map {
+        "initial": Immutable.Map {
           "type": "boolean",
+          "value": "secondValue",
+          "optional": false,
+          "label": "Second",
+          "field": Object {
+            "label": "Second",
+            "name": "second",
+            "type": "boolean",
+          },
         },
-      },
-      "current": Immutable.Map {
-        "helperText": "",
-        "error": false,
-        "pristine": true,
-        "touched": false,
-        "value": "secondValue",
+        "current": Immutable.Map {
+          "helperText": "",
+          "error": false,
+          "pristine": true,
+          "touched": false,
+          "value": "secondValue",
+        },
       },
     },
   },
@@ -53,23 +55,25 @@ exports[`initialValues boolean 1`] = `
 Array [
   [Function],
   Immutable.Map {
-    "first": Immutable.Map {
-      "initial": Immutable.Map {
-        "type": "boolean",
-        "value": false,
-        "optional": false,
-        "label": undefined,
-        "field": Object {
-          "name": "first",
+    "fields": Immutable.Map {
+      "first": Immutable.Map {
+        "initial": Immutable.Map {
           "type": "boolean",
+          "value": false,
+          "optional": false,
+          "label": undefined,
+          "field": Object {
+            "name": "first",
+            "type": "boolean",
+          },
         },
-      },
-      "current": Immutable.Map {
-        "helperText": "",
-        "error": false,
-        "pristine": true,
-        "touched": false,
-        "value": false,
+        "current": Immutable.Map {
+          "helperText": "",
+          "error": false,
+          "pristine": true,
+          "touched": false,
+          "value": false,
+        },
       },
     },
   },
@@ -81,24 +85,26 @@ exports[`initialValues field.value should used if set 1`] = `
 Array [
   [Function],
   Immutable.Map {
-    "first": Immutable.Map {
-      "initial": Immutable.Map {
-        "type": "text",
-        "value": "i am field value",
-        "optional": false,
-        "label": undefined,
-        "field": Object {
-          "name": "first",
+    "fields": Immutable.Map {
+      "first": Immutable.Map {
+        "initial": Immutable.Map {
           "type": "text",
           "value": "i am field value",
+          "optional": false,
+          "label": undefined,
+          "field": Object {
+            "name": "first",
+            "type": "text",
+            "value": "i am field value",
+          },
         },
-      },
-      "current": Immutable.Map {
-        "helperText": "",
-        "error": false,
-        "pristine": true,
-        "touched": false,
-        "value": "i am field value",
+        "current": Immutable.Map {
+          "helperText": "",
+          "error": false,
+          "pristine": true,
+          "touched": false,
+          "value": "i am field value",
+        },
       },
     },
   },
@@ -110,23 +116,25 @@ exports[`initialValues number 1`] = `
 Array [
   [Function],
   Immutable.Map {
-    "first": Immutable.Map {
-      "initial": Immutable.Map {
-        "type": "number",
-        "value": 0,
-        "optional": false,
-        "label": undefined,
-        "field": Object {
-          "name": "first",
+    "fields": Immutable.Map {
+      "first": Immutable.Map {
+        "initial": Immutable.Map {
           "type": "number",
+          "value": 0,
+          "optional": false,
+          "label": undefined,
+          "field": Object {
+            "name": "first",
+            "type": "number",
+          },
         },
-      },
-      "current": Immutable.Map {
-        "helperText": "",
-        "error": false,
-        "pristine": true,
-        "touched": false,
-        "value": 0,
+        "current": Immutable.Map {
+          "helperText": "",
+          "error": false,
+          "pristine": true,
+          "touched": false,
+          "value": 0,
+        },
       },
     },
   },
@@ -138,23 +146,25 @@ exports[`initialValues select 1`] = `
 Array [
   [Function],
   Immutable.Map {
-    "first": Immutable.Map {
-      "initial": Immutable.Map {
-        "type": "select",
-        "value": "",
-        "optional": false,
-        "label": undefined,
-        "field": Object {
-          "name": "first",
+    "fields": Immutable.Map {
+      "first": Immutable.Map {
+        "initial": Immutable.Map {
           "type": "select",
+          "value": "",
+          "optional": false,
+          "label": undefined,
+          "field": Object {
+            "name": "first",
+            "type": "select",
+          },
         },
-      },
-      "current": Immutable.Map {
-        "helperText": "",
-        "error": false,
-        "pristine": true,
-        "touched": false,
-        "value": "",
+        "current": Immutable.Map {
+          "helperText": "",
+          "error": false,
+          "pristine": true,
+          "touched": false,
+          "value": "",
+        },
       },
     },
   },
@@ -166,23 +176,25 @@ exports[`initialValues text 1`] = `
 Array [
   [Function],
   Immutable.Map {
-    "first": Immutable.Map {
-      "initial": Immutable.Map {
-        "type": "text",
-        "value": "",
-        "optional": false,
-        "label": undefined,
-        "field": Object {
-          "name": "first",
+    "fields": Immutable.Map {
+      "first": Immutable.Map {
+        "initial": Immutable.Map {
           "type": "text",
+          "value": "",
+          "optional": false,
+          "label": undefined,
+          "field": Object {
+            "name": "first",
+            "type": "text",
+          },
         },
-      },
-      "current": Immutable.Map {
-        "helperText": "",
-        "error": false,
-        "pristine": true,
-        "touched": false,
-        "value": "",
+        "current": Immutable.Map {
+          "helperText": "",
+          "error": false,
+          "pristine": true,
+          "touched": false,
+          "value": "",
+        },
       },
     },
   },
@@ -193,9 +205,11 @@ Array [
 exports[`prepares initialState by field 1`] = `
 Array [
   Immutable.Map {
-    "first": Immutable.Map {
-      "initial": Immutable.Map {
-        "label": "First",
+    "fields": Immutable.Map {
+      "first": Immutable.Map {
+        "initial": Immutable.Map {
+          "label": "First",
+        },
       },
     },
   },
@@ -207,189 +221,7 @@ exports[`prepares initialState by field 2`] = `
 Array [
   [Function],
   Immutable.Map {
-    "first": Immutable.Map {
-      "initial": Immutable.Map {
-        "type": "text",
-        "value": "firstValue",
-        "optional": false,
-        "label": "First",
-        "field": Object {
-          "label": "First",
-          "name": "first",
-        },
-      },
-      "current": Immutable.Map {
-        "helperText": "",
-        "error": false,
-        "pristine": true,
-        "touched": false,
-        "value": "firstValue",
-      },
-    },
-    "second": Immutable.Map {
-      "initial": Immutable.Map {
-        "type": "boolean",
-        "value": "secondValue",
-        "optional": false,
-        "label": "Second",
-        "field": Object {
-          "label": "Second",
-          "name": "second",
-          "type": "boolean",
-        },
-      },
-      "current": Immutable.Map {
-        "helperText": "",
-        "error": false,
-        "pristine": true,
-        "touched": false,
-        "value": "secondValue",
-      },
-    },
-  },
-  [Function],
-]
-`;
-
-exports[`reads initialValues that are nested 1`] = `
-Array [
-  [Function],
-  Immutable.Map {
-    "nested.first": Immutable.Map {
-      "initial": Immutable.Map {
-        "type": "text",
-        "value": "nestedValue",
-        "optional": false,
-        "label": "First",
-        "field": Object {
-          "label": "First",
-          "name": "nested.first",
-        },
-      },
-      "current": Immutable.Map {
-        "helperText": "",
-        "error": false,
-        "pristine": true,
-        "touched": false,
-        "value": "nestedValue",
-      },
-    },
-  },
-  [Function],
-]
-`;
-
-exports[`sets optional on field 1`] = `
-Array [
-  [Function],
-  Immutable.Map {
-    "first": Immutable.Map {
-      "initial": Immutable.Map {
-        "type": "text",
-        "value": "firstValue",
-        "optional": true,
-        "label": "First (optional)",
-        "field": Object {
-          "label": "First",
-          "name": "first",
-          "optional": true,
-        },
-      },
-      "current": Immutable.Map {
-        "helperText": "",
-        "error": false,
-        "pristine": true,
-        "touched": false,
-        "value": "firstValue",
-      },
-    },
-    "second": Immutable.Map {
-      "initial": Immutable.Map {
-        "type": "boolean",
-        "value": "secondValue",
-        "optional": false,
-        "label": "Second",
-        "field": Object {
-          "label": "Second",
-          "name": "second",
-          "type": "boolean",
-        },
-      },
-      "current": Immutable.Map {
-        "helperText": "",
-        "error": false,
-        "pristine": true,
-        "touched": false,
-        "value": "secondValue",
-      },
-    },
-  },
-  [Function],
-]
-`;
-
-exports[`sets optional on field using custom formatter 1`] = `
-Array [
-  "First",
-  "first",
-]
-`;
-
-exports[`sets optional on field using custom formatter 2`] = `
-Array [
-  [Function],
-  Immutable.Map {
-    "first": Immutable.Map {
-      "initial": Immutable.Map {
-        "type": "text",
-        "value": "firstValue",
-        "optional": true,
-        "label": "label formatted",
-        "field": Object {
-          "label": "First",
-          "name": "first",
-          "optional": true,
-        },
-      },
-      "current": Immutable.Map {
-        "helperText": "",
-        "error": false,
-        "pristine": true,
-        "touched": false,
-        "value": "firstValue",
-      },
-    },
-    "second": Immutable.Map {
-      "initial": Immutable.Map {
-        "type": "boolean",
-        "value": "secondValue",
-        "optional": false,
-        "label": "Second",
-        "field": Object {
-          "label": "Second",
-          "name": "second",
-          "type": "boolean",
-        },
-      },
-      "current": Immutable.Map {
-        "helperText": "",
-        "error": false,
-        "pristine": true,
-        "touched": false,
-        "value": "secondValue",
-      },
-    },
-  },
-  [Function],
-]
-`;
-
-exports[`throws error if name not provided 1`] = `"name is required on field"`;
-
-exports[`useMemo update dispatches reset 1`] = `
-Array [
-  Object {
-    "payload": Immutable.Map {
+    "fields": Immutable.Map {
       "first": Immutable.Map {
         "initial": Immutable.Map {
           "type": "text",
@@ -427,6 +259,198 @@ Array [
           "pristine": true,
           "touched": false,
           "value": "secondValue",
+        },
+      },
+    },
+  },
+  [Function],
+]
+`;
+
+exports[`reads initialValues that are nested 1`] = `
+Array [
+  [Function],
+  Immutable.Map {
+    "fields": Immutable.Map {
+      "nested.first": Immutable.Map {
+        "initial": Immutable.Map {
+          "type": "text",
+          "value": "nestedValue",
+          "optional": false,
+          "label": "First",
+          "field": Object {
+            "label": "First",
+            "name": "nested.first",
+          },
+        },
+        "current": Immutable.Map {
+          "helperText": "",
+          "error": false,
+          "pristine": true,
+          "touched": false,
+          "value": "nestedValue",
+        },
+      },
+    },
+  },
+  [Function],
+]
+`;
+
+exports[`sets optional on field 1`] = `
+Array [
+  [Function],
+  Immutable.Map {
+    "fields": Immutable.Map {
+      "first": Immutable.Map {
+        "initial": Immutable.Map {
+          "type": "text",
+          "value": "firstValue",
+          "optional": true,
+          "label": "First (optional)",
+          "field": Object {
+            "label": "First",
+            "name": "first",
+            "optional": true,
+          },
+        },
+        "current": Immutable.Map {
+          "helperText": "",
+          "error": false,
+          "pristine": true,
+          "touched": false,
+          "value": "firstValue",
+        },
+      },
+      "second": Immutable.Map {
+        "initial": Immutable.Map {
+          "type": "boolean",
+          "value": "secondValue",
+          "optional": false,
+          "label": "Second",
+          "field": Object {
+            "label": "Second",
+            "name": "second",
+            "type": "boolean",
+          },
+        },
+        "current": Immutable.Map {
+          "helperText": "",
+          "error": false,
+          "pristine": true,
+          "touched": false,
+          "value": "secondValue",
+        },
+      },
+    },
+  },
+  [Function],
+]
+`;
+
+exports[`sets optional on field using custom formatter 1`] = `
+Array [
+  "First",
+  "first",
+]
+`;
+
+exports[`sets optional on field using custom formatter 2`] = `
+Array [
+  [Function],
+  Immutable.Map {
+    "fields": Immutable.Map {
+      "first": Immutable.Map {
+        "initial": Immutable.Map {
+          "type": "text",
+          "value": "firstValue",
+          "optional": true,
+          "label": "label formatted",
+          "field": Object {
+            "label": "First",
+            "name": "first",
+            "optional": true,
+          },
+        },
+        "current": Immutable.Map {
+          "helperText": "",
+          "error": false,
+          "pristine": true,
+          "touched": false,
+          "value": "firstValue",
+        },
+      },
+      "second": Immutable.Map {
+        "initial": Immutable.Map {
+          "type": "boolean",
+          "value": "secondValue",
+          "optional": false,
+          "label": "Second",
+          "field": Object {
+            "label": "Second",
+            "name": "second",
+            "type": "boolean",
+          },
+        },
+        "current": Immutable.Map {
+          "helperText": "",
+          "error": false,
+          "pristine": true,
+          "touched": false,
+          "value": "secondValue",
+        },
+      },
+    },
+  },
+  [Function],
+]
+`;
+
+exports[`throws error if name not provided 1`] = `"name is required on field"`;
+
+exports[`useMemo update dispatches reset 1`] = `
+Array [
+  Object {
+    "payload": Immutable.Map {
+      "fields": Immutable.Map {
+        "first": Immutable.Map {
+          "initial": Immutable.Map {
+            "type": "text",
+            "value": "firstValue",
+            "optional": false,
+            "label": "First",
+            "field": Object {
+              "label": "First",
+              "name": "first",
+            },
+          },
+          "current": Immutable.Map {
+            "helperText": "",
+            "error": false,
+            "pristine": true,
+            "touched": false,
+            "value": "firstValue",
+          },
+        },
+        "second": Immutable.Map {
+          "initial": Immutable.Map {
+            "type": "boolean",
+            "value": "secondValue",
+            "optional": false,
+            "label": "Second",
+            "field": Object {
+              "label": "Second",
+              "name": "second",
+              "type": "boolean",
+            },
+          },
+          "current": Immutable.Map {
+            "helperText": "",
+            "error": false,
+            "pristine": true,
+            "touched": false,
+            "value": "secondValue",
+          },
         },
       },
     },

@@ -1,6 +1,7 @@
 import { fromJS } from 'immutable'
 import { useReducer, useMemo } from 'react'
 import { createReducer } from './createReducer'
+import { fieldsKey } from './fieldReducer'
 
 jest.mock('react')
 jest.useFakeTimers()
@@ -9,9 +10,11 @@ let state, fields, initialValues, dispatch
 beforeEach(() => {
   dispatch = 'dispatch'
   state = fromJS({
-    first: {
-      initial: {
-        label: 'First',
+    [fieldsKey]: {
+      first: {
+        initial: {
+          label: 'First',
+        },
       },
     },
   })

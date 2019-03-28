@@ -1,32 +1,34 @@
 import { fromJS } from 'immutable'
-import { fieldReducer, actions } from './fieldReducer'
+import { fieldReducer, actions, fieldsKey, removedFieldsKey } from './fieldReducer'
 
 let state, fieldName
 beforeEach(() => {
   fieldName = 'field-name'
   state = fromJS({
-    [fieldName]: {
-      initial: {
-        value: '',
+    fields: {
+      [fieldName]: {
+        initial: {
+          value: '',
+        },
+        current: {
+          value: '',
+          pristine: true,
+          touched: false,
+          error: false,
+          helperText: '',
+        },
       },
-      current: {
-        value: '',
-        pristine: true,
-        touched: false,
-        error: false,
-        helperText: '',
-      },
-    },
-    otherField: {
-      initial: {
-        value: '',
-      },
-      current: {
-        value: '',
-        pristine: true,
-        touched: false,
-        error: false,
-        helperText: '',
+      otherField: {
+        initial: {
+          value: '',
+        },
+        current: {
+          value: '',
+          pristine: true,
+          touched: false,
+          error: false,
+          helperText: '',
+        },
       },
     },
   })
@@ -73,6 +75,20 @@ test('insertField', () => {
   })
   const action = actions.insertField('newField', fieldState)
   expect(fieldReducer(state, action)).toMatchSnapshot()
+})
+
+test('insertField removes fieldName from removedFields', () => {
+  const fieldState = fromJS({
+    initial: {
+      value: 'one',
+    },
+    current: {
+      value: 'one',
+    },
+  })
+  const withRemoved = state.set(removedFieldsKey, fromJS(['newField']))
+  const action = actions.insertField('newField', fieldState)
+  expect(fieldReducer(withRemoved, action)).toMatchSnapshot()
 })
 
 test('removeField', () => {

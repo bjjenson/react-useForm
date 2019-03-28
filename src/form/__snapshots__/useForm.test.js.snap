@@ -65,3 +65,13 @@ Array [
   },
 ]
 `;
+
+exports[`submit removes fields that were removed via action 1`] = `
+Array [
+  Immutable.Map {
+    "nested": Immutable.Map {},
+    "id": "id",
+    "phone": "new phone",
+  },
+]
+`;

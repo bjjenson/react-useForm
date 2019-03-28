@@ -1,3 +1,5 @@
+import { List } from 'immutable'
+
 export const actionTypes = {
   insertField: 'insertField',
   removeField: 'removeField',
@@ -16,6 +18,9 @@ export const actions = {
   validationResult: (fieldName, error, helperText) => ({ type: actionTypes.validationResult, fieldName, payload: { error, helperText } }),
 }
 
+export const removedFieldsKey = 'removedFields'
+export const fieldsKey = 'fields'
+
 export const initState = state => {
   return state
 }
@@ -25,21 +30,23 @@ const current = 'current'
 export const fieldReducer = (state, { type, fieldName, payload }) => {
   const handlers = {
     [actionTypes.updateValue]: value =>
-      state.setIn([fieldName, current, 'value'], value)
-        .setIn([fieldName, current, 'pristine'], value == state.getIn([fieldName, 'initial', 'value'])),
+      state.setIn([fieldsKey, fieldName, current, 'value'], value)
+        .setIn([fieldsKey, fieldName, current, 'pristine'], value == state.getIn([fieldsKey, fieldName, 'initial', 'value'])),
 
     [actionTypes.touched]: () =>
-      state.setIn([fieldName, current, 'touched'], true),
+      state.setIn([fieldsKey, fieldName, current, 'touched'], true),
 
     [actionTypes.validationResult]: ({ error, helperText }) =>
-      state.setIn([fieldName, current, 'error'], error)
-        .setIn([fieldName, current, 'helperText'], helperText),
+      state.setIn([fieldsKey, fieldName, current, 'error'], error)
+        .setIn([fieldsKey, fieldName, current, 'helperText'], helperText),
 
     [actionTypes.insertField]: fieldState =>
-      state.set(fieldName, fieldState),
+      state.setIn([fieldsKey, fieldName], fieldState)
+        .deleteIn([removedFieldsKey, state.get(removedFieldsKey, List()).indexOf(fieldName)]),
 
     [actionTypes.removeField]: () =>
-      state.delete(fieldName),
+      state.deleteIn([fieldsKey, fieldName])
+        .set(removedFieldsKey, state.get(removedFieldsKey, List()).push(fieldName)),
 
     [actionTypes.reset]: state => state,
   }

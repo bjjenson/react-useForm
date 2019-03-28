@@ -7,6 +7,7 @@ import {
   useTextField,
 } from './fields'
 import { createReducer } from './reducer/createReducer'
+import { fieldsKey } from './reducer/fieldReducer'
 
 jest.mock('./fields')
 jest.mock('./reducer/createReducer')
@@ -22,12 +23,14 @@ beforeEach(() => {
   }
 
   const createState = type => fromJS({
-    fieldName: {
-      initial: {
-        type,
-      },
-      current: {
-        value: 'value of fieldName',
+    [fieldsKey]: {
+      fieldName: {
+        initial: {
+          type,
+        },
+        current: {
+          value: 'value of fieldName',
+        },
       },
     },
   })
