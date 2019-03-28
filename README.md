@@ -34,7 +34,7 @@ normalize|Function|No|Normlalization function during onChange event to normalize
 value|any|No|Initial value used by the field (default: "")
 validate|(value: T, fieldName: String, getValues: () => IValues) => String|No|Validation function for field level validation. Can be combined with Form level validation.
 options|Array<ISelectOptions>|No|Pass through options if `type` is _select_
-valueFromTarget|(target: Object) => T|No|Helper function used if onChange handler needs to provide a value other than `event.target.value`
+valueFromChange|(event: Object) => T|No|Helper function used if onChange handler needs to provide a value other than `event.target.value`
 ### fieldProps Object
 Prop|Type|Description
 ----|----|-----------
@@ -73,7 +73,7 @@ const SimpleForm = () => {
         <TextField {...fields.fullName} />
         <TextField {...fields.nickname} />
       </Flexbox>
-      <Button type='sumit' onClick={form.submit}>Submit</Button>
+      <Button type='submit' onClick={form.submit}>Submit</Button>
     </form.Form>
   )
 }
@@ -96,7 +96,7 @@ const SimpleFormOptionalFields = () => {
         <TextField {...fields.fullName} />
         <TextField {...fields.nickname} />
       </Flexbox>
-      <Button type='sumit' onClick={form.submit}>Submit</Button>
+      <Button type='submit' onClick={form.submit}>Submit</Button>
     </form.Form>
   )
 }
@@ -122,7 +122,7 @@ const CustomizeOptionalPrompt = () => {
         <TextField {...fields.fullName} />
         <TextField {...fields.nickname} />
       </Flexbox>
-      <Button type='sumit' onClick={form.submit}>Submit</Button>
+      <Button type='submit' onClick={form.submit}>Submit</Button>
     </form.Form>
   )
 }
@@ -147,7 +147,7 @@ const FieldValidation = () => {
         <TextField {...fields.nickname} />
         <TextField {...fields.phone} />
       </Flexbox>
-      <Button type='sumit' onClick={form.submit}>Submit</Button>
+      <Button type='submit' onClick={form.submit}>Submit</Button>
     </form.Form>
   )
 }
@@ -178,7 +178,7 @@ const FieldNormalize = () => {
         <TextField {...fields.nickname} />
         <TextField {...fields.phone} />
       </Flexbox>
-      <Button type='sumit' onClick={form.submit}>Submit</Button>
+      <Button type='submit' onClick={form.submit}>Submit</Button>
     </form.Form>
   )
 }
@@ -203,7 +203,7 @@ const HelperText = () => {
         <TextField {...fields.nickname} />
         <TextField {...fields.phone} />
       </Flexbox>
-      <Button type='sumit' onClick={form.submit}>Submit</Button>
+      <Button type='submit' onClick={form.submit}>Submit</Button>
     </form.Form>
   )
 }
@@ -228,7 +228,7 @@ const CustomRequiredMessage = () => {
         <TextField {...fields.nickname} />
         <TextField {...fields.phone} />
       </Flexbox>
-      <Button type='sumit' onClick={form.submit}>Submit</Button>
+      <Button type='submit' onClick={form.submit}>Submit</Button>
     </form.Form>
   )
 }
@@ -266,7 +266,7 @@ const BooleanToggle = () => {
         <TextField {...fields.nickname} />
         <SwitchField {...fields.isAdmin} />
       </Flexbox>
-      <Button type='sumit' onClick={form.submit}>Submit</Button>
+      <Button type='submit' onClick={form.submit}>Submit</Button>
     </form.Form>
   )
 }
@@ -291,7 +291,7 @@ const NumberField = () => {
         <TextField {...fields.nickname} />
         <TextField {...fields.age} />
       </Flexbox>
-      <Button type='sumit' onClick={form.submit}>Submit</Button>
+      <Button type='submit' onClick={form.submit}>Submit</Button>
     </form.Form>
   )
 }
@@ -348,7 +348,7 @@ const SelectField = () => {
         <TextField {...fields.nickname} />
         <SelectComponent {...fields.gender} />
       </Flexbox>
-      <Button type='sumit' onClick={form.submit}>Submit</Button>
+      <Button type='submit' onClick={form.submit}>Submit</Button>
     </form.Form>
   )
 }
@@ -372,7 +372,7 @@ const InitialValuesSet = ({ initialValues }) => {
         <TextField {...fields.fullName} />
         <TextField {...fields.nickname} />
       </Flexbox>
-      <Button type='sumit' onClick={form.submit}>Submit</Button>
+      <Button type='submit' onClick={form.submit}>Submit</Button>
     </form.Form>
   )
 }
@@ -426,7 +426,7 @@ const DynamicFields = () => {
             ))
           }
         </Flexbox>
-        <Button type='sumit' onClick={form.submit}>Submit</Button>
+        <Button type='submit' onClick={form.submit}>Submit</Button>
       </form.Form>
     </Flexbox>
   )

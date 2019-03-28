@@ -16,7 +16,7 @@ test('returns all props needed', () => {
   expect(useFormField.mock.calls[0]).toMatchSnapshot()
 })
 
-test('valueFromTarget returns checked', () => {
+test('valueFromChange returns checked', () => {
   useBooleanField('state', 'dispatch', initialArgs)
-  expect(useFormField.mock.calls[0][2].valueFromTarget({ checked: 'i am value' })).toEqual('i am value')
+  expect(useFormField.mock.calls[0][2].valueFromChange({ target: { checked: 'i am value' } })).toEqual('i am value')
 })

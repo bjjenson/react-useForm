@@ -17,6 +17,8 @@ import { InitialValuesSet } from './material/InitialValuesSet'
 import { InitialValuesAsync } from './material/InitialValuesAsync'
 import { CustomizeOptionalPrompt } from './material/CustomizeOptionalPrompt'
 import { DynamicFields } from './material/DynamicFields'
+import { DeepNestedFields } from './material/DeepNestedFields'
+import { PassThroughField } from './material/PassThroughField'
 
 storiesOf('Material-UI', module)
   .addDecorator(withInfo)
@@ -40,6 +42,7 @@ storiesOf('Material-UI', module)
   .add('Number field', () => <NumberField />)
   .add('Select field', () => <SelectField />)
   .add('Radio field', () => <RadioField />)
+  .add('Object field', () => <PassThroughField />)
   .add('Initial values passed into form', () => <InitialValuesSet initialValues={fromJS({ fullName: 'Samuel Tarley', nickname: 'Sam' })} />)
   .add('Initial values lazy loaded', () => (
     <BrixProvider value={Map()}>
@@ -47,3 +50,4 @@ storiesOf('Material-UI', module)
     </BrixProvider>
   ))
   .add('Dynamic fields', () => <DynamicFields />)
+  .add('Nested Fields', () => <DeepNestedFields />)

@@ -20,7 +20,7 @@ const FieldValidation = () => {
         <TextField {...fields.nickname} />
         <TextField {...fields.phone} />
       </Flexbox>
-      <Button type='sumit' onClick={form.submit}>Submit</Button>
+      <Button type='submit' onClick={form.submit}>Submit</Button>
     </form.Form>
   )
 }

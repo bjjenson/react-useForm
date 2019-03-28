@@ -1,28 +1,15 @@
 import React from 'react'
-import { TextField, Button, FormControlLabel, Switch } from '@material-ui/core'
+import { TextField, Button } from '@material-ui/core'
 import Flexbox from 'flexbox-react'
 import { useForm } from '../../../form'
+import ChipField from '../helpers/ChipField'
 
-
-const BooleanToggle = () => {
-  const SwitchField = ({ label, error, helperText, ...rest }) => {
-    return (
-      <FormControlLabel
-        control={(
-          <Switch
-            {...rest}
-          />
-        )}
-        label={label}
-      />
-    )
-  }
-
+const PassThroughField = () => {
   const [fields, form] = useForm({
     fields: [
       { name: 'fullName', label: 'Full Name' },
       { name: 'nickname', label: 'Nickname' },
-      { name: 'isAdmin', label: 'Administrator', type: 'boolean' },
+      { name: 'colors', label: 'Favorite Colors', type: 'object', valueFromChange: v => v, value: ['Red'] },
     ],
   })
 
@@ -31,11 +18,12 @@ const BooleanToggle = () => {
       <Flexbox flexDirection='column'>
         <TextField {...fields.fullName} />
         <TextField {...fields.nickname} />
-        <SwitchField {...fields.isAdmin} />
+        <ChipField {...fields.colors} />
       </Flexbox>
       <Button type='submit' onClick={form.submit}>Submit</Button>
     </form.Form>
   )
 }
 
-export { BooleanToggle }
+export { PassThroughField }
+

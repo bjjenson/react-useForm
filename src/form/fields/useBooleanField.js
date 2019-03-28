@@ -1,9 +1,9 @@
 import { useFormField } from './useFormField'
 
 export const useBooleanField = (state, dispatch, args = {}) => {
-  const valueFromTarget = target => target.checked
+  const valueFromChange = event => event.target.checked
 
-  const result = useFormField(state, dispatch, { ...args, valueFromTarget })
+  const result = useFormField(state, dispatch, { ...args, valueFromChange })
   result.props.checked = result.props.value
   return result
 }

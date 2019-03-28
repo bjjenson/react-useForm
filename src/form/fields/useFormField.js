@@ -27,8 +27,8 @@ export const useFormField = (state, dispatch, fieldArgs = {}) => {
     tryValidate(v, state.getIn(['current', 'touched']))
   }
 
-  const onChange = ({ target }) => {
-    const value = fieldArgs.valueFromTarget ? fieldArgs.valueFromTarget(target) : target.value
+  const onChange = event => {
+    const value = fieldArgs.valueFromChange ? fieldArgs.valueFromChange(event) : event.target.value
     const coercedValue = fieldArgs.normalize ? fieldArgs.normalize(value) : value
     setValue(coercedValue)
     tryValidate(coercedValue, true)

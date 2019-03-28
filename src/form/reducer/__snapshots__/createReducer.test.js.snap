@@ -251,6 +251,34 @@ Array [
 ]
 `;
 
+exports[`reads initialValues that are nested 1`] = `
+Array [
+  [Function],
+  Immutable.Map {
+    "nested.first": Immutable.Map {
+      "initial": Immutable.Map {
+        "type": "text",
+        "value": "nestedValue",
+        "optional": false,
+        "label": "First",
+        "field": Object {
+          "label": "First",
+          "name": "nested.first",
+        },
+      },
+      "current": Immutable.Map {
+        "helperText": "",
+        "error": false,
+        "pristine": true,
+        "touched": false,
+        "value": "nestedValue",
+      },
+    },
+  },
+  [Function],
+]
+`;
+
 exports[`sets optional on field 1`] = `
 Array [
   [Function],

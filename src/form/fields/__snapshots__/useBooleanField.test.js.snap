@@ -16,7 +16,7 @@ Array [
   "state",
   "dispatch",
   Object {
-    "valueFromTarget": [Function],
+    "valueFromChange": [Function],
   },
 ]
 `;

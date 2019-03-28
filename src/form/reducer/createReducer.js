@@ -44,7 +44,7 @@ export const generateDefaultFieldState = (field, initialValues, options) => {
 
   const { optionalLabelFormatter = formatOptionalLabel } = options
   const label = field.optional ? optionalLabelFormatter(field.label, field.name) : field.label
-  const value = getInitialValue(field.value, initialValues.get(field.name), field.type)
+  const value = getInitialValue(field.value, initialValues.getIn(field.name.split('.')), field.type)
 
   return fromJS({
     initial: {

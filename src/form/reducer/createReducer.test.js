@@ -59,6 +59,19 @@ test('sets optional on field using custom formatter', () => {
   expect(useReducer.mock.calls[0]).toMatchSnapshot()
 })
 
+test('reads initialValues that are nested', () => {
+  fields = [
+    { name: 'nested.first', label: 'First' },
+  ]
+  initialValues = fromJS({
+    nested: {
+      first: 'nestedValue',
+    },
+  })
+  createReducer({ fields, initialValues })
+  expect(useReducer.mock.calls[0]).toMatchSnapshot()
+})
+
 describe('initialValues', () => {
   test('field.value should used if set', () => {
     fields = [

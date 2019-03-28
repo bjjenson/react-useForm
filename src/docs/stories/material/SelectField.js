@@ -51,7 +51,7 @@ const SelectField = () => {
         <TextField {...fields.nickname} />
         <SelectComponent {...fields.gender} />
       </Flexbox>
-      <Button type='sumit' onClick={form.submit}>Submit</Button>
+      <Button type='submit' onClick={form.submit}>Submit</Button>
     </form.Form>
   )
 }

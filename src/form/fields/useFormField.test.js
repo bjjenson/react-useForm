@@ -55,14 +55,14 @@ describe('onChange', () => {
     expect(dispatch.mock.calls[0]).toMatchSnapshot()
   })
 
-  test('uses valueFromTarget to coerce value if provided', () => {
-    const valueFromTarget = jest.fn()
-    valueFromTarget.mockReturnValue('updatedFromTarget')
-    const { props: { onChange } } = useFormField(state, dispatch, { ...initialArgs, valueFromTarget })
+  test('uses valueFromChange to coerce value if provided', () => {
+    const valueFromChange = jest.fn()
+    valueFromChange.mockReturnValue('updatedFromTarget')
+    const { props: { onChange } } = useFormField(state, dispatch, { ...initialArgs, valueFromChange })
     onChange(event)
 
     expect(dispatch.mock.calls[0]).toMatchSnapshot()
-    expect(valueFromTarget).toHaveBeenCalledWith(event.target)
+    expect(valueFromChange).toHaveBeenCalledWith(event)
   })
 
   test('coerces value using normalize', () => {

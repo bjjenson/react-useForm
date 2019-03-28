@@ -6,7 +6,8 @@ export type FieldTypes =
   'text' |
   'boolean' |
   'select' |
-  'number'
+  'number' |
+  'object'
 
 export interface ISelectOptions {
   value: String
@@ -35,7 +36,7 @@ export interface IFormFieldArgs<T = String> {
   value: T
   validate?: (value: T, fieldName: String, getValues: () => IValues) => String
   options?: Array<ISelectOptions>
-  valueFromTarget?: (target: Object) => T
+  valueFromChange?: (event: Object) => T
 }
 
 export interface IFormField {

@@ -20,7 +20,7 @@ Array [
 ]
 `;
 
-exports[`onChange uses valueFromTarget to coerce value if provided 1`] = `
+exports[`onChange uses valueFromChange to coerce value if provided 1`] = `
 Array [
   Object {
     "fieldName": "fieldName",

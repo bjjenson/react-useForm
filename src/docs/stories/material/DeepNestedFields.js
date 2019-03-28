@@ -1,41 +1,35 @@
 import React from 'react'
-import { TextField, Button, FormControlLabel, Switch } from '@material-ui/core'
+import { fromJS } from 'immutable'
+import { TextField, Button } from '@material-ui/core'
 import Flexbox from 'flexbox-react'
 import { useForm } from '../../../form'
 
+const initialValues = fromJS({
+  fullName: 'Sammy Boyle',
+  address: {
+    street1: '124 N Main st',
+  },
+})
 
-const BooleanToggle = () => {
-  const SwitchField = ({ label, error, helperText, ...rest }) => {
-    return (
-      <FormControlLabel
-        control={(
-          <Switch
-            {...rest}
-          />
-        )}
-        label={label}
-      />
-    )
-  }
-
+const DeepNestedFields = () => {
   const [fields, form] = useForm({
     fields: [
       { name: 'fullName', label: 'Full Name' },
       { name: 'nickname', label: 'Nickname' },
-      { name: 'isAdmin', label: 'Administrator', type: 'boolean' },
+      { name: 'address.street1', label: 'Street1' },
     ],
+    initialValues,
   })
-
   return (
     <form.Form>
       <Flexbox flexDirection='column'>
         <TextField {...fields.fullName} />
         <TextField {...fields.nickname} />
-        <SwitchField {...fields.isAdmin} />
+        <TextField {...fields['address.street1']} />
       </Flexbox>
       <Button type='submit' onClick={form.submit}>Submit</Button>
     </form.Form>
   )
 }
 
-export { BooleanToggle }
+export { DeepNestedFields }
