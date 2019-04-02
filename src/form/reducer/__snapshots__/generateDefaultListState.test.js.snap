@@ -1,0 +1,175 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`complex list 1`] = `
+Immutable.Map {
+  "initial": Immutable.Map {
+    "type": "list",
+    "optional": false,
+    "label": "List",
+    "field": Object {
+      "fields": Array [
+        Object {
+          "label": "First",
+          "name": "first",
+        },
+        Object {
+          "label": "Second",
+          "name": "second",
+        },
+      ],
+      "label": "List",
+      "name": "fieldName",
+      "type": "list",
+    },
+    "options": Object {},
+  },
+  "current": Immutable.Map {
+    "helperText": "",
+    "error": false,
+    "pristine": true,
+    "touched": false,
+  },
+  "items": Immutable.List [],
+}
+`;
+
+exports[`complex list with initialValues 1`] = `
+Immutable.Map {
+  "initial": Immutable.Map {
+    "type": "list",
+    "optional": false,
+    "label": "List",
+    "field": Object {
+      "fields": Array [
+        Object {
+          "label": "First",
+          "name": "first",
+        },
+        Object {
+          "label": "Second",
+          "name": "second",
+        },
+      ],
+      "label": "List",
+      "name": "fieldName",
+      "type": "list",
+    },
+    "options": Object {},
+  },
+  "current": Immutable.Map {
+    "helperText": "",
+    "error": false,
+    "pristine": true,
+    "touched": false,
+  },
+  "items": Immutable.List [
+    Immutable.Map {
+      "fields": Immutable.Map {
+        "first": Immutable.Map {
+          "initial": Immutable.Map {
+            "type": "text",
+            "value": "1",
+            "optional": false,
+            "label": "First",
+            "field": Object {
+              "label": "First",
+              "name": "fieldName.items.0.fields.first",
+            },
+          },
+          "current": Immutable.Map {
+            "helperText": "",
+            "error": false,
+            "pristine": true,
+            "touched": false,
+            "value": "1",
+          },
+        },
+        "second": Immutable.Map {
+          "initial": Immutable.Map {
+            "type": "text",
+            "value": "2",
+            "optional": false,
+            "label": "Second",
+            "field": Object {
+              "label": "Second",
+              "name": "fieldName.items.0.fields.second",
+            },
+          },
+          "current": Immutable.Map {
+            "helperText": "",
+            "error": false,
+            "pristine": true,
+            "touched": false,
+            "value": "2",
+          },
+        },
+      },
+    },
+    Immutable.Map {
+      "fields": Immutable.Map {
+        "first": Immutable.Map {
+          "initial": Immutable.Map {
+            "type": "text",
+            "value": "10",
+            "optional": false,
+            "label": "First",
+            "field": Object {
+              "label": "First",
+              "name": "fieldName.items.1.fields.first",
+            },
+          },
+          "current": Immutable.Map {
+            "helperText": "",
+            "error": false,
+            "pristine": true,
+            "touched": false,
+            "value": "10",
+          },
+        },
+        "second": Immutable.Map {
+          "initial": Immutable.Map {
+            "type": "text",
+            "value": "20",
+            "optional": false,
+            "label": "Second",
+            "field": Object {
+              "label": "Second",
+              "name": "fieldName.items.1.fields.second",
+            },
+          },
+          "current": Immutable.Map {
+            "helperText": "",
+            "error": false,
+            "pristine": true,
+            "touched": false,
+            "value": "20",
+          },
+        },
+      },
+    },
+  ],
+}
+`;
+
+exports[`simple list 1`] = `
+Immutable.Map {
+  "initial": Immutable.Map {
+    "type": "list",
+    "optional": false,
+    "label": "List",
+    "field": Object {
+      "label": "List",
+      "name": "fieldName",
+      "type": "list",
+    },
+    "options": Object {},
+  },
+  "current": Immutable.Map {
+    "helperText": "",
+    "error": false,
+    "pristine": true,
+    "touched": false,
+  },
+  "items": Immutable.List [],
+}
+`;

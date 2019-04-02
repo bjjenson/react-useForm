@@ -19,6 +19,7 @@ import { CustomizeOptionalPrompt } from './material/CustomizeOptionalPrompt'
 import { DynamicFields } from './material/DynamicFields'
 import { DeepNestedFields } from './material/DeepNestedFields'
 import { PassThroughField } from './material/PassThroughField'
+import { ListField } from './material/ListField'
 
 const submitLog = name => {
   return {
@@ -49,6 +50,7 @@ storiesOf('Material-UI', module)
   .add('Select field', () => <SelectField {...submitLog('SelectField')} />)
   .add('Radio field', () => <RadioField {...submitLog('RadioField')} />)
   .add('Object field', () => <PassThroughField {...submitLog('PassThroughField')} />)
+  .add('List Field', () => <ListField {...submitLog('ListField')} />)
   .add('Initial values passed into form', () => <InitialValuesSet initialValues={fromJS({ fullName: 'Samuel Tarley', nickname: 'Sam' })} {...submitLog('InitialValuesSet')} />)
   .add('Initial values lazy loaded', () => (
     <BrixProvider value={Map()}>

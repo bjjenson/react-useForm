@@ -2,11 +2,12 @@ import { fromJS } from 'immutable'
 import { useForm } from './useForm'
 import { useFormField } from './fields/useFormField'
 import { createReducer } from './reducer/createReducer'
-import { removedFieldsKey } from './reducer/fieldReducer'
+import { mergeFormValues } from './helpers/mergeFormValues'
 
 jest.mock('react')
 jest.mock('./fields/useFormField')
 jest.mock('./reducer/createReducer')
+jest.mock('./helpers/mergeFormValues')
 
 const submitWorker = jest.fn()
 const dispatch = jest.fn()
@@ -46,6 +47,7 @@ beforeEach(() => {
     },
   }))
   createReducer.mockImplementation(({ fields }) => [createState(fields), dispatch])
+  mergeFormValues.mockReturnValue('merged form values')
 })
 
 test('returns array of form props', () => {
@@ -85,9 +87,7 @@ test('validate can be an array of validators', () => {
   expect(submitWorker).not.toHaveBeenCalled()
 })
 
-test('submit calls worker, merges with initialValues', () => {
-  useFormField.mockReturnValueOnce({ ...fieldProps, props: { value: 'new name' } })
-  useFormField.mockReturnValueOnce({ ...fieldProps, props: { value: 'new phone' } })
+test('valid form submits values ', () => {
   fields = [
     { name: 'nested.name' },
     { name: 'phone' },
@@ -101,25 +101,7 @@ test('submit calls worker, merges with initialValues', () => {
   const [, { submit }] = useForm({ fields, submit: submitWorker, initialValues })
   submit()
   expect(submitWorker.mock.calls[0]).toMatchSnapshot()
-})
-
-test('submit removes fields that were removed via action', () => {
-  createReducer.mockImplementation(({ fields }) => [createState(fields).set(removedFieldsKey, fromJS(['nested.name'])), dispatch])
-  useFormField.mockReturnValueOnce({ ...fieldProps, props: { value: 'new name' } })
-  useFormField.mockReturnValueOnce({ ...fieldProps, props: { value: 'new phone' } })
-  fields = [
-    { name: 'nested.name' },
-    { name: 'phone' },
-  ]
-  const initialValues = fromJS({
-    nested: {
-      name: 'old name',
-    },
-    id: 'id',
-  })
-  const [, { submit }] = useForm({ fields, submit: submitWorker, initialValues })
-  submit()
-  expect(submitWorker.mock.calls[0]).toMatchSnapshot()
+  expect(mergeFormValues.mock.calls[0]).toMatchSnapshot()
 })
 
 test('options passed to createReducer', () => {

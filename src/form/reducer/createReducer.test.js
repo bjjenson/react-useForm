@@ -116,6 +116,14 @@ describe('initialValues', () => {
     expect(useReducer.mock.calls[0]).toMatchSnapshot()
   })
 
+  test('list', () => {
+    fields = [
+      { name: 'first', type: 'list' },
+    ]
+    createReducer({ fields })
+    expect(useReducer.mock.calls[0]).toMatchSnapshot()
+  })
+
 })
 
 test('uses memo to check for initialValues change', () => {

@@ -54,24 +54,41 @@ Array [
 ]
 `;
 
-exports[`submit calls worker, merges with initialValues 1`] = `
+exports[`valid form submits values  1`] = `
 Array [
-  Immutable.Map {
-    "nested": Immutable.Map {
-      "name": "new name",
-    },
-    "id": "id",
-    "phone": "new phone",
-  },
+  "merged form values",
 ]
 `;
 
-exports[`submit removes fields that were removed via action 1`] = `
+exports[`valid form submits values  2`] = `
 Array [
   Immutable.Map {
-    "nested": Immutable.Map {},
+    "fields": Immutable.Map {
+      "nested.name": Immutable.Map {
+        "initial": Immutable.Map {
+          "type": undefined,
+          "label": undefined,
+        },
+        "current": Immutable.Map {
+          "value": "current value of nested.name",
+        },
+      },
+      "phone": Immutable.Map {
+        "initial": Immutable.Map {
+          "type": undefined,
+          "label": undefined,
+        },
+        "current": Immutable.Map {
+          "value": "current value of phone",
+        },
+      },
+    },
+  },
+  Immutable.Map {
+    "nested": Immutable.Map {
+      "name": "old name",
+    },
     "id": "id",
-    "phone": "new phone",
   },
 ]
 `;

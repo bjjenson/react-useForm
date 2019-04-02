@@ -79,6 +79,173 @@ Immutable.Map {
 }
 `;
 
+exports[`list in state addListItem 1`] = `
+Immutable.Map {
+  "fields": Immutable.Map {
+    "listField": Immutable.Map {
+      "items": Immutable.List [
+        Immutable.Map {},
+        Immutable.Map {
+          "fields": Immutable.Map {
+            "field-name": Immutable.Map {
+              "initial": Immutable.Map {
+                "value": "",
+              },
+              "current": Immutable.Map {
+                "value": "",
+                "pristine": true,
+                "touched": false,
+                "error": false,
+                "helperText": "",
+              },
+            },
+          },
+        },
+        Immutable.Map {
+          "fields": Immutable.Map {
+            "field-name": Immutable.Map {
+              "initial": Immutable.Map {
+                "type": "text",
+                "value": "",
+                "optional": false,
+                "label": "First",
+                "field": Immutable.Map {
+                  "label": "First",
+                  "name": "listField.items.0.fields.fieldName",
+                },
+              },
+              "current": Immutable.Map {
+                "helperText": "",
+                "error": false,
+                "pristine": true,
+                "touched": false,
+                "value": "",
+              },
+            },
+          },
+        },
+      ],
+    },
+    "otherField": Immutable.Map {
+      "initial": Immutable.Map {
+        "value": "",
+      },
+      "current": Immutable.Map {
+        "value": "",
+        "pristine": true,
+        "touched": false,
+        "error": false,
+        "helperText": "",
+      },
+    },
+  },
+}
+`;
+
+exports[`list in state removeListItem 1`] = `
+Immutable.Map {
+  "fields": Immutable.Map {
+    "listField": Immutable.Map {
+      "items": Immutable.List [
+        Immutable.Map {},
+      ],
+    },
+    "otherField": Immutable.Map {
+      "initial": Immutable.Map {
+        "value": "",
+      },
+      "current": Immutable.Map {
+        "value": "",
+        "pristine": true,
+        "touched": false,
+        "error": false,
+        "helperText": "",
+      },
+    },
+  },
+}
+`;
+
+exports[`list in state touched set on current field 1`] = `
+Immutable.Map {
+  "fields": Immutable.Map {
+    "listField": Immutable.Map {
+      "items": Immutable.List [
+        Immutable.Map {},
+        Immutable.Map {
+          "fields": Immutable.Map {
+            "field-name": Immutable.Map {
+              "initial": Immutable.Map {
+                "value": "",
+              },
+              "current": Immutable.Map {
+                "value": "",
+                "pristine": true,
+                "touched": true,
+                "error": false,
+                "helperText": "",
+              },
+            },
+          },
+        },
+      ],
+    },
+    "otherField": Immutable.Map {
+      "initial": Immutable.Map {
+        "value": "",
+      },
+      "current": Immutable.Map {
+        "value": "",
+        "pristine": true,
+        "touched": false,
+        "error": false,
+        "helperText": "",
+      },
+    },
+  },
+}
+`;
+
+exports[`list in state updateValue for field updates value on current 1`] = `
+Immutable.Map {
+  "fields": Immutable.Map {
+    "listField": Immutable.Map {
+      "items": Immutable.List [
+        Immutable.Map {},
+        Immutable.Map {
+          "fields": Immutable.Map {
+            "field-name": Immutable.Map {
+              "initial": Immutable.Map {
+                "value": "",
+              },
+              "current": Immutable.Map {
+                "value": "new value",
+                "pristine": false,
+                "touched": false,
+                "error": false,
+                "helperText": "",
+              },
+            },
+          },
+        },
+      ],
+    },
+    "otherField": Immutable.Map {
+      "initial": Immutable.Map {
+        "value": "",
+      },
+      "current": Immutable.Map {
+        "value": "",
+        "pristine": true,
+        "touched": false,
+        "error": false,
+        "helperText": "",
+      },
+    },
+  },
+}
+`;
+
 exports[`pristine is false if value not equal to initial 1`] = `
 Immutable.Map {
   "fields": Immutable.Map {

@@ -1,5 +1,5 @@
 import { fromJS } from 'immutable'
-import { fieldReducer, actions, fieldsKey, removedFieldsKey } from './fieldReducer'
+import { fieldReducer, actions, removedFieldsKey } from './fieldReducer'
 
 let state, fieldName
 beforeEach(() => {
@@ -94,4 +94,92 @@ test('insertField removes fieldName from removedFields', () => {
 test('removeField', () => {
   const action = actions.removeField(fieldName)
   expect(fieldReducer(state, action)).toMatchSnapshot()
+})
+
+describe('list in state', () => {
+  let listItemFieldName
+  beforeEach(() => {
+    listItemFieldName = `listField.items.1.fields.${fieldName}`
+    state = fromJS({
+      fields: {
+        listField: {
+          items: [
+            {},
+            {
+              fields: {
+                [fieldName]: {
+                  initial: {
+                    value: '',
+                  },
+                  current: {
+                    value: '',
+                    pristine: true,
+                    touched: false,
+                    error: false,
+                    helperText: '',
+                  },
+                },
+              },
+            },
+          ],
+        },
+        otherField: {
+          initial: {
+            value: '',
+          },
+          current: {
+            value: '',
+            pristine: true,
+            touched: false,
+            error: false,
+            helperText: '',
+          },
+        },
+      },
+    })
+  })
+
+  test('updateValue for field updates value on current', () => {
+    const action = actions.updateValue(listItemFieldName, 'new value')
+    expect(fieldReducer(state, action)).toMatchSnapshot()
+  })
+
+  test('touched set on current field', () => {
+    const action = actions.touched(listItemFieldName)
+    expect(fieldReducer(state, action)).toMatchSnapshot()
+  })
+
+  test('addListItem', () => {
+    const fieldState = fromJS({
+      fields: {
+        [fieldName]: {
+          initial: {
+            type: 'text',
+            value: '',
+            optional: false,
+            label: 'First',
+            field: {
+              label: 'First',
+              name: 'listField.items.0.fields.fieldName',
+            },
+          },
+          current: {
+            helperText: '',
+            error: false,
+            pristine: true,
+            touched: false,
+            value: '',
+          },
+        },
+      },
+    })
+    const action = actions.addListItem('listField', fieldState)
+    expect(fieldReducer(state, action)).toMatchSnapshot()
+  })
+
+  test('removeListItem', () => {
+    const action = actions.removeListItem('listField', 1)
+    expect(fieldReducer(state, action)).toMatchSnapshot()
+  })
+
 })

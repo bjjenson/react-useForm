@@ -112,6 +112,36 @@ Array [
 ]
 `;
 
+exports[`initialValues list 1`] = `
+Array [
+  [Function],
+  Immutable.Map {
+    "fields": Immutable.Map {
+      "first": Immutable.Map {
+        "initial": Immutable.Map {
+          "type": "list",
+          "optional": false,
+          "label": undefined,
+          "field": Object {
+            "name": "first",
+            "type": "list",
+          },
+          "options": Object {},
+        },
+        "current": Immutable.Map {
+          "helperText": "",
+          "error": false,
+          "pristine": true,
+          "touched": false,
+        },
+        "items": Immutable.List [],
+      },
+    },
+  },
+  [Function],
+]
+`;
+
 exports[`initialValues number 1`] = `
 Array [
   [Function],

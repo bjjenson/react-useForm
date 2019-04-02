@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`merges current form values with initialValues 1`] = `
+Immutable.Map {
+  "id": "the id",
+  "name": "old name",
+  "phone": "new phone",
+}
+`;
+
+exports[`merges current list values with initialValues 1`] = `
+Immutable.Map {
+  "id": "the id",
+  "data": Immutable.Map {
+    "name": "old name",
+    "phones": Immutable.List [
+      Immutable.Map {
+        "number": "new phone 1",
+      },
+      Immutable.Map {
+        "number": "new phone 2",
+      },
+    ],
+  },
+}
+`;
+
+exports[`merges current nested form values with initialValues 1`] = `
+Immutable.Map {
+  "id": "the id",
+  "data": Immutable.Map {
+    "name": "old name",
+    "phone": "new phone",
+  },
+}
+`;
+
+exports[`submit removes fields that were removed via action 1`] = `
+Immutable.Map {
+  "id": "the id",
+  "phone": "new phone",
+}
+`;

@@ -1,0 +1,150 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`add 1`] = `
+Array [
+  Object {
+    "fieldName": "fieldName",
+    "payload": Immutable.Map {
+      "fields": Immutable.Map {
+        "first": Immutable.Map {
+          "initial": Immutable.Map {
+            "type": "text",
+            "value": "",
+            "optional": false,
+            "label": "First",
+            "field": Object {
+              "label": "First",
+              "name": "fieldName.items.1.fields.first",
+            },
+          },
+          "current": Immutable.Map {
+            "helperText": "",
+            "error": false,
+            "pristine": true,
+            "touched": false,
+            "value": "",
+          },
+        },
+      },
+    },
+    "type": "addListItem",
+  },
+]
+`;
+
+exports[`add with values 1`] = `
+Array [
+  Object {
+    "fieldName": "fieldName",
+    "payload": Immutable.Map {
+      "fields": Immutable.Map {
+        "first": Immutable.Map {
+          "initial": Immutable.Map {
+            "type": "text",
+            "value": "111",
+            "optional": false,
+            "label": "First",
+            "field": Object {
+              "label": "First",
+              "name": "fieldName.items.1.fields.first",
+            },
+          },
+          "current": Immutable.Map {
+            "helperText": "",
+            "error": false,
+            "pristine": true,
+            "touched": false,
+            "value": "111",
+          },
+        },
+      },
+    },
+    "type": "addListItem",
+  },
+]
+`;
+
+exports[`remove 1`] = `
+Array [
+  Object {
+    "fieldName": "fieldName",
+    "payload": 1,
+    "type": "removeListItem",
+  },
+]
+`;
+
+exports[`returns props needed 1`] = `
+Object {
+  "props": Object {
+    "add": [Function],
+    "error": false,
+    "helperText": "help me",
+    "items": Array [
+      Object {
+        "first": Object {
+          "error": "false",
+          "helperText": "",
+          "label": "First",
+          "onBlur": [Function],
+          "onChange": [Function],
+          "value": "1",
+        },
+        "key": "fieldName.0",
+        "second": Object {
+          "error": "false",
+          "helperText": "",
+          "label": "Second",
+          "onBlur": [Function],
+          "onChange": [Function],
+          "value": "2",
+        },
+      },
+    ],
+    "label": "the label",
+    "remove": [Function],
+  },
+  "setValidationResult": [Function],
+  "setValue": [Function],
+  "validate": [Function],
+}
+`;
+
+exports[`setValidationResult externally 1`] = `
+Array [
+  Object {
+    "fieldName": "fieldName",
+    "payload": Object {
+      "error": true,
+      "helperText": "i am error",
+    },
+    "type": "validationResult",
+  },
+]
+`;
+
+exports[`validate has items 1`] = `
+Array [
+  Object {
+    "fieldName": "fieldName",
+    "payload": Object {
+      "error": false,
+      "helperText": "",
+    },
+    "type": "validationResult",
+  },
+]
+`;
+
+exports[`validate no items 1`] = `
+Array [
+  Object {
+    "fieldName": "fieldName",
+    "payload": Object {
+      "error": true,
+      "helperText": "Required",
+    },
+    "type": "validationResult",
+  },
+]
+`;
