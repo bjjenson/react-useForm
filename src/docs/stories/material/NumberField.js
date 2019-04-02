@@ -4,13 +4,14 @@ import Flexbox from 'flexbox-react'
 import { useForm } from '../../../form'
 import { normalizeNumber } from '../helpers/normalizeNumber'
 
-const NumberField = () => {
+const NumberField = ({ submit }) => {
   const [fields, form] = useForm({
     fields: [
       { name: 'fullName', label: 'Full Name' },
       { name: 'nickname', label: 'Nickname' },
       { name: 'age', label: 'Age', type: 'number', normalize: normalizeNumber },
     ],
+    submit,
   })
 
   return (

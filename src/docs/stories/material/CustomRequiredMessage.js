@@ -3,13 +3,14 @@ import { TextField, Button } from '@material-ui/core'
 import Flexbox from 'flexbox-react'
 import { useForm } from '../../../form'
 
-const CustomRequiredMessage = () => {
+const CustomRequiredMessage = ({ submit }) => {
   const [fields, form] = useForm({
     fields: [
       { name: 'fullName', label: 'Full Name', requiredMessage: 'Name is Required' },
       { name: 'nickname', label: 'Nickname', optional: true },
       { name: 'phone', label: 'Phone', requiredMessage: 'Phone is Required' },
     ],
+    submit,
   })
 
   return (

@@ -3,7 +3,7 @@ import { TextField, Button, Select, FormControl, InputLabel, MenuItem, FormHelpe
 import Flexbox from 'flexbox-react'
 import { useForm } from '../../../form'
 
-const SelectField = () => {
+const SelectField = ({ submit }) => {
   const SelectComponent = ({
     label,
     error,
@@ -42,6 +42,7 @@ const SelectField = () => {
       { name: 'nickname', label: 'Nickname' },
       { name: 'gender', label: 'Gender', type: 'select', options: genderOptions },
     ],
+    submit,
   })
 
   return (

@@ -12,7 +12,7 @@ const initialValues = fromJS({
   },
 })
 
-const DeepNestedFields = () => {
+const DeepNestedFields = ({ submit }) => {
   const [fields, form] = useForm({
     fields: [
       { name: 'fullName', label: 'Full Name' },
@@ -20,7 +20,7 @@ const DeepNestedFields = () => {
       { name: 'address.street1', label: 'Street1' },
     ],
     initialValues,
-    submit: values => console.log('saving', values.toJS()),
+    submit,
   })
   return (
     <form.Form>

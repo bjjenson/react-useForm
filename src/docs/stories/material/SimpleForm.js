@@ -4,12 +4,13 @@ import Flexbox from 'flexbox-react'
 import { useForm } from '../../../form'
 
 
-const SimpleForm = () => {
+const SimpleForm = ({ submit }) => {
   const [fields, form] = useForm({
     fields: [
       { name: 'fullName', label: 'Full Name' },
       { name: 'nickname', label: 'Nickname' },
     ],
+    submit,
   })
 
   return (

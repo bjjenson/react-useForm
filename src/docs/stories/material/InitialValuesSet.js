@@ -4,13 +4,14 @@ import Flexbox from 'flexbox-react'
 import { useForm } from '../../../form'
 
 
-const InitialValuesSet = ({ initialValues }) => {
+const InitialValuesSet = ({ initialValues, submit }) => {
   const [fields, form] = useForm({
     fields: [
       { name: 'fullName', label: 'Full Name' },
       { name: 'nickname', label: 'Nickname' },
     ],
     initialValues,
+    submit,
   })
 
   return (

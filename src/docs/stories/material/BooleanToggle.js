@@ -4,7 +4,7 @@ import Flexbox from 'flexbox-react'
 import { useForm } from '../../../form'
 
 
-const BooleanToggle = () => {
+const BooleanToggle = ({ submit }) => {
   const SwitchField = ({ label, error, helperText, ...rest }) => {
     return (
       <FormControlLabel
@@ -24,6 +24,7 @@ const BooleanToggle = () => {
       { name: 'nickname', label: 'Nickname' },
       { name: 'isAdmin', label: 'Administrator', type: 'boolean' },
     ],
+    submit,
   })
 
   return (

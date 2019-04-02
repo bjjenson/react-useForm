@@ -20,6 +20,12 @@ import { DynamicFields } from './material/DynamicFields'
 import { DeepNestedFields } from './material/DeepNestedFields'
 import { PassThroughField } from './material/PassThroughField'
 
+const submitLog = name => {
+  return {
+    submit: values => console.log(name, values.toJS()),
+  }
+}
+
 storiesOf('Material-UI', module)
   .addDecorator(withInfo)
   .addParameters({
@@ -31,23 +37,23 @@ storiesOf('Material-UI', module)
       header: false,
     },
   })
-  .add('Simple Form', () => <SimpleForm />)
-  .add('Optional Fields', () => <SimpleFormOptionalFields />)
-  .add('Customize optional field prompt', () => <CustomizeOptionalPrompt />)
-  .add('Field level validation', () => <FieldValidation />)
-  .add('Field input normalize', () => <FieldNormalize />)
-  .add('Custom Helper Text', () => <HelperText />)
-  .add('Custom Required Field Message', () => <CustomRequiredMessage />)
-  .add('Boolean field', () => <BooleanToggle />)
-  .add('Number field', () => <NumberField />)
-  .add('Select field', () => <SelectField />)
-  .add('Radio field', () => <RadioField />)
-  .add('Object field', () => <PassThroughField />)
-  .add('Initial values passed into form', () => <InitialValuesSet initialValues={fromJS({ fullName: 'Samuel Tarley', nickname: 'Sam' })} />)
+  .add('Simple Form', () => <SimpleForm {...submitLog('SimpleForm')} />)
+  .add('Optional Fields', () => <SimpleFormOptionalFields {...submitLog('SimpleFormOptionalFields')} />)
+  .add('Customize optional field prompt', () => <CustomizeOptionalPrompt {...submitLog('CustomizeOptionalPrompt')} />)
+  .add('Field level validation', () => <FieldValidation {...submitLog('FieldValidation')} />)
+  .add('Field input normalize', () => <FieldNormalize {...submitLog('FieldNormalize')} />)
+  .add('Custom Helper Text', () => <HelperText {...submitLog('HelperText')} />)
+  .add('Custom Required Field Message', () => <CustomRequiredMessage {...submitLog('CustomRequiredMessage')} />)
+  .add('Boolean field', () => <BooleanToggle {...submitLog('BooleanToggle')} />)
+  .add('Number field', () => <NumberField {...submitLog('NumberField')} />)
+  .add('Select field', () => <SelectField {...submitLog('SelectField')} />)
+  .add('Radio field', () => <RadioField {...submitLog('RadioField')} />)
+  .add('Object field', () => <PassThroughField {...submitLog('PassThroughField')} />)
+  .add('Initial values passed into form', () => <InitialValuesSet initialValues={fromJS({ fullName: 'Samuel Tarley', nickname: 'Sam' })} {...submitLog('InitialValuesSet')} />)
   .add('Initial values lazy loaded', () => (
     <BrixProvider value={Map()}>
       <InitialValuesAsync />
     </BrixProvider>
   ))
-  .add('Dynamic fields', () => <DynamicFields />)
-  .add('Nested Fields', () => <DeepNestedFields />)
+  .add('Dynamic fields', () => <DynamicFields {...submitLog('DynamicFields')} />)
+  .add('Nested Fields', () => <DeepNestedFields {...submitLog('DeepNestedFields')} />)

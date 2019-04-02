@@ -19,7 +19,7 @@ const useFetchInitialValues = () => {
   return useBrixWorker(['initialValues'], fetchInitialValues, Map())
 }
 
-const InitialValuesAsyncLoader = withBoundary(<div>loading initial values</div>)(() => {
+const InitialValuesAsyncLoader = withBoundary(<div>loading initial values</div>)(({ submit }) => {
   const initialValues = useFetchInitialValues()
   const [fields, form] = useForm({
     fields: [
@@ -27,6 +27,7 @@ const InitialValuesAsyncLoader = withBoundary(<div>loading initial values</div>)
       { name: 'nickname', label: 'Nickname' },
     ],
     initialValues,
+    submit,
   })
 
   return (

@@ -3,7 +3,7 @@ import { TextField, Button, FormControl, FormHelperText, FormLabel, RadioGroup, 
 import Flexbox from 'flexbox-react'
 import { useForm } from '../../../form'
 
-const RadioField = () => {
+const RadioField = ({ submit }) => {
   const RadioComponent = ({ value, onChange, helperText, error, label, options }) => { //eslint-disable-line
     return (
       <FormControl component='fieldset' error={error} style={{ marginTop: '16px' }}>
@@ -32,6 +32,7 @@ const RadioField = () => {
       { name: 'nickname', label: 'Nickname' },
       { name: 'gender', label: 'Gender', type: 'select', options: genderOptions },
     ],
+    submit,
   })
 
   return (
