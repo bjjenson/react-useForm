@@ -31,8 +31,11 @@ export const initState = state => {
 
 const current = 'current'
 
-export const fieldReducer = (state, { type, fieldName, payload }) => {
-  const fieldPath = fieldName ? fieldName.split('.') : []
+export const fieldReducer = (state, { type, fieldName = '', payload }) => {
+  let fieldPath = [fieldName]
+  if (fieldName.includes('.items.')) {
+    fieldPath = fieldName.split('.')
+  }
 
   const handlers = {
     [actionTypes.updateValue]: value =>

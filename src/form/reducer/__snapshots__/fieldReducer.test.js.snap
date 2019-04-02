@@ -246,6 +246,25 @@ Immutable.Map {
 }
 `;
 
+exports[`nested fields updateValue for field updates value on current 1`] = `
+Immutable.Map {
+  "fields": Immutable.Map {
+    "parent.nested": Immutable.Map {
+      "initial": Immutable.Map {
+        "value": "",
+      },
+      "current": Immutable.Map {
+        "value": "new value",
+        "pristine": false,
+        "touched": false,
+        "error": false,
+        "helperText": "",
+      },
+    },
+  },
+}
+`;
+
 exports[`pristine is false if value not equal to initial 1`] = `
 Immutable.Map {
   "fields": Immutable.Map {

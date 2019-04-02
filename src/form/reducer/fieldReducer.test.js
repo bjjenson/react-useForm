@@ -96,6 +96,33 @@ test('removeField', () => {
   expect(fieldReducer(state, action)).toMatchSnapshot()
 })
 
+describe('nested fields', () => {
+  beforeEach(() => {
+    state = fromJS({
+      fields: {
+        'parent.nested': {
+          initial: {
+            value: '',
+          },
+          current: {
+            value: '',
+            pristine: true,
+            touched: false,
+            error: false,
+            helperText: '',
+          },
+        },
+      },
+    })
+  })
+
+  test('updateValue for field updates value on current', () => {
+    const action = actions.updateValue('parent.nested', 'new value')
+    expect(fieldReducer(state, action)).toMatchSnapshot()
+  })
+
+})
+
 describe('list in state', () => {
   let listItemFieldName
   beforeEach(() => {
