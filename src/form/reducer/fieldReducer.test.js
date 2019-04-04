@@ -1,5 +1,5 @@
 import { fromJS } from 'immutable'
-import { fieldReducer, actions, removedFieldsKey } from './fieldReducer'
+import { fieldReducer, actions, removedFieldsKey, getFieldPath } from './fieldReducer'
 
 let state, fieldName
 beforeEach(() => {
@@ -126,10 +126,10 @@ describe('nested fields', () => {
 describe('list in state', () => {
   let listItemFieldName
   beforeEach(() => {
-    listItemFieldName = `listField.items.1.fields.${fieldName}`
+    listItemFieldName = `data.listField.items.1.fields.${fieldName}`
     state = fromJS({
       fields: {
-        listField: {
+        'data.listField': {
           items: [
             {},
             {
@@ -187,7 +187,7 @@ describe('list in state', () => {
             label: 'First',
             field: {
               label: 'First',
-              name: 'listField.items.0.fields.fieldName',
+              name: 'data.listField.items.0.fields.fieldName',
             },
           },
           current: {
@@ -200,13 +200,31 @@ describe('list in state', () => {
         },
       },
     })
-    const action = actions.addListItem('listField', fieldState)
+    const action = actions.addListItem('data.listField', fieldState)
     expect(fieldReducer(state, action)).toMatchSnapshot()
   })
 
   test('removeListItem', () => {
-    const action = actions.removeListItem('listField', 1)
+    const action = actions.removeListItem('data.listField', 1)
     expect(fieldReducer(state, action)).toMatchSnapshot()
   })
 
+})
+
+describe('getFieldPath', () => {
+  test('single name', () => {
+    expect(getFieldPath('name')).toEqual(['name'])
+  })
+
+  test('combined name', () => {
+    expect(getFieldPath('data.name')).toEqual(['data.name'])
+  })
+
+  test('single name with items', () => {
+    expect(getFieldPath('listField.items.1.fields.fieldName')).toMatchSnapshot()
+  })
+
+  test('combined name with items', () => {
+    expect(getFieldPath('data.listField.items.1.fields.fieldName')).toMatchSnapshot()
+  })
 })

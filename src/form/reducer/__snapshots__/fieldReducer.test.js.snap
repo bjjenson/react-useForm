@@ -1,5 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`getFieldPath combined name with items 1`] = `
+Array [
+  "data.listField",
+  "items",
+  "1",
+  "fields",
+  "fieldName",
+]
+`;
+
+exports[`getFieldPath single name with items 1`] = `
+Array [
+  "listField",
+  "items",
+  "1",
+  "fields",
+  "fieldName",
+]
+`;
+
 exports[`insertField 1`] = `
 Immutable.Map {
   "fields": Immutable.Map {
@@ -82,7 +102,7 @@ Immutable.Map {
 exports[`list in state addListItem 1`] = `
 Immutable.Map {
   "fields": Immutable.Map {
-    "listField": Immutable.Map {
+    "data.listField": Immutable.Map {
       "items": Immutable.List [
         Immutable.Map {},
         Immutable.Map {
@@ -111,7 +131,7 @@ Immutable.Map {
                 "label": "First",
                 "field": Immutable.Map {
                   "label": "First",
-                  "name": "listField.items.0.fields.fieldName",
+                  "name": "data.listField.items.0.fields.fieldName",
                 },
               },
               "current": Immutable.Map {
@@ -145,7 +165,7 @@ Immutable.Map {
 exports[`list in state removeListItem 1`] = `
 Immutable.Map {
   "fields": Immutable.Map {
-    "listField": Immutable.Map {
+    "data.listField": Immutable.Map {
       "items": Immutable.List [
         Immutable.Map {},
       ],
@@ -169,7 +189,7 @@ Immutable.Map {
 exports[`list in state touched set on current field 1`] = `
 Immutable.Map {
   "fields": Immutable.Map {
-    "listField": Immutable.Map {
+    "data.listField": Immutable.Map {
       "items": Immutable.List [
         Immutable.Map {},
         Immutable.Map {
@@ -209,7 +229,7 @@ Immutable.Map {
 exports[`list in state updateValue for field updates value on current 1`] = `
 Immutable.Map {
   "fields": Immutable.Map {
-    "listField": Immutable.Map {
+    "data.listField": Immutable.Map {
       "items": Immutable.List [
         Immutable.Map {},
         Immutable.Map {

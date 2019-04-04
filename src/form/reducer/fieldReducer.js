@@ -32,10 +32,7 @@ export const initState = state => {
 const current = 'current'
 
 export const fieldReducer = (state, { type, fieldName = '', payload }) => {
-  let fieldPath = [fieldName]
-  if (fieldName.includes('.items.')) {
-    fieldPath = fieldName.split('.')
-  }
+  const fieldPath = getFieldPath(fieldName)
 
   const handlers = {
     [actionTypes.updateValue]: value =>
@@ -73,4 +70,15 @@ export const fieldReducer = (state, { type, fieldName = '', payload }) => {
     return handler(payload)
   }
   return state
+}
+
+export const getFieldPath = fieldName => {
+  let fieldPath = [fieldName]
+  const match = fieldName.match(/.items.(\d)./)
+  if (match) {
+    const firstField = fieldName.substr(0, match.index)
+    const rest = fieldName.substr(match.index + 1)
+    fieldPath = [firstField, ...rest.split('.')]
+  }
+  return fieldPath
 }
