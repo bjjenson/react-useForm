@@ -48,12 +48,13 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
 
     Object.entries(fieldData).forEach(([key, v]) => {
       if (formResults[key]) {
-        v.setValidationResult({ error: true, helperText: formResults[key] })
+        v.setValidationResult(formResults[key])
         isFormValid = false
+      } else {
+        // only need to run field validation if there is already a form level issue with it.
+        const isFieldValid = v.validate()
+        isFormValid = isFormValid && isFieldValid
       }
-
-      const isFieldValid = v.validate()
-      isFormValid = isFormValid && isFieldValid
     })
 
     if (isFormValid && submit) {
