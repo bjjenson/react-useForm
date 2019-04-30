@@ -36,7 +36,7 @@ export const useListField = (state, dispatch, fieldArgs = {}) => {
     dispatch(actions.removeListItem(fieldArgs.name, index))
   }
 
-  const fieldData = state.getIn(['items']).map(item => {
+  const fieldData = state.getIn(['items'], List()).map(item => {
     return resolveFieldData(item, dispatch)
   }).toJS()
 

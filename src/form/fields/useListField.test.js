@@ -79,6 +79,11 @@ test('add with values', () => {
   expect(dispatch.mock.calls[0]).toMatchSnapshot()
 })
 
+test('can handle list arrays that have no data', () => {
+  const testState = state.deleteIn(['items'])
+  expect(() => useListField(testState, dispatch, fieldArgs)).not.toThrowError()
+})
+
 test('remove', () => {
   const { props } = useListField(state, dispatch, fieldArgs)
   props.remove(1)
