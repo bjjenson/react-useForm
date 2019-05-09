@@ -119,7 +119,7 @@ test('options passed to createReducer', () => {
   expect(createReducer.mock.calls[0]).toMatchSnapshot()
 })
 
-test('reset dispatches action with derived intial state', () => {
+test('reset dispatches action with derived initial state', () => {
   const [, { reset }] = useForm({ fields, initialValues })
 
   reset()
