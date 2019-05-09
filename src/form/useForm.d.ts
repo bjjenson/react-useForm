@@ -59,7 +59,12 @@ export interface IFormOptions {
   optionalLabelFormatter?: (label: String) => String
 }
 
-export interface IForm {
+export interface IFormStateResolvers {
+  getAnyTouched: () => Boolean
+  getIsPristine: () => Boolean
+}
+
+export interface IForm extends IFormStateResolvers {
   Form: React.Component
   submit: Function
   addField: (field: IFormFieldArgs) => void

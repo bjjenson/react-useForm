@@ -57,6 +57,10 @@ export const useFormField = (state, dispatch, fieldArgs = {}) => {
       onBlur,
       onChange,
     },
+    meta: {
+      touched: state.getIn(['current', 'touched']),
+      pristine: state.getIn(['current', 'pristine']),
+    },
     setValidationResult,
     setValue,
     validate,
