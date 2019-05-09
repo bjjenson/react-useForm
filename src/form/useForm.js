@@ -3,6 +3,7 @@ import { Form } from './Form'
 import { createReducer } from './reducer/createReducer'
 import { generateDefaultFieldState } from './reducer/generateDefaultFieldState'
 import { actions } from './reducer/fieldReducer'
+import { getInitialState } from './reducer/getInitialState'
 import { resolveFieldData, getFieldValues, getFieldProps } from './resolveFieldData'
 import { mergeFormValues } from './helpers/mergeFormValues'
 import { formStateResolvers } from './formStateResolvers'
@@ -64,6 +65,11 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
     }
   }
 
+  const resetForm = () => {
+    const derivedInitialState = getInitialState(fields, initialValues, options)
+    dispatch(actions.reset(derivedInitialState))
+  }
+
   const setValue = (fieldName, value) => {
     fieldData[fieldName].setValue(value)
   }
@@ -73,6 +79,7 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
     {
       setValue,
       submit: trySubmitForm,
+      reset: resetForm,
       Form,
       addField,
       removeField,

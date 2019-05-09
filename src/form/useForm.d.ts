@@ -79,6 +79,7 @@ export interface IFields {
 export interface IFormProps {
   fields: Array<IFormFieldArgs>
   submit: (values: IValues) => Promise<void>
+  reset: () => void
   validate?: (values: IValues) => IValidationErrors | Array<(values: IValues) => IValidationErrors>
   initialValues?: Map<String, any>
   options?: IFormOptions
