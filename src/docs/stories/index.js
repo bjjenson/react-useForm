@@ -21,6 +21,7 @@ import { DeepNestedFields } from './material/DeepNestedFields'
 import { PassThroughField } from './material/PassThroughField'
 import { FormStateResolvers } from './material/FormStateResolvers'
 import { ListField } from './material/ListField'
+import { FormReset } from './material/FormReset'
 
 const submitLog = name => {
   return {
@@ -61,3 +62,4 @@ storiesOf('Material-UI', module)
   .add('Dynamic fields', () => <DynamicFields {...submitLog('DynamicFields')} />)
   .add('Nested Fields', () => <DeepNestedFields {...submitLog('DeepNestedFields')} />)
   .add('Using Form State Resolvers', () => <FormStateResolvers {...submitLog('FormStateResolvers')} />)
+  .add('Form Reset', () => <FormReset {...submitLog('FormStateResolvers')} />)
