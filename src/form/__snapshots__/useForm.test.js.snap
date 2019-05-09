@@ -32,7 +32,7 @@ Array [
 ]
 `;
 
-exports[`reset dispatches action with derived intial state 1`] = `
+exports[`reset dispatches action with derived initial state 1`] = `
 Array [
   Array [
     Object {
@@ -56,7 +56,7 @@ Array [
 ]
 `;
 
-exports[`reset dispatches action with derived intial state 2`] = `
+exports[`reset dispatches action with derived initial state 2`] = `
 Array [
   Object {
     "payload": "derived-initial-state",
@@ -88,6 +88,23 @@ Array [
     "submit": [Function],
   },
 ]
+`;
+
+exports[`returns extra fields props spread on field 1`] = `
+Object {
+  "name": Object {
+    "fullWidth": true,
+    "key": "nameKey",
+    "label": "The name",
+    "value": "current value of name",
+  },
+  "phone": Object {
+    "fullWidth": "not today",
+    "key": "phoneKey",
+    "label": "The phone",
+    "value": "current value of phone",
+  },
+}
 `;
 
 exports[`valid form submits values  1`] = `

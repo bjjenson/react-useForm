@@ -45,9 +45,18 @@ export const getFieldValues = (fieldData) => {
   }, {})
 }
 
-export const getFieldProps = (fieldData) => {
+export const getFieldProps = (fieldData, fieldArgs) => {
   return Object.entries(fieldData).reduce((acc, [k, v]) => {
-    acc[k] = v.props
+    let rest = []
+    if (Array.isArray(fieldArgs)) {
+      const { name, type, fields, helperText, normalize, optional, options, requiredMessage, validate, valueFromChange, ...more } = fieldArgs.find(f => f.name === k)
+      rest = more
+    }
+
+    acc[k] = {
+      ...rest,
+      ...v.props,
+    }
     return acc
   }, {})
 }

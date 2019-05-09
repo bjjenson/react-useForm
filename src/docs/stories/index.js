@@ -17,6 +17,7 @@ import { InitialValuesSet } from './material/InitialValuesSet'
 import { InitialValuesAsync } from './material/InitialValuesAsync'
 import { CustomizeOptionalPrompt } from './material/CustomizeOptionalPrompt'
 import { DynamicFields } from './material/DynamicFields'
+import { PassThroughProps } from './material/PassThroughProps'
 import { DeepNestedFields } from './material/DeepNestedFields'
 import { PassThroughField } from './material/PassThroughField'
 import { FormStateResolvers } from './material/FormStateResolvers'
@@ -63,3 +64,4 @@ storiesOf('Material-UI', module)
   .add('Nested Fields', () => <DeepNestedFields {...submitLog('DeepNestedFields')} />)
   .add('Using Form State Resolvers', () => <FormStateResolvers {...submitLog('FormStateResolvers')} />)
   .add('Form Reset', () => <FormReset {...submitLog('FormStateResolvers')} />)
+  .add('Pass through field props', () => <PassThroughProps {...submitLog('FormStateResolvers')} />)

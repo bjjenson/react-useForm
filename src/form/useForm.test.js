@@ -126,3 +126,28 @@ test('reset dispatches action with derived initial state', () => {
   expect(getInitialState.mock.calls[0]).toMatchSnapshot()
   expect(dispatch.mock.calls[0]).toMatchSnapshot()
 })
+
+test('returns extra fields props spread on field', () => {
+  fields = [
+    {
+      name: 'name',
+      type: 'text',
+      label: 'The name',
+      helperText: 'help me',
+      optional: true,
+      requiredMessage: 'require me',
+      normalize: 'normalize',
+      value: 'initialValue',
+      validate: 'validator',
+      options: [1, 2, 3],
+      fields: [1, 2],
+      valueFromChange: 'value from change',
+      key: 'nameKey',
+      fullWidth: true,
+    },
+    { name: 'phone', type: 'text', label: 'The phone', key: 'phoneKey', fullWidth: 'not today' },
+  ]
+
+  const [formFields] = useForm({ fields })
+  expect(formFields).toMatchSnapshot()
+})
