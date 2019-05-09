@@ -3,11 +3,13 @@ import { useForm } from './useForm'
 import { useFormField } from './fields/useFormField'
 import { createReducer } from './reducer/createReducer'
 import { mergeFormValues } from './helpers/mergeFormValues'
+import { getInitialState } from './reducer/getInitialState'
 
 jest.mock('react')
 jest.mock('./fields/useFormField')
 jest.mock('./reducer/createReducer')
 jest.mock('./helpers/mergeFormValues')
+jest.mock('./reducer/getInitialState')
 
 const submitWorker = jest.fn()
 const dispatch = jest.fn()
@@ -25,7 +27,8 @@ const createState = fields => fromJS(fields.reduce((acc, field) => {
   return acc
 }, { fields: {} }))
 
-let fields, fieldProps
+let fields, fieldProps, initialValues
+
 beforeEach(() => {
   fields = [
     { name: 'name', type: 'text', label: 'The name' },
@@ -36,6 +39,12 @@ beforeEach(() => {
     setValidationResult: jest.fn(),
     setValue: jest.fn(),
   }
+  initialValues = fromJS({
+    nested: {
+      name: 'old name',
+    },
+    id: 'id',
+  })
 
   fieldProps.validate.mockReturnValue(true)
 
@@ -48,6 +57,7 @@ beforeEach(() => {
   }))
   createReducer.mockImplementation(({ fields }) => [createState(fields), dispatch])
   mergeFormValues.mockReturnValue('merged form values')
+  getInitialState.mockReturnValue('derived-initial-state')
 })
 
 test('returns array of form props', () => {
@@ -92,13 +102,9 @@ test('valid form submits values ', () => {
     { name: 'nested.name' },
     { name: 'phone' },
   ]
-  const initialValues = fromJS({
-    nested: {
-      name: 'old name',
-    },
-    id: 'id',
-  })
+
   const [, { submit }] = useForm({ fields, submit: submitWorker, initialValues })
+
   submit()
   expect(submitWorker.mock.calls[0]).toMatchSnapshot()
   expect(mergeFormValues.mock.calls[0]).toMatchSnapshot()
@@ -111,4 +117,12 @@ test('options passed to createReducer', () => {
   useForm({ fields, submit: submitWorker, options })
 
   expect(createReducer.mock.calls[0]).toMatchSnapshot()
+})
+
+test('reset dispatches action with derived initial state', () => {
+  const [, { reset }] = useForm({ fields, initialValues })
+
+  reset()
+  expect(getInitialState.mock.calls[0]).toMatchSnapshot()
+  expect(dispatch.mock.calls[0]).toMatchSnapshot()
 })

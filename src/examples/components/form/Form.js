@@ -81,6 +81,7 @@ const Address = ({ classes }) => {
         {colorFields()}
         <Button onClick={addColor}>more</Button>
         <Button type='submit' onClick={form.submit}>Submit</Button>
+        <Button onClick={form.reset}>Reset</Button>
       </form.Form>
     </div>
   )

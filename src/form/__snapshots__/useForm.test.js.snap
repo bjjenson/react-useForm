@@ -32,6 +32,39 @@ Array [
 ]
 `;
 
+exports[`reset dispatches action with derived intial state 1`] = `
+Array [
+  Array [
+    Object {
+      "label": "The name",
+      "name": "name",
+      "type": "text",
+    },
+    Object {
+      "label": "The phone",
+      "name": "phone",
+      "type": "text",
+    },
+  ],
+  Immutable.Map {
+    "nested": Immutable.Map {
+      "name": "old name",
+    },
+    "id": "id",
+  },
+  Object {},
+]
+`;
+
+exports[`reset dispatches action with derived intial state 2`] = `
+Array [
+  Object {
+    "payload": "derived-initial-state",
+    "type": "reset",
+  },
+]
+`;
+
 exports[`returns array of form props 1`] = `
 Array [
   Object {
@@ -47,7 +80,10 @@ Array [
   Object {
     "Form": [Function],
     "addField": [Function],
+    "getAnyTouched": [Function],
+    "getIsPristine": [Function],
     "removeField": [Function],
+    "reset": [Function],
     "setValue": [Function],
     "submit": [Function],
   },
