@@ -19,6 +19,7 @@ import { CustomizeOptionalPrompt } from './material/CustomizeOptionalPrompt'
 import { DynamicFields } from './material/DynamicFields'
 import { DeepNestedFields } from './material/DeepNestedFields'
 import { PassThroughField } from './material/PassThroughField'
+import { FormStateResolvers } from './material/FormStateResolvers'
 import { ListField } from './material/ListField'
 
 const submitLog = name => {
@@ -59,3 +60,4 @@ storiesOf('Material-UI', module)
   ))
   .add('Dynamic fields', () => <DynamicFields {...submitLog('DynamicFields')} />)
   .add('Nested Fields', () => <DeepNestedFields {...submitLog('DeepNestedFields')} />)
+  .add('Using Form State Resolvers', () => <FormStateResolvers {...submitLog('FormStateResolvers')} />)
