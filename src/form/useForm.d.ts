@@ -59,11 +59,17 @@ export interface IFormOptions {
   optionalLabelFormatter?: (label: String) => String
 }
 
+export interface IFormMeta {
+  anyTouched: Boolean
+  isPristine: Boolean
+}
+
 export interface IForm {
   Form: React.Component
   submit: Function
   addField: (field: IFormFieldArgs) => void
   removeField: (fieldName: String) => void
+  meta: IFormMeta
 }
 
 export interface IFields {
