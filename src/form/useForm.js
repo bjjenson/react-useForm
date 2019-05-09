@@ -5,7 +5,7 @@ import { generateDefaultFieldState } from './reducer/generateDefaultFieldState'
 import { actions } from './reducer/fieldReducer'
 import { resolveFieldData, getFieldValues, getFieldProps } from './resolveFieldData'
 import { mergeFormValues } from './helpers/mergeFormValues'
-import { resolveFormState } from './resolveFormState'
+import { formStateResolvers } from './formStateResolvers'
 
 /**
  * @param  param0 { import("./useForm").IFormProps }
@@ -14,8 +14,7 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
   const [state, dispatch] = createReducer({ fields, initialValues, options })
 
   const fieldData = resolveFieldData(state, dispatch)
-
-  const getFormMeta = () => resolveFormState(state)
+  const stateResolvers = formStateResolvers(state)
 
   const addField = field => {
     const fieldState = generateDefaultFieldState(field, initialValues, options)
@@ -77,7 +76,7 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
       Form,
       addField,
       removeField,
-      getFormMeta,
+      ...stateResolvers,
     },
   ]
 }
