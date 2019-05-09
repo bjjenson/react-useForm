@@ -14,7 +14,8 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
   const [state, dispatch] = createReducer({ fields, initialValues, options })
 
   const fieldData = resolveFieldData(state, dispatch)
-  const meta = resolveFormState(state)
+
+  const getFormMeta = () => resolveFormState(state)
 
   const addField = field => {
     const fieldState = generateDefaultFieldState(field, initialValues, options)
@@ -76,7 +77,7 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
       Form,
       addField,
       removeField,
-      meta,
+      getFormMeta,
     },
   ]
 }
