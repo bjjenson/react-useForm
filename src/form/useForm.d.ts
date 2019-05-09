@@ -69,6 +69,7 @@ export interface IForm extends IFormStateResolvers {
   submit: Function
   addField: (field: IFormFieldArgs) => void
   removeField: (fieldName: String) => void
+  setValue: (fieldName: String, value: any) => void
 }
 
 export interface IFields {
@@ -77,7 +78,6 @@ export interface IFields {
 
 export interface IFormProps {
   fields: Array<IFormFieldArgs>
-  setValue: (fieldName: String, value: any) => void
   submit: (values: IValues) => Promise<void>
   validate?: (values: IValues) => IValidationErrors | Array<(values: IValues) => IValidationErrors>
   initialValues?: Map<String, any>
