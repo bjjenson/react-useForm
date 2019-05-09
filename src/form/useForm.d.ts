@@ -69,7 +69,6 @@ export interface IForm extends IFormStateResolvers {
   submit: Function
   addField: (field: IFormFieldArgs) => void
   removeField: (fieldName: String) => void
-  meta: IFormMeta
 }
 
 export interface IFields {

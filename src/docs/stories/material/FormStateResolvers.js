@@ -24,7 +24,7 @@ const FormStateResolvers = ({ submit }) => {
         </Flexbox>
         <Button type='submit' disabled={isPristine} onClick={form.submit}>Submit</Button>
       </form.Form>
-      <List fullWidth={false}>
+      <List>
         <ListItem>
           <ListItemText>isPristine</ListItemText>
           <ListItemSecondaryAction>
