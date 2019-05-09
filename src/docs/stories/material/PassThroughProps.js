@@ -7,8 +7,8 @@ import { useForm } from '../../../form'
 const PassThroughProps = ({ submit }) => {
   const [fields, form] = useForm({
     fields: [
-      { name: 'fullName', label: 'Full Name', key: 'fullNameKey', style: { background: '#BFE' } },
-      { name: 'nickname', label: 'Nickname', key: 'nicknameKey' },
+      { name: 'fullName', label: 'Full Name', passThrough: { key: 'fullNameKey', style: { background: '#BFE' } } },
+      { name: 'nickname', label: 'Nickname', passThrough: { key: 'nicknameKey' } },
     ],
     submit,
   })
@@ -17,7 +17,7 @@ const PassThroughProps = ({ submit }) => {
     <form.Form>
       <Flexbox flexDirection='column'>
         {Object.values(fields).map(field => (
-          <TextField key={field.key} {...field} />
+          <TextField {...field} /> // eslint-disable-line
         ))}
       </Flexbox>
       <Button type='submit' onClick={form.submit}>Submit</Button>

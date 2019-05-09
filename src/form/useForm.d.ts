@@ -39,7 +39,7 @@ export interface IFormFieldArgs<T = String> {
   options?: Array<ISelectOptions>
   fields?: Array<IFormFieldArgs<>>
   valueFromChange?: (event: Object) => T
-  key?: String
+  passThrough?: { [key: string]: any }
 }
 
 export interface IFormField {

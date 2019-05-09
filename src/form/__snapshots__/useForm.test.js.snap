@@ -90,12 +90,12 @@ Array [
 ]
 `;
 
-exports[`returns extra fields props spread on field 1`] = `
+exports[`returns passThrough props spread on field 1`] = `
 Object {
   "name": Object {
     "fullWidth": true,
     "key": "nameKey",
-    "label": "The name",
+    "label": "my own label",
     "value": "current value of name",
   },
   "phone": Object {

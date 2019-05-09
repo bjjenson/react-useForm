@@ -49,13 +49,13 @@ export const getFieldProps = (fieldData, fieldArgs) => {
   return Object.entries(fieldData).reduce((acc, [k, v]) => {
     let rest = []
     if (Array.isArray(fieldArgs)) {
-      const { name, type, fields, helperText, normalize, optional, options, requiredMessage, validate, valueFromChange, ...more } = fieldArgs.find(f => f.name === k)
-      rest = more
+      const { passThrough } = fieldArgs.find(f => f.name === k)
+      rest = passThrough
     }
 
     acc[k] = {
-      ...rest,
       ...v.props,
+      ...rest,
     }
     return acc
   }, {})
