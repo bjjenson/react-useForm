@@ -13,7 +13,7 @@ export const useListField = (state, dispatch, fieldArgs = {}) => {
     dispatch(actions.validationResult(fieldArgs.name, true, result))
   }
 
-  const setValue = v => {
+  const setValue = () => {
     // dispatch(actions.updateValue(fieldArgs.name, v))
     // tryValidate(v, state.getIn(['current', 'touched']))
   }

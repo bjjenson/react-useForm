@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { TextField, Button } from '@material-ui/core'
 import Flexbox from 'flexbox-react'
 import { useForm } from '../../../form'
@@ -23,6 +24,10 @@ const PassThroughProps = ({ submit }) => {
       <Button type='submit' onClick={form.submit}>Submit</Button>
     </form.Form>
   )
+}
+
+PassThroughProps.propTypes = {
+  submit: PropTypes.func.isRequired,
 }
 
 export { PassThroughProps }
