@@ -16,10 +16,19 @@
     "build": "webpack --env.mode production --config ./config/webpack.config.js",
     "start": "webpack-dev-server --env.mode development --color true --config ./config/webpack.config.js --open",
     "clean": "yarn cleandir dist",
+    "lint": "eslint src --ext .js --max-warnings 0",
+    "lint:commit": "eslint --max-warnings 0",
     "test": "yarn jest --watch",
+    "test:all": "yarn jest",
     "storybook": "start-storybook",
     "copy:ts": "yarn copyfiles --flat src/form/*.d.ts dist",
     "prepublish": "yarn clean && yarn copy:ts && babel src/form --ignore **/*.test.js --out-dir dist"
+  },
+  "lint-staged": {
+    "*.js": [
+      "yarn lint:commit",
+      "git add"
+    ]
   },
   "dependencies": {
     "immutable": "^4.0.0-rc.12",
@@ -68,10 +77,10 @@
     "file-loader": "^2.0.0",
     "flexbox-react": "^4.4.0",
     "html-webpack-plugin": "^3.2.0",
-    "husky": "^1.1.2",
+    "husky": "^2.2.0",
     "jest": "^23.6.0",
     "jest-transform-stub": "^1.0.0",
-    "lint-staged": "^7.3.0",
+    "lint-staged": "^8.1.6",
     "react-brix": "^0.3.8",
     "sass-loader": "^7.1.0",
     "source-map-support": "^0.5.9",
