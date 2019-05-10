@@ -65,7 +65,7 @@ export const fieldReducer = (state, { type, fieldName = '', payload }) => {
 
     [actionTypes.addListItem]: itemState => {
       const path = [fieldsKey, ...fieldPath, 'items']
-      return state.setIn([...path, state.getIn(path, List()).size], itemState)
+      return state.updateIn([...path], List(), prevState => prevState.push(itemState))
     },
 
     [actionTypes.removeListItem]: index =>
