@@ -1,12 +1,12 @@
 import React from 'react'
 import { fromJS } from 'immutable'
-import { TextField, Button, Typography } from '@material-ui/core'
+import { TextField, Button, Typography, FormHelperText } from '@material-ui/core'
 import Flexbox from 'flexbox-react'
 import { useForm } from '../../../form'
 
 const initialValues = fromJS({
   colors: [
-    { color: 'Red' },
+    { color: '' },
     { color: 'Blue' },
   ],
 })
@@ -33,7 +33,7 @@ const ListField = ({ submit }) => {
         <TextField {...fields.nickname} />
 
         <Typography>{fields.colors.label}</Typography>
-        <Typography variant='caption'>{fields.colors.helperText}</Typography>
+        <FormHelperText error={fields.colors.error}>{fields.colors.helperText}</FormHelperText>
         {fields.colors.items.map((item, index) => {
           return (
             <Flexbox key={item.key}>

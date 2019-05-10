@@ -161,3 +161,28 @@ Array [
   },
 ]
 `;
+
+exports[`validate validates items 1`] = `
+Array [
+  Array [
+    Object {
+      "fieldName": "fieldName",
+      "payload": Object {
+        "error": false,
+        "helperText": "",
+      },
+      "type": "validationResult",
+    },
+  ],
+  Array [
+    Object {
+      "fieldName": undefined,
+      "payload": Object {
+        "error": true,
+        "helperText": "Required",
+      },
+      "type": "validationResult",
+    },
+  ],
+]
+`;

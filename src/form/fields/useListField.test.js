@@ -113,5 +113,11 @@ describe('validate', () => {
     expect(dispatch.mock.calls[0]).toMatchSnapshot()
   })
 
+  test('validates items', () => {
+    state = state.setIn(['items', 0, 'fields', 'first', 'current', 'value'], '')
+    const { validate } = useListField(state, dispatch, fieldArgs)
+    expect(validate()).toBeFalsy()
+    expect(dispatch.mock.calls).toMatchSnapshot()
+  })
 
 })

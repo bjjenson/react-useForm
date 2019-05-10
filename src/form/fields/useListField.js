@@ -21,7 +21,17 @@ export const useListField = (state, dispatch, fieldArgs = {}) => {
   const validate = () => {
     const isEmpty = state.get('items', List()).size === 0 && !fieldArgs.optional
     dispatch(actions.validationResult(fieldArgs.name, isEmpty, isEmpty ? requiredMessage : ''))
-    return !isEmpty
+    return !isEmpty && validateItems()
+  }
+
+  const validateItems = () => {
+    return state.get('items', List()).reduce((acc, item) => {
+      const fieldsValid = Object.values(resolveFieldData(item, dispatch)).reduce((cca, fieldData) => {
+        return cca && fieldData.validate()
+      }, true)
+
+      return acc && fieldsValid
+    }, true)
   }
 
   const add = (item = Map()) => {
