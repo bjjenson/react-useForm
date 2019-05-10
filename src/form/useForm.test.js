@@ -126,22 +126,3 @@ test('reset dispatches action with derived initial state', () => {
   expect(getInitialState.mock.calls[0]).toMatchSnapshot()
   expect(dispatch.mock.calls[0]).toMatchSnapshot()
 })
-
-test('returns passThrough props spread on field', () => {
-  fields = [
-    {
-      name: 'name',
-      type: 'text',
-      label: 'The name',
-      passThrough: {
-        key: 'nameKey',
-        fullWidth: true,
-        label: 'my own label',
-      },
-    },
-    { name: 'phone', type: 'text', label: 'The phone', passThrough: { key: 'phoneKey', fullWidth: 'not today' } },
-  ]
-
-  const [formFields] = useForm({ fields })
-  expect(formFields).toMatchSnapshot()
-})

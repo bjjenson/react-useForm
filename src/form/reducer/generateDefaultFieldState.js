@@ -4,9 +4,9 @@ import { resolveLabel } from './resolveLabel'
 
 /**
  *
- * @param field {import("..").IFormFieldArgs}
+ * @param field {import('../useForm').IFormFieldArgs}
  * @param {*} initialValues
- * @param options {import("..").IFormOptions}
+ * @param options {import('../useForm').IFormOptions}
  */
 export const generateDefaultFieldState = (field, initialValues, options) => {
   if (!field.name) throw new Error('name is required on field')

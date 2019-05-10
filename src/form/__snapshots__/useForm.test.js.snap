@@ -90,23 +90,6 @@ Array [
 ]
 `;
 
-exports[`returns passThrough props spread on field 1`] = `
-Object {
-  "name": Object {
-    "fullWidth": true,
-    "key": "nameKey",
-    "label": "my own label",
-    "value": "current value of name",
-  },
-  "phone": Object {
-    "fullWidth": "not today",
-    "key": "phoneKey",
-    "label": "The phone",
-    "value": "current value of phone",
-  },
-}
-`;
-
 exports[`valid form submits values  1`] = `
 Array [
   "merged form values",

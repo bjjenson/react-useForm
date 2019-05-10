@@ -75,7 +75,7 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
   }
 
   return [
-    { ...getFieldProps(fieldData, fields) },
+    { ...getFieldProps(fieldData, state) },
     {
       setValue,
       submit: trySubmitForm,

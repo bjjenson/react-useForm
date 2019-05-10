@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getFieldProps reduces all props on keys 1`] = `
+Object {
+  "one": Object {
+    "onChange": "onChange-one",
+    "value": "one",
+  },
+  "two": Object {
+    "onChange": "onChange-two",
+    "value": "two",
+  },
+}
+`;
+
+exports[`getFieldProps spreads passThrough from state if it exists 1`] = `
+Object {
+  "one": Object {
+    "key": "key-one",
+    "onChange": "onChange-one",
+    "value": "one",
+  },
+  "two": Object {
+    "onChange": "onChange-two",
+    "value": "two",
+  },
+}
+`;

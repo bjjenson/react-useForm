@@ -45,17 +45,13 @@ export const getFieldValues = (fieldData) => {
   }, {})
 }
 
-export const getFieldProps = (fieldData, fieldArgs) => {
-  return Object.entries(fieldData).reduce((acc, [k, v]) => {
-    let rest = []
-    if (Array.isArray(fieldArgs)) {
-      const { passThrough } = fieldArgs.find(f => f.name === k)
-      rest = passThrough
-    }
+export const getFieldProps = (fieldData, state = Map()) => {
+  return Object.entries(fieldData).reduce((acc, [key, v]) => {
+    const passThrough = state.getIn([fieldsKey, key, 'initial', 'field'], {}).passThrough || {}
 
-    acc[k] = {
+    acc[key] = {
       ...v.props,
-      ...rest,
+      ...passThrough,
     }
     return acc
   }, {})
