@@ -104,4 +104,14 @@ describe('validate', () => {
     expect(validate()).toBeFalsy()
     expect(dispatch.mock.calls[0]).toMatchSnapshot()
   })
+
+  test('no items but optional', () => {
+    const nextState = state.set('items', fromJS([]))
+    fieldArgs.optional = true
+    const { validate } = useListField(nextState, dispatch, fieldArgs)
+    expect(validate()).toBeTruthy()
+    expect(dispatch.mock.calls[0]).toMatchSnapshot()
+  })
+
+
 })

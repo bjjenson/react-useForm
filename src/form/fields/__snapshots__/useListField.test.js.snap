@@ -148,3 +148,16 @@ Array [
   },
 ]
 `;
+
+exports[`validate no items but optional 1`] = `
+Array [
+  Object {
+    "fieldName": "fieldName",
+    "payload": Object {
+      "error": false,
+      "helperText": "",
+    },
+    "type": "validationResult",
+  },
+]
+`;

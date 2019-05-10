@@ -45,7 +45,6 @@ export const fieldReducer = (state, { type, fieldName = '', payload }) => {
 
       return state.setIn([fieldsKey, ...fieldPath, current, 'value'], value)
         .setIn([fieldsKey, ...fieldPath, current, 'pristine'], value == state.getIn([fieldsKey, fieldName, 'initial', 'value']))
-        .setIn([fieldsKey, ...fieldPath, current, 'touched'], true)
     },
 
     [actionTypes.touched]: () =>

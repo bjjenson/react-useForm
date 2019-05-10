@@ -19,7 +19,7 @@ export const useListField = (state, dispatch, fieldArgs = {}) => {
   }
 
   const validate = () => {
-    const isEmpty = state.get('items', List()).size === 0
+    const isEmpty = state.get('items', List()).size === 0 && !fieldArgs.optional
     dispatch(actions.validationResult(fieldArgs.name, isEmpty, isEmpty ? requiredMessage : ''))
     return !isEmpty
   }
