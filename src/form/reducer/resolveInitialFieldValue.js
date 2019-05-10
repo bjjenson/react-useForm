@@ -19,5 +19,7 @@ export const resolveInitialFieldValue = (fieldValue, initialValue, type = 'text'
   if (fieldValue) {
     return fieldValue
   }
-  return defaultValues[type]
+
+  const defaultValue = defaultValues[type]
+  return defaultValue !== undefined ? defaultValue : defaultTextValue
 }
