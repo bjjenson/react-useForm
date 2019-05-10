@@ -40,6 +40,10 @@ Array [
 
 exports[`returns all props needed 1`] = `
 Object {
+  "meta": Object {
+    "pristine": true,
+    "touched": false,
+  },
   "props": Object {
     "error": false,
     "helperText": "the help",

@@ -241,7 +241,7 @@ Immutable.Map {
               "current": Immutable.Map {
                 "value": "new value",
                 "pristine": false,
-                "touched": false,
+                "touched": true,
                 "error": false,
                 "helperText": "",
               },
@@ -276,7 +276,7 @@ Immutable.Map {
       "current": Immutable.Map {
         "value": "new value",
         "pristine": false,
-        "touched": false,
+        "touched": true,
         "error": false,
         "helperText": "",
       },
@@ -295,7 +295,7 @@ Immutable.Map {
       "current": Immutable.Map {
         "value": "new value",
         "pristine": false,
-        "touched": false,
+        "touched": true,
         "error": false,
         "helperText": "",
       },
@@ -326,7 +326,7 @@ Immutable.Map {
       "current": Immutable.Map {
         "value": "",
         "pristine": true,
-        "touched": false,
+        "touched": true,
         "error": false,
         "helperText": "",
       },
@@ -415,7 +415,7 @@ Immutable.Map {
       "current": Immutable.Map {
         "value": "new value",
         "pristine": false,
-        "touched": false,
+        "touched": true,
         "error": false,
         "helperText": "",
       },
