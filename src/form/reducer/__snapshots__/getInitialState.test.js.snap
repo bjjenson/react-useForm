@@ -1,5 +1,60 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`adds field listeners 1`] = `
+Immutable.Map {
+  "fields": Immutable.Map {
+    "first": Immutable.Map {
+      "initial": Immutable.Map {
+        "type": "text",
+        "value": "firstValue",
+        "optional": false,
+        "label": "First",
+        "field": Object {
+          "label": "First",
+          "name": "first",
+        },
+      },
+      "current": Immutable.Map {
+        "helperText": "",
+        "error": false,
+        "pristine": true,
+        "touched": false,
+        "value": "firstValue",
+      },
+    },
+    "second": Immutable.Map {
+      "initial": Immutable.Map {
+        "type": "boolean",
+        "value": "secondValue",
+        "optional": false,
+        "label": "Second",
+        "field": Object {
+          "label": "Second",
+          "name": "second",
+          "type": "boolean",
+        },
+      },
+      "current": Immutable.Map {
+        "helperText": "",
+        "error": false,
+        "pristine": true,
+        "touched": false,
+        "value": "secondValue",
+      },
+    },
+  },
+  "listeners": Immutable.Map {
+    "first": Immutable.List [
+      [MockFunction],
+    ],
+    "second": Immutable.List [
+      [MockFunction],
+      [MockFunction],
+    ],
+  },
+}
+`;
+
 exports[`adds helperText from field config 1`] = `
 Immutable.Map {
   "fields": Immutable.Map {

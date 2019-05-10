@@ -26,6 +26,14 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
     dispatch(actions.removeField(fieldName))
   }
 
+  const addFieldListener = (fieldName, listener) => {
+    dispatch(actions.addListener(fieldName, listener))
+  }
+
+  const removeFieldListener = (fieldName, listener) => {
+    dispatch(actions.removeListener(fieldName, listener))
+  }
+
   const tryValidateForm = () => {
     if (validate) {
       const values = getFieldValues(fieldData)
@@ -83,6 +91,8 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
       Form,
       addField,
       removeField,
+      addFieldListener,
+      removeFieldListener,
       ...stateResolvers,
     },
   ]

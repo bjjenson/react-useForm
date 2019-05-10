@@ -1,5 +1,126 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`fieldListener add multiple listeners 1`] = `
+Immutable.Map {
+  "fields": Immutable.Map {
+    "field-name": Immutable.Map {
+      "initial": Immutable.Map {
+        "value": "",
+      },
+      "current": Immutable.Map {
+        "value": "",
+        "pristine": true,
+        "touched": false,
+        "error": false,
+        "helperText": "",
+      },
+    },
+    "otherField": Immutable.Map {
+      "initial": Immutable.Map {
+        "value": "",
+      },
+      "current": Immutable.Map {
+        "value": "",
+        "pristine": true,
+        "touched": false,
+        "error": false,
+        "helperText": "",
+      },
+    },
+  },
+  "listeners": Immutable.Map {
+    "name": Immutable.List [
+      [MockFunction],
+      [MockFunction],
+    ],
+  },
+}
+`;
+
+exports[`fieldListener addListener sets listener into reducer 1`] = `
+Immutable.Map {
+  "fields": Immutable.Map {
+    "field-name": Immutable.Map {
+      "initial": Immutable.Map {
+        "value": "",
+      },
+      "current": Immutable.Map {
+        "value": "",
+        "pristine": true,
+        "touched": false,
+        "error": false,
+        "helperText": "",
+      },
+    },
+    "otherField": Immutable.Map {
+      "initial": Immutable.Map {
+        "value": "",
+      },
+      "current": Immutable.Map {
+        "value": "",
+        "pristine": true,
+        "touched": false,
+        "error": false,
+        "helperText": "",
+      },
+    },
+  },
+  "listeners": Immutable.Map {
+    "name": Immutable.List [
+      [MockFunction],
+    ],
+  },
+}
+`;
+
+exports[`fieldListener removeListener removes by reference 1`] = `
+Immutable.Map {
+  "fields": Immutable.Map {
+    "field-name": Immutable.Map {
+      "initial": Immutable.Map {
+        "value": "",
+      },
+      "current": Immutable.Map {
+        "value": "",
+        "pristine": true,
+        "touched": false,
+        "error": false,
+        "helperText": "",
+      },
+    },
+    "otherField": Immutable.Map {
+      "initial": Immutable.Map {
+        "value": "",
+      },
+      "current": Immutable.Map {
+        "value": "",
+        "pristine": true,
+        "touched": false,
+        "error": false,
+        "helperText": "",
+      },
+    },
+  },
+  "listeners": Immutable.Map {
+    "name": Immutable.List [
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            "i am update",
+          ],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+        ],
+      },
+    ],
+  },
+}
+`;
+
 exports[`getFieldPath combined name with items 1`] = `
 Array [
   "data.listField",

@@ -126,3 +126,20 @@ test('reset dispatches action with derived initial state', () => {
   expect(getInitialState.mock.calls[0]).toMatchSnapshot()
   expect(dispatch.mock.calls[0]).toMatchSnapshot()
 })
+
+
+test('addFieldListener dispatches action', () => {
+  const [, { addFieldListener }] = useForm({ fields, initialValues })
+  const listener = 'myListener'
+  addFieldListener('formField', listener)
+
+  expect(dispatch.mock.calls[0]).toMatchSnapshot()
+})
+
+test('removeFieldListener dispatches action', () => {
+  const [, { removeFieldListener }] = useForm({ fields, initialValues })
+  const listener = 'myListener'
+  removeFieldListener('formField', listener)
+
+  expect(dispatch.mock.calls[0]).toMatchSnapshot()
+})

@@ -100,3 +100,17 @@ describe('initialValues', () => {
     expect(getInitialState(fields)).toMatchSnapshot()
   })
 })
+
+test('adds field listeners', () => {
+  const firstListener = jest.fn()
+  const secondListenerA = jest.fn()
+  const secondListenerB = jest.fn()
+  const options = {
+    listeners: {
+      first: firstListener,
+      second: [secondListenerA, secondListenerB],
+    },
+  }
+
+  expect(getInitialState(fields, initialValues, options)).toMatchSnapshot()
+})

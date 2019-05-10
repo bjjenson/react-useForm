@@ -9,6 +9,8 @@ export const actionTypes = {
   touched: 'touched',
   updateValue: 'updateValue',
   validationResult: 'validationResult',
+  addListener: 'addListener',
+  removeListener: 'removeListener',
 }
 
 export const actions = {
@@ -20,10 +22,13 @@ export const actions = {
   touched: (fieldName) => ({ type: actionTypes.touched, fieldName }),
   updateValue: (fieldName, value) => ({ type: actionTypes.updateValue, fieldName, payload: value }),
   validationResult: (fieldName, error, helperText) => ({ type: actionTypes.validationResult, fieldName, payload: { error, helperText } }),
+  addListener: (fieldName, listener) => ({ type: actionTypes.addListener, fieldName, payload: listener }),
+  removeListener: (fieldName, listener) => ({ type: actionTypes.removeListener, fieldName, payload: listener }),
 }
 
 export const removedFieldsKey = 'removedFields'
 export const fieldsKey = 'fields'
+export const listenersKey = 'listeners'
 
 export const initState = state => {
   return state
@@ -35,10 +40,13 @@ export const fieldReducer = (state, { type, fieldName = '', payload }) => {
   const fieldPath = getFieldPath(fieldName)
 
   const handlers = {
-    [actionTypes.updateValue]: value =>
-      state.setIn([fieldsKey, ...fieldPath, current, 'value'], value)
+    [actionTypes.updateValue]: value => {
+      state.getIn([listenersKey, fieldName], List()).forEach(listener => listener(value))
+
+      return state.setIn([fieldsKey, ...fieldPath, current, 'value'], value)
         .setIn([fieldsKey, ...fieldPath, current, 'pristine'], value == state.getIn([fieldsKey, fieldName, 'initial', 'value']))
-        .setIn([fieldsKey, ...fieldPath, current, 'touched'], true),
+        .setIn([fieldsKey, ...fieldPath, current, 'touched'], true)
+    },
 
     [actionTypes.touched]: () =>
       state.setIn([fieldsKey, ...fieldPath, current, 'touched'], true),
@@ -62,6 +70,17 @@ export const fieldReducer = (state, { type, fieldName = '', payload }) => {
 
     [actionTypes.removeListItem]: index =>
       state.deleteIn([fieldsKey, ...fieldPath, 'items', index]),
+
+    [actionTypes.addListener]: listener =>
+      state.updateIn([listenersKey, fieldName], List(), listeners =>
+        listeners.push(listener)
+      ),
+
+    [actionTypes.removeListener]: listener =>
+      state.updateIn([listenersKey, fieldName], List(), listeners => {
+        const index = listeners.indexOf(listener)
+        return index > -1 ? listeners.delete(index) : listeners
+      }),
 
     [actionTypes.reset]: state => state,
   }

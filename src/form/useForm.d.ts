@@ -56,8 +56,14 @@ export interface IValidationErrors {
   [key: string]: String
 }
 
+function listener(value: any): void
+export interface OptionListeners {
+  [key: string]: Array<listener> | listener
+}
+
 export interface IFormOptions {
   optionalLabelFormatter?: (label: String) => String
+  listeners: OptionListeners
 }
 
 export interface IFormStateResolvers {
@@ -71,6 +77,8 @@ export interface IForm extends IFormStateResolvers {
   addField: (field: IFormFieldArgs) => void
   removeField: (fieldName: String) => void
   setValue: (fieldName: String, value: any) => void
+  addFieldListener: (fieldName: String, listener: Function) => void
+  removeFieldListener: (fieldName: String, listener: Function) => void
 }
 
 export interface IFields {

@@ -228,3 +228,64 @@ describe('getFieldPath', () => {
     expect(getFieldPath('data.listField.items.1.fields.fieldName')).toMatchSnapshot()
   })
 })
+
+describe('fieldListener', () => {
+  const listener = jest.fn()
+  const listener2 = jest.fn()
+
+  test('addListener sets listener into reducer', () => {
+    const action = actions.addListener('name', listener)
+    expect(fieldReducer(state, action)).toMatchSnapshot()
+  })
+
+  test('add multiple listeners', () => {
+    const action = actions.addListener('name', listener)
+    const action2 = actions.addListener('name', listener2)
+    state = fieldReducer(state, action)
+    state = fieldReducer(state, action2)
+
+    expect(state).toMatchSnapshot()
+  })
+
+  test('listeners called when field value changes', () => {
+    const update = 'i am update'
+    const action = actions.addListener('name', listener)
+    const action2 = actions.addListener('name', listener2)
+    const changeAction = actions.updateValue('name', update)
+
+    state = fieldReducer(state, action)
+    state = fieldReducer(state, action2)
+    fieldReducer(state, changeAction)
+
+    expect(listener).toHaveBeenCalledWith(update)
+    expect(listener2).toHaveBeenCalledWith(update)
+  })
+
+  test('listener not called for other fields', () => {
+    const action = actions.addListener('name', listener)
+    const changeAction = actions.updateValue('other', 'i am update')
+
+    state = fieldReducer(state, action)
+    state = fieldReducer(state, changeAction)
+
+    expect(listener).not.toHaveBeenCalled()
+  })
+
+  test('removeListener removes by reference', () => {
+    const update = 'i am update'
+    const action = actions.addListener('name', listener)
+    const action2 = actions.addListener('name', listener2)
+    const removeAction = actions.removeListener('name', listener)
+    const changeAction = actions.updateValue('name', update)
+
+    state = fieldReducer(state, action)
+    state = fieldReducer(state, action2)
+    state = fieldReducer(state, removeAction)
+    fieldReducer(state, changeAction)
+
+    expect(state).toMatchSnapshot()
+    expect(listener2).toHaveBeenCalledWith(update)
+    expect(listener).not.toHaveBeenCalled()
+  })
+
+})

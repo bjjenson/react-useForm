@@ -1,5 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`addFieldListener dispatches action 1`] = `
+Array [
+  Object {
+    "fieldName": "formField",
+    "payload": "myListener",
+    "type": "addListener",
+  },
+]
+`;
+
 exports[`no submit if form validation fails 1`] = `
 Array [
   Object {
@@ -28,6 +38,16 @@ Array [
     "options": Object {
       "optional": "yes",
     },
+  },
+]
+`;
+
+exports[`removeFieldListener dispatches action 1`] = `
+Array [
+  Object {
+    "fieldName": "formField",
+    "payload": "myListener",
+    "type": "removeListener",
   },
 ]
 `;
@@ -80,9 +100,11 @@ Array [
   Object {
     "Form": [Function],
     "addField": [Function],
+    "addFieldListener": [Function],
     "getAnyTouched": [Function],
     "getIsPristine": [Function],
     "removeField": [Function],
+    "removeFieldListener": [Function],
     "reset": [Function],
     "setValue": [Function],
     "submit": [Function],
