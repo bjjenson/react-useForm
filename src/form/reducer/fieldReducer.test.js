@@ -1,6 +1,8 @@
 import { fromJS } from 'immutable'
 import { fieldReducer, actions, removedFieldsKey, getFieldPath } from './fieldReducer'
 
+jest.useFakeTimers()
+
 let state, fieldName
 beforeEach(() => {
   fieldName = 'field-name'
@@ -31,6 +33,10 @@ beforeEach(() => {
         },
       },
     },
+  })
+
+  setTimeout.mockImplementation(cb => {
+    cb()
   })
 })
 
