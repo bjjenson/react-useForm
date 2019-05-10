@@ -30,12 +30,11 @@
       "git add"
     ]
   },
-  "dependencies": {
+  "peerDependencies": {
     "immutable": "^4.0.0-rc.12",
     "prop-types": "^15.7.2",
-    "react": "^16.8.5",
-    "react-app-polyfill": "^0.1.3",
-    "react-dom": "^16.8.5"
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
