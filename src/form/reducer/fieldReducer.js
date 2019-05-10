@@ -41,7 +41,8 @@ export const fieldReducer = (state, { type, fieldName = '', payload }) => {
 
   const handlers = {
     [actionTypes.updateValue]: value => {
-      state.getIn([listenersKey, fieldName], List()).forEach(listener => listener(value))
+      const previous = state.getIn([fieldsKey, ...fieldPath, current, 'value'], '')
+      state.getIn([listenersKey, fieldName], List()).forEach(listener => listener(value, previous))
 
       return state.setIn([fieldsKey, ...fieldPath, current, 'value'], value)
         .setIn([fieldsKey, ...fieldPath, current, 'pristine'], value == state.getIn([fieldsKey, fieldName, 'initial', 'value']))

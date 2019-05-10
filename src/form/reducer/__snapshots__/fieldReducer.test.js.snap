@@ -81,7 +81,7 @@ Immutable.Map {
         "value": "",
       },
       "current": Immutable.Map {
-        "value": "",
+        "value": "previousValue",
         "pristine": true,
         "touched": false,
         "error": false,
@@ -102,11 +102,12 @@ Immutable.Map {
     },
   },
   "listeners": Immutable.Map {
-    "name": Immutable.List [
+    "field-name": Immutable.List [
       [MockFunction] {
         "calls": Array [
           Array [
             "i am update",
+            "previousValue",
           ],
         ],
         "results": Array [

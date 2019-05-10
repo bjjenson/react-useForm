@@ -248,17 +248,19 @@ describe('fieldListener', () => {
   })
 
   test('listeners called when field value changes', () => {
+    const previousValue = 'previousValue'
+    state = state.setIn(['fields', fieldName, 'current', 'value'], previousValue)
     const update = 'i am update'
-    const action = actions.addListener('name', listener)
-    const action2 = actions.addListener('name', listener2)
-    const changeAction = actions.updateValue('name', update)
+    const action = actions.addListener(fieldName, listener)
+    const action2 = actions.addListener(fieldName, listener2)
+    const changeAction = actions.updateValue(fieldName, update)
 
     state = fieldReducer(state, action)
     state = fieldReducer(state, action2)
     fieldReducer(state, changeAction)
 
-    expect(listener).toHaveBeenCalledWith(update)
-    expect(listener2).toHaveBeenCalledWith(update)
+    expect(listener).toHaveBeenCalledWith(update, previousValue)
+    expect(listener2).toHaveBeenCalledWith(update, previousValue)
   })
 
   test('listener not called for other fields', () => {
@@ -272,11 +274,14 @@ describe('fieldListener', () => {
   })
 
   test('removeListener removes by reference', () => {
+    const previousValue = 'previousValue'
+    state = state.setIn(['fields', fieldName, 'current', 'value'], previousValue)
+
     const update = 'i am update'
-    const action = actions.addListener('name', listener)
-    const action2 = actions.addListener('name', listener2)
-    const removeAction = actions.removeListener('name', listener)
-    const changeAction = actions.updateValue('name', update)
+    const action = actions.addListener(fieldName, listener)
+    const action2 = actions.addListener(fieldName, listener2)
+    const removeAction = actions.removeListener(fieldName, listener)
+    const changeAction = actions.updateValue(fieldName, update)
 
     state = fieldReducer(state, action)
     state = fieldReducer(state, action2)
@@ -284,7 +289,7 @@ describe('fieldListener', () => {
     fieldReducer(state, changeAction)
 
     expect(state).toMatchSnapshot()
-    expect(listener2).toHaveBeenCalledWith(update)
+    expect(listener2).toHaveBeenCalledWith(update, previousValue)
     expect(listener).not.toHaveBeenCalled()
   })
 

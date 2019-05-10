@@ -45,16 +45,12 @@ const OnFieldChangedHandler = ({ submit }) => {
     submit,
     options: {
       listeners: {
-        gender: value => {
-          setGender(value)
+        gender: (value, previous) => {
+          setGender(`${value}, was ${previous}`)
         },
       },
     },
   })
-
-  // form.addFieldListener('gender', value => {
-  //   setGender(value)
-  // })
 
   return (
     <form.Form>
