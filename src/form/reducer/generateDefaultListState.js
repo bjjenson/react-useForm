@@ -9,7 +9,7 @@ import { generateDefaultFieldState } from './generateDefaultFieldState'
  * @param {*} initialValues
  * @param options {import("..").IFormOptions}
  */
-export const generateDefaultListState = (field, initialValues, options) => {
+export const generateDefaultListState = (field, initialValues, options = {}) => {
 
   const label = resolveLabel(field, options)
   const value = resolveInitialFieldValue(field.value, initialValues.getIn(field.name.split('.')), field.type)
