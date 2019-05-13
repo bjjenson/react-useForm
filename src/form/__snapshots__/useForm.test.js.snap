@@ -10,6 +10,17 @@ Array [
 ]
 `;
 
+exports[`getValuesIfFormValid returns null if not valid 1`] = `
+Array [
+  Object {
+    "name": "current value of name",
+    "phone": "current value of phone",
+  },
+]
+`;
+
+exports[`getValuesIfFormValid returns values if form is valid  1`] = `"merged form values"`;
+
 exports[`no submit if form validation fails 1`] = `
 Array [
   Object {
@@ -103,6 +114,7 @@ Array [
     "addFieldListener": [Function],
     "getAnyTouched": [Function],
     "getIsPristine": [Function],
+    "getValuesIfFormValid": [Function],
     "removeField": [Function],
     "removeFieldListener": [Function],
     "reset": [Function],

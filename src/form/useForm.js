@@ -53,7 +53,7 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
     return {}
   }
 
-  const trySubmitForm = () => {
+  const tryValidateFormAndFields = () => {
     let isFormValid = true
     const formResults = tryValidateForm()
 
@@ -68,9 +68,21 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
       }
     })
 
-    if (isFormValid && submit) {
+    return isFormValid
+  }
+
+  const trySubmitTheForm = () => {
+    const canSubmit = tryValidateFormAndFields()
+    if (canSubmit && submit) {
       submit(mergeFormValues(state, initialValues))
     }
+  }
+
+  const getValuesIfFormValid = () => {
+    if (tryValidateFormAndFields()) {
+      return mergeFormValues(state, initialValues)
+    }
+    return null
   }
 
   const resetForm = () => {
@@ -86,7 +98,8 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
     { ...getFieldProps(fieldData, state) },
     {
       setValue,
-      submit: trySubmitForm,
+      getValuesIfFormValid,
+      submit: trySubmitTheForm,
       reset: resetForm,
       Form,
       addField,

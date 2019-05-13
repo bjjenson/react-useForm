@@ -74,9 +74,11 @@ export interface IFormStateResolvers {
 export interface IForm extends IFormStateResolvers {
   Form: React.Component
   submit: Function
+  reset: Function
+  setValue: (fieldName: String, value: any) => void
+  getValuesIfFormValid: Function
   addField: (field: IFormFieldArgs) => void
   removeField: (fieldName: String) => void
-  setValue: (fieldName: String, value: any) => void
   addFieldListener: (fieldName: String, listener: Function) => void
   removeFieldListener: (fieldName: String, listener: Function) => void
 }

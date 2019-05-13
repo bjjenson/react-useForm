@@ -110,6 +110,30 @@ test('valid form submits values ', () => {
   expect(mergeFormValues.mock.calls[0]).toMatchSnapshot()
 })
 
+test('getValuesIfFormValid returns null if not valid', () => {
+  const validateForm = jest.fn()
+  validateForm.mockReturnValue({ name: 'i am error' })
+  const [, { getValuesIfFormValid }] = useForm({ fields, worker: submitWorker, validate: validateForm })
+
+  const values = getValuesIfFormValid()
+
+  expect(validateForm.mock.calls[0]).toMatchSnapshot()
+  expect(values).toBeNull()
+})
+
+test('getValuesIfFormValid returns values if form is valid ', () => {
+  fields = [
+    { name: 'nested.name' },
+    { name: 'phone' },
+  ]
+
+  const [, { getValuesIfFormValid }] = useForm({ fields, submit: submitWorker, initialValues })
+
+  const values = getValuesIfFormValid()
+
+  expect(values).toMatchSnapshot()
+})
+
 test('options passed to createReducer', () => {
   const options = {
     optional: 'yes',

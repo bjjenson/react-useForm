@@ -24,6 +24,7 @@ import { SelectField } from './material/SelectField'
 import { SimpleForm } from './material/SimpleForm'
 import { SimpleFormOptionalFields } from './material/OptionalField'
 import OnFieldChangedHandler from './material/OnFieldChangedHandler'
+import GetValidFormValues from './material/GetValidFormValues'
 
 const submitLog = name => {
   return {
@@ -67,3 +68,4 @@ storiesOf('Material-UI', module)
   .add('Form Reset', () => <FormReset {...submitLog('FormStateResolvers')} />)
   .add('Pass through field props', () => <PassThroughProps {...submitLog('FormStateResolvers')} />)
   .add('Listen to field changed', () => <OnFieldChangedHandler {...submitLog('FormStateResolvers')} />)
+  .add('Get submit values directly', () => <GetValidFormValues {...submitLog('FormStateResolvers')} />)
