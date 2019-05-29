@@ -82,6 +82,23 @@ describe('onChange', () => {
 
     expect(initialArgs.validate.mock.calls[0]).toMatchSnapshot()
   })
+
+  test('does not dispatch validation result until "touched"', () => {
+    initialArgs.validate = jest.fn()
+    const { props: { onChange } } = useFormField(state, dispatch, initialArgs)
+    onChange(event)
+
+    expect(dispatch.mock.calls).toMatchSnapshot()
+  })
+
+  test('dispatches validation result if "touched"', () => {
+    state = state.setIn(['current', 'touched'], true)
+    initialArgs.validate = jest.fn()
+    const { props: { onChange } } = useFormField(state, dispatch, initialArgs)
+    onChange(event)
+
+    expect(dispatch.mock.calls).toMatchSnapshot()
+  })
 })
 
 describe('validate', () => {

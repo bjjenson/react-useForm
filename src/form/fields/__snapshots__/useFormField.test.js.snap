@@ -20,6 +20,50 @@ Array [
 ]
 `;
 
+exports[`onChange dispatches validation result if "touched" 1`] = `
+Array [
+  Array [
+    Object {
+      "fieldName": "fieldName",
+      "payload": "updated",
+      "type": "updateValue",
+    },
+  ],
+  Array [
+    Object {
+      "fieldName": "fieldName",
+      "payload": Object {
+        "error": false,
+        "helperText": undefined,
+      },
+      "type": "validationResult",
+    },
+  ],
+  Array [
+    Object {
+      "fieldName": "fieldName",
+      "payload": Object {
+        "error": false,
+        "helperText": undefined,
+      },
+      "type": "validationResult",
+    },
+  ],
+]
+`;
+
+exports[`onChange does not dispatch validation result until "touched" 1`] = `
+Array [
+  Array [
+    Object {
+      "fieldName": "fieldName",
+      "payload": "updated",
+      "type": "updateValue",
+    },
+  ],
+]
+`;
+
 exports[`onChange uses valueFromChange to coerce value if provided 1`] = `
 Array [
   Object {
