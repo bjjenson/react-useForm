@@ -110,6 +110,14 @@ Array [
 ]
 `;
 
+exports[`validate calls validate on number change with 0 (falsy) 1`] = `
+Array [
+  0,
+  "fieldName",
+  "getAllValuesFunc",
+]
+`;
+
 exports[`validate validates onBlur 1`] = `
 Array [
   "the value",

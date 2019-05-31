@@ -25,6 +25,7 @@ import { SimpleForm } from './material/SimpleForm'
 import { SimpleFormOptionalFields } from './material/OptionalField'
 import OnFieldChangedHandler from './material/OnFieldChangedHandler'
 import GetValidFormValues from './material/GetValidFormValues'
+import NumberFieldValidation from './material/NumberFieldValidation'
 
 const submitLog = name => {
   return {
@@ -47,6 +48,7 @@ storiesOf('Material-UI', module)
   .add('Optional Fields', () => <SimpleFormOptionalFields {...submitLog('SimpleFormOptionalFields')} />)
   .add('Customize optional field prompt', () => <CustomizeOptionalPrompt {...submitLog('CustomizeOptionalPrompt')} />)
   .add('Field level validation', () => <FieldValidation {...submitLog('FieldValidation')} />)
+  .add('Number field validation normalized at 0', () => <NumberFieldValidation {...submitLog('NumberFieldValidation')} />)
   .add('Field input normalize', () => <FieldNormalize {...submitLog('FieldNormalize')} />)
   .add('Custom Helper Text', () => <HelperText {...submitLog('HelperText')} />)
   .add('Custom Required Field Message', () => <CustomRequiredMessage {...submitLog('CustomRequiredMessage')} />)
@@ -65,7 +67,7 @@ storiesOf('Material-UI', module)
   .add('Dynamic fields', () => <DynamicFields {...submitLog('DynamicFields')} />)
   .add('Nested Fields', () => <DeepNestedFields {...submitLog('DeepNestedFields')} />)
   .add('Using Form State Resolvers', () => <FormStateResolvers {...submitLog('FormStateResolvers')} />)
-  .add('Form Reset', () => <FormReset {...submitLog('FormStateResolvers')} />)
-  .add('Pass through field props', () => <PassThroughProps {...submitLog('FormStateResolvers')} />)
-  .add('Listen to field changed', () => <OnFieldChangedHandler {...submitLog('FormStateResolvers')} />)
-  .add('Get submit values directly', () => <GetValidFormValues {...submitLog('FormStateResolvers')} />)
+  .add('Form Reset', () => <FormReset {...submitLog('FormReset')} />)
+  .add('Pass through field props', () => <PassThroughProps {...submitLog('PassThroughProps')} />)
+  .add('Listen to field changed', () => <OnFieldChangedHandler {...submitLog('OnFieldChangedHandler')} />)
+  .add('Get submit values directly', () => <GetValidFormValues {...submitLog('GetValidFormValues')} />)

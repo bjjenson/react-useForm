@@ -8,7 +8,8 @@ export const useFormField = (state, dispatch, fieldArgs = {}) => {
 
   const tryValidate = (value, touched) => {
     let result
-    if (value && fieldArgs.validate) {
+
+    if (value !== '' && value !== undefined && fieldArgs.validate) {
       result = fieldArgs.validate(value, fieldArgs.name, state.get('getAllValues'))
     }
 

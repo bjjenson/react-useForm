@@ -130,6 +130,15 @@ describe('validate', () => {
     expect(validate.mock.calls[0]).toMatchSnapshot()
   })
 
+  test('calls validate on number change with 0 (falsy)', () => {
+    initialArgs.normalize = v => Number(v)
+    event.target.value = '0'
+    const { props: { onChange } } = useFormField(state, dispatch, initialArgs)
+    onChange(event)
+
+    expect(validate.mock.calls[0]).toMatchSnapshot()
+  })
+
   test('does not set error if not "touched"', () => {
     state = fromJS({
       current: {
