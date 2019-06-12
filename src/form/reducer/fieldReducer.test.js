@@ -283,6 +283,7 @@ describe('fieldListener', () => {
     const previousValue = 'previousValue'
     state = state.setIn(['fields', fieldName, 'current', 'value'], previousValue)
 
+
     const update = 'i am update'
     const action = actions.addListener(fieldName, listener)
     const action2 = actions.addListener(fieldName, listener2)
