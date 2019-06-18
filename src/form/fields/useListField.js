@@ -56,7 +56,7 @@ export const useListField = (state, dispatch, fieldArgs = {}) => {
       helperText: state.getIn(['current', 'helperText']),
       label: state.getIn(['initial', 'label']),
       items: fieldData.map((item, index) => ({
-        ...getFieldProps(item),
+        ...getFieldProps(item, state.getIn(['items', index])),
         key: `${fieldArgs.name}.${index}`,
       })),
       add,
