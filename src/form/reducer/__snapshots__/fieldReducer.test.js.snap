@@ -308,6 +308,36 @@ Immutable.Map {
 }
 `;
 
+exports[`list in state removeListItem 2`] = `
+Array [
+  Immutable.Map {
+    "fields": Immutable.Map {
+      "data.listField": Immutable.Map {
+        "items": Immutable.List [
+          Immutable.Map {},
+        ],
+      },
+      "otherField": Immutable.Map {
+        "initial": Immutable.Map {
+          "value": "",
+        },
+        "current": Immutable.Map {
+          "value": "",
+          "pristine": true,
+          "touched": false,
+          "error": false,
+          "helperText": "",
+        },
+      },
+    },
+  },
+  "fields",
+  Array [
+    "data.listField",
+  ],
+]
+`;
+
 exports[`list in state touched set on current field 1`] = `
 Immutable.Map {
   "fields": Immutable.Map {

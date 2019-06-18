@@ -1,4 +1,5 @@
 import { List } from 'immutable'
+import { syncListIndexes } from './syncListIndexes'
 
 export const actionTypes = {
   insertField: 'insertField',
@@ -71,7 +72,11 @@ export const fieldReducer = (state, { type, fieldName = '', payload }) => {
     },
 
     [actionTypes.removeListItem]: index =>
-      state.deleteIn([fieldsKey, ...fieldPath, 'items', index]),
+      syncListIndexes(
+        state.deleteIn([fieldsKey, ...fieldPath, 'items', index]),
+        fieldsKey,
+        fieldPath,
+      ),
 
     [actionTypes.addListener]: listener =>
       state.updateIn([listenersKey, fieldName], List(), listeners =>

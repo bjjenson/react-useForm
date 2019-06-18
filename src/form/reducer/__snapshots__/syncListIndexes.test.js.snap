@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`resets all index to 0 index 1`] = `
+Immutable.Map {
+  "fields": Immutable.Map {
+    "nested": Immutable.Map {
+      "data": Immutable.Map {
+        "items": Immutable.List [
+          Immutable.Map {
+            "fields": Immutable.Map {
+              "first": Immutable.Map {
+                "initial": Immutable.Map {
+                  "field": Immutable.Map {
+                    "name": "nested.data.items.0.fields.first",
+                  },
+                },
+              },
+              "second": Immutable.Map {
+                "initial": Immutable.Map {
+                  "field": Immutable.Map {
+                    "name": "nested.data.items.0.fields.second",
+                  },
+                },
+              },
+            },
+          },
+          Immutable.Map {
+            "fields": Immutable.Map {
+              "first": Immutable.Map {
+                "initial": Immutable.Map {
+                  "field": Immutable.Map {
+                    "name": "nested.data.items.1.fields.first",
+                  },
+                },
+              },
+              "second": Immutable.Map {
+                "initial": Immutable.Map {
+                  "field": Immutable.Map {
+                    "name": "nested.data.items.1.fields.second",
+                  },
+                },
+              },
+            },
+          },
+        ],
+      },
+    },
+  },
+}
+`;

@@ -1,5 +1,8 @@
 import { fromJS } from 'immutable'
 import { fieldReducer, actions, removedFieldsKey, getFieldPath } from './fieldReducer'
+import { syncListIndexes } from './syncListIndexes'
+
+jest.mock('./syncListIndexes')
 
 jest.useFakeTimers()
 
@@ -35,6 +38,7 @@ beforeEach(() => {
     },
   })
 
+  syncListIndexes.mockImplementation(s => s)
   setTimeout.mockImplementation(cb => {
     cb()
   })
@@ -213,6 +217,7 @@ describe('list in state', () => {
   test('removeListItem', () => {
     const action = actions.removeListItem('data.listField', 1)
     expect(fieldReducer(state, action)).toMatchSnapshot()
+    expect(syncListIndexes.mock.calls[0]).toMatchSnapshot()
   })
 
 })
