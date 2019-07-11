@@ -16,6 +16,7 @@ import { HelperText } from './material/HelperText'
 import { InitialValuesAsync } from './material/InitialValuesAsync'
 import { InitialValuesSet } from './material/InitialValuesSet'
 import { ListField } from './material/ListField'
+import ListOfListField from './material/ListOfListField'
 import { NumberField } from './material/NumberField'
 import { PassThroughField } from './material/PassThroughField'
 import { PassThroughProps } from './material/PassThroughProps'
@@ -58,6 +59,7 @@ storiesOf('Material-UI', module)
   .add('Radio field', () => <RadioField {...submitLog('RadioField')} />)
   .add('Object field', () => <PassThroughField {...submitLog('PassThroughField')} />)
   .add('List Field', () => <ListField {...submitLog('ListField')} />)
+  .add('List of Lists Field', () => <ListOfListField {...submitLog('ListOfListField')} />)
   .add('Initial values passed into form', () => <InitialValuesSet initialValues={fromJS({ fullName: 'Samuel Tarley', nickname: 'Sam' })} {...submitLog('InitialValuesSet')} />)
   .add('Initial values lazy loaded', () => (
     <BrixProvider value={Map()}>

@@ -244,7 +244,7 @@ Immutable.Map {
                     "label": "nestedList",
                     "field": Object {
                       "label": "nestedList",
-                      "name": "fieldName.second.items.0.fields.nestedName",
+                      "name": "fieldName.items.0.fields.second.items.0.fields.nestedName",
                     },
                   },
                   "current": Immutable.Map {
@@ -312,12 +312,12 @@ Immutable.Map {
                 "nestedName": Immutable.Map {
                   "initial": Immutable.Map {
                     "type": "text",
-                    "value": "nested name 10",
+                    "value": "nested name 10.A",
                     "optional": false,
                     "label": "nestedList",
                     "field": Object {
                       "label": "nestedList",
-                      "name": "fieldName.second.items.0.fields.nestedName",
+                      "name": "fieldName.items.1.fields.second.items.0.fields.nestedName",
                     },
                   },
                   "current": Immutable.Map {
@@ -325,7 +325,30 @@ Immutable.Map {
                     "error": false,
                     "pristine": true,
                     "touched": false,
-                    "value": "nested name 10",
+                    "value": "nested name 10.A",
+                  },
+                },
+              },
+            },
+            Immutable.Map {
+              "fields": Immutable.Map {
+                "nestedName": Immutable.Map {
+                  "initial": Immutable.Map {
+                    "type": "text",
+                    "value": "nested name 10.B",
+                    "optional": false,
+                    "label": "nestedList",
+                    "field": Object {
+                      "label": "nestedList",
+                      "name": "fieldName.items.1.fields.second.items.1.fields.nestedName",
+                    },
+                  },
+                  "current": Immutable.Map {
+                    "helperText": "",
+                    "error": false,
+                    "pristine": true,
+                    "touched": false,
+                    "value": "nested name 10.B",
                   },
                 },
               },

@@ -10,10 +10,10 @@ import { getFieldState } from './getFieldState'
  * @param options {import("..").IFormOptions}
  */
 export const generateDefaultListState = (field, initialValues, options = {}, parentPath = '') => {
-  const applicablePath = parentPath ? `${parentPath}.${field.name}` : field.name
+  // const applicablePath = parentPath ? `${parentPath}.${field.name}` : field.name
   const label = resolveLabel(field, options)
   const listValues = resolveInitialFieldValue(field.value, initialValues.getIn(field.name.split('.')), field.type)
-  const items = getCurrentValues(field.fields, listValues, options, applicablePath)
+  const items = getCurrentValues(field.fields, listValues, options, field.name, parentPath)
 
   return fromJS({
     initial: {
@@ -32,19 +32,21 @@ export const generateDefaultListState = (field, initialValues, options = {}, par
     .setIn(['initial', 'options'], options)
 }
 
-export const getCurrentValues = (fields = [], initialListValues, options, listField) => {
+export const getCurrentValues = (fields = [], initialListValues, options, fieldPath, parentPath) => {
   return initialListValues.map((item, index) => {
-    return getFields(fields, item, options, listField, index)
+    return getFields(fields, item, options, fieldPath, index, parentPath)
   })
 }
 
-export const getFields = (fields = [], value = Map(), options, listField, index = 0) => {
+export const getFields = (fields = [], value = Map(), options, fieldPath, index = 0, parentPath = '') => {
 
   return Map([['fields', fields.reduce((acc, field) => {
-    return acc.set(field.name, getFieldState(field, value, options, listField))
+    let pathName = `${fieldPath}.items.${index}.fields`
+    if (parentPath) pathName = `${parentPath}.${pathName}`
+    return acc.set(field.name, getFieldState(field, value, options, pathName))
       .setIn([field.name, 'initial', 'field'], {
         ...field,
-        name: `${listField}.items.${index}.fields.${field.name}`,
+        name: `${pathName}.${field.name}`,
       })
   }, Map())]])
 }

@@ -52,12 +52,15 @@ test('complex nested list with initialValues', () => {
   initialValues = fromJS({
     fieldName: [
       { first: '1', second: [{ nestedName: 'nested name 1' }] },
-      { first: '10', second: [{ nestedName: 'nested name 10' }] },
+      { first: '10', second: [{ nestedName: 'nested name 10.A' }, { nestedName: 'nested name 10.B' }] },
     ],
   })
   expect(generateDefaultListState(field, initialValues, options)).toMatchSnapshot()
 })
-
+//C fieldName.items.0.fields.first
+//A fieldName.items.0.fields.first
+//C fieldName.items.0.fields.second.items.0.fields.nestedName
+//A fieldName.items.1.fields.second.items.0.fields.nestedName
 
 test('thingy', () => {
   field = [{
