@@ -1,7 +1,7 @@
 import { fromJS, Map } from 'immutable'
 import { resolveInitialFieldValue } from './resolveInitialFieldValue'
 import { resolveLabel } from './resolveLabel'
-import { generateDefaultFieldState } from './generateDefaultFieldState'
+import { getFieldState } from './getFieldState'
 
 /**
  *
@@ -9,11 +9,11 @@ import { generateDefaultFieldState } from './generateDefaultFieldState'
  * @param {*} initialValues
  * @param options {import("..").IFormOptions}
  */
-export const generateDefaultListState = (field, initialValues, options = {}) => {
-
+export const generateDefaultListState = (field, initialValues, options = {}, parentPath = '') => {
+  const applicablePath = parentPath ? `${parentPath}.${field.name}` : field.name
   const label = resolveLabel(field, options)
-  const value = resolveInitialFieldValue(field.value, initialValues.getIn(field.name.split('.')), field.type)
-  const items = getCurrentValues(field.fields, value, options, field.name)
+  const listValues = resolveInitialFieldValue(field.value, initialValues.getIn(field.name.split('.')), field.type)
+  const items = getCurrentValues(field.fields, listValues, options, applicablePath)
 
   return fromJS({
     initial: {
@@ -32,15 +32,16 @@ export const generateDefaultListState = (field, initialValues, options = {}) => 
     .setIn(['initial', 'options'], options)
 }
 
-export const getCurrentValues = (fields = [], initialValues, options, listField) => {
-  return initialValues.map((item, index) => {
+export const getCurrentValues = (fields = [], initialListValues, options, listField) => {
+  return initialListValues.map((item, index) => {
     return getFields(fields, item, options, listField, index)
   })
 }
 
 export const getFields = (fields = [], value = Map(), options, listField, index = 0) => {
+
   return Map([['fields', fields.reduce((acc, field) => {
-    return acc.set(field.name, generateDefaultFieldState(field, value, options))
+    return acc.set(field.name, getFieldState(field, value, options, listField))
       .setIn([field.name, 'initial', 'field'], {
         ...field,
         name: `${listField}.items.${index}.fields.${field.name}`,

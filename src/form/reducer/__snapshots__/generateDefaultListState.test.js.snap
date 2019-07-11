@@ -151,6 +151,193 @@ Immutable.Map {
 }
 `;
 
+exports[`complex nested list with initialValues 1`] = `
+Immutable.Map {
+  "initial": Immutable.Map {
+    "type": "list",
+    "optional": false,
+    "label": "List",
+    "field": Object {
+      "fields": Array [
+        Object {
+          "label": "First",
+          "name": "first",
+        },
+        Object {
+          "fields": Array [
+            Object {
+              "label": "nestedList",
+              "name": "nestedName",
+            },
+          ],
+          "label": "Second",
+          "name": "second",
+          "type": "list",
+        },
+      ],
+      "label": "List",
+      "name": "fieldName",
+      "type": "list",
+    },
+    "options": Object {},
+  },
+  "current": Immutable.Map {
+    "helperText": "",
+    "error": false,
+    "pristine": true,
+    "touched": false,
+  },
+  "items": Immutable.List [
+    Immutable.Map {
+      "fields": Immutable.Map {
+        "first": Immutable.Map {
+          "initial": Immutable.Map {
+            "type": "text",
+            "value": "1",
+            "optional": false,
+            "label": "First",
+            "field": Object {
+              "label": "First",
+              "name": "fieldName.items.0.fields.first",
+            },
+          },
+          "current": Immutable.Map {
+            "helperText": "",
+            "error": false,
+            "pristine": true,
+            "touched": false,
+            "value": "1",
+          },
+        },
+        "second": Immutable.Map {
+          "initial": Immutable.Map {
+            "type": "list",
+            "optional": false,
+            "label": "Second",
+            "field": Object {
+              "fields": Array [
+                Object {
+                  "label": "nestedList",
+                  "name": "nestedName",
+                },
+              ],
+              "label": "Second",
+              "name": "fieldName.items.0.fields.second",
+              "type": "list",
+            },
+            "options": Object {},
+          },
+          "current": Immutable.Map {
+            "helperText": "",
+            "error": false,
+            "pristine": true,
+            "touched": false,
+          },
+          "items": Immutable.List [
+            Immutable.Map {
+              "fields": Immutable.Map {
+                "nestedName": Immutable.Map {
+                  "initial": Immutable.Map {
+                    "type": "text",
+                    "value": "nested name 1",
+                    "optional": false,
+                    "label": "nestedList",
+                    "field": Object {
+                      "label": "nestedList",
+                      "name": "fieldName.second.items.0.fields.nestedName",
+                    },
+                  },
+                  "current": Immutable.Map {
+                    "helperText": "",
+                    "error": false,
+                    "pristine": true,
+                    "touched": false,
+                    "value": "nested name 1",
+                  },
+                },
+              },
+            },
+          ],
+        },
+      },
+    },
+    Immutable.Map {
+      "fields": Immutable.Map {
+        "first": Immutable.Map {
+          "initial": Immutable.Map {
+            "type": "text",
+            "value": "10",
+            "optional": false,
+            "label": "First",
+            "field": Object {
+              "label": "First",
+              "name": "fieldName.items.1.fields.first",
+            },
+          },
+          "current": Immutable.Map {
+            "helperText": "",
+            "error": false,
+            "pristine": true,
+            "touched": false,
+            "value": "10",
+          },
+        },
+        "second": Immutable.Map {
+          "initial": Immutable.Map {
+            "type": "list",
+            "optional": false,
+            "label": "Second",
+            "field": Object {
+              "fields": Array [
+                Object {
+                  "label": "nestedList",
+                  "name": "nestedName",
+                },
+              ],
+              "label": "Second",
+              "name": "fieldName.items.1.fields.second",
+              "type": "list",
+            },
+            "options": Object {},
+          },
+          "current": Immutable.Map {
+            "helperText": "",
+            "error": false,
+            "pristine": true,
+            "touched": false,
+          },
+          "items": Immutable.List [
+            Immutable.Map {
+              "fields": Immutable.Map {
+                "nestedName": Immutable.Map {
+                  "initial": Immutable.Map {
+                    "type": "text",
+                    "value": "nested name 10",
+                    "optional": false,
+                    "label": "nestedList",
+                    "field": Object {
+                      "label": "nestedList",
+                      "name": "fieldName.second.items.0.fields.nestedName",
+                    },
+                  },
+                  "current": Immutable.Map {
+                    "helperText": "",
+                    "error": false,
+                    "pristine": true,
+                    "touched": false,
+                    "value": "nested name 10",
+                  },
+                },
+              },
+            },
+          ],
+        },
+      },
+    },
+  ],
+}
+`;
+
 exports[`simple list 1`] = `
 Immutable.Map {
   "initial": Immutable.Map {

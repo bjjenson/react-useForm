@@ -37,3 +37,38 @@ test('complex list with initialValues', () => {
   })
   expect(generateDefaultListState(field, initialValues, options)).toMatchSnapshot()
 })
+
+test('complex nested list with initialValues', () => {
+  field = {
+    name: 'fieldName', type: 'list', label: 'List', fields: [
+      { name: 'first', label: 'First' },
+      {
+        name: 'second', label: 'Second', type: 'list', fields: [
+          { name: 'nestedName', label: 'nestedList' },
+        ],
+      },
+    ],
+  }
+  initialValues = fromJS({
+    fieldName: [
+      { first: '1', second: [{ nestedName: 'nested name 1' }] },
+      { first: '10', second: [{ nestedName: 'nested name 10' }] },
+    ],
+  })
+  expect(generateDefaultListState(field, initialValues, options)).toMatchSnapshot()
+})
+
+
+test('thingy', () => {
+  field = [{
+    name: 'fieldName', type: 'list', label: 'List', fields: [
+      { name: 'first', label: 'First' },
+      {
+        name: 'second', label: 'Second', type: 'list', fields: [
+          { name: 'nestedName', label: 'nestedList' },
+        ],
+      },
+    ],
+  }]
+
+})
