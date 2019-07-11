@@ -107,6 +107,7 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
       addFieldListener,
       removeFieldListener,
       ...stateResolvers,
+      getValues: () => mergeFormValues(state, initialValues),
     },
   ]
 }

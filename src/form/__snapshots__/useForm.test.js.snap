@@ -114,6 +114,7 @@ Array [
     "addFieldListener": [Function],
     "getAnyTouched": [Function],
     "getIsPristine": [Function],
+    "getValues": [Function],
     "getValuesIfFormValid": [Function],
     "removeField": [Function],
     "removeFieldListener": [Function],
