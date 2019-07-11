@@ -81,6 +81,7 @@ export interface IForm extends IFormStateResolvers {
   removeField: (fieldName: String) => void
   addFieldListener: (fieldName: String, listener: Function) => void
   removeFieldListener: (fieldName: String, listener: Function) => void
+  getValues: () => Map<String, any>
 }
 
 export interface IFields {
