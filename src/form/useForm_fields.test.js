@@ -1,3 +1,4 @@
+import { useCallback } from 'react'
 import { fromJS } from 'immutable'
 import { useForm } from './useForm'
 import {
@@ -9,6 +10,7 @@ import {
 import { createReducer } from './reducer/createReducer'
 import { fieldsKey } from './reducer/fieldReducer'
 
+jest.mock('react')
 jest.mock('./fields')
 jest.mock('./reducer/createReducer')
 
@@ -33,7 +35,9 @@ beforeEach(() => {
         },
       },
     },
+
   })
+  useCallback.mockImplementation(f => f)
 
   createReducer.mockImplementation(({ fields }) => {
     return [createState(fields[0].type || 'text'), 'dispatch']

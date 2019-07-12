@@ -1,3 +1,4 @@
+import { useCallback } from 'react'
 import { fromJS } from 'immutable'
 import { useForm } from './useForm'
 import { useFormField } from './fields/useFormField'
@@ -58,6 +59,7 @@ beforeEach(() => {
   createReducer.mockImplementation(({ fields }) => [createState(fields), dispatch])
   mergeFormValues.mockReturnValue('merged form values')
   getInitialState.mockReturnValue('derived-initial-state')
+  useCallback.mockImplementation(f => f)
 })
 
 test('returns array of form props', () => {
