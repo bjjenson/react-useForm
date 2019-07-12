@@ -1,3 +1,4 @@
+import { useCallback } from 'react'
 import { Map } from 'immutable'
 import { Form } from './Form'
 import { createReducer } from './reducer/createReducer'
@@ -19,7 +20,8 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
 
   const addField = field => {
     const fieldState = generateDefaultFieldState(field, initialValues, options)
-    dispatch(actions.insertField(field.name, fieldState))
+    const newbie = dispatch(actions.insertField(field.name, fieldState))
+    console.log('new', newbie)
   }
 
   const removeField = fieldName => {
@@ -34,7 +36,7 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
     dispatch(actions.removeListener(fieldName, listener))
   }
 
-  const tryValidateForm = () => {
+  const tryValidateForm = useCallback(() => {
     if (validate) {
       const values = getFieldValues(fieldData)
       let results = {}
@@ -51,7 +53,7 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
     }
 
     return {}
-  }
+  })
 
   const tryValidateFormAndFields = () => {
     let isFormValid = true
