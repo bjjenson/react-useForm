@@ -10,40 +10,6 @@ Array [
 ]
 `;
 
-exports[`can submit without validate when given the option 1`] = `
-Array [
-  "merged form values",
-]
-`;
-
-exports[`can submit without validate when given the option 2`] = `
-Array [
-  Immutable.Map {
-    "fields": Immutable.Map {
-      "name": Immutable.Map {
-        "initial": Immutable.Map {
-          "type": "text",
-          "label": "The name",
-        },
-        "current": Immutable.Map {
-          "value": "current value of name",
-        },
-      },
-      "phone": Immutable.Map {
-        "initial": Immutable.Map {
-          "type": "text",
-          "label": "The phone",
-        },
-        "current": Immutable.Map {
-          "value": "current value of phone",
-        },
-      },
-    },
-  },
-  Immutable.Map {},
-]
-`;
-
 exports[`getValuesIfFormValid returns null if not valid 1`] = `
 Array [
   Object {
