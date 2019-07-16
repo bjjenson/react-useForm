@@ -73,7 +73,11 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
     return isFormValid
   }
 
-  const trySubmitTheForm = () => {
+  const trySubmitTheForm = (opts = { validate: true }) => {
+    if (!opts.validate && submit) {
+      submit(mergeFormValues(state, initialValues))
+      return
+    }
     const canSubmit = tryValidateFormAndFields()
     if (canSubmit && submit) {
       submit(mergeFormValues(state, initialValues))

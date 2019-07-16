@@ -67,6 +67,14 @@ test('returns array of form props', () => {
   expect(actual).toMatchSnapshot()
 })
 
+test('can submit without validate when given the option', () => {
+  fieldProps.validate.mockReturnValue(false) // force validation to fail
+  const [, { submit }] = useForm({ fields, submit: submitWorker })
+  submit({ validate: false })
+  expect(submitWorker.mock.calls[0]).toMatchSnapshot()
+  expect(mergeFormValues.mock.calls[0]).toMatchSnapshot()
+})
+
 test('no submit if field validation fails', () => {
   fieldProps.validate.mockReturnValue(false)
 
