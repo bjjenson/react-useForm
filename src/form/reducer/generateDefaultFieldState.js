@@ -17,7 +17,6 @@ export const generateDefaultFieldState = (field, initialValues, options) => {
   return fromJS({
     initial: {
       type: field.type || 'text',
-      value,
       optional: field.optional || false,
       label,
     },
@@ -26,7 +25,8 @@ export const generateDefaultFieldState = (field, initialValues, options) => {
       error: false,
       pristine: true,
       touched: false,
-      value,
     },
   }).setIn(['initial', 'field'], field)
+    .setIn(['initial', 'value'], value)
+    .setIn(['current', 'value'], value)
 }

@@ -68,13 +68,13 @@ Immutable.Map {
         "first": Immutable.Map {
           "initial": Immutable.Map {
             "type": "text",
-            "value": "1",
             "optional": false,
             "label": "First",
             "field": Object {
               "label": "First",
               "name": "fieldName.items.0.fields.first",
             },
+            "value": "1",
           },
           "current": Immutable.Map {
             "helperText": "",
@@ -87,13 +87,13 @@ Immutable.Map {
         "second": Immutable.Map {
           "initial": Immutable.Map {
             "type": "text",
-            "value": "2",
             "optional": false,
             "label": "Second",
             "field": Object {
               "label": "Second",
               "name": "fieldName.items.0.fields.second",
             },
+            "value": "2",
           },
           "current": Immutable.Map {
             "helperText": "",
@@ -110,13 +110,13 @@ Immutable.Map {
         "first": Immutable.Map {
           "initial": Immutable.Map {
             "type": "text",
-            "value": "10",
             "optional": false,
             "label": "First",
             "field": Object {
               "label": "First",
               "name": "fieldName.items.1.fields.first",
             },
+            "value": "10",
           },
           "current": Immutable.Map {
             "helperText": "",
@@ -129,13 +129,13 @@ Immutable.Map {
         "second": Immutable.Map {
           "initial": Immutable.Map {
             "type": "text",
-            "value": "20",
             "optional": false,
             "label": "Second",
             "field": Object {
               "label": "Second",
               "name": "fieldName.items.1.fields.second",
             },
+            "value": "20",
           },
           "current": Immutable.Map {
             "helperText": "",
@@ -193,13 +193,13 @@ Immutable.Map {
         "first": Immutable.Map {
           "initial": Immutable.Map {
             "type": "text",
-            "value": "1",
             "optional": false,
             "label": "First",
             "field": Object {
               "label": "First",
               "name": "fieldName.items.0.fields.first",
             },
+            "value": "1",
           },
           "current": Immutable.Map {
             "helperText": "",
@@ -239,13 +239,13 @@ Immutable.Map {
                 "nestedName": Immutable.Map {
                   "initial": Immutable.Map {
                     "type": "text",
-                    "value": "nested name 1",
                     "optional": false,
                     "label": "nestedList",
                     "field": Object {
                       "label": "nestedList",
                       "name": "fieldName.items.0.fields.second.items.0.fields.nestedName",
                     },
+                    "value": "nested name 1",
                   },
                   "current": Immutable.Map {
                     "helperText": "",
@@ -266,13 +266,13 @@ Immutable.Map {
         "first": Immutable.Map {
           "initial": Immutable.Map {
             "type": "text",
-            "value": "10",
             "optional": false,
             "label": "First",
             "field": Object {
               "label": "First",
               "name": "fieldName.items.1.fields.first",
             },
+            "value": "10",
           },
           "current": Immutable.Map {
             "helperText": "",
@@ -312,13 +312,13 @@ Immutable.Map {
                 "nestedName": Immutable.Map {
                   "initial": Immutable.Map {
                     "type": "text",
-                    "value": "nested name 10.A",
                     "optional": false,
                     "label": "nestedList",
                     "field": Object {
                       "label": "nestedList",
                       "name": "fieldName.items.1.fields.second.items.0.fields.nestedName",
                     },
+                    "value": "nested name 10.A",
                   },
                   "current": Immutable.Map {
                     "helperText": "",
@@ -335,13 +335,13 @@ Immutable.Map {
                 "nestedName": Immutable.Map {
                   "initial": Immutable.Map {
                     "type": "text",
-                    "value": "nested name 10.B",
                     "optional": false,
                     "label": "nestedList",
                     "field": Object {
                       "label": "nestedList",
                       "name": "fieldName.items.1.fields.second.items.1.fields.nestedName",
                     },
+                    "value": "nested name 10.B",
                   },
                   "current": Immutable.Map {
                     "helperText": "",

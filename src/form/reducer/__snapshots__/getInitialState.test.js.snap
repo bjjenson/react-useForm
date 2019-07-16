@@ -6,13 +6,13 @@ Immutable.Map {
     "first": Immutable.Map {
       "initial": Immutable.Map {
         "type": "text",
-        "value": "firstValue",
         "optional": false,
         "label": "First",
         "field": Object {
           "label": "First",
           "name": "first",
         },
+        "value": "firstValue",
       },
       "current": Immutable.Map {
         "helperText": "",
@@ -25,7 +25,6 @@ Immutable.Map {
     "second": Immutable.Map {
       "initial": Immutable.Map {
         "type": "boolean",
-        "value": "secondValue",
         "optional": false,
         "label": "Second",
         "field": Object {
@@ -33,6 +32,7 @@ Immutable.Map {
           "name": "second",
           "type": "boolean",
         },
+        "value": "secondValue",
       },
       "current": Immutable.Map {
         "helperText": "",
@@ -61,7 +61,6 @@ Immutable.Map {
     "first": Immutable.Map {
       "initial": Immutable.Map {
         "type": "text",
-        "value": "firstValue",
         "optional": false,
         "label": "First",
         "field": Object {
@@ -69,6 +68,7 @@ Immutable.Map {
           "label": "First",
           "name": "first",
         },
+        "value": "firstValue",
       },
       "current": Immutable.Map {
         "helperText": "i am helper",
@@ -81,7 +81,6 @@ Immutable.Map {
     "second": Immutable.Map {
       "initial": Immutable.Map {
         "type": "boolean",
-        "value": "secondValue",
         "optional": false,
         "label": "Second",
         "field": Object {
@@ -89,6 +88,7 @@ Immutable.Map {
           "name": "second",
           "type": "boolean",
         },
+        "value": "secondValue",
       },
       "current": Immutable.Map {
         "helperText": "",
@@ -108,13 +108,13 @@ Immutable.Map {
     "first": Immutable.Map {
       "initial": Immutable.Map {
         "type": "boolean",
-        "value": false,
         "optional": false,
         "label": undefined,
         "field": Object {
           "name": "first",
           "type": "boolean",
         },
+        "value": false,
       },
       "current": Immutable.Map {
         "helperText": "",
@@ -134,7 +134,6 @@ Immutable.Map {
     "first": Immutable.Map {
       "initial": Immutable.Map {
         "type": "text",
-        "value": "i am field value",
         "optional": false,
         "label": undefined,
         "field": Object {
@@ -142,6 +141,7 @@ Immutable.Map {
           "type": "text",
           "value": "i am field value",
         },
+        "value": "i am field value",
       },
       "current": Immutable.Map {
         "helperText": "",
@@ -187,13 +187,13 @@ Immutable.Map {
     "first": Immutable.Map {
       "initial": Immutable.Map {
         "type": "number",
-        "value": 0,
         "optional": false,
         "label": undefined,
         "field": Object {
           "name": "first",
           "type": "number",
         },
+        "value": 0,
       },
       "current": Immutable.Map {
         "helperText": "",
@@ -213,13 +213,13 @@ Immutable.Map {
     "first": Immutable.Map {
       "initial": Immutable.Map {
         "type": "select",
-        "value": "",
         "optional": false,
         "label": undefined,
         "field": Object {
           "name": "first",
           "type": "select",
         },
+        "value": "",
       },
       "current": Immutable.Map {
         "helperText": "",
@@ -239,13 +239,13 @@ Immutable.Map {
     "first": Immutable.Map {
       "initial": Immutable.Map {
         "type": "text",
-        "value": "",
         "optional": false,
         "label": undefined,
         "field": Object {
           "name": "first",
           "type": "text",
         },
+        "value": "",
       },
       "current": Immutable.Map {
         "helperText": "",
@@ -265,13 +265,13 @@ Immutable.Map {
     "first": Immutable.Map {
       "initial": Immutable.Map {
         "type": "text",
-        "value": "firstValue",
         "optional": false,
         "label": "First",
         "field": Object {
           "label": "First",
           "name": "first",
         },
+        "value": "firstValue",
       },
       "current": Immutable.Map {
         "helperText": "",
@@ -284,7 +284,6 @@ Immutable.Map {
     "second": Immutable.Map {
       "initial": Immutable.Map {
         "type": "boolean",
-        "value": "secondValue",
         "optional": false,
         "label": "Second",
         "field": Object {
@@ -292,6 +291,7 @@ Immutable.Map {
           "name": "second",
           "type": "boolean",
         },
+        "value": "secondValue",
       },
       "current": Immutable.Map {
         "helperText": "",
@@ -311,13 +311,13 @@ Immutable.Map {
     "nested.first": Immutable.Map {
       "initial": Immutable.Map {
         "type": "text",
-        "value": "nestedValue",
         "optional": false,
         "label": "First",
         "field": Object {
           "label": "First",
           "name": "nested.first",
         },
+        "value": "nestedValue",
       },
       "current": Immutable.Map {
         "helperText": "",
@@ -337,7 +337,6 @@ Immutable.Map {
     "first": Immutable.Map {
       "initial": Immutable.Map {
         "type": "text",
-        "value": "firstValue",
         "optional": true,
         "label": "First (optional)",
         "field": Object {
@@ -345,6 +344,7 @@ Immutable.Map {
           "name": "first",
           "optional": true,
         },
+        "value": "firstValue",
       },
       "current": Immutable.Map {
         "helperText": "",
@@ -357,7 +357,6 @@ Immutable.Map {
     "second": Immutable.Map {
       "initial": Immutable.Map {
         "type": "boolean",
-        "value": "secondValue",
         "optional": false,
         "label": "Second",
         "field": Object {
@@ -365,6 +364,7 @@ Immutable.Map {
           "name": "second",
           "type": "boolean",
         },
+        "value": "secondValue",
       },
       "current": Immutable.Map {
         "helperText": "",
@@ -384,7 +384,6 @@ Immutable.Map {
     "first": Immutable.Map {
       "initial": Immutable.Map {
         "type": "text",
-        "value": "firstValue",
         "optional": true,
         "label": "label formatted",
         "field": Object {
@@ -392,6 +391,7 @@ Immutable.Map {
           "name": "first",
           "optional": true,
         },
+        "value": "firstValue",
       },
       "current": Immutable.Map {
         "helperText": "",
@@ -404,7 +404,6 @@ Immutable.Map {
     "second": Immutable.Map {
       "initial": Immutable.Map {
         "type": "boolean",
-        "value": "secondValue",
         "optional": false,
         "label": "Second",
         "field": Object {
@@ -412,6 +411,7 @@ Immutable.Map {
           "name": "second",
           "type": "boolean",
         },
+        "value": "secondValue",
       },
       "current": Immutable.Map {
         "helperText": "",

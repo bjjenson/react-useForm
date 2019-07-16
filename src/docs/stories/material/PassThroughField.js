@@ -14,7 +14,7 @@ const PassThroughField = ({ submit }) => {
     ],
     submit,
   })
-
+  console.log('ff', fields)
   return (
     <form.Form>
       <Flexbox flexDirection='column'>

@@ -9,13 +9,13 @@ Array [
         "first": Immutable.Map {
           "initial": Immutable.Map {
             "type": "text",
-            "value": "",
             "optional": false,
             "label": "First",
             "field": Object {
               "label": "First",
               "name": "fieldName.items.1.fields.first",
             },
+            "value": "",
           },
           "current": Immutable.Map {
             "helperText": "",
@@ -41,13 +41,13 @@ Array [
         "first": Immutable.Map {
           "initial": Immutable.Map {
             "type": "text",
-            "value": "111",
             "optional": false,
             "label": "First",
             "field": Object {
               "label": "First",
               "name": "fieldName.items.1.fields.first",
             },
+            "value": "111",
           },
           "current": Immutable.Map {
             "helperText": "",

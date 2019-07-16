@@ -48,7 +48,7 @@ export const useListField = (state, dispatch, fieldArgs = {}) => {
 
   const fieldData = state.getIn(['items'], List()).map(item => {
     return resolveFieldData(item, dispatch)
-  }).toJS()
+  }).toArray()
 
   return {
     props: {
