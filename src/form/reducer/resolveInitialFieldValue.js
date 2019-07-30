@@ -13,10 +13,10 @@ const defaultValues = {
 }
 
 export const resolveInitialFieldValue = (fieldValue, initialValue, type = 'text') => {
-  if (initialValue) {
+  if (initialValue !== undefined) {
     return initialValue
   }
-  if (fieldValue) {
+  if (fieldValue !== undefined) {
     return fieldValue
   }
 
