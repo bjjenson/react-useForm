@@ -39,7 +39,7 @@ Array [
 exports[`prepares initialState by field 3`] = `
 Array [
   [Function],
-  "initial-state",
+  Immutable.Map {},
   [Function],
 ]
 `;

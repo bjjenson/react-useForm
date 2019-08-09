@@ -35,6 +35,7 @@ beforeEach(() => {
 
 test('prepares initialState by field', () => {
   expect(createReducer({ fields, initialValues })).toMatchSnapshot()
+  useReducer.mock.calls[0][2]()
   expect(getInitialState.mock.calls[0]).toMatchSnapshot()
   expect(useReducer.mock.calls[0]).toMatchSnapshot()
 })

@@ -1,22 +1,23 @@
 import { Map } from 'immutable'
 import { useReducer, useMemo } from 'react'
-import { fieldReducer, initState, actions } from './fieldReducer'
+import { fieldReducer, actions } from './fieldReducer'
 import { getInitialState } from './getInitialState'
 
 export const createReducer = ({ fields, options = {}, initialValues = Map() }) => {
-  const derivedState = getInitialState(fields, initialValues, options)
-  const [state, dispatch] = useReducer(fieldReducer, derivedState, initState)
+  const calcInitialState = () => {
+    return getInitialState(fields, initialValues, options)
+  }
+  const [state, dispatch] = useReducer(fieldReducer, Map(), () => {
+    return calcInitialState()
+  })
 
   const json = JSON.stringify(initialValues.toJS())
   useMemo(() => {
     setTimeout(() => {
-      dispatch(actions.reset(derivedState))
+      dispatch(actions.reset(calcInitialState()))
     })
     return json
   }, [json])
 
   return [state, dispatch]
 }
-
-
-
