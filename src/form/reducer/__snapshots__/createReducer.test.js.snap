@@ -57,7 +57,7 @@ exports[`uses memo to check for initialValues change 1`] = `
 Array [
   [Function],
   Array [
-    "{\\"first\\":\\"firstValue\\",\\"second\\":\\"secondValue\\"}",
+    256481347,
   ],
 ]
 `;

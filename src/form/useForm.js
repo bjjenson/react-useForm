@@ -1,9 +1,9 @@
-import { useCallback } from 'react'
+import { useCallback, useRef } from 'react'
 import { Map } from 'immutable'
 import { Form } from './Form'
 import { createReducer } from './reducer/createReducer'
 import { generateDefaultFieldState } from './reducer/generateDefaultFieldState'
-import { actions } from './reducer/fieldReducer'
+import { actions, fieldsKey } from './reducer/fieldReducer'
 import { getInitialState } from './reducer/getInitialState'
 import { resolveFieldData, getFieldValues, getFieldProps } from './resolveFieldData'
 import { mergeFormValues } from './helpers/mergeFormValues'
@@ -14,8 +14,20 @@ import { formStateResolvers } from './formStateResolvers'
  */
 export const useForm = ({ fields, submit, validate, options = {}, initialValues = Map() }) => {
   const [state, dispatch] = createReducer({ fields, initialValues, options })
+  const fieldCache = useRef()
 
-  const fieldData = resolveFieldData(state, dispatch)
+  let fieldData
+  const lastField = state.get('lastField')
+
+  if (!lastField) {
+    fieldData = resolveFieldData(state, dispatch)
+  } else {
+    fieldData = fieldCache.current
+    fieldData[lastField] = resolveFieldData(Map().setIn([fieldsKey, lastField], state.getIn([fieldsKey, lastField])), dispatch)[lastField]
+  }
+
+  fieldCache.current = fieldData
+
   const stateResolvers = formStateResolvers(state)
 
   const addField = field => {

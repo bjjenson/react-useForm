@@ -94,7 +94,7 @@ export const fieldReducer = (state, { type, fieldName = '', payload }) => {
 
   const handler = handlers[type]
   if (handler) {
-    return handler(payload)
+    return handler(payload).set('lastField', getTopFieldName(fieldName))
   }
   return state
 }
@@ -108,4 +108,13 @@ export const getFieldPath = fieldName => {
     fieldPath = [firstField, ...rest.split('.')]
   }
   return fieldPath
+}
+
+const getTopFieldName = fieldName => {
+  const match = fieldName.match(/.items.(\d)./)
+  if (match) {
+    const firstField = fieldName.substr(0, match.index)
+    return firstField
+  }
+  return fieldName
 }

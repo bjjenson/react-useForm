@@ -1,4 +1,4 @@
-import { useCallback } from 'react'
+import { useCallback, useRef } from 'react'
 import { fromJS } from 'immutable'
 import { useForm } from './useForm'
 import { useFormField } from './fields/useFormField'
@@ -28,7 +28,7 @@ const createState = fields => fromJS(fields.reduce((acc, field) => {
   return acc
 }, { fields: {} }))
 
-let fields, fieldProps, initialValues
+let fields, fieldProps, initialValues, formRef
 
 beforeEach(() => {
   fields = [
@@ -47,6 +47,10 @@ beforeEach(() => {
     id: 'id',
   })
 
+  formRef = {
+    current: undefined,
+  }
+
   fieldProps.validate.mockReturnValue(true)
 
   useFormField.mockImplementation((state) => ({
@@ -60,6 +64,7 @@ beforeEach(() => {
   mergeFormValues.mockReturnValue('merged form values')
   getInitialState.mockReturnValue('derived-initial-state')
   useCallback.mockImplementation(f => f)
+  useRef.mockReturnValue(formRef)
 })
 
 test('returns array of form props', () => {

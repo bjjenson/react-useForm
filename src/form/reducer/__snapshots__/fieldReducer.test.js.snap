@@ -34,6 +34,7 @@ Immutable.Map {
       [MockFunction],
     ],
   },
+  "lastField": "name",
 }
 `;
 
@@ -70,6 +71,7 @@ Immutable.Map {
       [MockFunction],
     ],
   },
+  "lastField": "name",
 }
 `;
 
@@ -119,6 +121,7 @@ Immutable.Map {
       },
     ],
   },
+  "lastField": "field-name",
 }
 `;
 
@@ -178,6 +181,7 @@ Immutable.Map {
       },
     },
   },
+  "lastField": "newField",
 }
 `;
 
@@ -218,6 +222,7 @@ Immutable.Map {
     },
   },
   "removedFields": Immutable.List [],
+  "lastField": "newField",
 }
 `;
 
@@ -281,6 +286,7 @@ Immutable.Map {
       },
     },
   },
+  "lastField": "data.listField",
 }
 `;
 
@@ -305,6 +311,7 @@ Immutable.Map {
       },
     },
   },
+  "lastField": "data.listField",
 }
 `;
 
@@ -375,6 +382,7 @@ Immutable.Map {
       },
     },
   },
+  "lastField": "data.listField",
 }
 `;
 
@@ -415,6 +423,7 @@ Immutable.Map {
       },
     },
   },
+  "lastField": "data.listField",
 }
 `;
 
@@ -434,6 +443,7 @@ Immutable.Map {
       },
     },
   },
+  "lastField": "parent.nested",
 }
 `;
 
@@ -465,6 +475,7 @@ Immutable.Map {
       },
     },
   },
+  "lastField": "field-name",
 }
 `;
 
@@ -501,6 +512,7 @@ Immutable.Map {
       "pristine": false,
     },
   },
+  "lastField": "field-name",
 }
 `;
 
@@ -523,6 +535,7 @@ Immutable.Map {
   "removedFields": Immutable.List [
     "field-name",
   ],
+  "lastField": "field-name",
 }
 `;
 
@@ -554,6 +567,7 @@ Immutable.Map {
       },
     },
   },
+  "lastField": "field-name",
 }
 `;
 
@@ -585,6 +599,7 @@ Immutable.Map {
       },
     },
   },
+  "lastField": "field-name",
 }
 `;
 
@@ -616,5 +631,6 @@ Immutable.Map {
       },
     },
   },
+  "lastField": "field-name",
 }
 `;

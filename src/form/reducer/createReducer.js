@@ -11,13 +11,11 @@ export const createReducer = ({ fields, options = {}, initialValues = Map() }) =
     return calcInitialState()
   })
 
-  const json = JSON.stringify(initialValues.toJS())
   useMemo(() => {
     setTimeout(() => {
       dispatch(actions.reset(calcInitialState()))
     })
-    return json
-  }, [json])
+  }, [initialValues.hashCode()])
 
   return [state, dispatch]
 }

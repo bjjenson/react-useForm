@@ -1,4 +1,4 @@
-import { useCallback } from 'react'
+import { useCallback, useRef } from 'react'
 import { fromJS } from 'immutable'
 import { useForm } from './useForm'
 import {
@@ -16,8 +16,12 @@ jest.mock('./reducer/createReducer')
 
 const setValue = jest.fn()
 
-let fieldProps
+let fieldProps, formRef
 beforeEach(() => {
+  formRef = {
+    current: undefined,
+  }
+
   fieldProps = {
     props: {},
     setValue,
@@ -38,6 +42,7 @@ beforeEach(() => {
 
   })
   useCallback.mockImplementation(f => f)
+  useRef.mockReturnValue(formRef)
 
   createReducer.mockImplementation(({ fields }) => {
     return [createState(fields[0].type || 'text'), 'dispatch']
