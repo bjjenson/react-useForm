@@ -10,11 +10,11 @@ const PassThroughField = ({ submit }) => {
     fields: [
       { name: 'fullName', label: 'Full Name' },
       { name: 'nickname', label: 'Nickname' },
-      { name: 'nested.colors', label: 'Favorite Colors', type: 'object', valueFromChange: v => v, value: fromJS(['Red']) },
+      { name: 'nested.colors', label: 'Favorite Colors', type: 'object', value: fromJS(['Red']) },
     ],
     submit,
   })
-  console.log('ff', fields)
+
   return (
     <form.Form>
       <Flexbox flexDirection='column'>

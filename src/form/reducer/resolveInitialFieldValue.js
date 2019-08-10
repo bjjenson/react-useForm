@@ -3,6 +3,7 @@ import { defaultSelectValue } from '../fields/useSelectField'
 import { defaultNumberValue } from '../fields/useNumberField'
 import { defaultBooleanValue } from '../fields/useBooleanField'
 import { defaultListValue } from '../fields/useListField'
+import { defaultObjectValue } from '../fields/useObjectField'
 
 const defaultValues = {
   text: defaultTextValue,
@@ -10,6 +11,7 @@ const defaultValues = {
   number: defaultNumberValue,
   boolean: defaultBooleanValue,
   list: defaultListValue,
+  object: defaultObjectValue,
 }
 
 export const resolveInitialFieldValue = (fieldValue, initialValue, type = 'text') => {

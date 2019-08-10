@@ -6,12 +6,12 @@ import {
   useListField,
   useSelectField,
   useTextField,
+  useObjectField,
 } from './fields'
 
 export const resolveFieldData = (state, dispatch) => {
-  const fieldData = state.get(fieldsKey, Map()).keySeq().reduce((acc, fieldName) => {
-    const fieldState = state.getIn([fieldsKey, fieldName])
-      .set('getAllValues', () => getFieldValues(fieldData))
+  const fieldData = state.get(fieldsKey, Map()).entrySeq().reduce((acc, [fieldName, current]) => {
+    const fieldState = current.set('getAllValues', () => getFieldValues(fieldData))
 
     const fieldType = state.getIn([fieldsKey, fieldName, 'initial', 'type'])
     const field = state.getIn([fieldsKey, fieldName, 'initial', 'field'])
@@ -27,6 +27,9 @@ export const resolveFieldData = (state, dispatch) => {
         break
       case 'list':
         acc[fieldName] = useListField(fieldState, dispatch, field)
+        break
+      case 'object':
+        acc[fieldName] = useObjectField(fieldState, dispatch, field)
         break
       case 'text':
       default:
