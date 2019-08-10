@@ -13,32 +13,30 @@ export const resolveFieldData = (state, dispatch) => {
   const fieldData = state.get(fieldsKey, Map()).entrySeq().reduce((acc, [fieldName, current]) => {
     const fieldState = current.set('getAllValues', () => getFieldValues(fieldData))
 
-    const fieldType = state.getIn([fieldsKey, fieldName, 'initial', 'type'])
-    const field = state.getIn([fieldsKey, fieldName, 'initial', 'field'])
-    switch (fieldType) {
-      case 'select':
-        acc[fieldName] = useSelectField(fieldState, dispatch, field)
-        break
-      case 'boolean':
-        acc[fieldName] = useBooleanField(fieldState, dispatch, field)
-        break
-      case 'number':
-        acc[fieldName] = useNumberField(fieldState, dispatch, field)
-        break
-      case 'list':
-        acc[fieldName] = useListField(fieldState, dispatch, field)
-        break
-      case 'object':
-        acc[fieldName] = useObjectField(fieldState, dispatch, field)
-        break
-      case 'text':
-      default:
-        acc[fieldName] = useTextField(fieldState, dispatch, field)
-        break
-    }
+    acc[fieldName] = resolveField(fieldState, dispatch)
     return acc
   }, {})
   return fieldData
+}
+
+export const resolveField = (fieldState, dispatch) => {
+  const field = fieldState.getIn(['initial', 'field'])
+  const fieldType = fieldState.getIn(['initial', 'type'])
+  switch (fieldType) {
+    case 'select':
+      return useSelectField(fieldState, dispatch, field)
+    case 'boolean':
+      return useBooleanField(fieldState, dispatch, field)
+    case 'number':
+      return useNumberField(fieldState, dispatch, field)
+    case 'list':
+      return useListField(fieldState, dispatch, field)
+    case 'object':
+      return useObjectField(fieldState, dispatch, field)
+    case 'text':
+    default:
+      return useTextField(fieldState, dispatch, field)
+  }
 }
 
 export const getFieldValues = (fieldData) => {

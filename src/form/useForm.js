@@ -5,9 +5,10 @@ import { createReducer } from './reducer/createReducer'
 import { generateDefaultFieldState } from './reducer/generateDefaultFieldState'
 import { actions, fieldsKey } from './reducer/fieldReducer'
 import { getInitialState } from './reducer/getInitialState'
-import { resolveFieldData, getFieldValues, getFieldProps } from './resolveFieldData'
+import { resolveFieldData, resolveField, getFieldValues, getFieldProps } from './resolveFieldData'
 import { mergeFormValues } from './helpers/mergeFormValues'
 import { formStateResolvers } from './formStateResolvers'
+import { setPropsAtPath } from './helpers/setPropsAtPath'
 
 /**
  * @param  param0 { import("./useForm").IFormProps }
@@ -17,13 +18,19 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
   const fieldCache = useRef()
 
   let fieldData
-  const lastField = state.get('lastField')
+  const lastPath = state.get('lastPath')
 
-  if (!lastField) {
+  const t0 = performance.now()
+  if (!lastPath || lastPath.length === 0 || lastPath[0] === '') {
     fieldData = resolveFieldData(state, dispatch)
   } else {
+    const path = [fieldsKey, ...lastPath]
+    const props = resolveField(state.getIn(path), dispatch)
     fieldData = fieldCache.current
-    fieldData[lastField] = resolveFieldData(Map().setIn([fieldsKey, lastField], state.getIn([fieldsKey, lastField])), dispatch)[lastField]
+    setPropsAtPath(fieldData, props, lastPath)
+  }
+  if (options.logPerformance) {
+    console.log('Perf:resolveFieldData', (performance.now() - t0))
   }
 
   fieldCache.current = fieldData

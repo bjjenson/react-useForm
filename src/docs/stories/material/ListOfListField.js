@@ -35,6 +35,9 @@ const ListField = ({ submit }) => {
     ],
     submit,
     initialValues,
+    options: {
+      logPerformance: true,
+    },
   })
 
   return (
@@ -53,6 +56,7 @@ const ListField = ({ submit }) => {
                 {item.shades.items.map((shade) => (
                   <TextField key={shade.key} {...shade.shade} />
                 ))}
+                <Button onClick={() => item.shades.add()}>Add Shade</Button>
               </Flexbox>
               <Button onClick={() => fields.colors.remove(index)}>X</Button>
             </Flexbox>

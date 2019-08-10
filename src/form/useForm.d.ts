@@ -64,6 +64,7 @@ export interface OptionListeners {
 export interface IFormOptions {
   optionalLabelFormatter?: (label: String) => String
   listeners: OptionListeners
+  logPerformance: boolean,
 }
 
 export interface IFormStateResolvers {

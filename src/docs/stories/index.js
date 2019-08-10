@@ -63,7 +63,7 @@ storiesOf('Material-UI', module)
   .add('Initial values passed into form', () => <InitialValuesSet initialValues={fromJS({ fullName: 'Samuel Tarley', nickname: 'Sam' })} {...submitLog('InitialValuesSet')} />)
   .add('Initial values lazy loaded', () => (
     <BrixProvider value={Map()}>
-      <InitialValuesAsync />
+      <InitialValuesAsync {...submitLog('InitialValues Lazy loaded')} />
     </BrixProvider>
   ))
   .add('Dynamic fields', () => <DynamicFields {...submitLog('DynamicFields')} />)

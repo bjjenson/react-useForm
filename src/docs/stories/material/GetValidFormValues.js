@@ -23,12 +23,12 @@ const GetValidFormValues = ({ submit }) => {
         type='submit'
         onClick={() => {
           const values = form.getValuesIfFormValid()
-          submit(values || Map())
+          submit(values || Map([['valid', 'not!']]))
         }}
       >
-        Submit
+        Get Values if form is valid
       </Button>
-    </form.Form>
+    </form.Form >
   )
 }
 

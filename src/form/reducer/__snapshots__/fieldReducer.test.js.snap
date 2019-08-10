@@ -34,7 +34,9 @@ Immutable.Map {
       [MockFunction],
     ],
   },
-  "lastField": "name",
+  "lastPath": Array [
+    "name",
+  ],
 }
 `;
 
@@ -71,7 +73,9 @@ Immutable.Map {
       [MockFunction],
     ],
   },
-  "lastField": "name",
+  "lastPath": Array [
+    "name",
+  ],
 }
 `;
 
@@ -121,7 +125,9 @@ Immutable.Map {
       },
     ],
   },
-  "lastField": "field-name",
+  "lastPath": Array [
+    "field-name",
+  ],
 }
 `;
 
@@ -181,7 +187,9 @@ Immutable.Map {
       },
     },
   },
-  "lastField": "newField",
+  "lastPath": Array [
+    "newField",
+  ],
 }
 `;
 
@@ -222,7 +230,9 @@ Immutable.Map {
     },
   },
   "removedFields": Immutable.List [],
-  "lastField": "newField",
+  "lastPath": Array [
+    "newField",
+  ],
 }
 `;
 
@@ -286,7 +296,9 @@ Immutable.Map {
       },
     },
   },
-  "lastField": "data.listField",
+  "lastPath": Array [
+    "data.listField",
+  ],
 }
 `;
 
@@ -311,7 +323,9 @@ Immutable.Map {
       },
     },
   },
-  "lastField": "data.listField",
+  "lastPath": Array [
+    "data.listField",
+  ],
 }
 `;
 
@@ -382,7 +396,13 @@ Immutable.Map {
       },
     },
   },
-  "lastField": "data.listField",
+  "lastPath": Array [
+    "data.listField",
+    "items",
+    "1",
+    "fields",
+    "field-name",
+  ],
 }
 `;
 
@@ -423,7 +443,13 @@ Immutable.Map {
       },
     },
   },
-  "lastField": "data.listField",
+  "lastPath": Array [
+    "data.listField",
+    "items",
+    "1",
+    "fields",
+    "field-name",
+  ],
 }
 `;
 
@@ -443,7 +469,9 @@ Immutable.Map {
       },
     },
   },
-  "lastField": "parent.nested",
+  "lastPath": Array [
+    "parent.nested",
+  ],
 }
 `;
 
@@ -475,7 +503,9 @@ Immutable.Map {
       },
     },
   },
-  "lastField": "field-name",
+  "lastPath": Array [
+    "field-name",
+  ],
 }
 `;
 
@@ -512,7 +542,9 @@ Immutable.Map {
       "pristine": false,
     },
   },
-  "lastField": "field-name",
+  "lastPath": Array [
+    "field-name",
+  ],
 }
 `;
 
@@ -535,7 +567,9 @@ Immutable.Map {
   "removedFields": Immutable.List [
     "field-name",
   ],
-  "lastField": "field-name",
+  "lastPath": Array [
+    "field-name",
+  ],
 }
 `;
 
@@ -567,7 +601,9 @@ Immutable.Map {
       },
     },
   },
-  "lastField": "field-name",
+  "lastPath": Array [
+    "field-name",
+  ],
 }
 `;
 
@@ -599,7 +635,9 @@ Immutable.Map {
       },
     },
   },
-  "lastField": "field-name",
+  "lastPath": Array [
+    "field-name",
+  ],
 }
 `;
 
@@ -631,6 +669,6 @@ Immutable.Map {
       },
     },
   },
-  "lastField": "field-name",
+  "lastPath": Array [],
 }
 `;

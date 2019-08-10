@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic path 1`] = `
+Object {
+  "f0": Object {
+    "props": Object {
+      "meta": "meta",
+      "prop1": "prop1",
+    },
+  },
+}
+`;
+
+exports[`nested path 1`] = `
+Object {
+  "f0": Object {
+    "f1": Object {
+      "props": Object {
+        "meta": "meta",
+        "prop1": "prop1",
+      },
+    },
+  },
+}
+`;
+
+exports[`path with items 1`] = `
+Object {
+  "f0": Object {
+    "f1": Object {
+      "props": Object {
+        "items": Array [
+          Object {
+            "f3": Object {
+              "meta": "meta",
+              "prop1": "prop1",
+            },
+          },
+        ],
+      },
+    },
+  },
+}
+`;
+
+exports[`path with items with items 1`] = `
+Object {
+  "f0": Object {
+    "f1": Object {
+      "props": Object {
+        "items": Array [
+          Object {
+            "f3": Object {
+              "items": Array [
+                Object {
+                  "f4": Object {},
+                },
+                Object {
+                  "f4": Object {
+                    "meta": "meta",
+                    "prop1": "prop1",
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  },
+}
+`;

@@ -41,11 +41,11 @@ const InitialValuesAsyncLoader = withBoundary(<div>loading initial values</div>)
   )
 })
 
-const InitialValuesAsync = () => {
+const InitialValuesAsync = (props) => {
   const [show, setShow] = React.useState(false)
 
   return show ?
-    <InitialValuesAsyncLoader />
+    <InitialValuesAsyncLoader {...props} />
     :
     <Button onClick={() => setShow(!show)} >Begin Loading</Button>
 }
