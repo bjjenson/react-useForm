@@ -32,8 +32,7 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
 
   const addField = field => {
     const fieldState = generateDefaultFieldState(field, initialValues, options)
-    const newbie = dispatch(actions.insertField(field.name, fieldState))
-    console.log('new', newbie)
+    dispatch(actions.insertField(field.name, fieldState))
   }
 
   const removeField = fieldName => {

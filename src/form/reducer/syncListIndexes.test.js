@@ -20,6 +20,29 @@ beforeEach(() => {
                   },
                 },
                 second: {
+                  items: [
+                    {
+                      fields: {
+                        shade: {
+                          initial: {
+                            field: {
+                              name: 'nested.data.items.1.fields.second.items.3.fields.shade',
+                            },
+                          },
+                        },
+                      },
+                    }, {
+                      fields: {
+                        shade: {
+                          initial: {
+                            field: {
+                              name: 'nested.data.items.1.fields.second.items.5.fields.shade',
+                            },
+                          },
+                        },
+                      },
+                    },
+                  ],
                   initial: {
                     field: {
                       name: 'nested.data.items.1.fields.second',

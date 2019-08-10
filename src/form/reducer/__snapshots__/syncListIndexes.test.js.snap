@@ -16,6 +16,30 @@ Immutable.Map {
                 },
               },
               "second": Immutable.Map {
+                "items": Immutable.List [
+                  Immutable.Map {
+                    "fields": Immutable.Map {
+                      "shade": Immutable.Map {
+                        "initial": Immutable.Map {
+                          "field": Immutable.Map {
+                            "name": "nested.data.items.0.fields.second.items.0.fields.shade",
+                          },
+                        },
+                      },
+                    },
+                  },
+                  Immutable.Map {
+                    "fields": Immutable.Map {
+                      "shade": Immutable.Map {
+                        "initial": Immutable.Map {
+                          "field": Immutable.Map {
+                            "name": "nested.data.items.0.fields.second.items.1.fields.shade",
+                          },
+                        },
+                      },
+                    },
+                  },
+                ],
                 "initial": Immutable.Map {
                   "field": Immutable.Map {
                     "name": "nested.data.items.0.fields.second",
