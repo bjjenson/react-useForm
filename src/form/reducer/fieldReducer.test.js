@@ -6,6 +6,7 @@ jest.mock('./syncListIndexes')
 
 jest.useFakeTimers()
 
+let nowFunc
 let state, fieldName
 beforeEach(() => {
   fieldName = 'field-name'
@@ -42,6 +43,15 @@ beforeEach(() => {
   setTimeout.mockImplementation(cb => {
     cb()
   })
+})
+
+beforeAll(() => {
+  nowFunc = performance.now
+  performance.now = () => 'now'
+})
+
+afterAll(() => {
+  performance.now = nowFunc
 })
 
 test('type not handled, return state', () => {

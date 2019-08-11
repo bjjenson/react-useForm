@@ -27,6 +27,7 @@ import { SimpleFormOptionalFields } from './material/OptionalField'
 import OnFieldChangedHandler from './material/OnFieldChangedHandler'
 import GetValidFormValues from './material/GetValidFormValues'
 import NumberFieldValidation from './material/NumberFieldValidation'
+import AddToListOnFieldChange from './material/AddToListOnFieldChange'
 
 const submitLog = name => {
   return {
@@ -60,6 +61,7 @@ storiesOf('Material-UI', module)
   .add('Object field', () => <PassThroughField {...submitLog('PassThroughField')} />)
   .add('List Field', () => <ListField {...submitLog('ListField')} />)
   .add('List of Lists Field', () => <ListOfListField {...submitLog('ListOfListField')} />)
+  .add('Modify list on field change', () => <AddToListOnFieldChange {...submitLog('Modify list on field change')} />)
   .add('Initial values passed into form', () => <InitialValuesSet initialValues={fromJS({ fullName: 'Samuel Tarley', nickname: 'Sam' })} {...submitLog('InitialValuesSet')} />)
   .add('Initial values lazy loaded', () => (
     <BrixProvider value={Map()}>
