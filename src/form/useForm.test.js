@@ -5,12 +5,14 @@ import { useFormField } from './fields/useFormField'
 import { createReducer } from './reducer/createReducer'
 import { mergeFormValues } from './helpers/mergeFormValues'
 import { getInitialState } from './reducer/getInitialState'
+import { getFieldState } from './reducer/getFieldState'
 
 jest.mock('react')
 jest.mock('./fields/useFormField')
 jest.mock('./reducer/createReducer')
 jest.mock('./helpers/mergeFormValues')
 jest.mock('./reducer/getInitialState')
+jest.mock('./reducer/getFieldState')
 
 const submitWorker = jest.fn()
 const dispatch = jest.fn()
@@ -172,5 +174,14 @@ test('removeFieldListener dispatches action', () => {
   const listener = 'myListener'
   removeFieldListener('formField', listener)
 
+  expect(dispatch.mock.calls[0]).toMatchSnapshot()
+})
+
+test('addField', () => {
+  getFieldState.mockReturnValue('i am a new field')
+  const [, { addField }] = useForm({ fields, initialValues })
+
+  addField({ name: 'newField', type: 'list' })
+  expect(getFieldState.mock.calls[0]).toMatchSnapshot()
   expect(dispatch.mock.calls[0]).toMatchSnapshot()
 })

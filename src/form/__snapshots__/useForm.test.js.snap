@@ -1,5 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`addField 1`] = `
+Array [
+  Object {
+    "name": "newField",
+    "type": "list",
+  },
+  Immutable.Map {
+    "nested": Immutable.Map {
+      "name": "old name",
+    },
+    "id": "id",
+  },
+  Object {},
+]
+`;
+
+exports[`addField 2`] = `
+Array [
+  Object {
+    "fieldName": "newField",
+    "payload": "i am a new field",
+    "type": "insertField",
+  },
+]
+`;
+
 exports[`addFieldListener dispatches action 1`] = `
 Array [
   Object {

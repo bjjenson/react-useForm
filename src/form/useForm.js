@@ -2,7 +2,7 @@ import { useCallback, useRef } from 'react'
 import { Map } from 'immutable'
 import { Form } from './Form'
 import { createReducer } from './reducer/createReducer'
-import { generateDefaultFieldState } from './reducer/generateDefaultFieldState'
+import { getFieldState } from './reducer/getFieldState'
 import { actions, fieldsKey } from './reducer/fieldReducer'
 import { getInitialState } from './reducer/getInitialState'
 import { resolveFieldData, resolveField, getFieldValues, getFieldProps } from './resolveFieldData'
@@ -38,7 +38,7 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
   const stateResolvers = formStateResolvers(state)
 
   const addField = field => {
-    const fieldState = generateDefaultFieldState(field, initialValues, options)
+    const fieldState = getFieldState(field, initialValues, options)
     dispatch(actions.insertField(field.name, fieldState))
   }
 
