@@ -94,17 +94,15 @@ export const fieldReducer = (state, { type, fieldName = '', payload }) => {
 
   const handler = handlers[type]
   if (handler) {
-    const now = performance.now()
+
     let lastPath = fieldPath
-    if (now - state.get('lastHit', 0) < 2 &&
-      !areArraysEqual(state.get('lastPath', []), lastPath)) {
+    if (!areArraysEqual(state.get('lastPath', []), lastPath)) {
       lastPath = []
     }
 
     const trackLastPath = type !== actionTypes.validationResult && type !== actionTypes.reset
     return handler(payload)
       .set('lastPath', trackLastPath ? lastPath : [])
-      .set('lastHit', now)
   }
   return state
 }

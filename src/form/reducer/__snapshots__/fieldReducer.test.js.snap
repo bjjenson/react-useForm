@@ -34,10 +34,7 @@ Immutable.Map {
       [MockFunction],
     ],
   },
-  "lastPath": Array [
-    "name",
-  ],
-  "lastHit": "now",
+  "lastPath": Array [],
 }
 `;
 
@@ -74,10 +71,7 @@ Immutable.Map {
       [MockFunction],
     ],
   },
-  "lastPath": Array [
-    "name",
-  ],
-  "lastHit": "now",
+  "lastPath": Array [],
 }
 `;
 
@@ -127,10 +121,7 @@ Immutable.Map {
       },
     ],
   },
-  "lastPath": Array [
-    "field-name",
-  ],
-  "lastHit": "now",
+  "lastPath": Array [],
 }
 `;
 
@@ -190,10 +181,7 @@ Immutable.Map {
       },
     },
   },
-  "lastPath": Array [
-    "newField",
-  ],
-  "lastHit": "now",
+  "lastPath": Array [],
 }
 `;
 
@@ -234,10 +222,7 @@ Immutable.Map {
     },
   },
   "removedFields": Immutable.List [],
-  "lastPath": Array [
-    "newField",
-  ],
-  "lastHit": "now",
+  "lastPath": Array [],
 }
 `;
 
@@ -301,10 +286,7 @@ Immutable.Map {
       },
     },
   },
-  "lastPath": Array [
-    "data.listField",
-  ],
-  "lastHit": "now",
+  "lastPath": Array [],
 }
 `;
 
@@ -329,10 +311,7 @@ Immutable.Map {
       },
     },
   },
-  "lastPath": Array [
-    "data.listField",
-  ],
-  "lastHit": "now",
+  "lastPath": Array [],
 }
 `;
 
@@ -403,14 +382,7 @@ Immutable.Map {
       },
     },
   },
-  "lastPath": Array [
-    "data.listField",
-    "items",
-    "1",
-    "fields",
-    "field-name",
-  ],
-  "lastHit": "now",
+  "lastPath": Array [],
 }
 `;
 
@@ -451,14 +423,7 @@ Immutable.Map {
       },
     },
   },
-  "lastPath": Array [
-    "data.listField",
-    "items",
-    "1",
-    "fields",
-    "field-name",
-  ],
-  "lastHit": "now",
+  "lastPath": Array [],
 }
 `;
 
@@ -478,10 +443,7 @@ Immutable.Map {
       },
     },
   },
-  "lastPath": Array [
-    "parent.nested",
-  ],
-  "lastHit": "now",
+  "lastPath": Array [],
 }
 `;
 
@@ -513,10 +475,7 @@ Immutable.Map {
       },
     },
   },
-  "lastPath": Array [
-    "field-name",
-  ],
-  "lastHit": "now",
+  "lastPath": Array [],
 }
 `;
 
@@ -553,10 +512,7 @@ Immutable.Map {
       "pristine": false,
     },
   },
-  "lastPath": Array [
-    "field-name",
-  ],
-  "lastHit": "now",
+  "lastPath": Array [],
 }
 `;
 
@@ -579,10 +535,7 @@ Immutable.Map {
   "removedFields": Immutable.List [
     "field-name",
   ],
-  "lastPath": Array [
-    "field-name",
-  ],
-  "lastHit": "now",
+  "lastPath": Array [],
 }
 `;
 
@@ -614,10 +567,7 @@ Immutable.Map {
       },
     },
   },
-  "lastPath": Array [
-    "field-name",
-  ],
-  "lastHit": "now",
+  "lastPath": Array [],
 }
 `;
 
@@ -649,10 +599,7 @@ Immutable.Map {
       },
     },
   },
-  "lastPath": Array [
-    "field-name",
-  ],
-  "lastHit": "now",
+  "lastPath": Array [],
 }
 `;
 
@@ -685,6 +632,5 @@ Immutable.Map {
     },
   },
   "lastPath": Array [],
-  "lastHit": "now",
 }
 `;
