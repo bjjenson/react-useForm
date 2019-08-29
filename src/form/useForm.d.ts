@@ -74,7 +74,7 @@ export interface IFormStateResolvers {
 
 export interface IForm extends IFormStateResolvers {
   Form: React.Component
-  submit: Function
+  submit: (skipValidation: Boolean) => void
   reset: Function
   setValue: (fieldName: String, value: any) => void
   getValuesIfFormValid: Function

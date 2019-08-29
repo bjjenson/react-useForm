@@ -85,9 +85,26 @@ test('no submit if field validation fails', () => {
 test('no submit if form validation fails', () => {
   const validateForm = jest.fn()
   validateForm.mockReturnValue({ name: 'i am error' })
-  const [, { submit }] = useForm({ fields, worker: submitWorker, validate: validateForm })
+  const [, { submit }] = useForm({ fields, submit: submitWorker, validate: validateForm })
   submit()
   expect(validateForm.mock.calls[0]).toMatchSnapshot()
+  expect(submitWorker).not.toHaveBeenCalled()
+})
+
+test('submit with skipValidation submits all values', () => {
+  const validateForm = jest.fn()
+  const [, { submit }] = useForm({ fields, submit: submitWorker, validate: validateForm })
+  submit(true)
+  expect(validateForm).not.toHaveBeenCalled()
+  expect(submitWorker).toHaveBeenCalled()
+})
+
+test('submit with skipValidation must be a boolean', () => {
+  const validateForm = jest.fn()
+  validateForm.mockReturnValue({ name: 'i am error' })
+  const [, { submit }] = useForm({ fields, submit: submitWorker, validate: validateForm })
+  submit('I am truthy')
+  expect(validateForm).toHaveBeenCalled()
   expect(submitWorker).not.toHaveBeenCalled()
 })
 
@@ -98,7 +115,7 @@ test('validate can be an array of validators', () => {
   validate2.mockReturnValue({ phone: 'i am phone error' })
   const values = { 'name': 'current value of name', 'phone': 'current value of phone' }
 
-  const [, { submit }] = useForm({ fields, worker: submitWorker, validate: [validate1, validate2] })
+  const [, { submit }] = useForm({ fields, submit: submitWorker, validate: [validate1, validate2] })
 
   submit()
   expect(validate1).toHaveBeenCalledWith(values)
@@ -122,7 +139,7 @@ test('valid form submits values ', () => {
 test('getValuesIfFormValid returns null if not valid', () => {
   const validateForm = jest.fn()
   validateForm.mockReturnValue({ name: 'i am error' })
-  const [, { getValuesIfFormValid }] = useForm({ fields, worker: submitWorker, validate: validateForm })
+  const [, { getValuesIfFormValid }] = useForm({ fields, submit: submitWorker, validate: validateForm })
 
   const values = getValuesIfFormValid()
 

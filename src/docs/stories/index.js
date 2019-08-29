@@ -23,6 +23,7 @@ import { PassThroughProps } from './material/PassThroughProps'
 import { RadioField } from './material/RadioField'
 import { SelectField } from './material/SelectField'
 import { SimpleForm } from './material/SimpleForm'
+import SaveNoValidate from './material/SaveNoValidate'
 import { SimpleFormOptionalFields } from './material/OptionalField'
 import OnFieldChangedHandler from './material/OnFieldChangedHandler'
 import GetValidFormValues from './material/GetValidFormValues'
@@ -54,6 +55,7 @@ storiesOf('Material-UI', module)
   .add('Field input normalize', () => <FieldNormalize {...submitLog('FieldNormalize')} />)
   .add('Custom Helper Text', () => <HelperText {...submitLog('HelperText')} />)
   .add('Custom Required Field Message', () => <CustomRequiredMessage {...submitLog('CustomRequiredMessage')} />)
+  .add('Save without validation', () => <SaveNoValidate {...submitLog('SaveNoValidate')} />)
   .add('Boolean field', () => <BooleanToggle {...submitLog('BooleanToggle')} />)
   .add('Number field', () => <NumberField {...submitLog('NumberField')} />)
   .add('Select field', () => <SelectField {...submitLog('SelectField')} />)

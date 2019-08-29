@@ -91,8 +91,13 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
     return isFormValid
   }
 
-  const trySubmitTheForm = () => {
-    const canSubmit = tryValidateFormAndFields()
+  const trySubmitTheForm = (skipValidation = false) => {
+    let canSkip = false
+    if (typeof skipValidation === 'boolean') {
+      canSkip = skipValidation
+    }
+
+    const canSubmit = canSkip || tryValidateFormAndFields()
     if (canSubmit && submit) {
       submit(mergeFormValues(state, initialValues))
     }
