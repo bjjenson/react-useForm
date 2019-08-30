@@ -54,9 +54,12 @@ export const fieldReducer = (state, { type, fieldName = '', payload }) => {
     [actionTypes.touched]: () =>
       state.setIn([fieldsKey, ...fieldPath, current, 'touched'], true),
 
-    [actionTypes.validationResult]: ({ error, helperText }) =>
-      state.setIn([fieldsKey, ...fieldPath, current, 'error'], error)
-        .setIn([fieldsKey, ...fieldPath, current, 'helperText'], helperText),
+    [actionTypes.validationResult]: ({ error, helperText }) => {
+      return state.setIn([fieldsKey, ...fieldPath, current, 'error'], error)
+        .setIn([fieldsKey, ...fieldPath, current, 'helperText'],
+          helperText || state.getIn([fieldsKey, ...fieldPath, 'initial', 'field']).helperText
+        )
+    },
 
     [actionTypes.insertField]: fieldState =>
       state.setIn([fieldsKey, ...fieldPath], fieldState)
