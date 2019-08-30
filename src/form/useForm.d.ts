@@ -56,6 +56,11 @@ export interface IValidationErrors {
   [key: string]: String
 }
 
+export interface IValidationResult {
+  errors: IValidationErrors,
+  isValid: Boolean
+}
+
 function listener(value: any): void
 export interface OptionListeners {
   [key: string]: Array<listener> | listener
@@ -75,6 +80,7 @@ export interface IFormStateResolvers {
 export interface IForm extends IFormStateResolvers {
   Form: React.Component
   submit: (skipValidation: Boolean) => void
+  validate: () => IValidationResult
   reset: Function
   setValue: (fieldName: String, value: any) => void
   getValuesIfFormValid: Function

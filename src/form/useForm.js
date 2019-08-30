@@ -74,37 +74,61 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
   })
 
   const tryValidateFormAndFields = () => {
-    let isFormValid = true
-    const formResults = tryValidateForm()
+    let result = {
+      isValid: true,
+      errors: tryValidateForm(),
+    }
 
     Object.entries(fieldData).forEach(([key, v]) => {
-      if (formResults[key]) {
-        v.setValidationResult(formResults[key])
-        isFormValid = false
+      if (result.errors[key]) {
+        v.setValidationResult(result.errors[key])
+        result.isValid = false
       } else {
         // only need to run field validation if there is already a form level issue with it.
-        const isFieldValid = v.validate()
-        isFormValid = isFormValid && isFieldValid
+        const fieldResult = v.validate()
+
+        const hasError = Boolean(fieldResult)
+        if (hasError) {
+          if (typeof fieldResult === 'object') {
+            result.errors = { ...result.errors, ...fieldResult }
+          } else {
+            result.errors[key] = fieldResult
+          }
+        }
+        result.isValid = result.isValid && !hasError
       }
     })
 
-    return isFormValid
+    return result
+  }
+
+  const getValidationResult = () => {
+    return tryValidateFormAndFields()
   }
 
   const trySubmitTheForm = (skipValidation = false) => {
     let canSkip = false
+    let canSubmit
     if (typeof skipValidation === 'boolean') {
       canSkip = skipValidation
     }
 
-    const canSubmit = canSkip || tryValidateFormAndFields()
+    if (canSkip) {
+      canSubmit = true
+    } else {
+      const result = tryValidateFormAndFields()
+      canSubmit = result.isValid
+    }
+
     if (canSubmit && submit) {
       submit(mergeFormValues(state, initialValues))
     }
   }
 
   const getValuesIfFormValid = () => {
-    if (tryValidateFormAndFields()) {
+    const result = tryValidateFormAndFields()
+
+    if (result.isValid) {
       return mergeFormValues(state, initialValues)
     }
     return null
@@ -125,6 +149,7 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
       setValue,
       getValuesIfFormValid,
       submit: trySubmitTheForm,
+      validate: getValidationResult,
       reset: resetForm,
       Form,
       addField,

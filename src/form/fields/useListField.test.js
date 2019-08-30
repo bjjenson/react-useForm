@@ -94,14 +94,14 @@ test('remove', () => {
 describe('validate', () => {
   test('has items', () => {
     const { validate } = useListField(state, dispatch, fieldArgs)
-    expect(validate()).toBeTruthy()
+    expect(validate()).toBeUndefined()
     expect(dispatch.mock.calls[0]).toMatchSnapshot()
   })
 
   test('no items', () => {
     const nextState = state.set('items', fromJS([]))
     const { validate } = useListField(nextState, dispatch, fieldArgs)
-    expect(validate()).toBeFalsy()
+    expect(validate()).toMatchSnapshot()
     expect(dispatch.mock.calls[0]).toMatchSnapshot()
   })
 
@@ -109,14 +109,14 @@ describe('validate', () => {
     const nextState = state.set('items', fromJS([]))
     fieldArgs.optional = true
     const { validate } = useListField(nextState, dispatch, fieldArgs)
-    expect(validate()).toBeTruthy()
+    expect(validate()).toBeUndefined()
     expect(dispatch.mock.calls[0]).toMatchSnapshot()
   })
 
   test('validates items', () => {
     state = state.setIn(['items', 0, 'fields', 'first', 'current', 'value'], '')
     const { validate } = useListField(state, dispatch, fieldArgs)
-    expect(validate()).toBeFalsy()
+    expect(validate()).toMatchSnapshot()
     expect(dispatch.mock.calls).toMatchSnapshot()
   })
 

@@ -227,7 +227,7 @@ describe('validate', () => {
 
     const actual = useFormField(state, dispatch, initialArgs)
 
-    const isValid = actual.validate()
+    const result = actual.validate()
 
     expect(dispatch).toHaveBeenCalledWith({
       type: actionTypes.validationResult,
@@ -237,16 +237,16 @@ describe('validate', () => {
         helperText: 'Required',
       },
     })
-    expect(isValid).toBeFalsy()
+    expect(result).toEqual('Required')
   })
 
   test('validate directly returns true if valid', () => {
     validate.mockReturnValue('')
     const actual = useFormField(state, dispatch, initialArgs)
 
-    const isValid = actual.validate()
+    const result = actual.validate()
 
-    expect(isValid).toBeTruthy()
+    expect(result).toEqual('')
   })
 
 })

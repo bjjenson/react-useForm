@@ -21,17 +21,45 @@ export const useListField = (state, dispatch, fieldArgs = {}) => {
   const validate = () => {
     const isEmpty = state.get('items', List()).size === 0 && !fieldArgs.optional
     dispatch(actions.validationResult(fieldArgs.name, isEmpty, isEmpty ? requiredMessage : ''))
-    return !isEmpty && validateItems()
+
+    const myError = isEmpty ? { [fieldArgs.name]: requiredMessage } : undefined
+    const errors = validateItems()
+    if (errors.length > 0) {
+      return {
+        ...myError,
+        items: errors,
+      }
+    }
+
+    if (myError) {
+      return {
+        ...myError,
+      }
+    }
   }
 
   const validateItems = () => {
-    return state.get('items', List()).reduce((acc, item) => {
-      const fieldsValid = Object.values(resolveFieldData(item, dispatch)).reduce((cca, fieldData) => {
-        return cca && fieldData.validate()
-      }, true)
+    const s = state.get('items', List()).reduce((acc, item) => {
+      const fieldResults = Object.entries(resolveFieldData(item, dispatch)).reduce((cca, [key, fieldData]) => {
+        const result = fieldData.validate()
+        if (result) {
+          if (typeof result === 'object') {
+            console.log('key', key)
+            return { ...cca, [key]: Object.values(result)[0] }
+          } else {
+            cca[key] = result
+          }
+        }
+        return cca
+      }, {})
 
-      return acc && fieldsValid
-    }, true)
+      if (Object.keys(fieldResults).length > 0) {
+        acc.push(fieldResults)
+      }
+      return acc
+    }, [])
+
+    return s
   }
 
   const add = (item = Map()) => {

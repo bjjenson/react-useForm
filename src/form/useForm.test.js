@@ -53,7 +53,7 @@ beforeEach(() => {
     current: undefined,
   }
 
-  fieldProps.validate.mockReturnValue(true)
+  fieldProps.validate.mockReturnValue('')
 
   useFormField.mockImplementation((state) => ({
     ...fieldProps,
@@ -75,7 +75,7 @@ test('returns array of form props', () => {
 })
 
 test('no submit if field validation fails', () => {
-  fieldProps.validate.mockReturnValue(false)
+  fieldProps.validate.mockReturnValue('has error')
 
   const [, { submit }] = useForm({ fields, submit: submitWorker })
   submit()
@@ -105,6 +105,28 @@ test('submit with skipValidation must be a boolean', () => {
   const [, { submit }] = useForm({ fields, submit: submitWorker, validate: validateForm })
   submit('I am truthy')
   expect(validateForm).toHaveBeenCalled()
+  expect(submitWorker).not.toHaveBeenCalled()
+})
+
+test('form.validate returns all errors', () => {
+  const validateForm = jest.fn()
+  validateForm.mockReturnValue({ name: 'i am error' })
+  fieldProps.validate.mockReturnValue('fieldError')
+
+  const [, { validate }] = useForm({ fields, submit: submitWorker, validate: validateForm })
+  const errors = validate()
+
+  expect(errors).toMatchSnapshot()
+  expect(submitWorker).not.toHaveBeenCalled()
+})
+
+test('form.validate handles list errors', () => {
+  fieldProps.validate.mockReturnValueOnce({ name: 'list error' })
+
+  const [, { validate }] = useForm({ fields, submit: submitWorker })
+  const errors = validate()
+
+  expect(errors).toMatchSnapshot()
   expect(submitWorker).not.toHaveBeenCalled()
 })
 

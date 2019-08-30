@@ -137,6 +137,12 @@ Array [
 `;
 
 exports[`validate no items 1`] = `
+Object {
+  "fieldName": "Required",
+}
+`;
+
+exports[`validate no items 2`] = `
 Array [
   Object {
     "fieldName": "fieldName",
@@ -163,6 +169,16 @@ Array [
 `;
 
 exports[`validate validates items 1`] = `
+Object {
+  "items": Array [
+    Object {
+      "first": "Required",
+    },
+  ],
+}
+`;
+
+exports[`validate validates items 2`] = `
 Array [
   Array [
     Object {
@@ -180,6 +196,16 @@ Array [
       "payload": Object {
         "error": true,
         "helperText": "Required",
+      },
+      "type": "validationResult",
+    },
+  ],
+  Array [
+    Object {
+      "fieldName": undefined,
+      "payload": Object {
+        "error": false,
+        "helperText": undefined,
       },
       "type": "validationResult",
     },

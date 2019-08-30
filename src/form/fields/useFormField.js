@@ -20,7 +20,7 @@ export const useFormField = (state, dispatch, fieldArgs = {}) => {
     if (touched) {
       dispatch(actions.validationResult(fieldArgs.name, Boolean(result), result))
     }
-    return !Boolean(result)
+    return result
   }
 
   const setValue = v => {

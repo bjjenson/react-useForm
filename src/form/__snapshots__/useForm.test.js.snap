@@ -36,6 +36,25 @@ Array [
 ]
 `;
 
+exports[`form.validate handles list errors 1`] = `
+Object {
+  "errors": Object {
+    "name": "list error",
+  },
+  "isValid": false,
+}
+`;
+
+exports[`form.validate returns all errors 1`] = `
+Object {
+  "errors": Object {
+    "name": "i am error",
+    "phone": "fieldError",
+  },
+  "isValid": false,
+}
+`;
+
 exports[`getValuesIfFormValid returns null if not valid 1`] = `
 Array [
   Object {
@@ -147,6 +166,7 @@ Array [
     "reset": [Function],
     "setValue": [Function],
     "submit": [Function],
+    "validate": [Function],
   },
 ]
 `;
