@@ -121,7 +121,7 @@ test('form.validate returns all errors', () => {
 })
 
 test('form.validate handles list errors', () => {
-  fieldProps.validate.mockReturnValueOnce({ name: 'list error' })
+  fieldProps.validate.mockReturnValueOnce({ child: 'list error' })
 
   const [, { validate }] = useForm({ fields, submit: submitWorker })
   const errors = validate()

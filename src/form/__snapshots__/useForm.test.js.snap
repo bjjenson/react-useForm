@@ -39,7 +39,9 @@ Array [
 exports[`form.validate handles list errors 1`] = `
 Object {
   "errors": Object {
-    "name": "list error",
+    "name": Object {
+      "child": "list error",
+    },
   },
   "isValid": false,
 }

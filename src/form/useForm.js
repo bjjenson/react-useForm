@@ -90,7 +90,7 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
         const hasError = Boolean(fieldResult)
         if (hasError) {
           if (typeof fieldResult === 'object') {
-            result.errors = { ...result.errors, ...fieldResult }
+            result.errors = { ...result.errors, [key]: fieldResult }
           } else {
             result.errors[key] = fieldResult
           }
