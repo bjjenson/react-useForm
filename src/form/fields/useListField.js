@@ -44,7 +44,6 @@ export const useListField = (state, dispatch, fieldArgs = {}) => {
         const result = fieldData.validate()
         if (result) {
           if (typeof result === 'object') {
-            console.log('key', key)
             return { ...cca, [key]: Object.values(result)[0] }
           } else {
             cca[key] = result
