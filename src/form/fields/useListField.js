@@ -39,7 +39,7 @@ export const useListField = (state, dispatch, fieldArgs = {}) => {
   }
 
   const validateItems = () => {
-    const s = state.get('items', List()).reduce((acc, item) => {
+    const s = state.get('items', List()).reduce((acc, item, index) => {
       const fieldResults = Object.entries(resolveFieldData(item, dispatch)).reduce((cca, [key, fieldData]) => {
         const result = fieldData.validate()
         if (result) {
@@ -53,7 +53,7 @@ export const useListField = (state, dispatch, fieldArgs = {}) => {
       }, {})
 
       if (Object.keys(fieldResults).length > 0) {
-        acc.push(fieldResults)
+        acc[index] = fieldResults
       }
       return acc
     }, [])
