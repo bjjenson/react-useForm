@@ -8,6 +8,7 @@ import {
   useTextField,
   useObjectField,
 } from './fields'
+import { getFieldValues } from './helpers/getFieldValues'
 
 export const resolveFieldData = (state, dispatch) => {
   const fieldData = state.get(fieldsKey, Map()).entrySeq().reduce((acc, [fieldName, current]) => {
@@ -37,13 +38,6 @@ export const resolveField = (fieldState, dispatch) => {
     default:
       return useTextField(fieldState, dispatch, field)
   }
-}
-
-export const getFieldValues = (fieldData) => {
-  return Object.entries(fieldData).reduce((acc, [k, v]) => {
-    acc[k] = v.props.value
-    return acc
-  }, {})
 }
 
 export const getFieldProps = (fieldData, state = Map()) => {

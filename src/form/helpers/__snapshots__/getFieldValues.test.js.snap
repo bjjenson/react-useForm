@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getFieldValues gets nested values 1`] = `
+Object {
+  "colors": Array [
+    Object {
+      "color": "color1",
+      "shades": Array [
+        Object {
+          "shade": "shade-1-1",
+        },
+      ],
+    },
+    Object {
+      "color": "color2",
+    },
+  ],
+  "fullName": "fullName",
+  "nickname": "nickname",
+}
+`;
