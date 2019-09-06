@@ -123,6 +123,12 @@ Array [
 ]
 `;
 
+exports[`validate custom validator 1`] = `
+Object {
+  "fieldName": "custom error",
+}
+`;
+
 exports[`validate has items 1`] = `
 Array [
   Object {

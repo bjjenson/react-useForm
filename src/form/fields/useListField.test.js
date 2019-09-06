@@ -105,6 +105,13 @@ describe('validate', () => {
     expect(dispatch.mock.calls[0]).toMatchSnapshot()
   })
 
+  test('custom validator', () => {
+    const custom = jest.fn()
+    custom.mockReturnValue('custom error')
+    const { validate } = useListField(state, dispatch, { ...fieldArgs, validate: custom })
+    expect(validate()).toMatchSnapshot()
+  })
+
   test('no items but optional', () => {
     const nextState = state.set('items', fromJS([]))
     fieldArgs.optional = true

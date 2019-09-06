@@ -1,7 +1,6 @@
 import { validateForm } from './validateForm'
 
 export const tryValidateFormAndFields = (validate, fieldData) => {
-  console.log('fields', fieldData)
   let result = {
     isValid: true,
     errors: validateForm(validate, fieldData),

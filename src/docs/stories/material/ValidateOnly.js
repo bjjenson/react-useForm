@@ -3,6 +3,20 @@ import { TextField, Button, Typography, FormHelperText } from '@material-ui/core
 import Flexbox from 'flexbox-react'
 import { useForm } from '../../../form'
 
+const cannotBeBlue = value => {
+  if (value === 'blue') return 'cannot be blue'
+}
+
+const cannotBeLight = value => {
+  if (value === 'light') return 'cannot be light'
+}
+
+const mustHaveTwo = value => {
+  console.log('must', value)
+  if (value.size < 2) {
+    return 'Must have at least two'
+  }
+}
 
 const SimpleForm = ({ submit }) => {
   const [fields, form] = useForm({
@@ -10,11 +24,11 @@ const SimpleForm = ({ submit }) => {
       { name: 'fullName', label: 'Full Name' },
       { name: 'nickname', label: 'Nickname' },
       {
-        name: 'colors', label: 'Favorite Colors', type: 'list', fields: [
-          { name: 'color', label: 'Color' },
+        name: 'colors', label: 'Favorite Colors', type: 'list', validate: mustHaveTwo, fields: [
+          { name: 'color', label: 'Color', validate: cannotBeBlue },
           {
             name: 'shades', type: 'list', fields: [
-              { name: 'shade', label: 'Shade' },
+              { name: 'shade', label: 'Shade', validate: cannotBeLight },
             ],
           },
         ],

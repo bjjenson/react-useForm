@@ -19,10 +19,19 @@ export const useListField = (state, dispatch, fieldArgs = {}) => {
   }
 
   const validate = () => {
-    const isEmpty = state.get('items', List()).size === 0 && !fieldArgs.optional
-    dispatch(actions.validationResult(fieldArgs.name, isEmpty, isEmpty ? requiredMessage : ''))
+    const items = state.get('items', List())
 
-    const myError = isEmpty ? { [fieldArgs.name]: requiredMessage } : undefined
+    let message
+    if (fieldArgs.validate) {
+      message = fieldArgs.validate(items)
+    }
+    if (!message && items.size === 0 && !fieldArgs.optional) {
+      message = requiredMessage
+    }
+
+    dispatch(actions.validationResult(fieldArgs.name, Boolean(message), message || ''))
+
+    const myError = Boolean(message) ? { [fieldArgs.name]: message } : undefined
     const errors = validateItems()
     if (errors.length > 0) {
       return {
