@@ -1,4 +1,4 @@
-import { useCallback, useRef } from 'react'
+import { useRef } from 'react'
 import { Map } from 'immutable'
 import { Form } from './Form'
 import { createReducer } from './reducer/createReducer'
@@ -7,9 +7,9 @@ import { actions, fieldsKey } from './reducer/fieldReducer'
 import { getInitialState } from './reducer/getInitialState'
 import { resolveFieldData, resolveField, getFieldProps } from './resolveFieldData'
 import { mergeFormValues } from './helpers/mergeFormValues'
-import { getFieldValues } from './helpers/getFieldValues'
 import { formStateResolvers } from './formStateResolvers'
 import { setPropsAtPath } from './helpers/setPropsAtPath'
+import { tryValidateFormAndFields } from './validate/tryValidateFormAndFields'
 
 /**
  * @param  param0 { import("./useForm").IFormProps }
@@ -55,56 +55,8 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
     dispatch(actions.removeListener(fieldName, listener))
   }
 
-  const tryValidateForm = useCallback(() => {
-    if (validate) {
-      const values = getFieldValues(fieldData)
-      let results = {}
-      let validators = validate
-      if (!Array.isArray(validate)) { validators = [validate] }
-
-      for (let v of validators) {
-        results = {
-          ...results,
-          ...v(values),
-        }
-      }
-      return results
-    }
-
-    return {}
-  })
-
-  const tryValidateFormAndFields = () => {
-    let result = {
-      isValid: true,
-      errors: tryValidateForm(),
-    }
-
-    Object.entries(fieldData).forEach(([key, v]) => {
-      if (result.errors[key]) {
-        v.setValidationResult(result.errors[key])
-        result.isValid = false
-      } else {
-        // only need to run field validation if there is already a form level issue with it.
-        const fieldResult = v.validate()
-
-        const hasError = Boolean(fieldResult)
-        if (hasError) {
-          if (typeof fieldResult === 'object') {
-            result.errors = { ...result.errors, [key]: fieldResult }
-          } else {
-            result.errors[key] = fieldResult
-          }
-        }
-        result.isValid = result.isValid && !hasError
-      }
-    })
-
-    return result
-  }
-
   const getValidationResult = () => {
-    return tryValidateFormAndFields()
+    return tryValidateFormAndFields(validate, fieldData)
   }
 
   const trySubmitTheForm = (skipValidation = false) => {
@@ -117,7 +69,7 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
     if (canSkip) {
       canSubmit = true
     } else {
-      const result = tryValidateFormAndFields()
+      const result = tryValidateFormAndFields(validate, fieldData)
       canSubmit = result.isValid
     }
 
@@ -127,7 +79,7 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
   }
 
   const getValuesIfFormValid = () => {
-    const result = tryValidateFormAndFields()
+    const result = tryValidateFormAndFields(validate, fieldData)
 
     if (result.isValid) {
       return mergeFormValues(state, initialValues)
@@ -144,8 +96,10 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
     fieldData[fieldName].setValue(value)
   }
 
+  const fieldProps = getFieldProps(fieldData, state)
+
   return [
-    { ...getFieldProps(fieldData, state) },
+    { ...fieldProps },
     {
       setValue,
       getValuesIfFormValid,
