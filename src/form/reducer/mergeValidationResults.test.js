@@ -96,6 +96,18 @@ test('sets an error on a list field', () => {
   expect(mergeValidationResults(state, errors)).toMatchSnapshot()
 })
 
+test('sets an error on a list and its field', () => {
+  const errors = {
+    colors: [
+      null,
+      { color: 'blind' },
+    ],
+  }
+  errors.colors.error = 'no blindness'
+
+  expect(mergeValidationResults(state, errors)).toMatchSnapshot()
+})
+
 test('sets an error on a nested list field', () => {
   const errors = {
     colors: [

@@ -1,5 +1,16 @@
 import { Map, List } from 'immutable'
 
+const getError = (errors, key) => {
+  const error = errors[key]
+
+  if (typeof error === 'string') return error
+  if (Array.isArray(error) && error.error) {
+    return error.error
+  }
+
+  return ''
+}
+
 const updateItems = (list, errorObj) => {
   const errors = errorObj || {}
 
@@ -17,7 +28,8 @@ const updateMap = (fields, errorObj) => {
       field.update('items', List(), items => updateItems(items, errors[key])) :
       field
 
-    const error = typeof errors[key] === 'string' ? errors[key] : ''
+
+    const error = getError(errors, key)
 
     return acc
       .mergeIn([key], next)
