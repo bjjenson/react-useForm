@@ -72,18 +72,58 @@ beforeEach(() => {
   })
 })
 
+describe('not forced', () => {
+
+  test('will not set anything if not forced or touched', () => {
+    expect(mergeValidationResults(state, undefined)).toMatchSnapshot()
+  })
+
+  test('sets a single error on touched field', () => {
+    const errors = {
+      fullName: 'i am not full',
+      nickname: 'i am not nick',
+    }
+    const next = state.setIn(['fields', 'fullName', 'current', 'touched'], true)
+    expect(mergeValidationResults(next, errors)).toMatchSnapshot()
+  })
+
+  test('sets an error on a touched list', () => {
+    const errors = { colors: 'blind' }
+    const next = state.setIn(['fields', 'colors', 'current', 'touched'], true)
+
+    expect(mergeValidationResults(next, errors)).toMatchSnapshot()
+  })
+
+  test('sets an error on a nested list field', () => {
+    const errors = {
+      colors: [
+        undefined,
+        {
+          shades: [
+            { shade: 'down' },
+          ],
+        },
+      ],
+    }
+    const next = state.setIn(['fields', 'colors', 'items', 1, 'fields', 'shades', 'items', 0, 'fields', 'shade', 'current', 'touched'], true)
+
+    expect(mergeValidationResults(next, errors)).toMatchSnapshot()
+  })
+
+})
+
 test('no errors will clear state values', () => {
-  expect(mergeValidationResults(state, undefined)).toMatchSnapshot()
+  expect(mergeValidationResults(state, undefined, true)).toMatchSnapshot()
 })
 
 test('sets a single error', () => {
   const errors = { fullName: 'i am not full' }
-  expect(mergeValidationResults(state, errors)).toMatchSnapshot()
+  expect(mergeValidationResults(state, errors, true)).toMatchSnapshot()
 })
 
 test('sets an error on a list', () => {
   const errors = { colors: 'blind' }
-  expect(mergeValidationResults(state, errors)).toMatchSnapshot()
+  expect(mergeValidationResults(state, errors, true)).toMatchSnapshot()
 })
 
 test('sets an error on a list field', () => {
@@ -93,7 +133,7 @@ test('sets an error on a list field', () => {
       { color: 'blind' },
     ],
   }
-  expect(mergeValidationResults(state, errors)).toMatchSnapshot()
+  expect(mergeValidationResults(state, errors, true)).toMatchSnapshot()
 })
 
 test('sets an error on a list and its field', () => {
@@ -105,7 +145,7 @@ test('sets an error on a list and its field', () => {
   }
   errors.colors.error = 'no blindness'
 
-  expect(mergeValidationResults(state, errors)).toMatchSnapshot()
+  expect(mergeValidationResults(state, errors, true)).toMatchSnapshot()
 })
 
 test('sets an error on a nested list field', () => {
@@ -119,5 +159,5 @@ test('sets an error on a nested list field', () => {
       },
     ],
   }
-  expect(mergeValidationResults(state, errors)).toMatchSnapshot()
+  expect(mergeValidationResults(state, errors, true)).toMatchSnapshot()
 })

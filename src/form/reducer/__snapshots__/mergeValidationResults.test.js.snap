@@ -70,6 +70,289 @@ Immutable.Map {
 }
 `;
 
+exports[`not forced sets a single error on touched field 1`] = `
+Immutable.Map {
+  "other": "other data",
+  "fields": Immutable.Map {
+    "nickname": Immutable.Map {
+      "current": Immutable.Map {
+        "error": "notSet",
+        "helperText": "notSet",
+      },
+      "initial": "initialNickname",
+    },
+    "fullName": Immutable.Map {
+      "current": Immutable.Map {
+        "error": true,
+        "helperText": "i am not full",
+        "touched": true,
+      },
+    },
+    "colors": Immutable.Map {
+      "current": Immutable.Map {
+        "error": "notSet",
+        "helperText": "notSet",
+      },
+      "initial": "initialColors",
+      "items": Immutable.List [
+        Immutable.Map {
+          "fields": Immutable.Map {
+            "color": Immutable.Map {
+              "current": Immutable.Map {
+                "error": "notSet",
+                "helperText": "notSet",
+              },
+              "initial": "initialColor",
+            },
+          },
+        },
+        Immutable.Map {
+          "fields": Immutable.Map {
+            "color": Immutable.Map {
+              "current": Immutable.Map {
+                "error": "notSet",
+                "helperText": "notSet",
+              },
+            },
+            "shades": Immutable.Map {
+              "current": Immutable.Map {
+                "error": "notSet",
+                "helperText": "notSet",
+              },
+              "items": Immutable.List [
+                Immutable.Map {
+                  "fields": Immutable.Map {
+                    "shade": Immutable.Map {
+                      "current": Immutable.Map {
+                        "error": "notSet",
+                        "helperText": "notSet",
+                      },
+                      "initial": "initialShade",
+                    },
+                  },
+                },
+              ],
+            },
+          },
+        },
+      ],
+    },
+  },
+}
+`;
+
+exports[`not forced sets an error on a nested list field 1`] = `
+Immutable.Map {
+  "other": "other data",
+  "fields": Immutable.Map {
+    "nickname": Immutable.Map {
+      "current": Immutable.Map {
+        "error": "notSet",
+        "helperText": "notSet",
+      },
+      "initial": "initialNickname",
+    },
+    "fullName": Immutable.Map {
+      "current": Immutable.Map {
+        "error": "notSet",
+        "helperText": "notSet",
+      },
+    },
+    "colors": Immutable.Map {
+      "current": Immutable.Map {
+        "error": "notSet",
+        "helperText": "notSet",
+      },
+      "initial": "initialColors",
+      "items": Immutable.List [
+        Immutable.Map {
+          "fields": Immutable.Map {
+            "color": Immutable.Map {
+              "current": Immutable.Map {
+                "error": "notSet",
+                "helperText": "notSet",
+              },
+              "initial": "initialColor",
+            },
+          },
+        },
+        Immutable.Map {
+          "fields": Immutable.Map {
+            "color": Immutable.Map {
+              "current": Immutable.Map {
+                "error": "notSet",
+                "helperText": "notSet",
+              },
+            },
+            "shades": Immutable.Map {
+              "current": Immutable.Map {
+                "error": "notSet",
+                "helperText": "notSet",
+              },
+              "items": Immutable.List [
+                Immutable.Map {
+                  "fields": Immutable.Map {
+                    "shade": Immutable.Map {
+                      "current": Immutable.Map {
+                        "error": true,
+                        "helperText": "down",
+                        "touched": true,
+                      },
+                      "initial": "initialShade",
+                    },
+                  },
+                },
+              ],
+            },
+          },
+        },
+      ],
+    },
+  },
+}
+`;
+
+exports[`not forced sets an error on a touched list 1`] = `
+Immutable.Map {
+  "other": "other data",
+  "fields": Immutable.Map {
+    "nickname": Immutable.Map {
+      "current": Immutable.Map {
+        "error": "notSet",
+        "helperText": "notSet",
+      },
+      "initial": "initialNickname",
+    },
+    "fullName": Immutable.Map {
+      "current": Immutable.Map {
+        "error": "notSet",
+        "helperText": "notSet",
+      },
+    },
+    "colors": Immutable.Map {
+      "current": Immutable.Map {
+        "error": true,
+        "helperText": "blind",
+        "touched": true,
+      },
+      "initial": "initialColors",
+      "items": Immutable.List [
+        Immutable.Map {
+          "fields": Immutable.Map {
+            "color": Immutable.Map {
+              "current": Immutable.Map {
+                "error": "notSet",
+                "helperText": "notSet",
+              },
+              "initial": "initialColor",
+            },
+          },
+        },
+        Immutable.Map {
+          "fields": Immutable.Map {
+            "color": Immutable.Map {
+              "current": Immutable.Map {
+                "error": "notSet",
+                "helperText": "notSet",
+              },
+            },
+            "shades": Immutable.Map {
+              "current": Immutable.Map {
+                "error": "notSet",
+                "helperText": "notSet",
+              },
+              "items": Immutable.List [
+                Immutable.Map {
+                  "fields": Immutable.Map {
+                    "shade": Immutable.Map {
+                      "current": Immutable.Map {
+                        "error": "notSet",
+                        "helperText": "notSet",
+                      },
+                      "initial": "initialShade",
+                    },
+                  },
+                },
+              ],
+            },
+          },
+        },
+      ],
+    },
+  },
+}
+`;
+
+exports[`not forced will not set anything if not forced or touched 1`] = `
+Immutable.Map {
+  "other": "other data",
+  "fields": Immutable.Map {
+    "nickname": Immutable.Map {
+      "current": Immutable.Map {
+        "error": "notSet",
+        "helperText": "notSet",
+      },
+      "initial": "initialNickname",
+    },
+    "fullName": Immutable.Map {
+      "current": Immutable.Map {
+        "error": "notSet",
+        "helperText": "notSet",
+      },
+    },
+    "colors": Immutable.Map {
+      "current": Immutable.Map {
+        "error": "notSet",
+        "helperText": "notSet",
+      },
+      "initial": "initialColors",
+      "items": Immutable.List [
+        Immutable.Map {
+          "fields": Immutable.Map {
+            "color": Immutable.Map {
+              "current": Immutable.Map {
+                "error": "notSet",
+                "helperText": "notSet",
+              },
+              "initial": "initialColor",
+            },
+          },
+        },
+        Immutable.Map {
+          "fields": Immutable.Map {
+            "color": Immutable.Map {
+              "current": Immutable.Map {
+                "error": "notSet",
+                "helperText": "notSet",
+              },
+            },
+            "shades": Immutable.Map {
+              "current": Immutable.Map {
+                "error": "notSet",
+                "helperText": "notSet",
+              },
+              "items": Immutable.List [
+                Immutable.Map {
+                  "fields": Immutable.Map {
+                    "shade": Immutable.Map {
+                      "current": Immutable.Map {
+                        "error": "notSet",
+                        "helperText": "notSet",
+                      },
+                      "initial": "initialShade",
+                    },
+                  },
+                },
+              ],
+            },
+          },
+        },
+      ],
+    },
+  },
+}
+`;
+
 exports[`sets a single error 1`] = `
 Immutable.Map {
   "other": "other data",
