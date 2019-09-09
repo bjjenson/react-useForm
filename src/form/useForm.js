@@ -7,6 +7,7 @@ import { actions, fieldsKey } from './reducer/fieldReducer'
 import { getInitialState } from './reducer/getInitialState'
 import { resolveFieldData, resolveField, getFieldProps } from './resolveFieldData'
 import { mergeFormValues } from './helpers/mergeFormValues'
+import { getFieldValues } from './helpers/getFieldValues'
 import { formStateResolvers } from './formStateResolvers'
 import { setPropsAtPath } from './helpers/setPropsAtPath'
 import { validateAll } from './validate/validateAll'
@@ -22,12 +23,16 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
   let fieldData
   const lastPath = state.get('lastPath')
 
+  const getAllValues = () => {
+    return getFieldValues(fieldCache.current)
+  }
+
   const t0 = performance.now()
   if (!lastPath || lastPath.length === 0 || lastPath[0] === '') {
-    fieldData = resolveFieldData(state, dispatch)
+    fieldData = resolveFieldData(state, dispatch, getAllValues)
   } else {
     const path = [fieldsKey, ...lastPath]
-    const props = resolveField(state.getIn(path), dispatch)
+    const props = resolveField(state.getIn(path), dispatch, getAllValues)
     fieldData = fieldCache.current
     setPropsAtPath(fieldData, props, lastPath)
   }
@@ -57,7 +62,7 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
   }
 
   const getValidationResult = () => {
-    const errors = validateAll(state, fieldData, validate)
+    const errors = validateAll(state, fieldData, validate, getAllValues)
     dispatch(actions.validateAll(errors))
     return errors
   }
@@ -72,7 +77,7 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
     if (canSkip) {
       canSubmit = true
     } else {
-      const errors = validateAll(state, fieldData, validate)
+      const errors = validateAll(state, fieldData, validate, getAllValues)
       canSubmit = !getHasError(errors)
       dispatch(actions.validateAll(errors))
     }
@@ -83,7 +88,7 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
   }
 
   const getValuesIfFormValid = () => {
-    const errors = validateAll(state, fieldData, validate)
+    const errors = validateAll(state, fieldData, validate, getAllValues)
 
     if (!getHasError(errors)) {
       return mergeFormValues(state, initialValues)

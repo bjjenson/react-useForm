@@ -2,11 +2,12 @@ import { List, Map } from 'immutable'
 import { actions } from '../reducer/fieldReducer'
 import { resolveFieldData, getFieldProps } from '../resolveFieldData'
 import { getFields } from '../reducer/generateDefaultListState'
+import { prepareNameForValidate } from './prepareNameForValidate'
 /**
  * @param  fieldArgs { import("../useForm").IFormFieldArgs}
  * @returns {import("../useForm").IFormField}
  */
-export const useListField = (state, dispatch, fieldArgs = {}) => {
+export const useListField = (state, dispatch, fieldArgs = {}, getAllValues) => {
   const requiredMessage = fieldArgs.requiredMessage || 'Required'
 
   const setValue = () => {
@@ -17,7 +18,7 @@ export const useListField = (state, dispatch, fieldArgs = {}) => {
   const validate = (items) => {
     let message
     if (fieldArgs.validate) {
-      message = fieldArgs.validate(items)
+      message = fieldArgs.validate(items, prepareNameForValidate(fieldArgs.name), state.get(('getAllValues')))
     }
     if (!message && items.size === 0 && !fieldArgs.optional) {
       message = requiredMessage
@@ -42,7 +43,7 @@ export const useListField = (state, dispatch, fieldArgs = {}) => {
   }
 
   const fieldData = state.getIn(['items'], List()).map(item => {
-    return resolveFieldData(item, dispatch)
+    return resolveFieldData(item, dispatch, getAllValues)
   }).toArray()
 
   return {

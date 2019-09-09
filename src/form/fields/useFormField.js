@@ -1,4 +1,5 @@
 import { actions } from '../reducer/fieldReducer'
+import { prepareNameForValidate } from './prepareNameForValidate'
 /**
  * @param  fieldArgs { import("../useForm").IFormFieldArgs}
  * @returns {import("../useForm").IFormField}
@@ -10,7 +11,7 @@ export const useFormField = (state, dispatch, fieldArgs = {}) => {
     let result
 
     if (value !== '' && value !== undefined && fieldArgs.validate) {
-      result = fieldArgs.validate(value, fieldArgs.name, state.get('getAllValues'))
+      result = fieldArgs.validate(value, prepareNameForValidate(fieldArgs.name), state.get('getAllValues'))
     }
 
     if (!Boolean(result) && !fieldArgs.optional && touched && value === '') {

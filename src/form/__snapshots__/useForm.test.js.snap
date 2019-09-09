@@ -90,6 +90,7 @@ Array [
     "i validate forms",
     "as do i",
   ],
+  [Function],
 ]
 `;
 
@@ -149,6 +150,7 @@ Array [
     },
   },
   "i validate forms",
+  [Function],
 ]
 `;
 
@@ -207,6 +209,7 @@ Array [
     },
   },
   [MockFunction],
+  [Function],
 ]
 `;
 
@@ -370,6 +373,7 @@ Array [
     },
   },
   "i validate forms",
+  [Function],
 ]
 `;
 
@@ -471,5 +475,6 @@ Array [
     "i validate forms",
     "as do i",
   ],
+  [Function],
 ]
 `;

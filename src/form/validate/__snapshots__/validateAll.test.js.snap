@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`merges form and field errors, dispatches results 1`] = `
+Array [
+  [MockFunction],
+  "the field data",
+]
+`;
+
+exports[`merges form and field errors, dispatches results 2`] = `
+Array [
+  "the state",
+  "i will get all values",
+]
+`;

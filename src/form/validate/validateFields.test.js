@@ -1,9 +1,11 @@
 import { fromJS, Map } from 'immutable'
 import { validateFields } from './validateFields'
 
-let state, nicknameField, colorsField, colorField
+let state, nicknameField, colorsField, colorField, getAllValues
 
 beforeEach(() => {
+  getAllValues = 'getAllValuesFunc'
+
   nicknameField = Map([
     ['optional', false],
     ['field', {
@@ -106,19 +108,19 @@ test('state', () => {
 })
 
 test('validates required fields', () => {
-  expect(validateFields(state)).toMatchSnapshot()
+  expect(validateFields(state, getAllValues)).toMatchSnapshot()
 })
 
 test('validates optional fields', () => {
   setValues()
-  expect(validateFields(state)).toMatchSnapshot()
+  expect(validateFields(state, getAllValues)).toMatchSnapshot()
 })
 
 test('validates optional = true', () => {
   nicknameField = nicknameField.set('optional', true)
   state = state.setIn(['fields', 'nickname', 'initial'], nicknameField)
 
-  expect(validateFields(state)).toMatchSnapshot()
+  expect(validateFields(state, getAllValues)).toMatchSnapshot()
 })
 
 test('validate custom validator', () => {
@@ -127,6 +129,6 @@ test('validate custom validator', () => {
   const nickname = nicknameField.get('field')
   nickname.validate.mockReturnValue('nickname error')
 
-  expect(validateFields(state)).toMatchSnapshot()
+  expect(validateFields(state, getAllValues)).toMatchSnapshot()
   expect(nickname.validate.mock.calls[0]).toMatchSnapshot()
 })

@@ -73,9 +73,14 @@ test('add with values', () => {
 })
 
 test('add will trigger validation', () => {
-  const { props } = useListField(state, dispatch, fieldArgs)
+  const validate = jest.fn()
+  validate.mockReturnValue('i am error')
+  state = state.set('getAllValues', 'getAllValuesFunc')
+
+  const { props } = useListField(state, dispatch, { ...fieldArgs, validate, name: 'colors.items.1.fields.shades.items.0.fields.shade' })
   props.add()
   expect(dispatch.mock.calls[1]).toMatchSnapshot()
+  expect(validate.mock.calls[0]).toMatchSnapshot()
 })
 
 test('add will trigger custom validation', () => {

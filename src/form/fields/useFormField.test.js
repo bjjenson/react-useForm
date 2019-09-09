@@ -228,6 +228,31 @@ describe('validate', () => {
       },
     })
   })
+
+  test('validate prepares name for reading', () => {
+    initialArgs = { ...initialArgs, name: 'colors.items.1.fields.shades.items.0.fields.shade', validate }
+    event = {
+      target: {
+        value: '1',
+      },
+    }
+    state = fromJS({
+      current: {
+        value,
+        error: false,
+        pristine: false,
+        touched: true,
+        helperText: initialArgs.helperText,
+      },
+      getAllValues: 'getAllValuesFunc',
+    })
+
+    initialArgs.validate = jest.fn()
+    const { props: { onChange } } = useFormField(state, dispatch, initialArgs)
+    onChange(event)
+
+    expect(initialArgs.validate.mock.calls[0]).toMatchSnapshot()
+  })
 })
 
 test('sets touched onBlur', () => {

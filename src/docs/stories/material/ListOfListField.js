@@ -4,6 +4,16 @@ import { TextField, Button, Typography, FormHelperText } from '@material-ui/core
 import Flexbox from 'flexbox-react'
 import { useForm } from '../../../form'
 
+const validateShade = (value, name, getValues) => {
+  const colorPath = name.slice(0, name.indexOf('.shades.'))
+  const allValues = fromJS(getValues())
+
+  const color = allValues.getIn([...colorPath.split('.'), 'color'])
+  if (color === 'Blue' && (value !== 'dark' && value !== 'medium')) {
+    return 'Shade must be dark or medium if color is Blue'
+  }
+}
+
 const initialValues = fromJS({
   colors: [
     { color: '' },
@@ -27,7 +37,7 @@ const ListField = ({ submit }) => {
           { name: 'color', label: 'Color' },
           {
             name: 'shades', type: 'list', optional: true, fields: [
-              { name: 'shade', label: 'Shade' },
+              { name: 'shade', label: 'Shade', validate: validateShade },
             ],
           },
         ],

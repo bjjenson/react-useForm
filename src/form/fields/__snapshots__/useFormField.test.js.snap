@@ -128,6 +128,14 @@ Array [
 ]
 `;
 
+exports[`validate validate prepares name for reading 1`] = `
+Array [
+  "1",
+  "colors.1.shades.0.shade",
+  "getAllValuesFunc",
+]
+`;
+
 exports[`validate validates onBlur 1`] = `
 Array [
   "the value",

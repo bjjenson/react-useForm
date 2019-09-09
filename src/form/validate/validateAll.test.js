@@ -7,10 +7,11 @@ jest.mock('./validateForm')
 jest.mock('./validateFields')
 jest.mock('./mergeErrors')
 
-let state, fieldData, validate
+let state, fieldData, validate, getAllValues
 beforeEach(() => {
   state = 'the state'
   fieldData = 'the field data'
+  getAllValues = 'i will get all values'
   validate = jest.fn()
 
   const formErrors = {
@@ -32,5 +33,7 @@ beforeEach(() => {
 })
 
 test('merges form and field errors, dispatches results', () => {
-  expect(validateAll(state, fieldData, validate)).toEqual('mergedErrors')
+  expect(validateAll(state, fieldData, validate, getAllValues)).toEqual('mergedErrors')
+  expect(validateForm.mock.calls[0]).toMatchSnapshot()
+  expect(validateFields.mock.calls[0]).toMatchSnapshot()
 })

@@ -1,4 +1,5 @@
 import { Map } from 'immutable'
+import { prepareNameForValidate } from '../fields/prepareNameForValidate'
 
 const validateItems = (items, getAllValues) => {
   return items.map(item => {
@@ -14,11 +15,11 @@ const validateMap = (fields, getAllValues) => {
 
     const items = field.get('items')
     if (items) {
-      return acc.set(key, validateItems(items), getAllValues)
+      return acc.set(key, validateItems(items, getAllValues))
     }
 
     if (validate) {
-      const error = validate(value, name, getAllValues)
+      const error = validate(value, prepareNameForValidate(name), getAllValues)
       if (error) {
         return acc.set(key, error)
       }
@@ -32,7 +33,6 @@ const validateMap = (fields, getAllValues) => {
   }, Map()).toJS()
 }
 
-export const validateFields = (state) => {
-  const getAllValues = state.get('getAllValues')
+export const validateFields = (state, getAllValues) => {
   return validateMap(state.get('fields'), getAllValues)
 }

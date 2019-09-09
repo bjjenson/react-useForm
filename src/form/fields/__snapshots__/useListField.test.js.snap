@@ -48,13 +48,51 @@ Array [
 exports[`add will trigger validation 1`] = `
 Array [
   Object {
-    "fieldName": "fieldName",
+    "fieldName": "colors.items.1.fields.shades.items.0.fields.shade",
     "payload": Object {
-      "error": false,
-      "helperText": "",
+      "error": true,
+      "helperText": "i am error",
     },
     "type": "validationResult",
   },
+]
+`;
+
+exports[`add will trigger validation 2`] = `
+Array [
+  Immutable.List [
+    Immutable.Map {
+      "fields": Immutable.Map {
+        "first": Immutable.Map {
+          "initial": Immutable.Map {
+            "type": "text",
+            "label": "First",
+            "field": "initialFirstField",
+          },
+          "current": Immutable.Map {
+            "error": "false",
+            "helperText": "",
+            "value": "1",
+          },
+        },
+        "second": Immutable.Map {
+          "initial": Immutable.Map {
+            "type": "text",
+            "label": "Second",
+            "field": "initialSecondField",
+          },
+          "current": Immutable.Map {
+            "error": "false",
+            "helperText": "",
+            "value": "2",
+          },
+        },
+      },
+    },
+    Immutable.Map {},
+  ],
+  "colors.1.shades.0.shade",
+  "getAllValuesFunc",
 ]
 `;
 

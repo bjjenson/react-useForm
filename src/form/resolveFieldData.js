@@ -8,19 +8,19 @@ import {
   useTextField,
   useObjectField,
 } from './fields'
-import { getFieldValues } from './helpers/getFieldValues'
 
-export const resolveFieldData = (state, dispatch) => {
+export const resolveFieldData = (state, dispatch, getAllValues) => {
   const fieldData = state.get(fieldsKey, Map()).entrySeq().reduce((acc, [fieldName, current]) => {
-    const fieldState = current.set('getAllValues', () => getFieldValues(fieldData))
+    const fieldState = current.set('getAllValues', getAllValues)
 
-    acc[fieldName] = resolveField(fieldState, dispatch)
+    acc[fieldName] = resolveField(fieldState, dispatch, getAllValues)
     return acc
   }, {})
+
   return fieldData
 }
 
-export const resolveField = (fieldState, dispatch) => {
+export const resolveField = (fieldState, dispatch, getAllValues) => {
   const field = fieldState.getIn(['initial', 'field'])
   const fieldType = fieldState.getIn(['initial', 'type'])
   switch (fieldType) {
@@ -31,7 +31,7 @@ export const resolveField = (fieldState, dispatch) => {
     case 'number':
       return useNumberField(fieldState, dispatch, field)
     case 'list':
-      return useListField(fieldState, dispatch, field)
+      return useListField(fieldState, dispatch, field, getAllValues)
     case 'object':
       return useObjectField(fieldState, dispatch, field)
     case 'text':
