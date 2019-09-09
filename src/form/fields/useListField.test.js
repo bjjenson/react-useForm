@@ -60,13 +60,6 @@ test('returns props needed', () => {
   expect(useListField(state, dispatch, fieldArgs)).toMatchSnapshot()
 })
 
-test('setValidationResult externally', () => {
-  const { setValidationResult } = useListField(state, dispatch, fieldArgs)
-
-  setValidationResult('i am error')
-  expect(dispatch.mock.calls[0]).toMatchSnapshot()
-})
-
 test('add', () => {
   const { props } = useListField(state, dispatch, fieldArgs)
   props.add()
@@ -77,6 +70,21 @@ test('add with values', () => {
   const { props } = useListField(state, dispatch, fieldArgs)
   props.add(fromJS({ first: '111' }))
   expect(dispatch.mock.calls[0]).toMatchSnapshot()
+})
+
+test('add will trigger validation', () => {
+  const { props } = useListField(state, dispatch, fieldArgs)
+  props.add()
+  expect(dispatch.mock.calls[1]).toMatchSnapshot()
+})
+
+test('add will trigger custom validation', () => {
+  const custom = jest.fn()
+  custom.mockReturnValue('i am error')
+
+  const { props } = useListField(state, dispatch, { ...fieldArgs, validate: custom })
+  props.add()
+  expect(dispatch.mock.calls[1]).toMatchSnapshot()
 })
 
 test('can handle list arrays that have no data', () => {
@@ -90,41 +98,17 @@ test('remove', () => {
   expect(dispatch.mock.calls[0]).toMatchSnapshot()
 })
 
+test('remove will trigger validation', () => {
+  const { props } = useListField(state, dispatch, fieldArgs)
+  props.remove(1)
+  expect(dispatch.mock.calls[1]).toMatchSnapshot()
+})
 
-describe('validate', () => {
-  test('has items', () => {
-    const { validate } = useListField(state, dispatch, fieldArgs)
-    expect(validate()).toBeUndefined()
-    expect(dispatch.mock.calls[0]).toMatchSnapshot()
-  })
+test('remove will trigger custom validation', () => {
+  const custom = jest.fn()
+  custom.mockReturnValue('i am error')
 
-  test('no items', () => {
-    const nextState = state.set('items', fromJS([]))
-    const { validate } = useListField(nextState, dispatch, fieldArgs)
-    expect(validate()).toMatchSnapshot()
-    expect(dispatch.mock.calls[0]).toMatchSnapshot()
-  })
-
-  test('custom validator', () => {
-    const custom = jest.fn()
-    custom.mockReturnValue('custom error')
-    const { validate } = useListField(state, dispatch, { ...fieldArgs, validate: custom })
-    expect(validate()).toMatchSnapshot()
-  })
-
-  test('no items but optional', () => {
-    const nextState = state.set('items', fromJS([]))
-    fieldArgs.optional = true
-    const { validate } = useListField(nextState, dispatch, fieldArgs)
-    expect(validate()).toBeUndefined()
-    expect(dispatch.mock.calls[0]).toMatchSnapshot()
-  })
-
-  test('validates items', () => {
-    state = state.setIn(['items', 0, 'fields', 'first', 'current', 'value'], '')
-    const { validate } = useListField(state, dispatch, fieldArgs)
-    expect(validate()).toMatchSnapshot()
-    expect(dispatch.mock.calls).toMatchSnapshot()
-  })
-
+  const { props } = useListField(state, dispatch, { ...fieldArgs, validate: custom })
+  props.remove(1)
+  expect(dispatch.mock.calls[1]).toMatchSnapshot()
 })

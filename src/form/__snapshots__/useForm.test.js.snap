@@ -36,43 +36,195 @@ Array [
 ]
 `;
 
-exports[`form.validate handles list errors 1`] = `
+exports[`form.validate returns all errors 1`] = `
 Object {
-  "errors": Object {
-    "name": Object {
-      "child": "list error",
-    },
-  },
-  "isValid": false,
+  "obj": "containing errors",
 }
 `;
 
-exports[`form.validate returns all errors 1`] = `
-Object {
-  "errors": Object {
-    "name": "i am error",
-    "phone": "fieldError",
+exports[`form.validate returns all errors 2`] = `
+Array [
+  Immutable.Map {
+    "fields": Immutable.Map {
+      "name": Immutable.Map {
+        "initial": Immutable.Map {
+          "type": "text",
+          "label": "The name",
+        },
+        "current": Immutable.Map {
+          "value": "current value of name",
+        },
+      },
+      "phone": Immutable.Map {
+        "initial": Immutable.Map {
+          "type": "text",
+          "label": "The phone",
+        },
+        "current": Immutable.Map {
+          "value": "current value of phone",
+        },
+      },
+    },
   },
-  "isValid": false,
-}
+  Object {
+    "name": Object {
+      "props": Object {
+        "label": "The name",
+        "value": "current value of name",
+      },
+      "setValidationResult": [MockFunction],
+      "setValue": [MockFunction],
+      "validate": [MockFunction],
+    },
+    "phone": Object {
+      "props": Object {
+        "label": "The phone",
+        "value": "current value of phone",
+      },
+      "setValidationResult": [MockFunction],
+      "setValue": [MockFunction],
+      "validate": [MockFunction],
+    },
+  },
+  Array [
+    "i validate forms",
+    "as do i",
+  ],
+]
+`;
+
+exports[`form.validate returns all errors 3`] = `
+Array [
+  Object {
+    "payload": Object {
+      "obj": "containing errors",
+    },
+    "type": "validateAll",
+  },
+]
 `;
 
 exports[`getValuesIfFormValid returns null if not valid 1`] = `
 Array [
+  Immutable.Map {
+    "fields": Immutable.Map {
+      "name": Immutable.Map {
+        "initial": Immutable.Map {
+          "type": "text",
+          "label": "The name",
+        },
+        "current": Immutable.Map {
+          "value": "current value of name",
+        },
+      },
+      "phone": Immutable.Map {
+        "initial": Immutable.Map {
+          "type": "text",
+          "label": "The phone",
+        },
+        "current": Immutable.Map {
+          "value": "current value of phone",
+        },
+      },
+    },
+  },
   Object {
-    "name": "current value of name",
-    "phone": "current value of phone",
+    "name": Object {
+      "props": Object {
+        "label": "The name",
+        "value": "current value of name",
+      },
+      "setValidationResult": [MockFunction],
+      "setValue": [MockFunction],
+      "validate": [MockFunction],
+    },
+    "phone": Object {
+      "props": Object {
+        "label": "The phone",
+        "value": "current value of phone",
+      },
+      "setValidationResult": [MockFunction],
+      "setValue": [MockFunction],
+      "validate": [MockFunction],
+    },
+  },
+  "i validate forms",
+]
+`;
+
+exports[`getValuesIfFormValid returns null if not valid 2`] = `
+Array [
+  Object {
+    "obj": "containing errors",
   },
 ]
 `;
 
 exports[`getValuesIfFormValid returns values if form is valid  1`] = `"merged form values"`;
 
-exports[`no submit if form validation fails 1`] = `
+exports[`no submit if validation fails 1`] = `
+Array [
+  Immutable.Map {
+    "fields": Immutable.Map {
+      "name": Immutable.Map {
+        "initial": Immutable.Map {
+          "type": "text",
+          "label": "The name",
+        },
+        "current": Immutable.Map {
+          "value": "current value of name",
+        },
+      },
+      "phone": Immutable.Map {
+        "initial": Immutable.Map {
+          "type": "text",
+          "label": "The phone",
+        },
+        "current": Immutable.Map {
+          "value": "current value of phone",
+        },
+      },
+    },
+  },
+  Object {
+    "name": Object {
+      "props": Object {
+        "label": "The name",
+        "value": "current value of name",
+      },
+      "setValidationResult": [MockFunction],
+      "setValue": [MockFunction],
+      "validate": [MockFunction],
+    },
+    "phone": Object {
+      "props": Object {
+        "label": "The phone",
+        "value": "current value of phone",
+      },
+      "setValidationResult": [MockFunction],
+      "setValue": [MockFunction],
+      "validate": [MockFunction],
+    },
+  },
+  [MockFunction],
+]
+`;
+
+exports[`no submit if validation fails 2`] = `
 Array [
   Object {
-    "name": "current value of name",
-    "phone": "current value of phone",
+    "obj": "containing errors",
+  },
+]
+`;
+
+exports[`no submit if validation fails 3`] = `
+Array [
+  Object {
+    "payload": Object {
+      "obj": "containing errors",
+    },
+    "type": "validateAll",
   },
 ]
 `;
@@ -173,6 +325,54 @@ Array [
 ]
 `;
 
+exports[`submit with skipValidation must be a boolean 1`] = `
+Array [
+  Immutable.Map {
+    "fields": Immutable.Map {
+      "name": Immutable.Map {
+        "initial": Immutable.Map {
+          "type": "text",
+          "label": "The name",
+        },
+        "current": Immutable.Map {
+          "value": "current value of name",
+        },
+      },
+      "phone": Immutable.Map {
+        "initial": Immutable.Map {
+          "type": "text",
+          "label": "The phone",
+        },
+        "current": Immutable.Map {
+          "value": "current value of phone",
+        },
+      },
+    },
+  },
+  Object {
+    "name": Object {
+      "props": Object {
+        "label": "The name",
+        "value": "current value of name",
+      },
+      "setValidationResult": [MockFunction],
+      "setValue": [MockFunction],
+      "validate": [MockFunction],
+    },
+    "phone": Object {
+      "props": Object {
+        "label": "The phone",
+        "value": "current value of phone",
+      },
+      "setValidationResult": [MockFunction],
+      "setValue": [MockFunction],
+      "validate": [MockFunction],
+    },
+  },
+  "i validate forms",
+]
+`;
+
 exports[`valid form submits values  1`] = `
 Array [
   "merged form values",
@@ -209,5 +409,67 @@ Array [
     },
     "id": "id",
   },
+]
+`;
+
+exports[`valid form submits values  3`] = `
+Array [
+  Object {
+    "payload": Object {
+      "obj": "containing errors",
+    },
+    "type": "validateAll",
+  },
+]
+`;
+
+exports[`validate can be an array of validators 1`] = `
+Array [
+  Immutable.Map {
+    "fields": Immutable.Map {
+      "name": Immutable.Map {
+        "initial": Immutable.Map {
+          "type": "text",
+          "label": "The name",
+        },
+        "current": Immutable.Map {
+          "value": "current value of name",
+        },
+      },
+      "phone": Immutable.Map {
+        "initial": Immutable.Map {
+          "type": "text",
+          "label": "The phone",
+        },
+        "current": Immutable.Map {
+          "value": "current value of phone",
+        },
+      },
+    },
+  },
+  Object {
+    "name": Object {
+      "props": Object {
+        "label": "The name",
+        "value": "current value of name",
+      },
+      "setValidationResult": [MockFunction],
+      "setValue": [MockFunction],
+      "validate": [MockFunction],
+    },
+    "phone": Object {
+      "props": Object {
+        "label": "The phone",
+        "value": "current value of phone",
+      },
+      "setValidationResult": [MockFunction],
+      "setValue": [MockFunction],
+      "validate": [MockFunction],
+    },
+  },
+  Array [
+    "i validate forms",
+    "as do i",
+  ],
 ]
 `;

@@ -9,18 +9,12 @@ import { getFields } from '../reducer/generateDefaultListState'
 export const useListField = (state, dispatch, fieldArgs = {}) => {
   const requiredMessage = fieldArgs.requiredMessage || 'Required'
 
-  const setValidationResult = result => {
-    dispatch(actions.validationResult(fieldArgs.name, true, result))
-  }
-
   const setValue = () => {
     // dispatch(actions.updateValue(fieldArgs.name, v))
     // tryValidate(v, state.getIn(['current', 'touched']))
   }
 
-  const validate = () => {
-    const items = state.get('items', List())
-
+  const validate = (items) => {
     let message
     if (fieldArgs.validate) {
       message = fieldArgs.validate(items)
@@ -30,56 +24,21 @@ export const useListField = (state, dispatch, fieldArgs = {}) => {
     }
 
     dispatch(actions.validationResult(fieldArgs.name, Boolean(message), message || ''))
-
-    const myError = Boolean(message) ? { [fieldArgs.name]: message } : undefined
-    const errors = validateItems()
-    if (errors.length > 0) {
-      return {
-        ...myError,
-        items: errors,
-      }
-    }
-
-    if (myError) {
-      return {
-        ...myError,
-      }
-    }
-  }
-
-  const validateItems = () => {
-    const s = state.get('items', List()).reduce((acc, item, index) => {
-      const fieldResults = Object.entries(resolveFieldData(item, dispatch)).reduce((cca, [key, fieldData]) => {
-        const result = fieldData.validate()
-        if (result) {
-          if (typeof result === 'object') {
-            return { ...cca, [key]: Object.values(result)[0] }
-          } else {
-            cca[key] = result
-          }
-        }
-        return cca
-      }, {})
-
-      if (Object.keys(fieldResults).length > 0) {
-        acc[index] = fieldResults
-      }
-      return acc
-    }, [])
-
-    return s
   }
 
   const add = (item = Map()) => {
     const options = state.getIn(['initial', 'options'])
     const field = state.getIn(['initial', 'field'])
-    const size = state.get('items', List()).size
-    const itemState = getFields(field.fields, item, options, fieldArgs.name, size)
+    const items = state.get('items', List())
+    const itemState = getFields(field.fields, item, options, fieldArgs.name, items.size)
     dispatch(actions.addListItem(fieldArgs.name, itemState))
+    validate(items.push(item))
   }
 
   const remove = index => {
+    const items = state.get('items', List())
     dispatch(actions.removeListItem(fieldArgs.name, index))
+    validate(items.remove(index))
   }
 
   const fieldData = state.getIn(['items'], List()).map(item => {
@@ -98,9 +57,7 @@ export const useListField = (state, dispatch, fieldArgs = {}) => {
       add,
       remove,
     },
-    setValidationResult,
     setValue,
-    validate,
   }
 }
 

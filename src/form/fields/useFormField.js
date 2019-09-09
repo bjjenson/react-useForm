@@ -6,7 +6,7 @@ import { actions } from '../reducer/fieldReducer'
 export const useFormField = (state, dispatch, fieldArgs = {}) => {
   const requiredMessage = fieldArgs.requiredMessage || 'Required'
 
-  const tryValidate = (value, touched) => {
+  const validate = (value, touched = false) => {
     let result
 
     if (value !== '' && value !== undefined && fieldArgs.validate) {
@@ -17,7 +17,7 @@ export const useFormField = (state, dispatch, fieldArgs = {}) => {
       result = requiredMessage
     }
 
-    if (touched) {
+    if (touched || (!Boolean(result) && state.getIn(['current', 'helperText']))) {
       dispatch(actions.validationResult(fieldArgs.name, Boolean(result), result))
     }
     return result
@@ -25,27 +25,19 @@ export const useFormField = (state, dispatch, fieldArgs = {}) => {
 
   const setValue = v => {
     dispatch(actions.updateValue(fieldArgs.name, v))
-    tryValidate(v, state.getIn(['current', 'touched']))
+    validate(v, state.getIn(['current', 'touched']))
   }
 
   const onChange = event => {
     const value = fieldArgs.valueFromChange ? fieldArgs.valueFromChange(event) : event.target.value
     const coercedValue = fieldArgs.normalize ? fieldArgs.normalize(value) : value
     setValue(coercedValue)
-    tryValidate(coercedValue, state.getIn(['current', 'touched']))
+    validate(coercedValue, state.getIn(['current', 'touched']))
   }
 
   const onBlur = () => {
     dispatch(actions.touched(fieldArgs.name))
-    tryValidate(state.getIn(['current', 'value']), true)
-  }
-
-  const setValidationResult = result => {
-    dispatch(actions.validationResult(fieldArgs.name, true, result))
-  }
-
-  const validate = () => {
-    return tryValidate(state.getIn(['current', 'value']), true)
+    validate(state.getIn(['current', 'value']), true)
   }
 
   return {
@@ -62,8 +54,6 @@ export const useFormField = (state, dispatch, fieldArgs = {}) => {
       touched: state.getIn(['current', 'touched']),
       pristine: state.getIn(['current', 'pristine']),
     },
-    setValidationResult,
     setValue,
-    validate,
   }
 }

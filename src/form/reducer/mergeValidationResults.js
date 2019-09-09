@@ -30,7 +30,7 @@ const updateMap = (fields, errorObj, force) => {
 
 
     const error = getError(errors, key)
-    const touched = next.getIn(['current', 'touched'], force)
+    const touched = next.getIn(['current', 'touched'], force) || force
 
     if (touched) {
       return acc

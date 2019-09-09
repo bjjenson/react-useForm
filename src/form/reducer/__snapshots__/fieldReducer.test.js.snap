@@ -603,6 +603,38 @@ Immutable.Map {
 }
 `;
 
+exports[`validateAll merges validation errors 1`] = `
+Immutable.Map {
+  "fields": Immutable.Map {
+    "field-name": Immutable.Map {
+      "initial": Immutable.Map {
+        "value": "",
+      },
+      "current": Immutable.Map {
+        "value": "",
+        "pristine": true,
+        "touched": false,
+        "error": true,
+        "helperText": "error 1",
+      },
+    },
+    "otherField": Immutable.Map {
+      "initial": Immutable.Map {
+        "value": "",
+      },
+      "current": Immutable.Map {
+        "value": "",
+        "pristine": true,
+        "touched": false,
+        "error": true,
+        "helperText": "error 2",
+      },
+    },
+  },
+  "lastPath": Array [],
+}
+`;
+
 exports[`validationResult set on current field 1`] = `
 Immutable.Map {
   "fields": Immutable.Map {

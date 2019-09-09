@@ -32,6 +32,32 @@ Array [
 ]
 `;
 
+exports[`add will trigger custom validation 1`] = `
+Array [
+  Object {
+    "fieldName": "fieldName",
+    "payload": Object {
+      "error": true,
+      "helperText": "i am error",
+    },
+    "type": "validationResult",
+  },
+]
+`;
+
+exports[`add will trigger validation 1`] = `
+Array [
+  Object {
+    "fieldName": "fieldName",
+    "payload": Object {
+      "error": false,
+      "helperText": "",
+    },
+    "type": "validationResult",
+  },
+]
+`;
+
 exports[`add with values 1`] = `
 Array [
   Object {
@@ -74,6 +100,32 @@ Array [
 ]
 `;
 
+exports[`remove will trigger custom validation 1`] = `
+Array [
+  Object {
+    "fieldName": "fieldName",
+    "payload": Object {
+      "error": true,
+      "helperText": "i am error",
+    },
+    "type": "validationResult",
+  },
+]
+`;
+
+exports[`remove will trigger validation 1`] = `
+Array [
+  Object {
+    "fieldName": "fieldName",
+    "payload": Object {
+      "error": false,
+      "helperText": "",
+    },
+    "type": "validationResult",
+  },
+]
+`;
+
 exports[`returns props needed 1`] = `
 Object {
   "props": Object {
@@ -104,117 +156,6 @@ Object {
     "label": "the label",
     "remove": [Function],
   },
-  "setValidationResult": [Function],
   "setValue": [Function],
-  "validate": [Function],
 }
-`;
-
-exports[`setValidationResult externally 1`] = `
-Array [
-  Object {
-    "fieldName": "fieldName",
-    "payload": Object {
-      "error": true,
-      "helperText": "i am error",
-    },
-    "type": "validationResult",
-  },
-]
-`;
-
-exports[`validate custom validator 1`] = `
-Object {
-  "fieldName": "custom error",
-}
-`;
-
-exports[`validate has items 1`] = `
-Array [
-  Object {
-    "fieldName": "fieldName",
-    "payload": Object {
-      "error": false,
-      "helperText": "",
-    },
-    "type": "validationResult",
-  },
-]
-`;
-
-exports[`validate no items 1`] = `
-Object {
-  "fieldName": "Required",
-}
-`;
-
-exports[`validate no items 2`] = `
-Array [
-  Object {
-    "fieldName": "fieldName",
-    "payload": Object {
-      "error": true,
-      "helperText": "Required",
-    },
-    "type": "validationResult",
-  },
-]
-`;
-
-exports[`validate no items but optional 1`] = `
-Array [
-  Object {
-    "fieldName": "fieldName",
-    "payload": Object {
-      "error": false,
-      "helperText": "",
-    },
-    "type": "validationResult",
-  },
-]
-`;
-
-exports[`validate validates items 1`] = `
-Object {
-  "items": Array [
-    Object {
-      "first": "Required",
-    },
-  ],
-}
-`;
-
-exports[`validate validates items 2`] = `
-Array [
-  Array [
-    Object {
-      "fieldName": "fieldName",
-      "payload": Object {
-        "error": false,
-        "helperText": "",
-      },
-      "type": "validationResult",
-    },
-  ],
-  Array [
-    Object {
-      "fieldName": undefined,
-      "payload": Object {
-        "error": true,
-        "helperText": "Required",
-      },
-      "type": "validationResult",
-    },
-  ],
-  Array [
-    Object {
-      "fieldName": undefined,
-      "payload": Object {
-        "error": false,
-        "helperText": undefined,
-      },
-      "type": "validationResult",
-    },
-  ],
-]
 `;

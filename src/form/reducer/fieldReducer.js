@@ -1,5 +1,6 @@
 import { List } from 'immutable'
 import { syncListIndexes } from './syncListIndexes'
+import { mergeValidationResults } from './mergeValidationResults'
 
 export const actionTypes = {
   insertField: 'insertField',
@@ -9,6 +10,7 @@ export const actionTypes = {
   reset: 'reset',
   touched: 'touched',
   updateValue: 'updateValue',
+  validateAll: 'validateAll',
   validationResult: 'validationResult',
   addListener: 'addListener',
   removeListener: 'removeListener',
@@ -22,6 +24,7 @@ export const actions = {
   reset: (state) => ({ type: actionTypes.reset, payload: state }),
   touched: (fieldName) => ({ type: actionTypes.touched, fieldName }),
   updateValue: (fieldName, value) => ({ type: actionTypes.updateValue, fieldName, payload: value }),
+  validateAll: (errors) => ({ type: actionTypes.validateAll, payload: errors }),
   validationResult: (fieldName, error, helperText) => ({ type: actionTypes.validationResult, fieldName, payload: { error, helperText } }),
   addListener: (fieldName, listener) => ({ type: actionTypes.addListener, fieldName, payload: listener }),
   removeListener: (fieldName, listener) => ({ type: actionTypes.removeListener, fieldName, payload: listener }),
@@ -60,6 +63,9 @@ export const fieldReducer = (state, { type, fieldName = '', payload }) => {
           helperText || state.getIn([fieldsKey, ...fieldPath, 'initial', 'field']).helperText
         )
     },
+
+    [actionTypes.validateAll]: (errors) =>
+      mergeValidationResults(state, errors, true),
 
     [actionTypes.insertField]: fieldState =>
       state.setIn([fieldsKey, ...fieldPath], fieldState)

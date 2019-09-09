@@ -306,3 +306,13 @@ describe('fieldListener', () => {
   })
 
 })
+
+test('validateAll merges validation errors', () => {
+  const errors = {
+    [fieldName]: 'error 1',
+    otherField: 'error 2',
+  }
+  const action = actions.validateAll(errors)
+
+  expect(fieldReducer(state, action)).toMatchSnapshot()
+})

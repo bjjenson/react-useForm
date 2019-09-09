@@ -17,6 +17,7 @@ beforeEach(() => {
         current: {
           error: 'notSet',
           helperText: 'notSet',
+          touched: false,
         },
       },
       colors: {

@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`multiple validators deeply merges results 1`] = `
+Object {
+  "nested": Object {
+    "deepNested": Object {
+      "value1": "Error1",
+      "value1a": "Error1a",
+      "value2": "Error2",
+    },
+  },
+  "other1": "OtherError1",
+  "other2": "OtherError2",
+}
+`;
+
+exports[`multiple validators returns merged results 1`] = `
+Object {
+  "value1": "Error1",
+  "value2": "Error2",
+}
+`;
+
+exports[`singleValidator returns results 1`] = `
+Object {
+  "value1": "Error1",
+  "value2": "Error2",
+}
+`;

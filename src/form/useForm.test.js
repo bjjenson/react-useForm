@@ -6,6 +6,8 @@ import { createReducer } from './reducer/createReducer'
 import { mergeFormValues } from './helpers/mergeFormValues'
 import { getInitialState } from './reducer/getInitialState'
 import { getFieldState } from './reducer/getFieldState'
+import { getHasError } from './validate/getHasError'
+import { validateAll } from './validate/validateAll'
 
 jest.mock('react')
 jest.mock('./fields/useFormField')
@@ -13,6 +15,9 @@ jest.mock('./reducer/createReducer')
 jest.mock('./helpers/mergeFormValues')
 jest.mock('./reducer/getInitialState')
 jest.mock('./reducer/getFieldState')
+jest.mock('./validate/getHasError')
+jest.mock('./validate/validateAll')
+
 
 const submitWorker = jest.fn()
 const dispatch = jest.fn()
@@ -67,6 +72,7 @@ beforeEach(() => {
   getInitialState.mockReturnValue('derived-initial-state')
   useCallback.mockImplementation(f => f)
   useRef.mockReturnValue(formRef)
+  validateAll.mockReturnValue({ obj: 'containing errors' })
 })
 
 test('returns array of form props', () => {
@@ -74,74 +80,62 @@ test('returns array of form props', () => {
   expect(actual).toMatchSnapshot()
 })
 
-test('no submit if field validation fails', () => {
-  fieldProps.validate.mockReturnValue('has error')
-
-  const [, { submit }] = useForm({ fields, submit: submitWorker })
-  submit()
-  expect(submitWorker).not.toHaveBeenCalled()
-})
-
-test('no submit if form validation fails', () => {
+test('no submit if validation fails', () => {
+  getHasError.mockReturnValue(true)
   const validateForm = jest.fn()
   validateForm.mockReturnValue({ name: 'i am error' })
   const [, { submit }] = useForm({ fields, submit: submitWorker, validate: validateForm })
+
   submit()
-  expect(validateForm.mock.calls[0]).toMatchSnapshot()
+
+  expect(validateAll.mock.calls[0]).toMatchSnapshot()
+  expect(getHasError.mock.calls[0]).toMatchSnapshot()
+  expect(dispatch.mock.calls[0]).toMatchSnapshot()
   expect(submitWorker).not.toHaveBeenCalled()
 })
 
 test('submit with skipValidation submits all values', () => {
   const validateForm = jest.fn()
   const [, { submit }] = useForm({ fields, submit: submitWorker, validate: validateForm })
+
   submit(true)
+
+  expect(dispatch).not.toHaveBeenCalled()
   expect(validateForm).not.toHaveBeenCalled()
   expect(submitWorker).toHaveBeenCalled()
 })
 
 test('submit with skipValidation must be a boolean', () => {
-  const validateForm = jest.fn()
-  validateForm.mockReturnValue({ name: 'i am error' })
+  getHasError.mockReturnValue(true)
+  const validateForm = 'i validate forms'
+
   const [, { submit }] = useForm({ fields, submit: submitWorker, validate: validateForm })
   submit('I am truthy')
-  expect(validateForm).toHaveBeenCalled()
+  expect(validateAll.mock.calls[0]).toMatchSnapshot()
   expect(submitWorker).not.toHaveBeenCalled()
 })
 
 test('form.validate returns all errors', () => {
-  const validateForm = jest.fn()
-  validateForm.mockReturnValue({ name: 'i am error' })
-  fieldProps.validate.mockReturnValue('fieldError')
+  const validateForm = ['i validate forms', 'as do i']
 
   const [, { validate }] = useForm({ fields, submit: submitWorker, validate: validateForm })
   const errors = validate()
 
   expect(errors).toMatchSnapshot()
+  expect(validateAll.mock.calls[0]).toMatchSnapshot()
   expect(submitWorker).not.toHaveBeenCalled()
-})
-
-test('form.validate handles list errors', () => {
-  fieldProps.validate.mockReturnValueOnce({ child: 'list error' })
-
-  const [, { validate }] = useForm({ fields, submit: submitWorker })
-  const errors = validate()
-
-  expect(errors).toMatchSnapshot()
-  expect(submitWorker).not.toHaveBeenCalled()
+  expect(dispatch.mock.calls[0]).toMatchSnapshot()
 })
 
 test('validate can be an array of validators', () => {
-  const validate1 = jest.fn()
-  const validate2 = jest.fn()
-  validate1.mockReturnValue({ name: 'i am name error' })
-  validate2.mockReturnValue({ phone: 'i am phone error' })
-  const values = { 'name': 'current value of name', 'phone': 'current value of phone' }
+  getHasError.mockReturnValue(true)
+  const validate1 = 'i validate forms'
+  const validate2 = 'as do i'
 
   const [, { submit }] = useForm({ fields, submit: submitWorker, validate: [validate1, validate2] })
 
   submit()
-  expect(validate1).toHaveBeenCalledWith(values)
-  expect(validate2).toHaveBeenCalledWith(values)
+  expect(validateAll.mock.calls[0]).toMatchSnapshot()
   expect(submitWorker).not.toHaveBeenCalled()
 })
 
@@ -156,20 +150,24 @@ test('valid form submits values ', () => {
   submit()
   expect(submitWorker.mock.calls[0]).toMatchSnapshot()
   expect(mergeFormValues.mock.calls[0]).toMatchSnapshot()
+  expect(dispatch.mock.calls[0]).toMatchSnapshot()
 })
 
 test('getValuesIfFormValid returns null if not valid', () => {
-  const validateForm = jest.fn()
-  validateForm.mockReturnValue({ name: 'i am error' })
+  getHasError.mockReturnValue(true)
+  const validateForm = 'i validate forms'
   const [, { getValuesIfFormValid }] = useForm({ fields, submit: submitWorker, validate: validateForm })
 
   const values = getValuesIfFormValid()
 
-  expect(validateForm.mock.calls[0]).toMatchSnapshot()
+  expect(validateAll.mock.calls[0]).toMatchSnapshot()
+  expect(getHasError.mock.calls[0]).toMatchSnapshot()
   expect(values).toBeNull()
 })
 
 test('getValuesIfFormValid returns values if form is valid ', () => {
+  getHasError.mockReturnValue(false)
+
   fields = [
     { name: 'nested.name' },
     { name: 'phone' },

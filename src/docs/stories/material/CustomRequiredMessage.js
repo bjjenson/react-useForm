@@ -6,9 +6,9 @@ import { useForm } from '../../../form'
 const CustomRequiredMessage = ({ submit }) => {
   const [fields, form] = useForm({
     fields: [
-      { name: 'fullName', label: 'Full Name', requiredMessage: 'Name is Required' },
+      { name: 'fullName', label: 'Full Name', requiredMessage: 'Name must be filled out' },
       { name: 'nickname', label: 'Nickname', optional: true },
-      { name: 'phone', label: 'Phone', requiredMessage: 'Phone is Required' },
+      { name: 'phone', label: 'Phone', requiredMessage: 'Phone must be filled out' },
     ],
     submit,
   })

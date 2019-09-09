@@ -9,7 +9,8 @@ import { resolveFieldData, resolveField, getFieldProps } from './resolveFieldDat
 import { mergeFormValues } from './helpers/mergeFormValues'
 import { formStateResolvers } from './formStateResolvers'
 import { setPropsAtPath } from './helpers/setPropsAtPath'
-import { tryValidateFormAndFields } from './validate/tryValidateFormAndFields'
+import { validateAll } from './validate/validateAll'
+import { getHasError } from './validate/getHasError'
 
 /**
  * @param  param0 { import("./useForm").IFormProps }
@@ -56,7 +57,9 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
   }
 
   const getValidationResult = () => {
-    return tryValidateFormAndFields(validate, fieldData)
+    const errors = validateAll(state, fieldData, validate)
+    dispatch(actions.validateAll(errors))
+    return errors
   }
 
   const trySubmitTheForm = (skipValidation = false) => {
@@ -69,8 +72,9 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
     if (canSkip) {
       canSubmit = true
     } else {
-      const result = tryValidateFormAndFields(validate, fieldData)
-      canSubmit = result.isValid
+      const errors = validateAll(state, fieldData, validate)
+      canSubmit = !getHasError(errors)
+      dispatch(actions.validateAll(errors))
     }
 
     if (canSubmit && submit) {
@@ -79,9 +83,9 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
   }
 
   const getValuesIfFormValid = () => {
-    const result = tryValidateFormAndFields(validate, fieldData)
+    const errors = validateAll(state, fieldData, validate)
 
-    if (result.isValid) {
+    if (!getHasError(errors)) {
       return mergeFormValues(state, initialValues)
     }
     return null

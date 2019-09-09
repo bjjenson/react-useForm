@@ -21,7 +21,7 @@ const mustHaveTwo = value => {
 const SimpleForm = ({ submit }) => {
   const [fields, form] = useForm({
     fields: [
-      { name: 'fullName', label: 'Full Name' },
+      { name: 'fullName', label: 'Full Name', validate: () => 'bob' },
       { name: 'nickname', label: 'Nickname' },
       {
         name: 'colors', label: 'Favorite Colors', type: 'list', validate: mustHaveTwo, fields: [

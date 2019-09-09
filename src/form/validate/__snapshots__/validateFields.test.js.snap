@@ -1,0 +1,166 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`state 1`] = `
+Immutable.Map {
+  "other": "other data",
+  "getAllValues": "getAllValuesFunc",
+  "fields": Immutable.Map {
+    "nickname": Immutable.Map {
+      "current": Immutable.Map {
+        "error": "notSet",
+        "helperText": "notSet",
+        "value": "val",
+      },
+      "initial": Immutable.Map {
+        "optional": false,
+        "field": Object {
+          "name": "nickname",
+          "validate": [MockFunction],
+        },
+      },
+    },
+    "colors": Immutable.Map {
+      "current": Immutable.Map {
+        "error": "notSet",
+        "helperText": "notSet",
+      },
+      "items": Immutable.List [
+        Immutable.Map {
+          "fields": Immutable.Map {
+            "color": Immutable.Map {
+              "current": Immutable.Map {
+                "error": "notSet",
+                "helperText": "notSet",
+                "value": "val",
+              },
+              "initial": Immutable.Map {
+                "optional": false,
+                "field": Object {
+                  "name": "color",
+                  "validate": [MockFunction],
+                },
+              },
+            },
+          },
+        },
+        Immutable.Map {
+          "fields": Immutable.Map {
+            "color": Immutable.Map {
+              "current": Immutable.Map {
+                "error": "notSet",
+                "helperText": "notSet",
+                "value": "val",
+              },
+            },
+            "shades": Immutable.Map {
+              "current": Immutable.Map {
+                "error": "notSet",
+                "helperText": "notSet",
+              },
+              "items": Immutable.List [
+                Immutable.Map {
+                  "fields": Immutable.Map {
+                    "shade": Immutable.Map {
+                      "current": Immutable.Map {
+                        "error": "notSet",
+                        "helperText": "notSet",
+                        "value": "val",
+                      },
+                      "initial": Immutable.Map {
+                        "optional": false,
+                        "field": Object {
+                          "name": "color",
+                          "validate": [MockFunction],
+                        },
+                      },
+                    },
+                  },
+                },
+              ],
+            },
+          },
+        },
+      ],
+      "initial": Immutable.Map {
+        "optional": false,
+        "field": Object {
+          "name": "colors",
+          "validate": [MockFunction],
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`validate custom validator 1`] = `
+Object {
+  "colors": Array [
+    Object {},
+    Object {
+      "shades": Array [
+        Object {},
+      ],
+    },
+  ],
+  "nickname": "nickname error",
+}
+`;
+
+exports[`validate custom validator 2`] = `
+Array [
+  "val",
+  "nickname",
+  "getAllValuesFunc",
+]
+`;
+
+exports[`validates optional = true 1`] = `
+Object {
+  "colors": Array [
+    Object {
+      "color": "Required",
+    },
+    Object {
+      "color": "Required",
+      "shades": Array [
+        Object {
+          "shade": "Required",
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`validates optional fields 1`] = `
+Object {
+  "colors": Array [
+    Object {},
+    Object {
+      "shades": Array [
+        Object {},
+      ],
+    },
+  ],
+}
+`;
+
+exports[`validates required fields 1`] = `
+Object {
+  "colors": Array [
+    Object {
+      "color": "Required",
+    },
+    Object {
+      "color": "Required",
+      "shades": Array [
+        Object {
+          "shade": "Required",
+        },
+      ],
+    },
+  ],
+  "nickname": "Required",
+}
+`;

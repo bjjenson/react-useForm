@@ -213,56 +213,6 @@ describe('validate', () => {
       },
     })
   })
-
-  test('validate directly', () => {
-    state = fromJS({
-      current: {
-        value: '',
-        error: false,
-        pristine: false,
-        touched: false,
-        helperText: initialArgs.helperText,
-      },
-    })
-
-    const actual = useFormField(state, dispatch, initialArgs)
-
-    const result = actual.validate()
-
-    expect(dispatch).toHaveBeenCalledWith({
-      type: actionTypes.validationResult,
-      fieldName: 'fieldName',
-      payload: {
-        error: true,
-        helperText: 'Required',
-      },
-    })
-    expect(result).toEqual('Required')
-  })
-
-  test('validate directly returns true if valid', () => {
-    validate.mockReturnValue('')
-    const actual = useFormField(state, dispatch, initialArgs)
-
-    const result = actual.validate()
-
-    expect(result).toEqual('')
-  })
-
-})
-
-test('setValidationResult externally', () => {
-  const { setValidationResult } = useFormField(state, dispatch, initialArgs)
-
-  setValidationResult('i am error')
-  expect(dispatch).toHaveBeenCalledWith({
-    type: actionTypes.validationResult,
-    fieldName: 'fieldName',
-    payload: {
-      error: true,
-      helperText: 'i am error',
-    },
-  })
 })
 
 test('sets touched onBlur', () => {

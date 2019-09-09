@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`merges with array 1`] = `
+Object {
+  "colors": Array [
+    Object {
+      "color": "color 0 error",
+    },
+    Object {
+      "color": "color 1 error",
+    },
+  ],
+  "nickname": "nickname, error",
+}
+`;
+
+exports[`missing array on fields  1`] = `
+Object {
+  "colors": Array [
+    Object {
+      "color": "color 0 error",
+    },
+  ],
+}
+`;
+
+exports[`missing array on form  1`] = `
+Object {
+  "colors": Array [
+    Object {
+      "color": "color 0 error",
+    },
+  ],
+}
+`;
+
+exports[`more deeply nested arrays data 1`] = `
+Object {
+  "colors": Array [
+    Object {
+      "color": "color 0 error",
+    },
+    Object {
+      "color": "color 1 error",
+      "shades": Array [
+        Object {
+          "shade": "nested shade 1 error",
+        },
+      ],
+    },
+  ],
+  "nickname": "nickname, error",
+}
+`;
+
+exports[`more deeply nested arrays data 2`] = `"shades 1 error"`;
+
+exports[`more deeply nested arrays data opposite 1`] = `
+Object {
+  "colors": Array [
+    Object {
+      "color": "color 0 error",
+    },
+    Object {
+      "color": "color 1 error",
+      "shades": Array [
+        Object {
+          "shade": "nested shade 1 error",
+        },
+      ],
+    },
+  ],
+  "nickname": "nickname, error",
+}
+`;
+
+exports[`more deeply nested arrays data opposite 2`] = `"shades 1 error"`;
