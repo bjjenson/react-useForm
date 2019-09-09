@@ -1,5 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`onChange clears result event if not touched yet 1`] = `
+Array [
+  Array [
+    Object {
+      "fieldName": "fieldName",
+      "payload": "updated",
+      "type": "updateValue",
+    },
+  ],
+  Array [
+    Object {
+      "fieldName": "fieldName",
+      "payload": Object {
+        "error": false,
+        "helperText": "",
+      },
+      "type": "validationResult",
+    },
+  ],
+]
+`;
+
 exports[`onChange coerces value using normalize 1`] = `
 Array [
   Object {
@@ -27,16 +49,6 @@ Array [
       "fieldName": "fieldName",
       "payload": "updated",
       "type": "updateValue",
-    },
-  ],
-  Array [
-    Object {
-      "fieldName": "fieldName",
-      "payload": Object {
-        "error": false,
-        "helperText": undefined,
-      },
-      "type": "validationResult",
     },
   ],
   Array [

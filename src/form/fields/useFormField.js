@@ -32,7 +32,6 @@ export const useFormField = (state, dispatch, fieldArgs = {}) => {
     const value = fieldArgs.valueFromChange ? fieldArgs.valueFromChange(event) : event.target.value
     const coercedValue = fieldArgs.normalize ? fieldArgs.normalize(value) : value
     setValue(coercedValue)
-    validate(coercedValue, state.getIn(['current', 'touched']))
   }
 
   const onBlur = () => {
