@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { Map } from 'immutable'
+import { Map, fromJS } from 'immutable'
 import { Form } from './Form'
 import { createReducer } from './reducer/createReducer'
 import { getFieldState } from './reducer/getFieldState'
@@ -24,7 +24,7 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
   const lastPath = state.get('lastPath')
 
   const getAllValues = () => {
-    return getFieldValues(fieldCache.current)
+    return fromJS(getFieldValues(fieldCache.current))
   }
 
   const t0 = performance.now()

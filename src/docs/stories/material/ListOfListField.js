@@ -6,7 +6,7 @@ import { useForm } from '../../../form'
 
 const validateShade = (value, name, getValues) => {
   const colorPath = name.slice(0, name.indexOf('.shades.'))
-  const allValues = fromJS(getValues())
+  const allValues = getValues()
 
   const color = allValues.getIn([...colorPath.split('.'), 'color'])
   if (color === 'Blue' && (value !== 'dark' && value !== 'medium')) {
