@@ -116,6 +116,7 @@ test('submit with skipValidation must be a boolean', () => {
 })
 
 test('form.validate returns all errors', () => {
+  getHasError.mockReturnValue(true)
   const validateForm = ['i validate forms', 'as do i']
 
   const [, { validate }] = useForm({ fields, submit: submitWorker, validate: validateForm })

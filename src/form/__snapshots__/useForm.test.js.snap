@@ -38,7 +38,10 @@ Array [
 
 exports[`form.validate returns all errors 1`] = `
 Object {
-  "obj": "containing errors",
+  "errors": Object {
+    "obj": "containing errors",
+  },
+  "isValid": false,
 }
 `;
 

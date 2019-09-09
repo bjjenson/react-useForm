@@ -64,7 +64,10 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
   const getValidationResult = () => {
     const errors = validateAll(state, fieldData, validate, getAllValues)
     dispatch(actions.validateAll(errors))
-    return errors
+    return {
+      isValid: !getHasError(errors),
+      errors,
+    }
   }
 
   const trySubmitTheForm = (skipValidation = false) => {
