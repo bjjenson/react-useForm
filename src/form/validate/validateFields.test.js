@@ -132,3 +132,13 @@ test('validate custom validator', () => {
   expect(validateFields(state, getAllValues)).toMatchSnapshot()
   expect(nickname.validate.mock.calls[0]).toMatchSnapshot()
 })
+
+test('validate custom validator on list', () => {
+  setValues()
+
+  const colors = colorsField.get('field')
+  colors.validate.mockReturnValue('colors error')
+
+  expect(validateFields(state, getAllValues)).toMatchSnapshot()
+  expect(colors.validate.mock.calls[0]).toMatchSnapshot()
+})

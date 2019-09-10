@@ -1,10 +1,18 @@
 import { Map } from 'immutable'
 import { prepareNameForValidate } from '../fields/prepareNameForValidate'
 
+const getListValues = items => {
+  return items.map(item => {
+    return item.get('fields').entrySeq().reduce((acc, [key, value]) => {
+      return acc.set(key, value.getIn(['current', 'value']))
+    }, Map())
+  })
+}
+
 const validateItems = (items, getAllValues) => {
   return items.map(item => {
     return validateMap(item.get('fields'), getAllValues)
-  })
+  }).toArray()
 }
 
 const validateMap = (fields, getAllValues) => {
@@ -15,22 +23,30 @@ const validateMap = (fields, getAllValues) => {
 
     const items = field.get('items')
     if (items) {
-      return acc.set(key, validateItems(items, getAllValues))
+      acc[key] = validateItems(items, getAllValues)
+      if (validate) {
+        const error = validate(getListValues(items), prepareNameForValidate(name), getAllValues)
+        if (error) {
+          acc[key].error = error
+        }
+      }
+      return acc
     }
 
     if (validate) {
       const error = validate(value, prepareNameForValidate(name), getAllValues)
       if (error) {
-        return acc.set(key, error)
+        acc[key] = error
+        return acc
       }
     }
 
     if (!optional && value !== false && !value) {
-      return acc.set(key, requiredMessage || 'Required')
+      acc[key] = requiredMessage || 'Required'
     }
 
     return acc
-  }, Map()).toJS()
+  }, {})
 }
 
 export const validateFields = (state, getAllValues) => {

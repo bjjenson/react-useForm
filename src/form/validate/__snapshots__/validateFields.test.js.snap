@@ -115,6 +115,35 @@ Array [
 ]
 `;
 
+exports[`validate custom validator on list 1`] = `
+Object {
+  "colors": Array [
+    Object {},
+    Object {
+      "shades": Array [
+        Object {},
+      ],
+    },
+  ],
+}
+`;
+
+exports[`validate custom validator on list 2`] = `
+Array [
+  Immutable.List [
+    Immutable.Map {
+      "color": "val",
+    },
+    Immutable.Map {
+      "color": "val",
+      "shades": undefined,
+    },
+  ],
+  "colors",
+  "getAllValuesFunc",
+]
+`;
+
 exports[`validates optional = true 1`] = `
 Object {
   "colors": Array [
