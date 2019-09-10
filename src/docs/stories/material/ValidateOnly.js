@@ -38,8 +38,11 @@ const SimpleForm = ({ submit }) => {
   })
 
   const handleValidate = () => {
-    const errors = form.validate()
-    console.log('validation errors', JSON.stringify(errors, null, '  '))
+    const result = form.validate()
+    console.log('validation errors', JSON.stringify(result, null, '  '))
+    if (result.errors.colors) {
+      console.log(`errors.colors.error "${result.errors.colors.error}"`)
+    }
   }
 
   return (

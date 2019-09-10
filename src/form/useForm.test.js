@@ -8,6 +8,7 @@ import { getInitialState } from './reducer/getInitialState'
 import { getFieldState } from './reducer/getFieldState'
 import { getHasError } from './validate/getHasError'
 import { validateAll } from './validate/validateAll'
+import { pruneNonErrors } from './validate/pruneNonErrors'
 
 jest.mock('react')
 jest.mock('./fields/useFormField')
@@ -17,7 +18,7 @@ jest.mock('./reducer/getInitialState')
 jest.mock('./reducer/getFieldState')
 jest.mock('./validate/getHasError')
 jest.mock('./validate/validateAll')
-
+jest.mock('./validate/pruneNonErrors')
 
 const submitWorker = jest.fn()
 const dispatch = jest.fn()
@@ -116,7 +117,7 @@ test('submit with skipValidation must be a boolean', () => {
 })
 
 test('form.validate returns all errors', () => {
-  getHasError.mockReturnValue(true)
+  pruneNonErrors.mockReturnValue('pruned errors')
   const validateForm = ['i validate forms', 'as do i']
 
   const [, { validate }] = useForm({ fields, submit: submitWorker, validate: validateForm })

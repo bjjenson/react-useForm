@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`leaves error on array 1`] = `
+Object {
+  "colors": Array [],
+}
+`;
+
+exports[`leaves error on array with errors 1`] = `
+Object {
+  "colors": Array [
+    undefined,
+    Object {
+      "color": "color",
+    },
+    undefined,
+  ],
+}
+`;
+
+exports[`prunes all of nested objects 1`] = `Object {}`;
+
+exports[`prunes array at middle index 1`] = `
+Object {
+  "colors": Array [
+    undefined,
+    Object {
+      "color": "color",
+    },
+    undefined,
+  ],
+}
+`;
+
+exports[`prunes first level 1`] = `Object {}`;
+
+exports[`prunes more levels 1`] = `
+Object {
+  "colors": Array [
+    Object {
+      "color": "color",
+    },
+  ],
+}
+`;
+
+exports[`prunes nested array 1`] = `
+Object {
+  "colors": Array [
+    Object {
+      "shades": Array [
+        undefined,
+        Object {
+          "shade": "shade",
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`prunes nested object 1`] = `
+Object {
+  "colors": Array [
+    Object {
+      "color": "color",
+    },
+  ],
+  "name": Object {
+    "last": "last",
+    "middle": "finger",
+  },
+}
+`;

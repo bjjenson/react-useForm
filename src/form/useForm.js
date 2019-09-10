@@ -12,6 +12,7 @@ import { formStateResolvers } from './formStateResolvers'
 import { setPropsAtPath } from './helpers/setPropsAtPath'
 import { validateAll } from './validate/validateAll'
 import { getHasError } from './validate/getHasError'
+import { pruneNonErrors } from './validate/pruneNonErrors'
 
 /**
  * @param  param0 { import("./useForm").IFormProps }
@@ -62,10 +63,11 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
   }
 
   const getValidationResult = () => {
-    const errors = validateAll(state, fieldData, validate, getAllValues)
+    let errors = validateAll(state, fieldData, validate, getAllValues)
     dispatch(actions.validateAll(errors))
+    errors = pruneNonErrors(errors)
     return {
-      isValid: !getHasError(errors),
+      isValid: Object.keys(errors).length === 0,
       errors,
     }
   }
