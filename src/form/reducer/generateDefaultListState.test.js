@@ -1,5 +1,5 @@
-import { fromJS } from 'immutable'
-import { generateDefaultListState } from './generateDefaultListState'
+import { fromJS, List } from 'immutable'
+import { generateDefaultListState, getCurrentValues } from './generateDefaultListState'
 
 let field, initialValues, options
 beforeEach(() => {
@@ -74,4 +74,8 @@ test('thingy', () => {
     ],
   }]
 
+})
+
+test('getCurrentValues handles null', () => {
+  expect(getCurrentValues(null, null)).toEqual(List())
 })

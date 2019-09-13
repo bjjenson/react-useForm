@@ -32,8 +32,8 @@ export const generateDefaultListState = (field, initialValues, options = {}, par
     .setIn(['initial', 'options'], options)
 }
 
-export const getCurrentValues = (fields = [], initialListValues = List(), options, fieldPath, parentPath) => {
-  return initialListValues.map((item, index) => {
+export const getCurrentValues = (fields = [], initialListValues, options, fieldPath, parentPath) => {
+  return (initialListValues || List()).map((item, index) => {
     return getFields(fields, item, options, fieldPath, index, parentPath)
   })
 }
