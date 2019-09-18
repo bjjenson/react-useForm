@@ -12,7 +12,7 @@ const iterateObj = errorTree => {
     let isError
 
     if (Array.isArray(value)) {
-      isError = iterateArray(value)
+      isError = value.error || iterateArray(value)
     } else if (typeof value === 'object') {
       isError = iterateObj(value)
     } else {

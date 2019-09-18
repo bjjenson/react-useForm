@@ -24,12 +24,18 @@ const validateMap = (fields, getAllValues) => {
     const items = field.get('items')
     if (items) {
       acc[key] = validateItems(items, getAllValues)
+      if (!optional && items.size === 0) {
+        acc[key].error = requiredMessage || 'Required'
+      }
+
       if (validate) {
         const error = validate(getListValues(items), prepareNameForValidate(name), getAllValues)
         if (error) {
           acc[key].error = error
         }
       }
+
+
       return acc
     }
 

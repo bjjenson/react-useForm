@@ -7,5 +7,4 @@ export const validateAll = (state, fieldData, validateFunctions, getAllValues) =
   const fieldErrors = validateFields(state, getAllValues)
 
   return mergeErrors(fieldErrors, formErrors)
-  // dispatch(actions.validateAll(results))
 }

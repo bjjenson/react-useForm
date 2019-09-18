@@ -1,4 +1,4 @@
-import { fromJS, Map } from 'immutable'
+import { fromJS, Map, List } from 'immutable'
 import { validateFields } from './validateFields'
 
 let state, nicknameField, colorsField, colorField, getAllValues
@@ -139,6 +139,17 @@ test('validate custom validator on list', () => {
   const colors = colorsField.get('field')
   colors.validate.mockReturnValue('colors error')
 
-  expect(validateFields(state, getAllValues)).toMatchSnapshot()
+  const errors = validateFields(state, getAllValues)
+  expect(errors).toMatchSnapshot()
+  expect(errors.colors.error).toEqual('colors error')
   expect(colors.validate.mock.calls[0]).toMatchSnapshot()
+})
+
+test('empty required list', () => {
+  setValues()
+
+  state = state.setIn(['fields', 'colors', 'items'], List())
+
+  const errors = validateFields(state, getAllValues)
+  expect(errors.colors.error).toEqual('Required')
 })

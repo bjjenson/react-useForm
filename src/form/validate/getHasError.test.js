@@ -48,3 +48,20 @@ test('has a nested error', () => {
 
   expect(getHasError(errors)).toBeTruthy()
 })
+
+test('has an error on an array', () => {
+  const errors = {
+    nickname: '',
+    colors: [
+      {
+        color: '',
+        shades: [
+          { shade: '' },
+        ],
+      },
+    ],
+  }
+  errors.colors.error = 'error'
+
+  expect(getHasError(errors)).toBeTruthy()
+})
