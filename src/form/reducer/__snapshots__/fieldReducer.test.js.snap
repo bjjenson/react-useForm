@@ -28,6 +28,9 @@ Immutable.Map {
       },
     },
   },
+  "formTools": Object {
+    "current": "current-form-tools",
+  },
   "listeners": Immutable.Map {
     "name": Immutable.List [
       [MockFunction],
@@ -66,6 +69,9 @@ Immutable.Map {
       },
     },
   },
+  "formTools": Object {
+    "current": "current-form-tools",
+  },
   "listeners": Immutable.Map {
     "name": Immutable.List [
       [MockFunction],
@@ -103,6 +109,9 @@ Immutable.Map {
       },
     },
   },
+  "formTools": Object {
+    "current": "current-form-tools",
+  },
   "listeners": Immutable.Map {
     "field-name": Immutable.List [
       [MockFunction] {
@@ -110,6 +119,7 @@ Immutable.Map {
           Array [
             "i am update",
             "previousValue",
+            "current-form-tools",
           ],
         ],
         "results": Array [
@@ -181,6 +191,9 @@ Immutable.Map {
       },
     },
   },
+  "formTools": Object {
+    "current": "current-form-tools",
+  },
   "lastPath": Array [],
 }
 `;
@@ -220,6 +233,9 @@ Immutable.Map {
         "value": "one",
       },
     },
+  },
+  "formTools": Object {
+    "current": "current-form-tools",
   },
   "removedFields": Immutable.List [],
   "lastPath": Array [],
@@ -475,6 +491,9 @@ Immutable.Map {
       },
     },
   },
+  "formTools": Object {
+    "current": "current-form-tools",
+  },
   "lastPath": Array [],
 }
 `;
@@ -507,6 +526,9 @@ Immutable.Map {
       },
     },
   },
+  "formTools": Object {
+    "current": "current-form-tools",
+  },
   "field-name": Immutable.Map {
     "current": Immutable.Map {
       "pristine": false,
@@ -531,6 +553,9 @@ Immutable.Map {
         "helperText": "",
       },
     },
+  },
+  "formTools": Object {
+    "current": "current-form-tools",
   },
   "removedFields": Immutable.List [
     "field-name",
@@ -567,6 +592,9 @@ Immutable.Map {
       },
     },
   },
+  "formTools": Object {
+    "current": "current-form-tools",
+  },
   "lastPath": Array [],
 }
 `;
@@ -598,6 +626,9 @@ Immutable.Map {
         "helperText": "",
       },
     },
+  },
+  "formTools": Object {
+    "current": "current-form-tools",
   },
   "lastPath": Array [],
 }
@@ -631,6 +662,9 @@ Immutable.Map {
       },
     },
   },
+  "formTools": Object {
+    "current": "current-form-tools",
+  },
   "lastPath": Array [],
 }
 `;
@@ -662,6 +696,9 @@ Immutable.Map {
         "helperText": "",
       },
     },
+  },
+  "formTools": Object {
+    "current": "current-form-tools",
   },
   "lastPath": Array [],
 }

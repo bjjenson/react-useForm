@@ -8,8 +8,9 @@ jest.mock('react')
 jest.mock('./getInitialState')
 jest.useFakeTimers()
 
-let state, fields, initialValues, dispatch
+let state, fields, initialValues, dispatch, formTools
 beforeEach(() => {
+  formTools = 'formTools'
   dispatch = 'dispatch'
   state = fromJS({
     [fieldsKey]: {
@@ -34,14 +35,14 @@ beforeEach(() => {
 })
 
 test('prepares initialState by field', () => {
-  expect(createReducer({ fields, initialValues })).toMatchSnapshot()
+  expect(createReducer({ fields, initialValues, formTools })).toMatchSnapshot()
   useReducer.mock.calls[0][2]()
   expect(getInitialState.mock.calls[0]).toMatchSnapshot()
   expect(useReducer.mock.calls[0]).toMatchSnapshot()
 })
 
 test('uses memo to check for initialValues change', () => {
-  createReducer({ fields, initialValues })
+  createReducer({ fields, initialValues, formTools })
   expect(useMemo.mock.calls[0]).toMatchSnapshot()
 })
 
@@ -57,7 +58,7 @@ test('useMemo update dispatches reset', () => {
     timeoutCB = cb
   })
 
-  createReducer({ fields, initialValues })
+  createReducer({ fields, initialValues, formTools })
   memoized()
   timeoutCB()
 

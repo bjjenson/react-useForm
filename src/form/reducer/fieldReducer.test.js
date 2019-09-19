@@ -6,9 +6,12 @@ jest.mock('./syncListIndexes')
 
 jest.useFakeTimers()
 
-let state, fieldName
+let state, fieldName, formTools
 beforeEach(() => {
   fieldName = 'field-name'
+  formTools = {
+    current: 'current-form-tools',
+  }
   state = fromJS({
     fields: {
       [fieldName]: {
@@ -36,7 +39,7 @@ beforeEach(() => {
         },
       },
     },
-  })
+  }).set('formTools', formTools)
 
   syncListIndexes.mockImplementation(s => s)
   setTimeout.mockImplementation(cb => {
@@ -270,8 +273,8 @@ describe('fieldListener', () => {
     state = fieldReducer(state, action2)
     fieldReducer(state, changeAction)
 
-    expect(listener).toHaveBeenCalledWith(update, previousValue)
-    expect(listener2).toHaveBeenCalledWith(update, previousValue)
+    expect(listener).toHaveBeenCalledWith(update, previousValue, formTools.current)
+    expect(listener2).toHaveBeenCalledWith(update, previousValue, formTools.current)
   })
 
   test('listener not called for other fields', () => {
@@ -301,7 +304,7 @@ describe('fieldListener', () => {
     fieldReducer(state, changeAction)
 
     expect(state).toMatchSnapshot()
-    expect(listener2).toHaveBeenCalledWith(update, previousValue)
+    expect(listener2).toHaveBeenCalledWith(update, previousValue, formTools.current)
     expect(listener).not.toHaveBeenCalled()
   })
 

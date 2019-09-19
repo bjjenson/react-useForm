@@ -12,7 +12,6 @@ const cannotBeLight = value => {
 }
 
 const mustHaveTwo = value => {
-  console.log('must', value)
   if (value.size < 2) {
     return 'Must have at least two'
   }

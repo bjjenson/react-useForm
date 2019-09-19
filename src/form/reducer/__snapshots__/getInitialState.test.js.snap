@@ -52,6 +52,7 @@ Immutable.Map {
       [MockFunction],
     ],
   },
+  "formTools": "form-tools",
 }
 `;
 
@@ -99,6 +100,7 @@ Immutable.Map {
       },
     },
   },
+  "formTools": "form-tools",
 }
 `;
 
@@ -125,6 +127,7 @@ Immutable.Map {
       },
     },
   },
+  "formTools": "form-tools",
 }
 `;
 
@@ -152,6 +155,7 @@ Immutable.Map {
       },
     },
   },
+  "formTools": "form-tools",
 }
 `;
 
@@ -178,6 +182,7 @@ Immutable.Map {
       "items": Immutable.List [],
     },
   },
+  "formTools": "form-tools",
 }
 `;
 
@@ -204,6 +209,7 @@ Immutable.Map {
       },
     },
   },
+  "formTools": "form-tools",
 }
 `;
 
@@ -230,6 +236,7 @@ Immutable.Map {
       },
     },
   },
+  "formTools": "form-tools",
 }
 `;
 
@@ -256,6 +263,7 @@ Immutable.Map {
       },
     },
   },
+  "formTools": "form-tools",
 }
 `;
 
@@ -302,6 +310,7 @@ Immutable.Map {
       },
     },
   },
+  "formTools": "form-tools",
 }
 `;
 
@@ -328,6 +337,7 @@ Immutable.Map {
       },
     },
   },
+  "formTools": "form-tools",
 }
 `;
 
@@ -375,6 +385,7 @@ Immutable.Map {
       },
     },
   },
+  "formTools": "form-tools",
 }
 `;
 
@@ -422,6 +433,7 @@ Immutable.Map {
       },
     },
   },
+  "formTools": "form-tools",
 }
 `;
 

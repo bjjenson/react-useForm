@@ -5,7 +5,7 @@ import { getFieldState } from './getFieldState'
 /**
  * @param fields {Array<import("..").IFormFieldArgs>}
  */
-export const getInitialState = (fields, initialValues = Map(), options = {}) => {
+export const getInitialState = (fields, initialValues = Map(), options = {}, formTools) => {
   const fieldMap = fields.reduce((acc, field) => {
     const result = acc.set(field.name, getFieldState(field, initialValues, options))
 
@@ -13,7 +13,9 @@ export const getInitialState = (fields, initialValues = Map(), options = {}) => 
   }, Map())
 
   const listeners = getListeners(options.listeners)
-  return fromJS({ [fieldsKey]: fieldMap }).merge(listeners)
+  return fromJS({ [fieldsKey]: fieldMap })
+    .merge(listeners)
+    .set('formTools', formTools)
 }
 
 const getListeners = (listeners = {}) => {

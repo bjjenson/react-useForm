@@ -248,6 +248,14 @@ Array [
         "type": "text",
       },
     ],
+    "formTools": Object {
+      "current": Object {
+        "addField": [Function],
+        "addFieldListener": [Function],
+        "removeField": [Function],
+        "removeFieldListener": [Function],
+      },
+    },
     "initialValues": Immutable.Map {},
     "options": Object {
       "optional": "yes",
@@ -287,6 +295,14 @@ Array [
     "id": "id",
   },
   Object {},
+  Object {
+    "current": Object {
+      "addField": [Function],
+      "addFieldListener": [Function],
+      "removeField": [Function],
+      "removeFieldListener": [Function],
+    },
+  },
 ]
 `;
 

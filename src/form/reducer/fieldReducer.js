@@ -47,7 +47,7 @@ export const fieldReducer = (state, { type, fieldName = '', payload }) => {
     [actionTypes.updateValue]: value => {
       setTimeout(() => {
         const previous = state.getIn([fieldsKey, ...fieldPath, current, 'value'], '')
-        state.getIn([listenersKey, fieldName], List()).forEach(listener => listener(value, previous))
+        state.getIn([listenersKey, fieldName], List()).forEach(listener => listener(value, previous, state.get('formTools').current))
       })
 
       return state.setIn([fieldsKey, ...fieldPath, current, 'value'], value)

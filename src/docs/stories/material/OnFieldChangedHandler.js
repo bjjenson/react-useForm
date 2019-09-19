@@ -45,7 +45,8 @@ const OnFieldChangedHandler = ({ submit }) => {
     submit,
     options: {
       listeners: {
-        gender: (value, previous) => {
+        gender: (value, previous, tools) => {
+          console.log('formTools are:', tools)
           setGender(`${value}, was ${previous}`)
         },
       },

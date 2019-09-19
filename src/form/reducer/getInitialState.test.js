@@ -4,8 +4,10 @@ import { getInitialState } from './getInitialState'
 jest.mock('react')
 jest.useFakeTimers()
 
-let fields, initialValues
+let fields, initialValues, formTools, options
 beforeEach(() => {
+  formTools = 'form-tools'
+  options = { op: 'tion' }
   fields = [
     { name: 'first', label: 'First' },
     { name: 'second', label: 'Second', type: 'boolean' },
@@ -18,29 +20,29 @@ beforeEach(() => {
 })
 
 test('prepares initialState by field', () => {
-  expect(getInitialState(fields, initialValues)).toMatchSnapshot()
+  expect(getInitialState(fields, initialValues, undefined, formTools)).toMatchSnapshot()
 })
 
 test('throws error if name not provided', () => {
   fields.push({ label: 'Third' })
-  expect(() => getInitialState(fields, initialValues)).toThrowErrorMatchingSnapshot()
+  expect(() => getInitialState(fields, initialValues, options, formTools)).toThrowErrorMatchingSnapshot()
 })
 
 test('adds helperText from field config', () => {
   fields[0].helperText = 'i am helper'
-  expect(getInitialState(fields, initialValues)).toMatchSnapshot()
+  expect(getInitialState(fields, initialValues, options, formTools)).toMatchSnapshot()
 })
 
 test('sets optional on field', () => {
   fields[0].optional = true
-  expect(getInitialState(fields, initialValues)).toMatchSnapshot()
+  expect(getInitialState(fields, initialValues, options, formTools)).toMatchSnapshot()
 })
 
 test('sets optional on field using custom formatter', () => {
   const optionalLabelFormatter = jest.fn()
   optionalLabelFormatter.mockReturnValue('label formatted')
   fields[0].optional = true
-  expect(getInitialState(fields, initialValues, { optionalLabelFormatter })).toMatchSnapshot()
+  expect(getInitialState(fields, initialValues, { optionalLabelFormatter }, formTools)).toMatchSnapshot()
 
   expect(optionalLabelFormatter.mock.calls[0]).toMatchSnapshot()
 })
@@ -54,7 +56,7 @@ test('reads initialValues that are nested', () => {
       first: 'nestedValue',
     },
   })
-  expect(getInitialState(fields, initialValues)).toMatchSnapshot()
+  expect(getInitialState(fields, initialValues, options, formTools)).toMatchSnapshot()
 })
 
 describe('initialValues', () => {
@@ -62,42 +64,42 @@ describe('initialValues', () => {
     fields = [
       { name: 'first', type: 'text', value: 'i am field value' },
     ]
-    expect(getInitialState(fields)).toMatchSnapshot()
+    expect(getInitialState(fields, undefined, undefined, formTools)).toMatchSnapshot()
   })
 
   test('text', () => {
     fields = [
       { name: 'first', type: 'text' },
     ]
-    expect(getInitialState(fields)).toMatchSnapshot()
+    expect(getInitialState(fields, undefined, undefined, formTools)).toMatchSnapshot()
   })
 
   test('select', () => {
     fields = [
       { name: 'first', type: 'select' },
     ]
-    expect(getInitialState(fields)).toMatchSnapshot()
+    expect(getInitialState(fields, undefined, undefined, formTools)).toMatchSnapshot()
   })
 
   test('number', () => {
     fields = [
       { name: 'first', type: 'number' },
     ]
-    expect(getInitialState(fields)).toMatchSnapshot()
+    expect(getInitialState(fields, undefined, undefined, formTools)).toMatchSnapshot()
   })
 
   test('boolean', () => {
     fields = [
       { name: 'first', type: 'boolean' },
     ]
-    expect(getInitialState(fields)).toMatchSnapshot()
+    expect(getInitialState(fields, undefined, undefined, formTools)).toMatchSnapshot()
   })
 
   test('list', () => {
     fields = [
       { name: 'first', type: 'list' },
     ]
-    expect(getInitialState(fields)).toMatchSnapshot()
+    expect(getInitialState(fields, undefined, undefined, formTools)).toMatchSnapshot()
   })
 })
 
@@ -112,5 +114,5 @@ test('adds field listeners', () => {
     },
   }
 
-  expect(getInitialState(fields, initialValues, options)).toMatchSnapshot()
+  expect(getInitialState(fields, initialValues, options, formTools)).toMatchSnapshot()
 })

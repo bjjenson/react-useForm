@@ -18,7 +18,8 @@ import { pruneNonErrors } from './validate/pruneNonErrors'
  * @param  param0 { import("./useForm").IFormProps }
  */
 export const useForm = ({ fields, submit, validate, options = {}, initialValues = Map() }) => {
-  const [state, dispatch] = createReducer({ fields, initialValues, options })
+  const formTools = useRef()
+  const [state, dispatch] = createReducer({ fields, initialValues, options, formTools })
   const fieldCache = useRef()
 
   let fieldData
@@ -102,7 +103,7 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
   }
 
   const resetForm = () => {
-    const derivedInitialState = getInitialState(fields, initialValues, options)
+    const derivedInitialState = getInitialState(fields, initialValues, options, formTools)
     dispatch(actions.reset(derivedInitialState))
   }
 
@@ -110,6 +111,12 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
     fieldData[fieldName].setValue(value)
   }
 
+  formTools.current = {
+    addField,
+    removeField,
+    addFieldListener,
+    removeFieldListener,
+  }
   const fieldProps = getFieldProps(fieldData, state)
 
   return [
