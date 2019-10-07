@@ -111,12 +111,15 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
     fieldData[fieldName].setValue(value)
   }
 
+  const getValues = () => mergeFormValues(state, initialValues)
+
   formTools.current = {
     addField,
     removeField,
     addFieldListener,
     removeFieldListener,
     setValue,
+    getValues,
   }
   const fieldProps = getFieldProps(fieldData, state)
 
@@ -134,7 +137,7 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
       addFieldListener,
       removeFieldListener,
       ...stateResolvers,
-      getValues: () => mergeFormValues(state, initialValues),
+      getValues,
     },
   ]
 }

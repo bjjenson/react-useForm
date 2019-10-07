@@ -252,6 +252,7 @@ Array [
       "current": Object {
         "addField": [Function],
         "addFieldListener": [Function],
+        "getValues": [Function],
         "removeField": [Function],
         "removeFieldListener": [Function],
         "setValue": [Function],
@@ -300,6 +301,7 @@ Array [
     "current": Object {
       "addField": [Function],
       "addFieldListener": [Function],
+      "getValues": [Function],
       "removeField": [Function],
       "removeFieldListener": [Function],
       "setValue": [Function],
