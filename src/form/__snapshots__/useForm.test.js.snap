@@ -254,6 +254,7 @@ Array [
         "addFieldListener": [Function],
         "removeField": [Function],
         "removeFieldListener": [Function],
+        "setValue": [Function],
       },
     },
     "initialValues": Immutable.Map {},
@@ -301,6 +302,7 @@ Array [
       "addFieldListener": [Function],
       "removeField": [Function],
       "removeFieldListener": [Function],
+      "setValue": [Function],
     },
   },
 ]

@@ -116,6 +116,7 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
     removeField,
     addFieldListener,
     removeFieldListener,
+    setValue,
   }
   const fieldProps = getFieldProps(fieldData, state)
 
