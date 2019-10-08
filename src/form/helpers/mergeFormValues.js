@@ -16,8 +16,8 @@ const reduceFields = (state, initialState) => {
     const items = fieldData.get('items')
     const value = !items ?
       fieldData.getIn(['current', 'value']) :
-      items.map(item => {
-        return reduceFields(item, Map())
+      items.map((item, index) => {
+        return reduceFields(item, acc.getIn([...key.split('.'), index], Map()))
       })
 
     return acc.setIn(key.split('.'), value)

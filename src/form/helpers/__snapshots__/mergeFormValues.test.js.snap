@@ -16,9 +16,11 @@ Immutable.Map {
     "phones": Immutable.List [
       Immutable.Map {
         "number": "new phone 1",
+        "type": "home",
       },
       Immutable.Map {
         "number": "new phone 2",
+        "type": "mobile",
       },
     ],
   },

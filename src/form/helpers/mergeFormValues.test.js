@@ -61,8 +61,8 @@ test('merges current list values with initialValues', () => {
     data: {
       name: 'old name',
       phones: [
-        { number: 'old phone 1' },
-        { number: 'old phone 2' },
+        { number: 'old phone 1', type: 'home' },
+        { number: 'old phone 2', type: 'mobile' },
       ],
     },
   })
