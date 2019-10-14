@@ -1,9 +1,9 @@
 import { fromJS } from 'immutable'
-import { getInitialState } from '../form/reducer/getInitialState'
-import { validateAll } from '../form/validate/validateAll'
-import { resolveFieldData } from '../form/resolveFieldData'
-import { getFieldValues } from '../form/helpers/getFieldValues'
-import { pruneNonErrors } from '../form/validate/pruneNonErrors'
+import { getInitialState } from '../reducer/getInitialState'
+import { validateAll } from '../validate/validateAll'
+import { resolveFieldData } from '../resolveFieldData'
+import { getFieldValues } from '../helpers/getFieldValues'
+import { pruneNonErrors } from '../validate/pruneNonErrors'
 
 export const createMemoryForm = ({ fields, validate, initialValues }) => {
   let fieldData

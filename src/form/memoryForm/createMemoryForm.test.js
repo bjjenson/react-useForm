@@ -1,16 +1,16 @@
 import { fromJS, Map } from 'immutable'
-import { getInitialState } from '../form/reducer/getInitialState'
-import { validateAll } from '../form/validate/validateAll'
-import { resolveFieldData } from '../form/resolveFieldData'
+import { getInitialState } from '../reducer/getInitialState'
+import { validateAll } from '../validate/validateAll'
+import { resolveFieldData } from '../resolveFieldData'
 import { createMemoryForm } from './createMemoryForm'
-import { getFieldValues } from '../form/helpers/getFieldValues'
-import { pruneNonErrors } from '../form/validate/pruneNonErrors'
+import { getFieldValues } from '../helpers/getFieldValues'
+import { pruneNonErrors } from '../validate/pruneNonErrors'
 
-jest.mock('../form/reducer/getInitialState')
-jest.mock('../form/validate/validateAll')
-jest.mock('../form/resolveFieldData')
-jest.mock('../form/helpers/getFieldValues')
-jest.mock('../form/validate/pruneNonErrors')
+jest.mock('../reducer/getInitialState')
+jest.mock('../validate/validateAll')
+jest.mock('../resolveFieldData')
+jest.mock('../helpers/getFieldValues')
+jest.mock('../validate/pruneNonErrors')
 
 let fields, validators, initialValues
 beforeEach(() => {
