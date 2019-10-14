@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`gets field data 1`] = `
+Array [
+  Immutable.Map {
+    "name": "the-name",
+    "address": "the-address",
+    "resolvedInitialState": true,
+  },
+  [Function],
+  [Function],
+]
+`;
+
+exports[`gets initial state from fields and values 1`] = `
+Array [
+  Array [
+    Object {
+      "label": "Name",
+      "name": "name",
+      "type": "text",
+    },
+    Object {
+      "label": "Address",
+      "name": "address",
+      "type": "text",
+    },
+  ],
+  Immutable.Map {
+    "name": "the-name",
+    "address": "the-address",
+  },
+  Object {},
+  Object {
+    "current": Object {},
+  },
+]
+`;
+
+exports[`returns form functions 1`] = `
+Object {
+  "validate": [Function],
+}
+`;
+
+exports[`validates the form 1`] = `
+Object {
+  "errors": Object {
+    "errors": "pruned",
+  },
+  "isValid": false,
+}
+`;
+
+exports[`validates the form 2`] = `
+Array [
+  Immutable.Map {
+    "name": "the-name",
+    "address": "the-address",
+    "resolvedInitialState": true,
+  },
+  "field-data",
+  Array [
+    "validator1",
+  ],
+  [Function],
+]
+`;
+
+exports[`validation: getAllValues returns getFieldValues 1`] = `
+Array [
+  "field-data",
+]
+`;
+
+exports[`validation: getAllValues returns getFieldValues 2`] = `
+Immutable.Map {
+  "name": "name",
+  "address": "address",
+}
+`;

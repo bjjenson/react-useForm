@@ -30,6 +30,7 @@ import OnFieldChangedHandler from './material/OnFieldChangedHandler'
 import GetValidFormValues from './material/GetValidFormValues'
 import NumberFieldValidation from './material/NumberFieldValidation'
 import AddToListOnFieldChange from './material/AddToListOnFieldChange'
+import ValidateMemoryForm from './memory/ValidateMemoryForm'
 
 const submitLog = name => {
   return {
@@ -79,3 +80,4 @@ storiesOf('Material-UI', module)
   .add('Save without validation', () => <SaveNoValidate {...submitLog('SaveNoValidate')} />)
   .add('Validate only', () => <ValidateOnly {...submitLog('validateOnly')} />)
   .add('Get submit values directly', () => <GetValidFormValues {...submitLog('GetValidFormValues')} />)
+  .add('Validate in memory only', () => <ValidateMemoryForm />)
