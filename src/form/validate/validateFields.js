@@ -47,7 +47,7 @@ const validateMap = (fields, getAllValues) => {
       }
     }
 
-    if (!optional && value !== false && !value) {
+    if (!optional && (value === undefined || value === '')) {
       acc[key] = requiredMessage || 'Required'
     }
 

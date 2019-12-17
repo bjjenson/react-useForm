@@ -153,3 +153,12 @@ test('empty required list', () => {
   const errors = validateFields(state, getAllValues)
   expect(errors.colors.error).toEqual('Required')
 })
+
+test('0 ok on numeric field', () => {
+  setValues()
+
+  state = state.setIn(['fields', 'nickname', 'current', 'value'], 0)
+
+  const errors = validateFields(state, getAllValues)
+  expect(errors.nickname).toBeUndefined()
+})
