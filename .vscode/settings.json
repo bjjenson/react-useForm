@@ -1,6 +1,5 @@
 {
   "eslint.enable": true,
-  "eslint.autoFixOnSave": true,
   "eslint.options": {
     "configFile": ".eslintrc",
     "ignorePattern": [
@@ -18,4 +17,7 @@
   },
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
 }
