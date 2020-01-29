@@ -42,6 +42,10 @@ export const useListField = (state, dispatch, fieldArgs = {}, getAllValues) => {
     validate(items.remove(index))
   }
 
+  const updateIndex = (fromIndex, toIndex) => {
+    dispatch(actions.updateListIndex(fieldArgs.name, fromIndex, toIndex))
+  }
+
   const fieldData = state.getIn(['items'], List()).map(item => {
     return resolveFieldData(item, dispatch, getAllValues)
   }).toArray()
@@ -57,6 +61,7 @@ export const useListField = (state, dispatch, fieldArgs = {}, getAllValues) => {
       })),
       add,
       remove,
+      updateIndex,
     },
     setValue,
   }

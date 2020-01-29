@@ -223,6 +223,12 @@ describe('list in state', () => {
     expect(syncListIndexes.mock.calls[0]).toMatchSnapshot()
   })
 
+  test('updateListIndex', () => {
+    const action = actions.updateListIndex('data.listField', 0, 1)
+    expect(fieldReducer(state, action)).toMatchSnapshot()
+    expect(syncListIndexes.mock.calls[0]).toMatchSnapshot()
+  })
+
 })
 
 describe('getFieldPath', () => {

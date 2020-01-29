@@ -31,6 +31,7 @@ import GetValidFormValues from './material/GetValidFormValues'
 import NumberFieldValidation from './material/NumberFieldValidation'
 import AddToListOnFieldChange from './material/AddToListOnFieldChange'
 import ValidateMemoryForm from './memory/ValidateMemoryForm'
+import ListFieldUpdate from './material/ListFieldUpdate'
 
 const submitLog = name => {
   return {
@@ -64,6 +65,7 @@ storiesOf('Material-UI', module)
   .add('Object field', () => <PassThroughField {...submitLog('PassThroughField')} />)
   .add('List Field', () => <ListField {...submitLog('ListField')} />)
   .add('List of Lists Field', () => <ListOfListField {...submitLog('ListOfListField')} />)
+  .add('List Field update', () => <ListFieldUpdate {...submitLog('ListFieldUpdate')} />)
   .add('Modify list on field change', () => <AddToListOnFieldChange {...submitLog('Modify list on field change')} />)
   .add('Initial values passed into form', () => <InitialValuesSet initialValues={fromJS({ fullName: 'Samuel Tarley', nickname: 'Sam' })} {...submitLog('InitialValuesSet')} />)
   .add('Initial values lazy loaded', () => (

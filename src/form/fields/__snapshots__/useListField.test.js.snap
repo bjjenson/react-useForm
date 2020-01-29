@@ -193,7 +193,21 @@ Object {
     ],
     "label": "the label",
     "remove": [Function],
+    "updateIndex": [Function],
   },
   "setValue": [Function],
 }
+`;
+
+exports[`updateIndex will dispatch action 1`] = `
+Array [
+  Object {
+    "fieldName": "fieldName",
+    "payload": Object {
+      "fromIndex": 0,
+      "toIndex": 4,
+    },
+    "type": "updateListIndex",
+  },
+]
 `;

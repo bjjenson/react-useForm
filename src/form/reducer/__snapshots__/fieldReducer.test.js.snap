@@ -402,6 +402,93 @@ Immutable.Map {
 }
 `;
 
+exports[`list in state updateListIndex 1`] = `
+Immutable.Map {
+  "fields": Immutable.Map {
+    "data.listField": Immutable.Map {
+      "items": Immutable.List [
+        Immutable.Map {
+          "fields": Immutable.Map {
+            "field-name": Immutable.Map {
+              "initial": Immutable.Map {
+                "value": "",
+              },
+              "current": Immutable.Map {
+                "value": "",
+                "pristine": true,
+                "touched": false,
+                "error": false,
+                "helperText": "",
+              },
+            },
+          },
+        },
+        Immutable.Map {},
+      ],
+    },
+    "otherField": Immutable.Map {
+      "initial": Immutable.Map {
+        "value": "",
+      },
+      "current": Immutable.Map {
+        "value": "",
+        "pristine": true,
+        "touched": false,
+        "error": false,
+        "helperText": "",
+      },
+    },
+  },
+  "lastPath": Array [],
+}
+`;
+
+exports[`list in state updateListIndex 2`] = `
+Array [
+  Immutable.Map {
+    "fields": Immutable.Map {
+      "data.listField": Immutable.Map {
+        "items": Immutable.List [
+          Immutable.Map {
+            "fields": Immutable.Map {
+              "field-name": Immutable.Map {
+                "initial": Immutable.Map {
+                  "value": "",
+                },
+                "current": Immutable.Map {
+                  "value": "",
+                  "pristine": true,
+                  "touched": false,
+                  "error": false,
+                  "helperText": "",
+                },
+              },
+            },
+          },
+          Immutable.Map {},
+        ],
+      },
+      "otherField": Immutable.Map {
+        "initial": Immutable.Map {
+          "value": "",
+        },
+        "current": Immutable.Map {
+          "value": "",
+          "pristine": true,
+          "touched": false,
+          "error": false,
+          "helperText": "",
+        },
+      },
+    },
+  },
+  "fields",
+  Array [
+    "data.listField",
+  ],
+]
+`;
+
 exports[`list in state updateValue for field updates value on current 1`] = `
 Immutable.Map {
   "fields": Immutable.Map {

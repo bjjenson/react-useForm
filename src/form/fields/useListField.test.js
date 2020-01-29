@@ -117,3 +117,9 @@ test('remove will trigger custom validation', () => {
   props.remove(1)
   expect(dispatch.mock.calls[1]).toMatchSnapshot()
 })
+
+it('updateIndex will dispatch action', () => {
+  const { props } = useListField(state, dispatch, fieldArgs)
+  props.updateIndex(0, 4)
+  expect(dispatch.mock.calls[0]).toMatchSnapshot()
+})

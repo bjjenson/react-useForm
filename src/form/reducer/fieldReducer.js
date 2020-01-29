@@ -7,6 +7,7 @@ export const actionTypes = {
   removeField: 'removeField',
   addListItem: 'addListItem',
   removeListItem: 'removeListItem',
+  updateListIndex: 'updateListIndex',
   reset: 'reset',
   touched: 'touched',
   updateValue: 'updateValue',
@@ -21,6 +22,7 @@ export const actions = {
   removeField: fieldName => ({ type: actionTypes.removeField, fieldName }),
   addListItem: (fieldName, fieldState) => ({ type: actionTypes.addListItem, fieldName, payload: fieldState }),
   removeListItem: (fieldName, index) => ({ type: actionTypes.removeListItem, fieldName, payload: index }),
+  updateListIndex: (fieldName, fromIndex, toIndex) => ({ type: actionTypes.updateListIndex, fieldName, payload: { fromIndex, toIndex } }),
   reset: (state) => ({ type: actionTypes.reset, payload: state }),
   touched: (fieldName) => ({ type: actionTypes.touched, fieldName }),
   updateValue: (fieldName, value) => ({ type: actionTypes.updateValue, fieldName, payload: value }),
@@ -86,6 +88,12 @@ export const fieldReducer = (state, { type, fieldName = '', payload }) => {
         fieldsKey,
         fieldPath,
       ),
+
+    [actionTypes.updateListIndex]: ({fromIndex, toIndex}) => {
+      const path = [fieldsKey, ...fieldPath, 'items']
+      const item = state.getIn([...path, fromIndex])
+      return syncListIndexes(state.deleteIn([...path, fromIndex]).updateIn(path, items=> items.insert(toIndex, item)), fieldsKey, fieldPath)
+    },
 
     [actionTypes.addListener]: listener =>
       state.updateIn([listenersKey, fieldName], List(), listeners =>
