@@ -13,6 +13,8 @@ class ChipField extends React.PureComponent {
       error,
       helperText,
       placeholder,
+      classes,
+      ...rest
     } = this.props
     const { focused, inputValue } = this.state
     const shouldShrink = value.size > 0 || focused
@@ -24,6 +26,7 @@ class ChipField extends React.PureComponent {
         }
         {this.renderChips()}
         <Input
+          {...rest}
           inputRef={node => this.inputElement = node}
           value={inputValue}
           onKeyDown={this.handleKeyDown}

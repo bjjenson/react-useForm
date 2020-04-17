@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Form = ({ children, ...rest }) => {
+const Form = ({ children, ...rest }) => {
   return (
     <form
       {...rest}
@@ -12,3 +12,5 @@ export const Form = ({ children, ...rest }) => {
     </form>
   )
 }
+
+export default Form

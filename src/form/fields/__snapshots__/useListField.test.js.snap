@@ -170,11 +170,13 @@ Object {
     "add": [Function],
     "error": false,
     "helperText": "help me",
+    "id": "fieldName",
     "items": Array [
       Object {
         "first": Object {
           "error": "false",
           "helperText": "",
+          "id": "fieldName.0-first",
           "label": "First",
           "onBlur": [Function],
           "onChange": [Function],
@@ -184,6 +186,7 @@ Object {
         "second": Object {
           "error": "false",
           "helperText": "",
+          "id": "fieldName.0-second",
           "label": "Second",
           "onBlur": [Function],
           "onChange": [Function],

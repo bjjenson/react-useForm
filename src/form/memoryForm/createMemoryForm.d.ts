@@ -5,7 +5,7 @@ import { IValues } from '../common'
 export interface IMemoryFormProps {
   fields: Array<IFormFieldArgs>
   validate?: (values: IValues) => IValidationErrors | Array<(values: IValues) => IValidationErrors>
-  initialValues?: Map<String, any>
+  initialValues?: Map<string, any>
 }
 
 export function createMemoryFrom(props: IMemoryFormProps): { validate: () => IValidationResult }

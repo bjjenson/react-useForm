@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { Map, fromJS } from 'immutable'
-import { Form } from './Form'
+import Form from './Form'
 import { createReducer } from './reducer/createReducer'
 import { getFieldState } from './reducer/getFieldState'
 import { actions, fieldsKey } from './reducer/fieldReducer'
@@ -31,7 +31,7 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
 
   const t0 = performance.now()
   if (!lastPath || lastPath.length === 0 || lastPath[0] === '') {
-    fieldData = resolveFieldData(state, dispatch, getAllValues)
+    fieldData = resolveFieldData(state, dispatch, getAllValues, options)
   } else {
     const path = [fieldsKey, ...lastPath]
     const props = resolveField(state.getIn(path), dispatch, getAllValues)
@@ -121,7 +121,7 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
     setValue,
     getValues,
   }
-  const fieldProps = getFieldProps(fieldData, state)
+  const fieldProps = getFieldProps(fieldData, state, options.id)
 
   return [
     { ...fieldProps },
@@ -131,6 +131,7 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
       submit: trySubmitTheForm,
       validate: getValidationResult,
       reset: resetForm,
+      id: options.id || '',
       Form,
       addField,
       removeField,

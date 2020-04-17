@@ -323,10 +323,12 @@ exports[`returns array of form props 1`] = `
 Array [
   Object {
     "name": Object {
+      "id": "name",
       "label": "The name",
       "value": "current value of name",
     },
     "phone": Object {
+      "id": "phone",
       "label": "The phone",
       "value": "current value of phone",
     },
@@ -339,6 +341,7 @@ Array [
     "getIsPristine": [Function],
     "getValues": [Function],
     "getValuesIfFormValid": [Function],
+    "id": "",
     "removeField": [Function],
     "removeFieldListener": [Function],
     "reset": [Function],

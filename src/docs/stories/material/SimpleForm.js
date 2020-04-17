@@ -11,10 +11,13 @@ const SimpleForm = ({ submit }) => {
       { name: 'nickname', label: 'Nickname' },
     ],
     submit,
+    options: {
+      id: 'simple',
+    },
   })
 
   return (
-    <form.Form>
+    <form.Form id={form.id}>
       <Flexbox flexDirection='column'>
         <TextField {...fields.fullName} />
         <TextField {...fields.nickname} />

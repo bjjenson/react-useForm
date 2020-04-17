@@ -8,19 +8,20 @@ import {
   useTextField,
   useObjectField,
 } from './fields'
+import {getId} from './helpers/getId'
 
-export const resolveFieldData = (state, dispatch, getAllValues) => {
+export const resolveFieldData = (state, dispatch, getAllValues, formOptions) => {
   const fieldData = state.get(fieldsKey, Map()).entrySeq().reduce((acc, [fieldName, current]) => {
     const fieldState = current.set('getAllValues', getAllValues)
 
-    acc[fieldName] = resolveField(fieldState, dispatch, getAllValues)
+    acc[fieldName] = resolveField(fieldState, dispatch, getAllValues, formOptions)
     return acc
   }, {})
 
   return fieldData
 }
 
-export const resolveField = (fieldState, dispatch, getAllValues) => {
+export const resolveField = (fieldState, dispatch, getAllValues, formOptions) => {
   const field = fieldState.getIn(['initial', 'field'])
   const fieldType = fieldState.getIn(['initial', 'type'])
   switch (fieldType) {
@@ -31,7 +32,7 @@ export const resolveField = (fieldState, dispatch, getAllValues) => {
     case 'number':
       return useNumberField(fieldState, dispatch, field)
     case 'list':
-      return useListField(fieldState, dispatch, field, getAllValues)
+      return useListField(fieldState, dispatch, field, getAllValues, formOptions)
     case 'object':
       return useObjectField(fieldState, dispatch, field)
     case 'text':
@@ -40,11 +41,12 @@ export const resolveField = (fieldState, dispatch, getAllValues) => {
   }
 }
 
-export const getFieldProps = (fieldData, state = Map()) => {
+export const getFieldProps = (fieldData, state = Map(), parentKey = '') => {
   return Object.entries(fieldData).reduce((acc, [key, v]) => {
     const passThrough = state.getIn([fieldsKey, key, 'initial', 'field'], {}).passThrough || {}
 
     acc[key] = {
+      id: getId(parentKey, key),
       ...v.props,
       ...passThrough,
     }

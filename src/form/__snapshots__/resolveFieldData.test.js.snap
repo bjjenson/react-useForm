@@ -3,10 +3,12 @@
 exports[`getFieldProps reduces all props on keys 1`] = `
 Object {
   "one": Object {
+    "id": "one",
     "onChange": "onChange-one",
     "value": "one",
   },
   "two": Object {
+    "id": "two",
     "onChange": "onChange-two",
     "value": "two",
   },
@@ -16,11 +18,13 @@ Object {
 exports[`getFieldProps spreads passThrough from state if it exists 1`] = `
 Object {
   "one": Object {
+    "id": "one",
     "key": "key-one",
     "onChange": "onChange-one",
     "value": "one",
   },
   "two": Object {
+    "id": "two",
     "onChange": "onChange-two",
     "value": "two",
   },

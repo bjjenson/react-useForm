@@ -3,11 +3,13 @@ import { actions } from '../reducer/fieldReducer'
 import { resolveFieldData, getFieldProps } from '../resolveFieldData'
 import { getFields } from '../reducer/generateDefaultListState'
 import { prepareNameForValidate } from './prepareNameForValidate'
+import {getId} from '../helpers/getId'
+
 /**
  * @param  fieldArgs { import("../useForm").IFormFieldArgs}
  * @returns {import("../useForm").IFormField}
  */
-export const useListField = (state, dispatch, fieldArgs = {}, getAllValues) => {
+export const useListField = (state, dispatch, fieldArgs = {}, getAllValues, formOptions = {}) => {
   const requiredMessage = fieldArgs.requiredMessage || 'Required'
 
   const setValue = () => {
@@ -47,18 +49,22 @@ export const useListField = (state, dispatch, fieldArgs = {}, getAllValues) => {
   }
 
   const fieldData = state.getIn(['items'], List()).map(item => {
-    return resolveFieldData(item, dispatch, getAllValues)
+    return resolveFieldData(item, dispatch, getAllValues, formOptions)
   }).toArray()
 
+  const id = getId(formOptions.id, fieldArgs.name)
   return {
     props: {
+      id,
       error: state.getIn(['current', 'error']),
       helperText: state.getIn(['current', 'helperText']),
       label: state.getIn(['initial', 'label']),
-      items: fieldData.map((item, index) => ({
-        ...getFieldProps(item, state.getIn(['items', index])),
-        key: `${fieldArgs.name}.${index}`,
-      })),
+      items: fieldData.map((item, index) => {
+        const key = `${fieldArgs.name}.${index}`
+        return {
+        ...getFieldProps(item, state.getIn(['items', index]), getId(formOptions.id, key)),
+        key,
+      }}),
       add,
       remove,
       updateIndex,

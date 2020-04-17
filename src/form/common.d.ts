@@ -1,4 +1,4 @@
 export interface IValues {
-  [key: String]: any
+  [key: string]: any
 }
 

@@ -24,17 +24,21 @@ const ListField = ({ submit }) => {
     ],
     submit,
     initialValues,
+    options: {
+      id: 'list-example',
+    },
   })
 
   return (
-    <form.Form>
+    <form.Form id={form.id}>
       <Flexbox flexDirection='column'>
         <TextField {...fields.fullName} />
         <TextField {...fields.nickname} />
 
         <Typography>{fields.colors.label}</Typography>
         <FormHelperText error={fields.colors.error}>{fields.colors.helperText}</FormHelperText>
-        {fields.colors.items.map((item, index) => {
+        <Flexbox flexDirection='column' id={fields.colors.id}>
+          {fields.colors.items.map((item, index) => {
           return (
             <Flexbox key={item.key}>
               <TextField {...item.color} />
@@ -42,6 +46,7 @@ const ListField = ({ submit }) => {
             </Flexbox>
           )
         })}
+        </Flexbox>
         <Button onClick={() => fields.colors.add()}>Add row</Button>
 
       </Flexbox>
