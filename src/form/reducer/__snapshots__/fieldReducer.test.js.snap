@@ -550,6 +550,15 @@ Immutable.Map {
 }
 `;
 
+exports[`onFormChange is called when present and a function 1`] = `
+Array [
+  Immutable.Map {
+    "field-name": "new value",
+    "otherField": "",
+  },
+]
+`;
+
 exports[`pristine is false if value not equal to initial 1`] = `
 Immutable.Map {
   "fields": Immutable.Map {

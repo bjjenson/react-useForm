@@ -325,3 +325,14 @@ test('validateAll merges validation errors', () => {
 
   expect(fieldReducer(state, action)).toMatchSnapshot()
 })
+
+describe('onFormChange', () => {
+  it('is called when present and a function', () => {
+    const onFormChange = jest.fn()
+    const action = actions.updateValue(fieldName, 'new value')
+    const testState = state.set('onFormChange', onFormChange)
+    fieldReducer(testState, action)
+    expect(onFormChange).toHaveBeenCalledTimes(1)
+    expect(onFormChange.mock.calls[0]).toMatchSnapshot()
+  })
+})

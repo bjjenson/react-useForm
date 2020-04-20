@@ -1,6 +1,7 @@
-import { List } from 'immutable'
+import { List, Map } from 'immutable'
 import { syncListIndexes } from './syncListIndexes'
 import { mergeValidationResults } from './mergeValidationResults'
+import { mergeFormValues } from '../helpers/mergeFormValues'
 
 export const actionTypes = {
   insertField: 'insertField',
@@ -52,8 +53,17 @@ export const fieldReducer = (state, { type, fieldName = '', payload }) => {
         state.getIn([listenersKey, fieldName], List()).forEach(listener => listener(value, previous, state.get('formTools').current))
       })
 
-      return state.setIn([fieldsKey, ...fieldPath, current, 'value'], value)
+      const newState = state.setIn([fieldsKey, ...fieldPath, current, 'value'], value)
         .setIn([fieldsKey, ...fieldPath, current, 'pristine'], value == state.getIn([fieldsKey, fieldName, 'initial', 'value']))
+
+      setTimeout(() => {
+        const onFormChange = state.get('onFormChange')
+        if (onFormChange && typeof (onFormChange) === 'function') {
+          onFormChange(mergeFormValues(newState, Map()))
+        }
+      })
+
+      return newState
     },
 
     [actionTypes.touched]: () =>
@@ -89,10 +99,10 @@ export const fieldReducer = (state, { type, fieldName = '', payload }) => {
         fieldPath,
       ),
 
-    [actionTypes.updateListIndex]: ({fromIndex, toIndex}) => {
+    [actionTypes.updateListIndex]: ({ fromIndex, toIndex }) => {
       const path = [fieldsKey, ...fieldPath, 'items']
       const item = state.getIn([...path, fromIndex])
-      return syncListIndexes(state.deleteIn([...path, fromIndex]).updateIn(path, items=> items.insert(toIndex, item)), fieldsKey, fieldPath)
+      return syncListIndexes(state.deleteIn([...path, fromIndex]).updateIn(path, items => items.insert(toIndex, item)), fieldsKey, fieldPath)
     },
 
     [actionTypes.addListener]: listener =>

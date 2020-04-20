@@ -116,3 +116,8 @@ test('adds field listeners', () => {
 
   expect(getInitialState(fields, initialValues, options, formTools)).toMatchSnapshot()
 })
+
+test('adds onFormChange when present', () => {
+  options.onFormChange = 'on-form-change'
+  expect(getInitialState(fields, initialValues, options, formTools)).toMatchSnapshot()
+})

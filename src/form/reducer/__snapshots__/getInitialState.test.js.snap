@@ -104,6 +104,54 @@ Immutable.Map {
 }
 `;
 
+exports[`adds onFormChange when present 1`] = `
+Immutable.Map {
+  "fields": Immutable.Map {
+    "first": Immutable.Map {
+      "initial": Immutable.Map {
+        "type": "text",
+        "optional": false,
+        "label": "First",
+        "field": Object {
+          "label": "First",
+          "name": "first",
+        },
+        "value": "firstValue",
+      },
+      "current": Immutable.Map {
+        "helperText": "",
+        "error": false,
+        "pristine": true,
+        "touched": false,
+        "value": "firstValue",
+      },
+    },
+    "second": Immutable.Map {
+      "initial": Immutable.Map {
+        "type": "boolean",
+        "optional": false,
+        "label": "Second",
+        "field": Object {
+          "label": "Second",
+          "name": "second",
+          "type": "boolean",
+        },
+        "value": "secondValue",
+      },
+      "current": Immutable.Map {
+        "helperText": "",
+        "error": false,
+        "pristine": true,
+        "touched": false,
+        "value": "secondValue",
+      },
+    },
+  },
+  "onFormChange": "on-form-change",
+  "formTools": "form-tools",
+}
+`;
+
 exports[`initialValues boolean 1`] = `
 Immutable.Map {
   "fields": Immutable.Map {

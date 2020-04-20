@@ -13,8 +13,10 @@ export const getInitialState = (fields, initialValues = Map(), options = {}, for
   }, Map())
 
   const listeners = getListeners(options.listeners)
+  const withFormChange = options.onFormChange ? fromJS({ onFormChange: options.onFormChange }) : Map()
   return fromJS({ [fieldsKey]: fieldMap })
     .merge(listeners)
+    .merge(withFormChange)
     .set('formTools', formTools)
 }
 

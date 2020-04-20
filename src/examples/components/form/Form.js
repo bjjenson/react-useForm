@@ -45,6 +45,9 @@ const Address = ({ classes }) => {
     submit: values => console.log('submitting', values),
     validate: validateForm,
     initialValues,
+    options: {
+      onFormChange: values => { console.log('global change', values) },
+    },
   })
 
   const colorFields = () => {
