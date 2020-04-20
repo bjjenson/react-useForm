@@ -32,6 +32,7 @@ import NumberFieldValidation from './material/NumberFieldValidation'
 import AddToListOnFieldChange from './material/AddToListOnFieldChange'
 import ValidateMemoryForm from './memory/ValidateMemoryForm'
 import ListFieldUpdate from './material/ListFieldUpdate'
+import OnFormChangeListener from './material/OnFormChangeListener'
 
 const submitLog = name => {
   return {
@@ -79,6 +80,7 @@ storiesOf('Material-UI', module)
   .add('Form Reset', () => <FormReset {...submitLog('FormReset')} />)
   .add('Pass through field props', () => <PassThroughProps {...submitLog('PassThroughProps')} />)
   .add('Listen to field changed', () => <OnFieldChangedHandler {...submitLog('OnFieldChangedHandler')} />)
+  .add('Listen to form changed', () => <OnFormChangeListener {...submitLog('OnFormChangeListener')} />)
   .add('Save without validation', () => <SaveNoValidate {...submitLog('SaveNoValidate')} />)
   .add('Validate only', () => <ValidateOnly {...submitLog('validateOnly')} />)
   .add('Get submit values directly', () => <GetValidFormValues {...submitLog('GetValidFormValues')} />)

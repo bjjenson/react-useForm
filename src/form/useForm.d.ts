@@ -69,6 +69,7 @@ export interface OptionListeners {
 export interface IFormOptions {
   optionalLabelFormatter?: (label: string) => string
   listeners: OptionListeners
+  onFormChange: (currentState: Map) => Map
   logPerformance: boolean,
   id: string,
 }

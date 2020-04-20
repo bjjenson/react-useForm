@@ -14,7 +14,7 @@
   "license": "ISC",
   "scripts": {
     "build": "webpack --env.mode production --config ./config/webpack.config.js",
-    "start": "webpack-dev-server --env.mode development --color true --config ./config/webpack.config.js --open",
+    "start": "start-storybook",
     "clean": "yarn cleandir dist",
     "lint": "eslint src --ext .js --max-warnings 0",
     "lint:commit": "eslint --max-warnings 0",
