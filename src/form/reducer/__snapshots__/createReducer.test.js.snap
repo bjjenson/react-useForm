@@ -45,7 +45,7 @@ Array [
 ]
 `;
 
-exports[`useMemo update dispatches reset 1`] = `
+exports[`useMemo dispatches reset if initialValues has changed from default 1`] = `
 Array [
   Object {
     "payload": "initial-state",

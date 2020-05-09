@@ -1,4 +1,4 @@
-import { useCallback, useRef } from 'react'
+import { useCallback, useRef, useEffect } from 'react'
 import { fromJS } from 'immutable'
 import { useForm } from './useForm'
 import { useFormField } from './fields/useFormField'
@@ -223,4 +223,17 @@ test('addField', () => {
   addField({ name: 'newField', type: 'list' })
   expect(getFieldState.mock.calls[0]).toMatchSnapshot()
   expect(dispatch.mock.calls[0]).toMatchSnapshot()
+})
+
+test('invokes initialized onEffect if passed in props', () => {
+  const options = {
+    initialized: jest.fn(),
+  }
+
+  useForm({fields, initialValues, options})
+  useEffect.mock.calls[0][0]()
+
+  expect(options.initialized.mock.calls[0]).toMatchSnapshot()
+
+  expect(useEffect).toHaveBeenCalledWith(expect.any(Function), [expect.any(Number)])
 })

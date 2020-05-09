@@ -1,5 +1,5 @@
 import { Map } from 'immutable'
-import { useReducer, useMemo } from 'react'
+import { useRef, useReducer, useMemo } from 'react'
 import { fieldReducer, actions } from './fieldReducer'
 import { getInitialState } from './getInitialState'
 
@@ -10,8 +10,15 @@ export const createReducer = ({ fields, options = {}, initialValues = Map(), for
   const [state, dispatch] = useReducer(fieldReducer, Map(), () => {
     return calcInitialState()
   })
+  const hashCodeRef = useRef()
 
   useMemo(() => {
+    if(!hashCodeRef.current) {
+      hashCodeRef.current = initialValues.hashCode()
+      return
+    }
+
+    hashCodeRef.current = initialValues.hashCode()
     setTimeout(() => {
       dispatch(actions.reset(calcInitialState()))
     })

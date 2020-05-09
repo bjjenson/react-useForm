@@ -1,5 +1,5 @@
 import { fromJS } from 'immutable'
-import { useReducer, useMemo } from 'react'
+import { useReducer, useMemo, useRef } from 'react'
 import { createReducer } from './createReducer'
 import { fieldsKey } from './fieldReducer'
 import { getInitialState } from './getInitialState'
@@ -8,7 +8,7 @@ jest.mock('react')
 jest.mock('./getInitialState')
 jest.useFakeTimers()
 
-let state, fields, initialValues, dispatch, formTools
+let state, fields, initialValues, dispatch, formTools, hashCodeRef
 beforeEach(() => {
   formTools = 'formTools'
   dispatch = 'dispatch'
@@ -29,7 +29,11 @@ beforeEach(() => {
     first: 'firstValue',
     second: 'secondValue',
   })
+  hashCodeRef = {
+    current: undefined,
+  }
 
+  useRef.mockReturnValue(hashCodeRef)
   useReducer.mockReturnValue([state, dispatch])
   getInitialState.mockReturnValue('initial-state')
 })
@@ -46,7 +50,22 @@ test('uses memo to check for initialValues change', () => {
   expect(useMemo.mock.calls[0]).toMatchSnapshot()
 })
 
-test('useMemo update dispatches reset', () => {
+test('no reset dispatched on first load', () => {
+  let memoized
+  dispatch = jest.fn()
+  useMemo.mockImplementation((f) => {
+    memoized = f
+  })
+  useReducer.mockReturnValue([state, dispatch])
+
+  createReducer({ fields, initialValues, formTools })
+  memoized()
+
+  expect(setTimeout).not.toHaveBeenCalled()
+  expect(dispatch).not.toHaveBeenCalled()
+})
+
+test('useMemo dispatches reset if initialValues has changed from default', () => {
   let memoized
   dispatch = jest.fn()
   let timeoutCB
@@ -54,6 +73,7 @@ test('useMemo update dispatches reset', () => {
     memoized = f
   })
   useReducer.mockReturnValue([state, dispatch])
+  useRef.mockReturnValue({current: 'something'})
   setTimeout.mockImplementation(cb => {
     timeoutCB = cb
   })

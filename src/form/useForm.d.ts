@@ -62,14 +62,22 @@ export interface IValidationResult {
 }
 
 function listener(value: any): void
+
 export interface OptionListeners {
   [key: string]: Array<listener> | listener
+}
+
+export interface InitializedProps {
+  initialValues: Map<string, any>
+  addField: (field: IFormFieldArgs) => void
+  removeField: (fieldName: string) => void
 }
 
 export interface IFormOptions {
   optionalLabelFormatter?: (label: string) => string
   listeners: OptionListeners
   onFormChange: (currentState: Map) => Map
+  initialized: (props: InitializedProps) => void
   logPerformance: boolean,
   id: string,
 }

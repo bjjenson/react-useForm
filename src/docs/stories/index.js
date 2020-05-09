@@ -33,6 +33,7 @@ import AddToListOnFieldChange from './material/AddToListOnFieldChange'
 import ValidateMemoryForm from './memory/ValidateMemoryForm'
 import ListFieldUpdate from './material/ListFieldUpdate'
 import OnFormChangeListener from './material/OnFormChangeListener'
+import FormInitializedHandler from './material/FormInitializedHandler'
 
 const submitLog = name => {
   return {
@@ -74,6 +75,7 @@ storiesOf('Material-UI', module)
       <InitialValuesAsync {...submitLog('InitialValues Lazy loaded')} />
     </BrixProvider>
   ))
+  .add('Initialized Handler', ()=> <FormInitializedHandler {...submitLog('FormInitializedHandler')} />)
   .add('Dynamic fields', () => <DynamicFields {...submitLog('DynamicFields')} />)
   .add('Nested Fields', () => <DeepNestedFields {...submitLog('DeepNestedFields')} />)
   .add('Using Form State Resolvers', () => <FormStateResolvers {...submitLog('FormStateResolvers')} />)
