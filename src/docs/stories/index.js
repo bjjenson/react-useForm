@@ -34,6 +34,7 @@ import ValidateMemoryForm from './memory/ValidateMemoryForm'
 import ListFieldUpdate from './material/ListFieldUpdate'
 import OnFormChangeListener from './material/OnFormChangeListener'
 import FormInitializedHandler from './material/FormInitializedHandler'
+import { ComplexListItems } from './material/ComplexListItems'
 
 const submitLog = name => {
   return {
@@ -87,3 +88,4 @@ storiesOf('Material-UI', module)
   .add('Validate only', () => <ValidateOnly {...submitLog('validateOnly')} />)
   .add('Get submit values directly', () => <GetValidFormValues {...submitLog('GetValidFormValues')} />)
   .add('Validate in memory only', () => <ValidateMemoryForm />)
+  .add('Handles list with complex field items', () => <ComplexListItems {...submitLog('ComplexListItems')} />)

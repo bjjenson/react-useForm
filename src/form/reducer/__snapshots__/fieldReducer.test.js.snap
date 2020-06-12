@@ -145,6 +145,44 @@ Array [
 ]
 `;
 
+exports[`getFieldPath list of list with complex names 1`] = `
+Array [
+  "data.listField",
+  "items",
+  "0",
+  "fields",
+  "field1.sub1",
+  "items",
+  "0",
+  "fields",
+  "field2.sub2",
+]
+`;
+
+exports[`getFieldPath list of lists with single names 1`] = `
+Array [
+  "data.listField",
+  "items",
+  "0",
+  "fields",
+  "field1",
+  "items",
+  "0",
+  "fields",
+  "field2",
+]
+`;
+
+exports[`getFieldPath list with combined names 1`] = `
+Array [
+  "data.listField",
+  "items",
+  "0",
+  "fields",
+  "field1.sub1",
+]
+`;
+
 exports[`getFieldPath single name with items 1`] = `
 Array [
   "listField",
@@ -152,6 +190,16 @@ Array [
   "1",
   "fields",
   "fieldName",
+]
+`;
+
+exports[`getFieldPath single name with items using combined name 1`] = `
+Array [
+  "listField",
+  "items",
+  "1",
+  "fields",
+  "fieldName.sub1",
 ]
 `;
 

@@ -244,8 +244,24 @@ describe('getFieldPath', () => {
     expect(getFieldPath('listField.items.1.fields.fieldName')).toMatchSnapshot()
   })
 
+  test('single name with items using combined name', () => {
+    expect(getFieldPath('listField.items.1.fields.fieldName.sub1')).toMatchSnapshot()
+  })
+
   test('combined name with items', () => {
     expect(getFieldPath('data.listField.items.1.fields.fieldName')).toMatchSnapshot()
+  })
+
+  test('list with combined names', () => {
+    expect(getFieldPath('data.listField.items.0.fields.field1.sub1')).toMatchSnapshot()
+  })
+
+  test('list of lists with single names', () => {
+    expect(getFieldPath('data.listField.items.0.fields.field1.items.0.fields.field2')).toMatchSnapshot()
+  })
+
+  test('list of list with complex names', () => {
+    expect(getFieldPath('data.listField.items.0.fields.field1.sub1.items.0.fields.field2.sub2')).toMatchSnapshot()
   })
 })
 
