@@ -55,7 +55,6 @@ export const fieldReducer = (state, { type, fieldName = '', payload }) => {
 
       const newState = state.setIn([fieldsKey, ...fieldPath, current, 'value'], value)
         .setIn([fieldsKey, ...fieldPath, current, 'pristine'], value == state.getIn([fieldsKey, fieldName, 'initial', 'value']))
-
       setTimeout(() => {
         const onFormChange = state.get('onFormChange')
         if (onFormChange && typeof (onFormChange) === 'function') {
@@ -134,14 +133,22 @@ export const fieldReducer = (state, { type, fieldName = '', payload }) => {
   return state
 }
 
-export const getFieldPath = fieldName => {
+export const getFieldPath = (fieldName, prev = []) => {
   let fieldPath = [fieldName]
   const match = fieldName.match(/.items.(\d)./)
+
   if (match) {
     const firstField = fieldName.substr(0, match.index)
-    const rest = fieldName.substr(match.index + 1)
-    fieldPath = [firstField, ...rest.split('.')]
+    const rest = fieldName.match(/.items.\d.fields.(.*)$/)[1]
+
+    if (rest.match(/.items.(\d)./)) {
+      return getFieldPath(rest, [firstField, 'items', match[1], 'fields'])
+    }
+
+    fieldPath = [...prev, firstField, 'items', match[1], 'fields', rest]
+
   }
+
   return fieldPath
 }
 
