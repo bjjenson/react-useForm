@@ -256,12 +256,20 @@ describe('getFieldPath', () => {
     expect(getFieldPath('data.listField.items.0.fields.field1.sub1')).toMatchSnapshot()
   })
 
+  test('list with more than 10 items', () => {
+    expect(getFieldPath('data.listField.items.11.fields.field1.sub1')).toMatchSnapshot()
+  })
+
   test('list of lists with single names', () => {
     expect(getFieldPath('data.listField.items.0.fields.field1.items.0.fields.field2')).toMatchSnapshot()
   })
 
   test('list of list with complex names', () => {
     expect(getFieldPath('data.listField.items.0.fields.field1.sub1.items.0.fields.field2.sub2')).toMatchSnapshot()
+  })
+
+  test('list of list with complex names longer than 10 items', () => {
+    expect(getFieldPath('data.listField.items.11.fields.field1.sub1.items.11.fields.field2.sub2')).toMatchSnapshot()
   })
 })
 

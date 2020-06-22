@@ -159,6 +159,20 @@ Array [
 ]
 `;
 
+exports[`getFieldPath list of list with complex names longer than 10 items 1`] = `
+Array [
+  "data.listField",
+  "items",
+  "11",
+  "fields",
+  "field1.sub1",
+  "items",
+  "11",
+  "fields",
+  "field2.sub2",
+]
+`;
+
 exports[`getFieldPath list of lists with single names 1`] = `
 Array [
   "data.listField",
@@ -178,6 +192,16 @@ Array [
   "data.listField",
   "items",
   "0",
+  "fields",
+  "field1.sub1",
+]
+`;
+
+exports[`getFieldPath list with more than 10 items 1`] = `
+Array [
+  "data.listField",
+  "items",
+  "11",
   "fields",
   "field1.sub1",
 ]
