@@ -135,13 +135,13 @@ export const fieldReducer = (state, { type, fieldName = '', payload }) => {
 
 export const getFieldPath = (fieldName, prev = []) => {
   let fieldPath = [fieldName]
-  const match = fieldName.match(/.items.(\d)./)
+  const match = fieldName.match(/.items.(\d+)./)
 
   if (match) {
     const firstField = fieldName.substr(0, match.index)
-    const rest = fieldName.match(/.items.\d.fields.(.*)$/)[1]
+    const rest = fieldName.match(/.items.\d+.fields.(.*)$/)[1]
 
-    if (rest.match(/.items.(\d)./)) {
+    if (rest.match(/.items.(\d+)./)) {
       return getFieldPath(rest, [firstField, 'items', match[1], 'fields'])
     }
 
