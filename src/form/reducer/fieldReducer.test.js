@@ -307,6 +307,19 @@ describe('fieldListener', () => {
     expect(listener2).toHaveBeenCalledWith(update, previousValue, formTools.current)
   })
 
+  test('listeners called for nested field value changes', () => {
+    const previousValue = 'previousValue'
+    state = state.setIn(['fields', 'data', 'items', '0', 'fields', 'field', 'current', 'value'], previousValue)
+    const update = 'i am update'
+    const action = actions.addListener('data.field', listener)
+    const changeAction = actions.updateValue('data.items.0.fields.field', update)
+
+    state = fieldReducer(state, action)
+    fieldReducer(state, changeAction)
+
+    expect(listener).toHaveBeenCalledWith(update, previousValue, formTools.current)
+  })
+
   test('listener not called for other fields', () => {
     const action = actions.addListener('name', listener)
     const changeAction = actions.updateValue('other', 'i am update')
