@@ -114,9 +114,11 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
   const getValues = () => mergeFormValues(state, initialValues)
 
 
-  useEffect(()=> {
-    options.initialized && options.initialized({initialValues, addField, removeField, getValues})
+  useEffect(() => {
+    options.initialized && options.initialized({ initialValues, addField, removeField, getValues })
   }, [initialValues.hashCode()])
+
+  const fieldProps = getFieldProps(fieldData, state, options.id)
 
   formTools.current = {
     addField,
@@ -125,8 +127,8 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
     removeFieldListener,
     setValue,
     getValues,
+    getFields: ()=> fieldProps,
   }
-  const fieldProps = getFieldProps(fieldData, state, options.id)
 
   return [
     { ...fieldProps },
