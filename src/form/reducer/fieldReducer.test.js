@@ -373,3 +373,30 @@ describe('onFormChange', () => {
     expect(onFormChange.mock.calls[0]).toMatchSnapshot()
   })
 })
+
+describe('updateFieldDefinition', ()=> {
+  beforeEach(()=> {
+    state = state.setIn(['fields', fieldName, 'initial', 'field'], {label: 'the-label'})
+  })
+
+  it('updateFieldDefinition updates optional', () => {
+    const action = actions.updateFieldDefinition(fieldName, { definition: { name: fieldName, optional: true }, options: {} })
+    expect(fieldReducer(state, action)).toMatchSnapshot()
+  })
+
+  it('updateFieldDefinition updates label', () => {
+    const action = actions.updateFieldDefinition(fieldName, { definition: { name: fieldName, label: 'new-label' }, options: {} })
+    expect(fieldReducer(state, action)).toMatchSnapshot()
+  })
+
+  it('updateFieldDefinition updates optional && label', () => {
+    const action = actions.updateFieldDefinition(fieldName, { definition: { name: fieldName, optional: true, label: 'new-label' }, options: {} })
+    expect(fieldReducer(state, action)).toMatchSnapshot()
+  })
+
+  it('updateFieldDefinition updates optional && label using formatter', () => {
+    const action = actions.updateFieldDefinition(fieldName, { definition: { name: fieldName, optional: true, label: 'new-label' }, options: {optionalLabelFormatter: l=> `${l}***`} })
+    expect(fieldReducer(state, action)).toMatchSnapshot()
+  })
+
+})

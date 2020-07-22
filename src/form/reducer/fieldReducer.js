@@ -2,6 +2,7 @@ import { List, Map } from 'immutable'
 import { syncListIndexes } from './syncListIndexes'
 import { mergeValidationResults } from './mergeValidationResults'
 import { mergeFormValues } from '../helpers/mergeFormValues'
+import { resolveLabel } from './resolveLabel'
 
 export const actionTypes = {
   insertField: 'insertField',
@@ -12,6 +13,7 @@ export const actionTypes = {
   reset: 'reset',
   touched: 'touched',
   updateValue: 'updateValue',
+  updateFieldDefinition: 'updateFieldDefinition',
   validateAll: 'validateAll',
   validationResult: 'validationResult',
   addListener: 'addListener',
@@ -27,6 +29,7 @@ export const actions = {
   reset: (state) => ({ type: actionTypes.reset, payload: state }),
   touched: (fieldName) => ({ type: actionTypes.touched, fieldName }),
   updateValue: (fieldName, value) => ({ type: actionTypes.updateValue, fieldName, payload: value }),
+  updateFieldDefinition: (fieldName, payload) => ({ type: actionTypes.updateFieldDefinition, fieldName, payload }),
   validateAll: (errors) => ({ type: actionTypes.validateAll, payload: errors }),
   validationResult: (fieldName, error, helperText) => ({ type: actionTypes.validationResult, fieldName, payload: { error, helperText } }),
   addListener: (fieldName, listener) => ({ type: actionTypes.addListener, fieldName, payload: listener }),
@@ -115,6 +118,17 @@ export const fieldReducer = (state, { type, fieldName = '', payload }) => {
         const index = listeners.indexOf(listener)
         return index > -1 ? listeners.delete(index) : listeners
       }),
+
+    [actionTypes.updateFieldDefinition]: ({ definition, options }) => {
+      const path = [fieldsKey, ...fieldPath, 'initial']
+      let initialDef = state.getIn([...path, 'field'], {})
+
+      let update = Map({optional: state.getIn([...path, 'optional'])})
+      if (definition.optional !== undefined) update = update.set('optional', definition.optional)
+      update = update.set('label', resolveLabel({...initialDef, ...definition}, options))
+
+      return state.mergeIn(path, update)
+    },
 
     [actionTypes.reset]: state => state,
   }

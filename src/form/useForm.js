@@ -113,6 +113,9 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
 
   const getValues = () => mergeFormValues(state, initialValues)
 
+  const updateFieldDefinition = (fieldName, definition) => {
+    dispatch(actions.updateFieldDefinition(fieldName, { definition: { name: fieldName, ...definition }, options }))
+  }
 
   useEffect(() => {
     options.initialized && options.initialized({ initialValues, addField, removeField, getValues })
@@ -127,7 +130,8 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
     removeFieldListener,
     setValue,
     getValues,
-    getFields: ()=> fieldProps,
+    getFields: () => fieldProps,
+    updateFieldDefinition,
   }
 
   return [
@@ -146,6 +150,7 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
       removeFieldListener,
       ...stateResolvers,
       getValues,
+      updateFieldDefinition,
     },
   ]
 }

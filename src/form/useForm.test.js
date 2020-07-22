@@ -191,6 +191,15 @@ test('options passed to createReducer', () => {
   expect(createReducer.mock.calls[0]).toMatchSnapshot()
 })
 
+it('dispatches updateFields from tools.updateFieldDefinition ', () => {
+  useForm({ fields, submit: submitWorker })
+
+  const reducerProps = createReducer.mock.calls[0][0]
+  reducerProps.formTools.current.updateFieldDefinition('field-name', {optional: true})
+
+  expect(dispatch.mock.calls[0]).toMatchSnapshot()
+})
+
 test('reset dispatches action with derived initial state', () => {
   const [, { reset }] = useForm({ fields, initialValues })
 
@@ -198,7 +207,6 @@ test('reset dispatches action with derived initial state', () => {
   expect(getInitialState.mock.calls[0]).toMatchSnapshot()
   expect(dispatch.mock.calls[0]).toMatchSnapshot()
 })
-
 
 test('addFieldListener dispatches action', () => {
   const [, { addFieldListener }] = useForm({ fields, initialValues })

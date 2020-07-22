@@ -36,6 +36,22 @@ Array [
 ]
 `;
 
+exports[`dispatches updateFields from tools.updateFieldDefinition  1`] = `
+Array [
+  Object {
+    "fieldName": "field-name",
+    "payload": Object {
+      "definition": Object {
+        "name": "field-name",
+        "optional": true,
+      },
+      "options": Object {},
+    },
+    "type": "updateFieldDefinition",
+  },
+]
+`;
+
 exports[`form.validate returns all errors 1`] = `
 Object {
   "errors": "pruned errors",
@@ -273,6 +289,7 @@ Array [
         "removeField": [Function],
         "removeFieldListener": [Function],
         "setValue": [Function],
+        "updateFieldDefinition": [Function],
       },
     },
     "initialValues": Immutable.Map {},
@@ -323,6 +340,7 @@ Array [
       "removeField": [Function],
       "removeFieldListener": [Function],
       "setValue": [Function],
+      "updateFieldDefinition": [Function],
     },
   },
 ]
@@ -365,6 +383,7 @@ Array [
     "reset": [Function],
     "setValue": [Function],
     "submit": [Function],
+    "updateFieldDefinition": [Function],
     "validate": [Function],
   },
 ]
