@@ -3,7 +3,7 @@ import { useRef, useReducer, useMemo } from 'react'
 import { fieldReducer, actions } from './fieldReducer'
 import { getInitialState } from './getInitialState'
 
-export const createReducer = ({ fields, options = {}, initialValues = Map(), formTools }) => {
+export const createReducer = ({ fields, initialValues = Map(), options = {}, formTools }) => {
   const calcInitialState = () => {
     return getInitialState(fields, initialValues, options, formTools)
   }

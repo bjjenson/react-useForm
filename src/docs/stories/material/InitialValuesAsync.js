@@ -12,6 +12,7 @@ const useFetchInitialValues = () => {
         resolve(fromJS({
           fullName: 'Samuel Tarley',
           nickname: 'Sam',
+          arrived: 'late!',
         }))
       }, 2000)
     })
@@ -27,6 +28,13 @@ const InitialValuesAsyncLoader = withBoundary(<div>loading initial values</div>)
       { name: 'nickname', label: 'Nickname' },
     ],
     initialValues,
+    options: {
+      initialized: ({ initialValues: updatedValues, addField }) => {
+        if (updatedValues.get('arrived')) {
+          addField({ name: 'arrived', label: 'Arrived' })
+        }
+      },
+    },
     submit,
   })
 
@@ -35,6 +43,7 @@ const InitialValuesAsyncLoader = withBoundary(<div>loading initial values</div>)
       <Flexbox flexDirection='column'>
         <TextField {...fields.fullName} />
         <TextField {...fields.nickname} />
+        {fields.arrived && <TextField {...fields.arrived} />}
       </Flexbox>
       <Button type='submit' onClick={form.submit}>Submit</Button>
     </form.Form>
