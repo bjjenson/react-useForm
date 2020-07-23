@@ -185,6 +185,8 @@ exports[`invokes initialized onEffect if passed in props 1`] = `
 Array [
   Object {
     "addField": [Function],
+    "addFieldListener": [Function],
+    "getFields": [Function],
     "getValues": [Function],
     "initialValues": Immutable.Map {
       "nested": Immutable.Map {
@@ -193,6 +195,9 @@ Array [
       "id": "id",
     },
     "removeField": [Function],
+    "removeFieldListener": [Function],
+    "setValue": [Function],
+    "updateFieldDefinition": [Function],
   },
 ]
 `;

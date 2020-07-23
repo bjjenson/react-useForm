@@ -117,10 +117,6 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
     dispatch(actions.updateFieldDefinition(fieldName, { definition: { name: fieldName, ...definition }, options }))
   }
 
-  useEffect(() => {
-    options.initialized && options.initialized({ initialValues, addField, removeField, getValues })
-  }, [initialValues.hashCode()])
-
   const fieldProps = getFieldProps(fieldData, state, options.id)
 
   formTools.current = {
@@ -133,6 +129,10 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
     getFields: () => fieldProps,
     updateFieldDefinition,
   }
+
+  useEffect(() => {
+    options.initialized && options.initialized({ initialValues, ...formTools.current })
+  }, [initialValues.hashCode()])
 
   return [
     { ...fieldProps },
