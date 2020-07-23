@@ -33,7 +33,9 @@ Array [
     "second": "secondValue",
   },
   Object {},
-  "formTools",
+  Object {
+    "currrent": "formTools",
+  },
 ]
 `;
 
@@ -50,6 +52,18 @@ Array [
   Object {
     "payload": "initial-state",
     "type": "reset",
+  },
+]
+`;
+
+exports[`useMemo dispatches reset if initialValues has changed from default 2`] = `
+Array [
+  Object {
+    "addField": "addField",
+    "initialValues": Immutable.Map {
+      "first": "firstValue",
+      "second": "secondValue",
+    },
   },
 ]
 `;

@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react'
+import { useRef } from 'react'
 import { Map, fromJS } from 'immutable'
 import Form from './Form'
 import { createReducer } from './reducer/createReducer'
@@ -129,10 +129,6 @@ export const useForm = ({ fields, submit, validate, options = {}, initialValues 
     getFields: () => fieldProps,
     updateFieldDefinition,
   }
-
-  useEffect(() => {
-    options.initialized && options.initialized({ initialValues, ...formTools.current })
-  }, [initialValues.hashCode()])
 
   return [
     { ...fieldProps },

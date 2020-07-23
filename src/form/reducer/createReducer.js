@@ -21,6 +21,7 @@ export const createReducer = ({ fields, options = {}, initialValues = Map(), for
     hashCodeRef.current = initialValues.hashCode()
     setTimeout(() => {
       dispatch(actions.reset(calcInitialState()))
+      options.initialized && options.initialized({ initialValues, ...formTools.current })
     })
   }, [initialValues.hashCode()])
 

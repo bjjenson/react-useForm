@@ -8,9 +8,9 @@ jest.mock('react')
 jest.mock('./getInitialState')
 jest.useFakeTimers()
 
-let state, fields, initialValues, dispatch, formTools, hashCodeRef
+let state, fields, options, initialValues, dispatch, formTools, hashCodeRef
 beforeEach(() => {
-  formTools = 'formTools'
+  formTools = { currrent: 'formTools' }
   dispatch = 'dispatch'
   state = fromJS({
     [fieldsKey]: {
@@ -39,7 +39,7 @@ beforeEach(() => {
 })
 
 test('prepares initialState by field', () => {
-  expect(createReducer({ fields, initialValues, formTools })).toMatchSnapshot()
+  expect(createReducer({ fields, options, initialValues, formTools })).toMatchSnapshot()
   useReducer.mock.calls[0][2]()
   expect(getInitialState.mock.calls[0]).toMatchSnapshot()
   expect(useReducer.mock.calls[0]).toMatchSnapshot()
@@ -58,7 +58,7 @@ test('no reset dispatched on first load', () => {
   })
   useReducer.mockReturnValue([state, dispatch])
 
-  createReducer({ fields, initialValues, formTools })
+  createReducer({ fields, options, initialValues, formTools })
   memoized()
 
   expect(setTimeout).not.toHaveBeenCalled()
@@ -66,6 +66,12 @@ test('no reset dispatched on first load', () => {
 })
 
 test('useMemo dispatches reset if initialValues has changed from default', () => {
+  options = {
+    initialized: jest.fn(),
+  }
+  formTools.current = {
+    addField: 'addField',
+  }
   let memoized
   dispatch = jest.fn()
   let timeoutCB
@@ -73,15 +79,16 @@ test('useMemo dispatches reset if initialValues has changed from default', () =>
     memoized = f
   })
   useReducer.mockReturnValue([state, dispatch])
-  useRef.mockReturnValue({current: 'something'})
+  useRef.mockReturnValue({ current: 'something' })
   setTimeout.mockImplementation(cb => {
     timeoutCB = cb
   })
 
-  createReducer({ fields, initialValues, formTools })
+  createReducer({ fields, options, initialValues, formTools })
   memoized()
   timeoutCB()
 
   expect(setTimeout).toHaveBeenCalled()
   expect(dispatch.mock.calls[0]).toMatchSnapshot()
+  expect(options.initialized.mock.calls[0]).toMatchSnapshot()
 })

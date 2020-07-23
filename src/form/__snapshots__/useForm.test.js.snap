@@ -181,27 +181,6 @@ Array [
 
 exports[`getValuesIfFormValid returns values if form is valid  1`] = `"merged form values"`;
 
-exports[`invokes initialized onEffect if passed in props 1`] = `
-Array [
-  Object {
-    "addField": [Function],
-    "addFieldListener": [Function],
-    "getFields": [Function],
-    "getValues": [Function],
-    "initialValues": Immutable.Map {
-      "nested": Immutable.Map {
-        "name": "old name",
-      },
-      "id": "id",
-    },
-    "removeField": [Function],
-    "removeFieldListener": [Function],
-    "setValue": [Function],
-    "updateFieldDefinition": [Function],
-  },
-]
-`;
-
 exports[`no submit if validation fails 1`] = `
 Array [
   Immutable.Map {
