@@ -30,6 +30,7 @@ const InitialValuesAsyncLoader = withBoundary(<div>loading initial values</div>)
     initialValues,
     options: {
       initialized: ({ initialValues: updatedValues, addField }) => {
+        console.log('addField', addField)
         if (updatedValues.get('arrived')) {
           addField({ name: 'arrived', label: 'Arrived' })
         }

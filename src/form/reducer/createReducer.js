@@ -15,7 +15,9 @@ export const createReducer = ({ fields, initialValues = Map(), options = {}, for
   useMemo(() => {
     if(!hashCodeRef.current) {
       hashCodeRef.current = initialValues.hashCode()
-      options.initialized && options.initialized({ initialValues, ...formTools.current })
+      setTimeout(()=> {
+        options.initialized && options.initialized({ initialValues, ...formTools.current })
+      })
       return
     }
 

@@ -57,17 +57,14 @@ test('no reset dispatched on first load', () => {
   formTools.current = {
     addField: 'addField',
   }
-  let memoized
+
   dispatch = jest.fn()
-  useMemo.mockImplementation((f) => {
-    memoized = f
-  })
+  useMemo.mockImplementation((memoized) =>memoized())
   useReducer.mockReturnValue([state, dispatch])
+  setTimeout.mockImplementation(cb => cb())
 
   createReducer({ fields, initialValues, options, formTools })
-  memoized()
 
-  expect(setTimeout).not.toHaveBeenCalled()
   expect(dispatch).not.toHaveBeenCalled()
   expect(options.initialized.mock.calls[0]).toMatchSnapshot()
 })
@@ -79,21 +76,15 @@ test('useMemo dispatches reset if initialValues has changed from default', () =>
   formTools.current = {
     addField: 'addField',
   }
-  let memoized
+  let
   dispatch = jest.fn()
-  let timeoutCB
-  useMemo.mockImplementation((f) => {
-    memoized = f
-  })
   useReducer.mockReturnValue([state, dispatch])
   useRef.mockReturnValue({ current: 'something' })
-  setTimeout.mockImplementation(cb => {
-    timeoutCB = cb
-  })
+
+  useMemo.mockImplementation((memoized) => memoized())
+  setTimeout.mockImplementation(cb => cb())
 
   createReducer({ fields, initialValues, options, formTools })
-  memoized()
-  timeoutCB()
 
   expect(setTimeout).toHaveBeenCalled()
   expect(dispatch.mock.calls[0]).toMatchSnapshot()
