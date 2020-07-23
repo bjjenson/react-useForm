@@ -51,6 +51,12 @@ test('uses memo to check for initialValues change', () => {
 })
 
 test('no reset dispatched on first load', () => {
+  options = {
+    initialized: jest.fn(),
+  }
+  formTools.current = {
+    addField: 'addField',
+  }
   let memoized
   dispatch = jest.fn()
   useMemo.mockImplementation((f) => {
@@ -63,6 +69,7 @@ test('no reset dispatched on first load', () => {
 
   expect(setTimeout).not.toHaveBeenCalled()
   expect(dispatch).not.toHaveBeenCalled()
+  expect(options.initialized.mock.calls[0]).toMatchSnapshot()
 })
 
 test('useMemo dispatches reset if initialValues has changed from default', () => {

@@ -1,5 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`no reset dispatched on first load 1`] = `
+Array [
+  Object {
+    "addField": "addField",
+    "initialValues": Immutable.Map {
+      "first": "firstValue",
+      "second": "secondValue",
+    },
+  },
+]
+`;
+
 exports[`prepares initialState by field 1`] = `
 Array [
   Immutable.Map {
