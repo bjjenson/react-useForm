@@ -13,7 +13,7 @@ export const useListField = (state, dispatch, fieldArgs = {}, getAllValues, form
   const requiredMessage = fieldArgs.requiredMessage || 'Required'
 
   const setValue = (value) => {
-    const s = generateDefaultListState(fieldArgs, Map({[fieldArgs.name]: value}), formOptions)
+    const s = generateDefaultListState(fieldArgs, Map().setIn(fieldArgs.name.split('.'), value), formOptions)
 
     dispatch(actions.updateList(fieldArgs.name, s.get('items')))
     validate(s.get('items'))

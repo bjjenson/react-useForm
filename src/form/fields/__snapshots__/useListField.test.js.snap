@@ -2,31 +2,24 @@
 
 exports[`add 1`] = `
 Array [
+  Array [
+    Object {
+      "label": "First",
+      "name": "first",
+    },
+  ],
+  Immutable.Map {},
+  Object {},
+  "fieldName",
+  1,
+]
+`;
+
+exports[`add 2`] = `
+Array [
   Object {
     "fieldName": "fieldName",
-    "payload": Immutable.Map {
-      "fields": Immutable.Map {
-        "first": Immutable.Map {
-          "initial": Immutable.Map {
-            "type": "text",
-            "optional": false,
-            "label": "First",
-            "field": Object {
-              "label": "First",
-              "name": "fieldName.items.1.fields.first",
-            },
-            "value": "",
-          },
-          "current": Immutable.Map {
-            "helperText": "",
-            "error": false,
-            "pristine": true,
-            "touched": false,
-            "value": "",
-          },
-        },
-      },
-    },
+    "payload": "fields gotten",
     "type": "addListItem",
   },
 ]
@@ -98,31 +91,26 @@ Array [
 
 exports[`add with values 1`] = `
 Array [
+  Array [
+    Object {
+      "label": "First",
+      "name": "first",
+    },
+  ],
+  Immutable.Map {
+    "first": "111",
+  },
+  Object {},
+  "fieldName",
+  1,
+]
+`;
+
+exports[`add with values 2`] = `
+Array [
   Object {
     "fieldName": "fieldName",
-    "payload": Immutable.Map {
-      "fields": Immutable.Map {
-        "first": Immutable.Map {
-          "initial": Immutable.Map {
-            "type": "text",
-            "optional": false,
-            "label": "First",
-            "field": Object {
-              "label": "First",
-              "name": "fieldName.items.1.fields.first",
-            },
-            "value": "111",
-          },
-          "current": Immutable.Map {
-            "helperText": "",
-            "error": false,
-            "pristine": true,
-            "touched": false,
-            "value": "111",
-          },
-        },
-      },
-    },
+    "payload": "fields gotten",
     "type": "addListItem",
   },
 ]
@@ -200,6 +188,60 @@ Object {
   },
   "setValue": [Function],
 }
+`;
+
+exports[`setValue will set list items 1`] = `
+Array [
+  Object {
+    "fields": Array [
+      Object {
+        "label": "First",
+        "name": "first",
+      },
+    ],
+    "name": "data.nested",
+    "type": "list",
+  },
+  Immutable.Map {
+    "data": Immutable.Map {
+      "nested": Immutable.List [
+        "item1",
+        "item2",
+      ],
+    },
+  },
+  Object {},
+]
+`;
+
+exports[`setValue will set list items 2`] = `
+Array [
+  Object {
+    "fieldName": "data.nested",
+    "payload": Immutable.List [
+      Immutable.Map {
+        "value": "item1",
+      },
+      Immutable.Map {
+        "value": "item2",
+      },
+    ],
+    "type": "updateList",
+  },
+]
+`;
+
+exports[`setValue will set list items 3`] = `
+Array [
+  Object {
+    "fieldName": "data.nested",
+    "payload": Object {
+      "error": false,
+      "helperText": "",
+    },
+    "type": "validationResult",
+  },
+]
 `;
 
 exports[`updateIndex will dispatch action 1`] = `

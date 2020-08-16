@@ -1,5 +1,8 @@
 import { fromJS } from 'immutable'
 import { useListField } from './useListField'
+import { generateDefaultListState, getFields } from '../reducer/generateDefaultListState'
+
+jest.mock('../reducer/generateDefaultListState')
 
 const dispatch = jest.fn()
 let state, fieldArgs
@@ -54,6 +57,7 @@ beforeEach(() => {
   }).setIn(['initial', 'options'], {})
     .setIn(['initial', 'field'], fieldArgs)
 
+  getFields.mockReturnValue('fields gotten')
 })
 
 test('returns props needed', () => {
@@ -63,12 +67,15 @@ test('returns props needed', () => {
 test('add', () => {
   const { props } = useListField(state, dispatch, fieldArgs)
   props.add()
+
+  expect(getFields.mock.calls[0]).toMatchSnapshot()
   expect(dispatch.mock.calls[0]).toMatchSnapshot()
 })
 
 test('add with values', () => {
   const { props } = useListField(state, dispatch, fieldArgs)
   props.add(fromJS({ first: '111' }))
+  expect(getFields.mock.calls[0]).toMatchSnapshot()
   expect(dispatch.mock.calls[0]).toMatchSnapshot()
 })
 
@@ -122,4 +129,16 @@ it('updateIndex will dispatch action', () => {
   const { props } = useListField(state, dispatch, fieldArgs)
   props.updateIndex(0, 4)
   expect(dispatch.mock.calls[0]).toMatchSnapshot()
+})
+
+it('setValue will set list items', () => {
+  fieldArgs.name = 'data.nested'
+  generateDefaultListState.mockReturnValue(fromJS({items: [{value: 'item1'}, {value: 'item2'}]}))
+  const { setValue } = useListField(state, dispatch, fieldArgs)
+
+  setValue(fromJS(['item1', 'item2']))
+
+  expect(generateDefaultListState.mock.calls[0]).toMatchSnapshot()
+  expect(dispatch.mock.calls[0]).toMatchSnapshot()
+  expect(dispatch.mock.calls[1]).toMatchSnapshot()
 })

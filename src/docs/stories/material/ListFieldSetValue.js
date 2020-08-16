@@ -6,18 +6,20 @@ import Flexbox from 'flexbox-react'
 import { useForm } from '../../../form'
 
 const initialValues = fromJS({
-  colors: [
-    { color: 'Red' },
-    { color: 'Green' },
-    { color: 'Blue' },
-  ],
+  data: {
+    colors: [
+      { color: 'Red' },
+      { color: 'Green' },
+      { color: 'Blue' },
+    ],
+  },
 })
 
 const ListFieldSetValue = ({ submit }) => {
   const [fields, form] = useForm({
     fields: [
       {
-        name: 'colors', label: 'Favorite Colors', type: 'list', fields: [
+        name: 'data.colors', label: 'Favorite Colors', type: 'list', fields: [
           { name: 'color', label: 'Color' },
         ],
       },
@@ -27,15 +29,15 @@ const ListFieldSetValue = ({ submit }) => {
   })
 
   const handleSetList = ()=> {
-    form.setValue('colors', fromJS([{color: 'Purple'},{color: 'Yellow'}]))
+    form.setValue('data.colors', fromJS([{color: 'Purple'},{color: 'Yellow'}]))
   }
 
   return (
     <form.Form>
       <Flexbox flexDirection='column'>
-        <Typography>{fields.colors.label}</Typography>
-        <FormHelperText error={fields.colors.error}>{fields.colors.helperText}</FormHelperText>
-        {fields.colors.items.map((item, index) => {
+        <Typography>{fields['data.colors'].label}</Typography>
+        <FormHelperText error={fields['data.colors'].error}>{fields['data.colors'].helperText}</FormHelperText>
+        {fields['data.colors'].items.map((item, index) => {
           return (
             <Flexbox key={item.key}>
               <TextField {...item.color} />
