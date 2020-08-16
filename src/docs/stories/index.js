@@ -17,6 +17,7 @@ import { InitialValuesAsync } from './material/InitialValuesAsync'
 import { InitialValuesSet } from './material/InitialValuesSet'
 import { ListField } from './material/ListField'
 import ListOfListField from './material/ListOfListField'
+import ListFieldSetValue from './material/ListFieldSetValue'
 import { NumberField } from './material/NumberField'
 import { PassThroughField } from './material/PassThroughField'
 import { PassThroughProps } from './material/PassThroughProps'
@@ -69,6 +70,7 @@ storiesOf('Material-UI', module)
   .add('List Field', () => <ListField {...submitLog('ListField')} />)
   .add('List of Lists Field', () => <ListOfListField {...submitLog('ListOfListField')} />)
   .add('List Field update', () => <ListFieldUpdate {...submitLog('ListFieldUpdate')} />)
+  .add('List Field setValue', () => <ListFieldSetValue {...submitLog('ListFieldSetValue')} />)
   .add('Modify list on field change', () => <AddToListOnFieldChange {...submitLog('Modify list on field change')} />)
   .add('Initial values passed into form', () => <InitialValuesSet initialValues={fromJS({ fullName: 'Samuel Tarley', nickname: 'Sam' })} {...submitLog('InitialValuesSet')} />)
   .add('Initial values lazy loaded', () => (

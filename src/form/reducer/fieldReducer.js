@@ -13,6 +13,7 @@ export const actionTypes = {
   reset: 'reset',
   touched: 'touched',
   updateValue: 'updateValue',
+  updateList: 'updateList',
   updateFieldDefinition: 'updateFieldDefinition',
   validateAll: 'validateAll',
   validationResult: 'validationResult',
@@ -29,6 +30,7 @@ export const actions = {
   reset: (state) => ({ type: actionTypes.reset, payload: state }),
   touched: (fieldName) => ({ type: actionTypes.touched, fieldName }),
   updateValue: (fieldName, value) => ({ type: actionTypes.updateValue, fieldName, payload: value }),
+  updateList: (fieldName, items) => ({ type: actionTypes.updateList, fieldName, payload: items }),
   updateFieldDefinition: (fieldName, payload) => ({ type: actionTypes.updateFieldDefinition, fieldName, payload }),
   validateAll: (errors) => ({ type: actionTypes.validateAll, payload: errors }),
   validationResult: (fieldName, error, helperText) => ({ type: actionTypes.validationResult, fieldName, payload: { error, helperText } }),
@@ -65,6 +67,12 @@ export const fieldReducer = (state, { type, fieldName = '', payload }) => {
           onFormChange(mergeFormValues(newState, Map()))
         }
       })
+      return newState
+    },
+
+    [actionTypes.updateList]: items=> {
+      const newState = state.setIn([fieldsKey, ...fieldPath, 'items'], items)
+        .setIn([fieldsKey, ...fieldPath, current, 'pristine'], false)
 
       return newState
     },
@@ -123,9 +131,9 @@ export const fieldReducer = (state, { type, fieldName = '', payload }) => {
       const path = [fieldsKey, ...fieldPath, 'initial']
       let initialDef = state.getIn([...path, 'field'], {})
 
-      let update = Map({optional: state.getIn([...path, 'optional'])})
+      let update = Map({ optional: state.getIn([...path, 'optional']) })
       if (definition.optional !== undefined) update = update.set('optional', definition.optional)
-      update = update.set('label', resolveLabel({...initialDef, ...definition}, options))
+      update = update.set('label', resolveLabel({ ...initialDef, ...definition }, options))
 
       return state.mergeIn(path, update)
     },

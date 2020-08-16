@@ -1,7 +1,7 @@
 import { List, Map } from 'immutable'
 import { actions } from '../reducer/fieldReducer'
 import { resolveFieldData, getFieldProps } from '../resolveFieldData'
-import { getFields } from '../reducer/generateDefaultListState'
+import { getFields, generateDefaultListState } from '../reducer/generateDefaultListState'
 import { prepareNameForValidate } from './prepareNameForValidate'
 import {getId} from '../helpers/getId'
 
@@ -12,9 +12,11 @@ import {getId} from '../helpers/getId'
 export const useListField = (state, dispatch, fieldArgs = {}, getAllValues, formOptions = {}) => {
   const requiredMessage = fieldArgs.requiredMessage || 'Required'
 
-  const setValue = () => {
-    // dispatch(actions.updateValue(fieldArgs.name, v))
-    // tryValidate(v, state.getIn(['current', 'touched']))
+  const setValue = (value) => {
+    const s = generateDefaultListState(fieldArgs, Map({[fieldArgs.name]: value}), formOptions)
+
+    dispatch(actions.updateList(fieldArgs.name, s.get('items')))
+    validate(s.get('items'))
   }
 
   const validate = (items) => {
