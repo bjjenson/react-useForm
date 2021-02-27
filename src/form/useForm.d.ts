@@ -1,4 +1,4 @@
-import { ReactElement } from 'react'
+import { ComponentClass } from 'react'
 import { Map } from 'immutable'
 import { IValues } from './common'
 
@@ -90,7 +90,7 @@ export interface IFormStateResolvers {
 
 export interface IForm extends IFormStateResolvers {
   id: string
-  Form: ReactElement
+  Form: ComponentClass<unknown, unknown>
   submit: (skipValidation: boolean) => void
   validate: () => IValidationResult
   reset: Function
