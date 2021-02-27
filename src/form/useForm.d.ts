@@ -1,3 +1,4 @@
+import { ReactElement } from 'react'
 import { Map } from 'immutable'
 import { IValues } from './common'
 
@@ -22,19 +23,19 @@ export interface IFormTextFieldProps {
   label: string
   value: string
   // Handlers
-  onBlur: Function
-  onChange: Function
+  onBlur: (event: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void
+  onChange: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
 }
 
 export interface IFormFieldArgs<T = string> {
   name: string
-  type: FieldTypes
-  helperText: string
-  optional: boolean
+  type?: FieldTypes
+  helperText?: string
+  optional?: boolean
   requiredMessage?: string
-  label: string
+  label?: string
   normalize?: Function
-  value: T
+  value?: T
   validate?: (value: T, fieldName: string, getValues: () => IValues) => string
   options?: Array<ISelectOptions>
   fields?: Array<IFormFieldArgs<>>
@@ -89,7 +90,7 @@ export interface IFormStateResolvers {
 
 export interface IForm extends IFormStateResolvers {
   id: string
-  Form: React.Component
+  Form: ReactElement
   submit: (skipValidation: boolean) => void
   validate: () => IValidationResult
   reset: Function
@@ -109,8 +110,8 @@ export interface IFields {
 export interface IFormProps {
   fields: Array<IFormFieldArgs>
   submit: (values: IValues) => Promise<void>
-  reset: () => void
-  validate?: (values: IValues) => IValidationErrors | Array<(values: IValues) => IValidationErrors>
+  reset?: () => void
+  validate?: (values: IValues) => unknown | Array<(values: IValues) => IValidationErrors>
   initialValues?: Map<string, any>
   options?: IFormOptions
 }
